@@ -4,7 +4,8 @@
   "description": "SVF's npm support",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./llvm_install.sh"
   },
   "repository": {
     "type": "git",
