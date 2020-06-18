@@ -29,6 +29,6 @@ then
 else
 	echo 'not support builds in OS other than Ubuntu and Mac'
 fi
-sudo mv ../svf-lib ../SVF
+ln -s ../svf-lib ../SVF
 echo $(pwd)
 export LLVM_DIR=$SVFHOME/$LLVMHome
