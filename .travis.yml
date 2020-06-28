@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "12.13"
+os: linux
+dist: bionic
+sudo: required
+
+before_script:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get update       ; fi
+  - cat package.json
+  
+install: true
+
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: ${npm_email}
+  api_key: ${npm_token} 
