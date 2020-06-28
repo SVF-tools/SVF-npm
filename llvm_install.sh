@@ -4,7 +4,8 @@ sysOS=`uname -s`
 MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-apple-darwin.tar.xz"
 UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
 LLVMHome="llvm-10.0.0.obj"
-
+cd ..
+LLVM_install_path=$(pwd)
 ########
 # Download LLVM binary
 ########
@@ -29,8 +30,8 @@ then
 else
 	echo 'not support builds in OS other than Ubuntu and Mac'
 fi
+cd $SVFHOME
 cd ..
 install_path=$(pwd)
 ln -s $install_path/svf-lib $install_path/SVF
 echo $(pwd)
-export LLVM_DIR=$SVFHOME/$LLVMHome
