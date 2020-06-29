@@ -5,7 +5,6 @@ MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/c
 UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
 LLVMHome="llvm-10.0.0.obj"
 cd ..
-LLVM_install_path=$(pwd)
 ########
 # Download LLVM binary
 ########
