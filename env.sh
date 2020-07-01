@@ -8,10 +8,10 @@ export LLVM_DIR=$install_path/$LLVMHome
 export PATH=$LLVM_DIR/bin:$PATH
 if [[ $sysOS == "Darwin" ]]
 then 
-    export SVF_DIR=$install_path/SVF/SVF-osx
+    export SVF_DIR=$install_path/SVF/
 elif [[ $sysOS == "Linux" ]]
 then 
-    export SVF_DIR=$install_path/SVF/SVF-linux
+    export SVF_DIR=$install_path/SVF/
 fi 
 
 echo $LLVM_DIR
