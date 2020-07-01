@@ -14,5 +14,5 @@ then
     export SVF_DIR=$install_path/SVF/
 fi 
 
-echo $LLVM_DIR
-echo $SVF_DIR
+echo "LLVM_DIR="$LLVM_DIR
+echo "SVF_DIR="$SVF_DIR
