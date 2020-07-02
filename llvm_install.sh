@@ -36,13 +36,11 @@ echo "LLVM_DIR=$install_path/$LLVMHome"
 if [[ $sysOS == "Darwin" ]]
 then 
 ln -s $install_path/svf-lib/SVF-osx $install_path/SVF
-mv $install_path/svf-lib/env.sh $install_path/SVF
 echo "SVF_DIR=$install_path/SVF/"
 echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-osx -DLLVM_DIR=$install_path/$LLVMHome"
 elif [[ $sysOS == "Linux" ]]
 then 
 ln -s $install_path/svf-lib/SVF-linux $install_path/SVF
-mv $install_path/svf-lib/env.sh $install_path/SVF
 echo "SVF_DIR=$install_path/SVF/"
 echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-linux -DLLVM_DIR=$install_path/$LLVMHome"
 fi
