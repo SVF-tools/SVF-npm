@@ -4,7 +4,7 @@ sysOS=`uname -s`
 MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-apple-darwin.tar.xz"
 UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
 LLVMHome="llvm-10.0.0.obj"
-llvm_install_path=`npm root -g`
+llvm_install_path=`npm root`
 ########
 # Download LLVM binary
 ########
