@@ -4,7 +4,7 @@
   "description": "SVF's npm support",
   "main": "index.js",
   "scripts": {
-    "postinstall": "./llvm_install.sh"
+    "postinstall": "sudo ./llvm_install.sh"
   },
   "repository": {
     "type": "git",
