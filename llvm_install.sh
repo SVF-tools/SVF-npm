@@ -4,7 +4,7 @@ sysOS=`uname -s`
 MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-apple-darwin.tar.xz"
 UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
 LLVMHome="llvm-10.0.0.obj"
-llvm_install_path=`sudo npm root -g`
+llvm_install_path=`npm root -g`
 ########
 # Download LLVM binary
 ########
@@ -14,7 +14,7 @@ then
        then
        		echo 'Downloading LLVM binary for MacOS '
       		curl -L $MacLLVM > llvm-mac.tar.xz
-      	 	sudo mkdir $llvm_install_path/$LLVMHome && tar -xf "llvm-mac.tar.xz" -C $llvm_install_path/$LLVMHome --strip-components 1
+      	 	mkdir $llvm_install_path/$LLVMHome && tar -xf "llvm-mac.tar.xz" -C $llvm_install_path/$LLVMHome --strip-components 1
 		rm llvm-mac.tar.xz
        fi
 elif [[ $sysOS == "Linux" ]]
@@ -23,7 +23,7 @@ then
        then
        		echo 'Downloading LLVM binary for Ubuntu'
       		wget -c $UbuntuLLVM -O llvm-ubuntu.tar.xz
-      		sudo mkdir $llvm_install_path/$LLVMHome && tar -xf "llvm-ubuntu.tar.xz" -C $llvm_install_path/$LLVMHome --strip-components 1
+      		mkdir $llvm_install_path/$LLVMHome && tar -xf "llvm-ubuntu.tar.xz" -C $llvm_install_path/$LLVMHome --strip-components 1
 		rm llvm-ubuntu.tar.xz
        fi
 else
