@@ -10,24 +10,24 @@ cd ..
 ########
 if [[ $sysOS == "Darwin" ]]
 then
-       if [ ! -d "$HOME/$LLVMHome" ]
+       if [ ! -d "$SVFHOME/$LLVMHome" ]
        then
        		echo 'Downloading LLVM binary for MacOS '
       		curl -L $MacLLVM > llvm-mac.tar.xz
-      	 	mkdir $HOME/$LLVMHome 
+      	 	mkdir $SVFHOME/$LLVMHome 
 		echo 'Unzipping LLVM binary for MacOS '
-		tar -xf "llvm-mac.tar.xz" -C $HOME/$LLVMHome --strip-components 1
+		tar -xf "llvm-mac.tar.xz" -C $SVFHOME/$LLVMHome --strip-components 1
 		rm llvm-mac.tar.xz
        fi
 elif [[ $sysOS == "Linux" ]]
 then
-       if [ ! -d "$HOME/$LLVMHome" ]
+       if [ ! -d "$SVFHOME/$LLVMHome" ]
        then
        		echo 'Downloading LLVM binary for Ubuntu'
       		wget -c $UbuntuLLVM -O llvm-ubuntu.tar.xz
-      		mkdir $HOME/$LLVMHome 
+      		mkdir $SVFHOME/$LLVMHome 
 		echo 'Unzipping LLVM binary for Ubuntu'
-		tar -xf "llvm-ubuntu.tar.xz" -C $HOME/$LLVMHome --strip-components 1
+		tar -xf "llvm-ubuntu.tar.xz" -C $SVFHOME/$LLVMHome --strip-components 1
 		rm llvm-ubuntu.tar.xz
        fi
 else
@@ -36,15 +36,15 @@ fi
 cd $SVFHOME
 cd ..
 install_path=$(pwd)
-echo "LLVM_DIR=$HOME/$LLVMHome"
+echo "LLVM_DIR=$SVFHOME/$LLVMHome"
 if [[ $sysOS == "Darwin" ]]
 then 
 ln -s $install_path/svf-lib/SVF-osx $install_path/SVF
 echo "SVF_DIR=$install_path/SVF/"
-echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-osx -DLLVM_DIR=$HOME/$LLVMHome"
+echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-osx -DLLVM_DIR=$SVFHOME/$LLVMHome"
 elif [[ $sysOS == "Linux" ]]
 then 
 ln -s $install_path/svf-lib/SVF-linux $install_path/SVF
 echo "SVF_DIR=$install_path/SVF/"
-echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-linux -DLLVM_DIR=$HOME/$LLVMHome"
+echo -e "Build your own project with the following cmake command:\n cmake -DSVF_DIR=$install_path/SVF/SVF-linux -DLLVM_DIR=$SVFHOME/$LLVMHome"
 fi
