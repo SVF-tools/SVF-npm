@@ -1,0 +1,21 @@
+name: svf-build
+
+# Triggers the workflow on push or pull request events
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: publish-svf-lib
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update       ; fi
+          cat package.json
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
