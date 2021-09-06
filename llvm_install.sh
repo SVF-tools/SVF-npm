@@ -50,7 +50,7 @@ then
       		curl -L $MacZ3 > z3.zip
       	 	mkdir $install_path/$Z3Home 
 		echo 'Unzipping z3 binary for MacOS '
-        unzip -q "z3.zip" && mv ./z3-* $install_path/$Z3Home
+        unzip -q "z3.zip" && mv ./z3-*/* $install_path/$Z3Home/
 		rm z3.zip
        fi
 elif [[ $sysOS == "Linux" ]]
@@ -61,7 +61,7 @@ then
       		wget -c $UbuntuZ3 -O z3.zip
       		mkdir $install_path/$Z3Home 
 		echo 'Unzipping z3 binary for Ubuntu'
-        unzip -q "z3.zip" && mv ./z3-* $install_path/$Z3Home
+        unzip -q "z3.zip" && mv ./z3-*/* $install_path/$Z3Home/
 		rm z3.zip
        fi
 else
