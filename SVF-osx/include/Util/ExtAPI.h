@@ -53,6 +53,7 @@ public:
         EFT_ALLOC,        //returns a ptr to a newly allocated object
         EFT_REALLOC,      //like L_A0 if arg0 is a non-null ptr, else ALLOC
         EFT_FREE,      	//free memory arg0 and all pointers passing into free function
+        EFT_FREE_MULTILEVEL,  //any argument with 2-level pointer passing too a free wrapper function e.g., XFree(void**) which frees memory for void* and void**
         EFT_NOSTRUCT_ALLOC, //like ALLOC but only allocates non-struct data
         EFT_STAT,         //retval points to an unknown static var X
         EFT_STAT2,        //ret -> X -> Y (X, Y - external static vars)
@@ -133,10 +134,12 @@ public:
     extf_t get_type(const SVFFunction* F) const
     {
         assert(F);
-        std::string funName = F->getName().str();
+        std::string funName = F->getName();
         if(F->isIntrinsic())
         {
-            funName = "llvm." + F->getName().split('.').second.split('.').first.str();
+            unsigned start = funName.find('.');
+            unsigned end = funName.substr(start + 1).find('.');
+            funName = "llvm." + funName.substr(start + 1, end);
         }
         llvm::StringMap<extf_t>::const_iterator it= info.find(funName);
         if(it == info.end())
