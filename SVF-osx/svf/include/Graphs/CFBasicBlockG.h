@@ -2,7 +2,7 @@
 //
 //                     SVF: Static Value-Flow Analysis
 //
-// Copyright (C) <2013-2018>  <Yulei Sui>
+// Copyright (C) <2013->  <Yulei Sui>
 //
 
 // This program is free software: you can redistribute it and/or modify
@@ -77,11 +77,20 @@ public:
 
     virtual const std::string toString() const;
 
-    inline std::string getName() const;
+    inline std::string getName() const
+    {
+        return _svfBasicBlock->getName();
+    }
 
-    inline const SVFBasicBlock *getSVFBasicBlock() const;
+    inline const SVFBasicBlock *getSVFBasicBlock() const
+    {
+        return _svfBasicBlock;
+    }
 
-    inline const SVFFunction *getFunction() const;
+    inline const SVFFunction *getFunction() const
+    {
+        return _svfBasicBlock->getFunction();
+    }
 
     inline std::vector<const ICFGNode *>::const_iterator begin() const
     {
@@ -124,11 +133,32 @@ public:
         GraphPrinter::WriteGraphToFile(SVFUtil::outs(), filename, this);
     }
 
-    inline CFBasicBlockNode *getCFBasicBlockNode(u32_t id) const;
+    inline CFBasicBlockNode *getCFBasicBlockNode(u32_t id) const
+    {
+        if (!hasGNode(id)) return nullptr;
+        return getGNode(id);
+    }
 
-    inline CFBasicBlockNode *getCFBasicBlockNode(const SVFBasicBlock *bb) const;
+    inline CFBasicBlockNode *getCFBasicBlockNode(const SVFBasicBlock *bb) const
+    {
+        auto it = _bbToNode.find(bb);
+        if (it == _bbToNode.end()) return nullptr;
+        return it->second;
+    }
 
-    inline bool hasCFBasicBlockEdge(CFBasicBlockNode *src, CFBasicBlockNode *dst);
+    inline bool hasCFBasicBlockEdge(CFBasicBlockNode *src, CFBasicBlockNode *dst) const
+    {
+        CFBasicBlockEdge edge(src, dst);
+        CFBasicBlockEdge *outEdge = src->hasOutgoingEdge(&edge);
+        CFBasicBlockEdge *inEdge = dst->hasIncomingEdge(&edge);
+        if (outEdge && inEdge)
+        {
+            assert(outEdge == inEdge && "edges not match");
+            return true;
+        }
+        else
+            return false;
+    }
 
     CFBasicBlockEdge* getCFBasicBlockEdge(const CFBasicBlockNode *src, const CFBasicBlockNode *dst);
 
