@@ -1,12 +1,12 @@
 #!/bin/bash
 SVFHOME=$(pwd)
 sysOS=`uname -s`
-MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/clang+llvm-13.0.0-x86_64-apple-darwin.tar.xz"
-UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/clang+llvm-13.0.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz"
+MacLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-apple-darwin.tar.xz"
+UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
 MacZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-osx-10.14.6.zip"
 UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-ubuntu-16.04.zip"
 Z3Home="z3.obj"
-LLVMHome="llvm-13.0.0.obj"
+LLVMHome="llvm-14.0.0.obj"
 cd $SVFHOME
 cd ..
 install_path=$(pwd)
