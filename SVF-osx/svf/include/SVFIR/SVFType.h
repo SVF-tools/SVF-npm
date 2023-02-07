@@ -44,6 +44,8 @@
 
 namespace SVF
 {
+class SVFType;
+class SVFPointerType;
 
 typedef std::ostream OutStream;
 typedef unsigned u32_t;
@@ -123,14 +125,15 @@ template <typename Key, typename Value, typename Hash = Hash<Key>,
                     typedef std::pair<NodeID, Version> VersionedVar;
                     typedef Set<VersionedVar> VersionedVarSet;
 
-                    class SVFType;
-                    class SVFPointerType;
-
                     /*!
-                     * Flatterned type information of StructType, ArrayType and SingleValueType
+                     * Flatterned type information of StructType, ArrayType and
+                     * SingleValueType
                      */
                     class StInfo
 {
+    friend class SVFModuleWrite;
+    friend class SVFModuleRead;
+
 private:
     /// flattened field indices of a struct (ignoring arrays)
     std::vector<u32_t> fldIdxVec;
@@ -235,6 +238,8 @@ public:
 
 class SVFType
 {
+    friend class SVFModuleWrite;
+    friend class SVFModuleRead;
 
 public:
     typedef s64_t GNodeK;
@@ -254,7 +259,7 @@ private:
     GNodeK kind; ///< used for classof
     const SVFPointerType*
     getPointerToTy; /// Return a pointer to the current type
-    StInfo* typeinfo;   /// < SVF's TypeInfo
+    StInfo* typeinfo;   ///< SVF's TypeInfo
     bool isSingleValTy; ///< The type represents a single value, not struct or
     ///< array
 protected:
@@ -318,6 +323,8 @@ public:
 
 class SVFPointerType : public SVFType
 {
+    friend class SVFModuleWrite;
+    friend class SVFModuleRead;
 
 private:
     const SVFType* ptrElementType;
@@ -349,6 +356,9 @@ public:
 
 class SVFFunctionType : public SVFType
 {
+    friend class SVFModuleWrite;
+    friend class SVFModuleRead;
+
 private:
     const SVFType* retTy;
 
