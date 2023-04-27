@@ -37,6 +37,9 @@
 #include "Util/cJSON.h"
 #include <set>
 
+#define BRANCHFLAGMASK 0x00000010
+#define EVENTTYPEMASK 0x0000000f
+
 namespace SVF
 {
 
@@ -45,102 +48,50 @@ namespace SVF
  */
 
 
-class GenericEvent
+class BugEvent
 {
 public:
-    enum EventType {Branch, Caller, CallSite, Loop, SourceInst};
+    enum EventType
+    {
+        Branch = 0x1,
+        Caller = 0x2,
+        CallSite = 0x3,
+        Loop = 0x4,
+        SourceInst = 0x5
+    };
 
 protected:
-    EventType eventType;
+    u32_t typeAndInfoFlag;
+    const SVFInstruction *eventInst;
 
 public:
-    GenericEvent(EventType eventType): eventType(eventType) { };
-    virtual ~GenericEvent() = default;
+    BugEvent(u32_t typeAndInfoFlag, const SVFInstruction *eventInst): typeAndInfoFlag(typeAndInfoFlag), eventInst(eventInst) { };
+    virtual ~BugEvent() = default;
 
-    inline EventType getEventType() const
+    inline u32_t getEventType() const
     {
-        return eventType;
+        return typeAndInfoFlag & EVENTTYPEMASK;
     }
-    virtual const std::string getEventDescription() const = 0;
-    virtual const std::string getFuncName() const = 0;
-    virtual const std::string getEventLoc() const = 0;
-};
-
-class BranchEvent: public GenericEvent
-{
-    /// branch statement and branch condition true or false
-protected:
-    const SVFInstruction *branchInst;
-    bool branchSuccessFlg;
-
-public:
-    BranchEvent(const SVFInstruction *branchInst, bool branchSuccessFlg):
-        GenericEvent(GenericEvent::Branch), branchInst(branchInst), branchSuccessFlg(branchSuccessFlg) { }
-
-    const std::string getEventDescription() const;
-    const std::string getFuncName() const;
-    const std::string getEventLoc() const;
-
-    /// ClassOf
-    static inline bool classof(const GenericEvent* event)
-    {
-        return event->getEventType() == GenericEvent::Branch;
-    }
-};
-
-class CallSiteEvent: public GenericEvent
-{
-protected:
-    const CallICFGNode *callSite;
-
-public:
-    CallSiteEvent(const CallICFGNode *callSite): GenericEvent(GenericEvent::CallSite), callSite(callSite) { }
-    const std::string getEventDescription() const;
-    const std::string getFuncName() const;
-    const std::string getEventLoc() const;
-
-    /// ClassOf
-    static inline bool classof(const GenericEvent* event)
-    {
-        return event->getEventType() == GenericEvent::CallSite;
-    }
-};
-
-class SourceInstEvent : public GenericEvent
-{
-protected:
-    const SVFInstruction *sourceSVFInst;
-
-public:
-    SourceInstEvent(const SVFInstruction *sourceSVFInst):
-        GenericEvent(GenericEvent::SourceInst), sourceSVFInst(sourceSVFInst) { }
-
-    const std::string getEventDescription() const;
-    const std::string getFuncName() const;
-    const std::string getEventLoc() const;
-
-    /// ClassOf
-    static inline bool classof(const GenericEvent* event)
-    {
-        return event->getEventType() == GenericEvent::SourceInst;
-    }
+    virtual const std::string getEventDescription() const;
+    virtual const std::string getFuncName() const;
+    virtual const std::string getEventLoc() const;
 };
 
 class GenericBug
 {
 public:
-    typedef std::vector<const GenericEvent *> EventStack;
+    typedef std::vector<BugEvent> EventStack;
 
 public:
     enum BugType {FULLBUFOVERFLOW, PARTIALBUFOVERFLOW, NEVERFREE, PARTIALLEAK, DOUBLEFREE, FILENEVERCLOSE, FILEPARTIALCLOSE};
 
 protected:
     BugType bugType;
-    EventStack bugEventStack;
+    const EventStack bugEventStack;
 
 public:
     /// note: should be initialized with a bugEventStack
-    GenericBug(BugType bugType, EventStack bugEventStack):
+    GenericBug(BugType bugType, const EventStack &bugEventStack):
         bugType(bugType), bugEventStack(bugEventStack)
     {
         assert(bugEventStack.size() != 0 && "bugEventStack should NOT be empty!");
@@ -307,13 +258,12 @@ public:
     SVFBugReport() = default;
     ~SVFBugReport();
     typedef SVF::Set<const GenericBug *> BugSet;
-    typedef SVF::Set<const GenericEvent *> EventSet;
 
 protected:
     BugSet bugSet;    // maintain bugs
-    EventSet eventSet;// maintain added events
 
 public:
+
     /*
      * function: pass bug type (i.e., GenericBug::NEVERFREE) and eventStack as parameter,
      *      it will add the bug into bugQueue.
@@ -321,12 +271,6 @@ public:
      */
     void addSaberBug(GenericBug::BugType bugType, const GenericBug::EventStack &eventStack)
     {
-        /// resign added events
-        for(auto eventPtr : eventStack)
-        {
-            eventSet.insert(eventPtr);
-        }
-
         /// create and add the bug
         GenericBug *newBug = nullptr;
         switch(bugType)
@@ -380,12 +324,6 @@ public:
     void addAbsExecBug(GenericBug::BugType bugType, const GenericBug::EventStack &eventStack,
                        s64_t allocLowerBound, s64_t allocUpperBound, s64_t accessLowerBound, s64_t accessUpperBound)
     {
-        /// resign added events
-        for(auto eventPtr : eventStack)
-        {
-            eventSet.insert(eventPtr);
-        }
-
         /// add bugs
         GenericBug *newBug = nullptr;
         switch(bugType)
