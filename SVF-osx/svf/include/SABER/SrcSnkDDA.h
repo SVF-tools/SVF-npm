@@ -243,6 +243,11 @@ public:
         return saberCondAllocator.get();
     }
 
+    inline const SVFBugReport& getBugReport() const
+    {
+        return report;
+    }
+
 protected:
     /// Forward traverse
     inline void FWProcessCurNode(const DPIm& item) override
