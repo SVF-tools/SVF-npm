@@ -73,7 +73,6 @@ public:
         DummyObjNode,
     };
 
-
 protected:
     const SVFValue* value; ///< value of this SVFIR node
     SVFStmt::KindToSVFStmtMapTy InEdgeKindToSetMap;
@@ -254,8 +253,6 @@ public:
     //@}
 };
 
-
-
 /*
  * Value (Pointer) variable
  */
@@ -371,7 +368,6 @@ public:
     virtual const std::string toString() const;
 };
 
-
 /*
  * Gep Value (Pointer) variable, this variable can be dynamic generated for field sensitive analysis
  * e.g. memcpy, temp gep value variable needs to be created
@@ -439,7 +435,6 @@ public:
 
     virtual const std::string toString() const;
 };
-
 
 /*
  * Gep Obj variable, this is dynamic generated for field sensitive analysis

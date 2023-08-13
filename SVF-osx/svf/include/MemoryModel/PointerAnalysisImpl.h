@@ -152,7 +152,6 @@ protected:
         return ptD.get();
     }
 
-
     /// Finalization of pointer analysis, and normalize points-to information to Bit Vector representation
     void finalize() override;
 

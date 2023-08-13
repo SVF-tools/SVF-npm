@@ -69,7 +69,6 @@ protected:
     /// key: nodeID value: Domain Value
     LocToValMap _locToItvVal;
 
-
 public:
     /// default constructor, default pc is true
     IntervalExeState() : ExeState(ExeState::IntervalK) {}
@@ -198,7 +197,6 @@ public:
 
     virtual ~IntervalExeState() = default;
 
-
     /// get var2val map
     const VarToValMap &getVarToVal() const
     {
@@ -255,7 +253,6 @@ public:
 
     /// domain meet with other varToValMap
     void meetWith(VarToValMap *other);
-
 
     /// Return int value from an expression if it is a numeral, otherwise return an approximate value
     inline s32_t Interval2NumValue(const IntervalValue &e) const
@@ -390,7 +387,6 @@ public:
         return true;
     }
 
-
     static bool lessThanVarToValMap(const VarToValMap &lhs, const VarToValMap &rhs)
     {
         if (lhs.empty()) return !rhs.empty();
@@ -434,7 +430,6 @@ public:
         return !(*this >= rhs);
     }
 
-
     bool operator>=(const IntervalExeState &rhs) const
     {
         return geqVarToValMap(_varToItvVal, rhs.getVarToVal()) && geqVarToValMap(_locToItvVal, rhs.getLocToVal());
@@ -447,7 +442,6 @@ public:
         _locToVAddrs.clear();
         _varToVAddrs.clear();
     }
-
 
 private:
     void printTable(const VarToValMap &table, std::ostream &oss) const;

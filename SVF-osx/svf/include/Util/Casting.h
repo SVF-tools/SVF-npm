@@ -8,7 +8,6 @@
 #ifndef INCLUDE_UTIL_CASTING_H_
 #define INCLUDE_UTIL_CASTING_H_
 
-
 //===- llvm/Support/Casting.h - Allow flexible, checked, casts --*- C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure

@@ -30,7 +30,6 @@
 #ifndef INCLUDE_SVFIR_SYMBOLTABLEINFO_H_
 #define INCLUDE_SVFIR_SYMBOLTABLEINFO_H_
 
-
 #include "Util/SVFUtil.h"
 #include "MemoryModel/AccessPath.h"
 #include "SVFIR/SVFModule.h"
@@ -242,7 +241,6 @@ public:
     }
     //@}
 
-
     /// Statistics
     //@{
     inline u32_t getTotalSymNum() const
@@ -372,7 +370,6 @@ protected:
     /// @brief (owned) All StInfo
     Set<const StInfo*> stInfos;
 };
-
 
 /*!
  * Memory object symbols or MemObj (address-taken variables in LLVM-based languages)
@@ -625,7 +622,6 @@ public:
     virtual bool isNonPtrFieldObj(const APOffset& apOffset);
     //@}
 };
-
 
 } // End namespace SVF
 

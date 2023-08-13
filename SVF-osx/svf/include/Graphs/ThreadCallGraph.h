@@ -153,7 +153,6 @@ public:
     typedef GenericNode<PTACallGraphNode, HareParForEdge>::GEdgeSetTy ParForEdgeSet;
 };
 
-
 /*!
  * Thread sensitive call graph
  */
@@ -196,7 +195,6 @@ public:
     void updateCallGraph(PointerAnalysis* pta);
     /// Update join edge using pointer analysis results
     void updateJoinEdge(PointerAnalysis* pta);
-
 
     /// Get call graph edge via call instruction
     //@{
@@ -361,7 +359,6 @@ public:
     void addDirectParForEdge(const CallICFGNode* cs);
     void addIndirectParForEdge(const CallICFGNode* cs, const SVFFunction* callee);
     //@}
-
 
     /// map call instruction to its CallGraphEdge map
     inline void addThreadForkEdgeSetMap(const CallICFGNode* cs, ThreadForkEdge* edge)

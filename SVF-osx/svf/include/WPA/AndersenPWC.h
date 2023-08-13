@@ -30,7 +30,6 @@
 #ifndef PROJECT_ANDERSENSFR_H
 #define PROJECT_ANDERSENSFR_H
 
-
 #include "WPA/Andersen.h"
 #include "WPA/CSC.h"
 #include "MemoryModel/PointsTo.h"
@@ -93,8 +92,6 @@ protected:
     virtual void handleCopyGep(ConstraintNode* node);
 
 };
-
-
 
 /*!
  * Selective Cycle Detection with Stride-based Field Representation

@@ -41,7 +41,6 @@ namespace SVF
 class PTACallGraphNode;
 class SVFModule;
 
-
 /*
  * Call Graph edge representing a calling relation between two functions
  * Multiple calls from function A to B are merged into one call edge
@@ -57,7 +56,6 @@ public:
     {
         CallRetEdge,TDForkEdge,TDJoinEdge,HareParForEdge
     };
-
 
 private:
     CallInstSet directCalls;
@@ -197,7 +195,6 @@ public:
 
     /// Return TRUE if this function can be reached from main.
     bool isReachableFromProgEntry() const;
-
 
     /// Overloading operator << for dumping ICFG node ID
     //@{

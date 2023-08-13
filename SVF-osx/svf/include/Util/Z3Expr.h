@@ -93,7 +93,6 @@ public:
     /// release z3 solver
     static void releaseSolver();
 
-
     /// null expression
     static z3::expr nullExpr()
     {
@@ -273,7 +272,6 @@ public:
     /// output Z3 expression as a string
     static std::string dumpStr(const Z3Expr &z3Expr);
 
-
     /// get the number of subexpression of a Z3 expression
     static u32_t getExprSize(const Z3Expr &z3Expr);
 
@@ -282,7 +280,6 @@ public:
     {
         return getContext().bool_val(true);
     }
-
 
     /// Return the unique false condition
     static inline Z3Expr getFalseCond()
@@ -315,4 +312,3 @@ struct std::hash<SVF::Z3Expr>
 };
 
 #endif //Z3_EXAMPLE_Z3EXPR_H
-

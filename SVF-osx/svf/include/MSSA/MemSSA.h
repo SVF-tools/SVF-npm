@@ -32,7 +32,6 @@
  * Journal of Systems and Software (JSS'16), Algorithm 3 in the paper
  */
 
-
 #ifndef MEMORYSSAPASS_H_
 #define MEMORYSSAPASS_H_
 

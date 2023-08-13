@@ -27,7 +27,6 @@
  *
  */
 
-
 #ifndef Z3_EXAMPLE_EXESTATE_H
 #define Z3_EXAMPLE_EXESTATE_H
 
@@ -272,10 +271,7 @@ public:
         return AddressValue::getInternalID(idx);
     }
 
-
 }; // end class ExeState
-
-
 
 } // end namespace SVF
 

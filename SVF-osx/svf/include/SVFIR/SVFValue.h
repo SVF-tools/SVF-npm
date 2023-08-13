@@ -40,7 +40,6 @@ namespace SVF
 /// LLVM Aliases and constants
 typedef SVF::GraphPrinter GraphPrinter;
 
-
 class SVFInstruction;
 class SVFBasicBlock;
 class SVFArgument;
@@ -1064,7 +1063,6 @@ public:
         return node->getKind() == SVFMetaAsValue;
     }
 };
-
 
 class CallSite
 {

@@ -20,7 +20,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-
 /*
  * @file: DDAClient.h
  * @author: yesen
@@ -29,7 +28,6 @@
  * LICENSE
  *
  */
-
 
 #ifndef DDACLIENT_H_
 #define DDACLIENT_H_
@@ -118,7 +116,6 @@ private:
     bool solveAll;				///< TRUE if all top level pointers are being queried
 };
 
-
 /**
  * DDA client with function pointers as query candidates.
  */
@@ -135,8 +132,6 @@ public:
     virtual OrderedNodeSet& collectCandidateQueries(SVFIR* p);
     virtual void performStat(PointerAnalysis* pta);
 };
-
-
 
 /**
  * DDA client with function pointers as query candidates.

@@ -135,7 +135,6 @@ public:
         return (getExpr() >= rhs.getExpr()).simplify().is_true();
     }
 
-
     /// Reload operator
     //{%
     friend SingleAbsValue operator==(const SingleAbsValue &lhs, const SingleAbsValue &rhs)
@@ -472,6 +471,5 @@ struct std::hash<SVF::SingleAbsValue>
         return z3Expr.hash();
     }
 };
-
 
 #endif //SVF_SINGLEABSVALUE_H

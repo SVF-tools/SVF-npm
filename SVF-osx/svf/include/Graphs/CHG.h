@@ -73,7 +73,6 @@ protected:
     CHGKind kind;
 };
 
-
 typedef GenericEdge<CHNode> GenericCHEdgeTy;
 class CHEdge: public GenericCHEdgeTy
 {
@@ -313,7 +312,6 @@ public:
     {
         return chg->getKind() == Standard;
     }
-
 
 private:
     SVFModule* svfMod;

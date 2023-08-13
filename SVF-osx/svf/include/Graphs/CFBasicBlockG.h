@@ -45,7 +45,6 @@ class CFBasicBlockEdge : public GenericCFBasicBlockEdgeTy
 public:
     CFBasicBlockEdge(CFBasicBlockNode *src, CFBasicBlockNode *dst) : GenericCFBasicBlockEdgeTy(src, dst, 0) {}
 
-
     friend std::ostream &operator<<(std::ostream &o, const CFBasicBlockEdge &edge)
     {
         o << edge.toString();
@@ -190,7 +189,6 @@ public:
     }
 };
 }
-
 
 namespace SVF
 {

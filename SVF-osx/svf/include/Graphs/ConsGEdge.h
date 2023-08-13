@@ -86,7 +86,6 @@ public:
 
 };
 
-
 /*!
  * Copy edge
  */
@@ -116,7 +115,6 @@ public:
     /// constructor
     AddrCGEdge(ConstraintNode* s, ConstraintNode* d, EdgeID id);
 };
-
 
 /*!
  * Copy edge
@@ -149,7 +147,6 @@ public:
     {
     }
 };
-
 
 /*!
  * Store edge
@@ -184,7 +181,6 @@ public:
     }
 };
 
-
 /*!
  * Load edge
  */
@@ -217,7 +213,6 @@ public:
     {
     }
 };
-
 
 /*!
  * Gep edge

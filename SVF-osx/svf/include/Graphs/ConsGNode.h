@@ -383,7 +383,6 @@ public:
     }
     //@}
 
-
 };
 
 } // End namespace SVF

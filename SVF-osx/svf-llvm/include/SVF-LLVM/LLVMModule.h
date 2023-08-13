@@ -303,7 +303,6 @@ public:
         return it->second;
     }
 
-
     Module* getMainLLVMModule() const
     {
         return getModule(0);

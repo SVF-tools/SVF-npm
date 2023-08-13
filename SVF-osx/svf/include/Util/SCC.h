@@ -121,7 +121,6 @@ public:
           _I(0)
     {}
 
-
     // Return a handle to the stack of nodes in topological
     // order.  This will be used to seed the initial solution
     // and improve efficiency.
@@ -143,7 +142,6 @@ public:
         NodeID rep = it->second.rep();
         return rep!= UINT_MAX ? rep : n ;
     }
-
 
     /// whether the node is in a cycle
     inline bool isInCycle(NodeID n) const

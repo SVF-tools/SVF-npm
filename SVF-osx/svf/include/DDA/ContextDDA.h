@@ -118,7 +118,6 @@ public:
     /// get callsite id from return, return 0 if it is a spurious return edge
     CallSiteID getCSIDAtRet(CxtLocDPItem& dpm, const SVFGEdge* edge);
 
-
     /// Pop recursive callsites
     inline virtual void popRecursiveCallSites(CxtLocDPItem& dpm)
     {

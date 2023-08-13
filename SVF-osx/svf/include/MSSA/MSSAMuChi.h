@@ -84,7 +84,6 @@ public:
     }
 };
 
-
 /*!
  * Indirect Memory Read
  * 1) LoadMU at each store instruction
@@ -269,7 +268,6 @@ public:
     }
 };
 
-
 /*!
  * RetMU is annotated at function return, representing memory objects returns to callers
  */
@@ -313,7 +311,6 @@ public:
                         this->getMR()->dumpStr() << "\n";
     }
 };
-
 
 /*!
  * Indirect Memory Definition
@@ -511,7 +508,6 @@ public:
                         this->getMR()->dumpStr() << "\n";
     }
 };
-
 
 /*!
  *

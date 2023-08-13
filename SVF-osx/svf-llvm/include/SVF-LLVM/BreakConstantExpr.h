@@ -44,7 +44,6 @@ public:
     virtual bool runOnModule (Module & M);
 };
 
-
 //
 // Pass: MergeFunctionRets
 //

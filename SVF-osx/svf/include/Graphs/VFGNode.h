@@ -316,7 +316,6 @@ public:
     const std::string toString() const override;
 };
 
-
 /*!
  * VFGNode for compare instruction, e.g., bool b = (a!=c);
  */
@@ -387,7 +386,6 @@ public:
     const SVFValue* getValue() const override;
     const std::string toString() const override;
 };
-
 
 /*!
  * VFGNode for binary operator instructions, e.g., a = b + c;
@@ -703,7 +701,6 @@ public:
     const std::string toString() const override;
 };
 
-
 /*
  * Intra LLVM PHI Node
  */
@@ -756,7 +753,6 @@ public:
     const std::string toString() const override;
 };
 
-
 class AddrVFGNode: public StmtVFGNode
 {
 private:
@@ -794,7 +790,6 @@ public:
 
     const std::string toString() const override;
 };
-
 
 class ArgumentVFGNode : public VFGNode
 {
@@ -890,7 +885,6 @@ public:
 
     const std::string toString() const override;
 };
-
 
 /*
  * ICFG Node stands for formal parameter node (top level pointers)
@@ -1145,8 +1139,6 @@ private:
     const SVFFunction* fun;
     const CallICFGNode* callInst;
 };
-
-
 
 /*!
  * Dummy Definition for undef and null pointers

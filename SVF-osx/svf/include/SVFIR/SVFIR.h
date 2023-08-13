@@ -688,6 +688,4 @@ typedef SVFIR PAG;
 
 } // End namespace SVF
 
-
-
 #endif /* INCLUDE_SVFIR_H_ */
