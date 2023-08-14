@@ -386,7 +386,7 @@ public:
         }
         default:
         {
-            assert(false && "Abstract Execution does NOT hava his bug type!");
+            assert(false && "Abstract Execution does NOT have this bug type!");
             break;
         }
         }

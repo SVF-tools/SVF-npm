@@ -252,7 +252,7 @@ private:
     //@}
     /// Evaluate branch conditions
     //@{
-    /// Evaluate the branch condtion
+    /// Evaluate the branch condition
     Condition evaluateBranchCond(const SVFBasicBlock*  bb, const SVFBasicBlock* succ) ;
     /// Evaluate loop exit branch
     Condition evaluateLoopExitBranch(const SVFBasicBlock*  bb, const SVFBasicBlock* succ);

@@ -338,7 +338,7 @@ protected:
     MRVer* resVer;
 
 public:
-    /// Constructor/Destructer for MSSADEF
+    /// Constructor/Destructor for MSSADEF
     //@{
     MSSADEF(DEFTYPE t, const MemRegion* m): type(t), mr(m), resVer(nullptr)
     {
@@ -398,7 +398,7 @@ private:
     Cond cond;
 public:
     typedef typename MSSADEF::DEFTYPE CHITYPE;
-    /// Constructor/Destructer for MSSACHI
+    /// Constructor/Destructor for MSSACHI
     //@{
     MSSACHI(CHITYPE t, const MemRegion* m, Cond c): MSSADEF(t,m), opVer(nullptr), cond(c)
     {

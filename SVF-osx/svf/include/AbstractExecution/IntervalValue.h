@@ -471,7 +471,7 @@ inline IntervalValue operator+(const IntervalValue &lhs,
     }
 }
 
-/// Substract IntervalValues
+/// Subtract IntervalValues
 inline IntervalValue operator-(const IntervalValue &lhs,
                                const IntervalValue &rhs)
 {
