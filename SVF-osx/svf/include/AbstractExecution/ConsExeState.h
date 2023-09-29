@@ -98,6 +98,8 @@ public:
         return "ConstantExpr";
     }
 
+    using ExeState::operator==;
+    using ExeState::operator!=;
     /// Exposed APIs
     //{%
     bool operator==(const ConsExeState &rhs) const;
