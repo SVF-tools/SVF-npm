@@ -488,11 +488,12 @@ protected:
     NodeRefToCycleDepthNumber _nodeToCDN;
     CycleDepthNumber _num;
     CFBasicBlockNodes _stack;
+    CFBasicBlockGraph* _graph;
 
 public:
     explicit CFBasicBlockGWTO() : _num(0) {}
 
-    explicit CFBasicBlockGWTO(const CFBasicBlockNode *entry) : _num(0)
+    explicit CFBasicBlockGWTO(CFBasicBlockGraph* graph, const CFBasicBlockNode *entry) : _num(0), _graph(graph)
     {
         build(entry);
     }
@@ -647,12 +648,13 @@ protected:
         const CFBasicBlockGWTOCycleDepth &_headWTOCycleDepth;
         const CFBasicBlockNode *_head;
         NodeRefToWTOCycleDepthPtr &_nodeToWTOCycleDepth;
+        CFBasicBlockGraph* _graph;
 
     public:
 
-        explicit TailBuilder(NodeRefToWTOCycleDepthPtr &nodeToWTOCycleDepth, NodeRefSet &tails, const CFBasicBlockNode *head,
+        explicit TailBuilder(CFBasicBlockGraph* graph, NodeRefToWTOCycleDepthPtr &nodeToWTOCycleDepth, NodeRefSet &tails, const CFBasicBlockNode *head,
                              const CFBasicBlockGWTOCycleDepth &headWTOCycleDepth) : _tails(tails), _headWTOCycleDepth(headWTOCycleDepth), _head(head), _nodeToWTOCycleDepth(
-                                     nodeToWTOCycleDepth)
+                                     nodeToWTOCycleDepth),  _graph(graph)
         {
         }
 
@@ -666,13 +668,25 @@ protected:
 
         virtual void visit(const CFBasicBlockGWTONode &node) override
         {
-            for (const auto &edge: node.node()->getOutEdges())
+            if(const CallICFGNode* callNode = SVFUtil::dyn_cast<CallICFGNode>(node.node()->getICFGNodes().front()))
             {
-                const CFBasicBlockNode *succ = edge->getDstNode();
+                const CFBasicBlockNode *succ = _graph->getCFBasicBlockNode(callNode->getRetICFGNode()->getId());
                 const CFBasicBlockGWTOCycleDepth &succNesting = getWTOCycleDepth(succ);
                 if (succ != _head && succNesting <= _headWTOCycleDepth)
                 {
                     _tails.insert(node.node());
+                }
+            }
+            else
+            {
+                for (const auto &edge: node.node()->getOutEdges())
+                {
+                    const CFBasicBlockNode *succ = edge->getDstNode();
+                    const CFBasicBlockGWTOCycleDepth &succNesting = getWTOCycleDepth(succ);
+                    if (succ != _head && succNesting <= _headWTOCycleDepth)
+                    {
+                        _tails.insert(node.node());
+                    }
                 }
             }
         }
@@ -746,12 +760,23 @@ protected:
     const CFBasicBlockGWTOCycle *component(const CFBasicBlockNode *node)
     {
         WTOCompRefList partition;
-        for (auto it = node->getOutEdges().begin(), et = node->getOutEdges().end(); it != et; ++it)
+        if (const CallICFGNode* callNode = SVFUtil::dyn_cast<CallICFGNode>(node->getICFGNodes().front()))
         {
-            const CFBasicBlockNode *succ = (*it)->getDstNode();
+            const CFBasicBlockNode *succ = _graph->getCFBasicBlockNode(callNode->getRetICFGNode()->getId());
             if (getCDN(succ) == 0)
             {
                 visit(succ, partition);
+            }
+        }
+        else
+        {
+            for (auto it = node->getOutEdges().begin(), et = node->getOutEdges().end(); it != et; ++it)
+            {
+                const CFBasicBlockNode *succ = (*it)->getDstNode();
+                if (getCDN(succ) == 0)
+                {
+                    visit(succ, partition);
+                }
             }
         }
         const CFBasicBlockGWTOCycle *ptr = newCycle(node, partition);
@@ -771,9 +796,9 @@ protected:
         head = _num;
         setCDN(node, head);
         loop = false;
-        for (auto it = node->getOutEdges().begin(), et = node->getOutEdges().end(); it != et; ++it)
+        if (const CallICFGNode* callNode = SVFUtil::dyn_cast<CallICFGNode>(node->getICFGNodes().front()))
         {
-            const CFBasicBlockNode *succ = (*it)->getDstNode();
+            const CFBasicBlockNode *succ = _graph->getCFBasicBlockNode(callNode->getRetICFGNode()->getId());
             CycleDepthNumber succ_dfn = getCDN(succ);
             if (succ_dfn == CycleDepthNumber(0))
             {
@@ -787,6 +812,27 @@ protected:
             {
                 head = min;
                 loop = true;
+            }
+        }
+        else
+        {
+            for (auto it = node->getOutEdges().begin(), et = node->getOutEdges().end(); it != et; ++it)
+            {
+                const CFBasicBlockNode *succ = (*it)->getDstNode();
+                CycleDepthNumber succ_dfn = getCDN(succ);
+                if (succ_dfn == CycleDepthNumber(0))
+                {
+                    min = visit(succ, partition);
+                }
+                else
+                {
+                    min = succ_dfn;
+                }
+                if (min <= head)
+                {
+                    head = min;
+                    loop = true;
+                }
             }
         }
         if (head == getCDN(node))
@@ -826,7 +872,7 @@ protected:
         for (const auto &head: _headToCycle)
         {
             NodeRefSet tails;
-            TailBuilder builder(_nodeToDepth, tails, head.first, getWTOCycleDepth(head.first));
+            TailBuilder builder(_graph, _nodeToDepth, tails, head.first, getWTOCycleDepth(head.first));
             for (auto it = head.second->begin(), eit = head.second->end(); it != eit; ++it)
             {
                 (*it)->accept(&builder);
