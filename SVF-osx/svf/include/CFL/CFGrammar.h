@@ -146,7 +146,7 @@ public:
     template<typename Key, typename Value, typename Hash = SymbolHash,
              typename KeyEqual = std::equal_to<Key>,
              typename Allocator = std::allocator<std::pair<const Key, Value>>>
-                     using SymbolMap = std::unordered_map<Key, Value, Hash, KeyEqual, Allocator>;
+                 using SymbolMap = std::unordered_map<Key, Value, Hash, KeyEqual, Allocator>;
 
              template <typename Key, typename Hash = SymbolVectorHash, typename KeyEqual = std::equal_to<Key>,
                        typename Allocator = std::allocator<Key>>

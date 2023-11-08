@@ -635,7 +635,7 @@ protected:
         void visit(const CFBasicBlockGWTONode &node) override
         {
             _nodeToWTOCycleDepth.insert(
-                std::make_pair(node.node(), _wtoCycleDepth));
+                                    std::make_pair(node.node(), _wtoCycleDepth));
         }
 
     }; // end class WTOCycleDepthBuilder
