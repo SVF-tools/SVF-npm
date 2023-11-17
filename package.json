@@ -1,6 +1,6 @@
 {
   "name": "svf-lib",
-  "version": "1.0.1706",
+  "version": "1.0.1707",
   "description": "SVF's npm support",
   "main": "index.js",
   "scripts": {
