@@ -341,6 +341,7 @@ public:
     AddrStmt(SVFVar* s, SVFVar* d) : AssignStmt(s, d, SVFStmt::Addr) {}
 
     virtual const std::string toString() const override;
+
 };
 
 /*!
@@ -490,7 +491,8 @@ public:
     {
         return ap;
     }
-    inline const AccessPath::OffsetVarAndGepTypePairs getOffsetVarAndGepTypePairVec() const
+    inline const AccessPath::IdxVarAndGepTypePairs
+    getOffsetVarAndGepTypePairVec() const
     {
         return getAccessPath().getOffsetVarAndGepTypePairVec();
     }
