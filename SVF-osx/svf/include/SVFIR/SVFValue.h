@@ -416,7 +416,7 @@ public:
     inline const SVFBasicBlock* getExitBB() const
     {
         assert(hasBasicBlock() && "function does not have any Basicblock, external function?");
-        assert((!isNotRet && exitBlock) && "ensure the function has a single basic block containing a return instruction!");
+        assert((hasReturn() && exitBlock) && "ensure the function has a single basic block containing a return instruction!");
         return exitBlock;
     }
 
@@ -461,9 +461,9 @@ public:
         return isUncalled;
     }
 
-    inline bool isNotRetFunction() const
+    inline bool hasReturn() const
     {
-        return isNotRet;
+        return  !isNotRet;
     }
 
     inline const std::vector<std::string>& getAnnotations() const
