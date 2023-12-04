@@ -61,12 +61,13 @@ public:
     typedef std::vector<IdxOperandPair> IdxOperandPairs;
 
     /// Constructor
-    AccessPath(APOffset o = 0) : fldIdx(o) {}
+    AccessPath(APOffset o = 0, const SVFType* srcTy = nullptr) : fldIdx(o), gepSourceElementType(srcTy) {}
 
     /// Copy Constructor
     AccessPath(const AccessPath& ap)
         : fldIdx(ap.fldIdx),
-          idxOperandPairs(ap.getIdxOperandPairVec())
+          idxOperandPairs(ap.getIdxOperandPairVec()),
+          gepSourceElementType(ap.getGepSourceElementType())
     {
     }
 
@@ -80,12 +81,13 @@ public:
     {
         fldIdx = rhs.fldIdx;
         idxOperandPairs = rhs.getIdxOperandPairVec();
+        gepSourceElementType = rhs.gepSourceElementType;
         return *this;
     }
     inline bool operator==(const AccessPath& rhs) const
     {
         return this->fldIdx == rhs.fldIdx &&
-               this->idxOperandPairs == rhs.idxOperandPairs;
+               this->idxOperandPairs == rhs.idxOperandPairs && this->gepSourceElementType == rhs.gepSourceElementType;
     }
     //@}
 
@@ -102,6 +104,10 @@ public:
     inline const IdxOperandPairs& getIdxOperandPairVec() const
     {
         return idxOperandPairs;
+    }
+    inline const SVFType* getGepSourceElementType() const
+    {
+        return gepSourceElementType;
     }
     //@}
 
@@ -162,6 +168,9 @@ private:
 
     APOffset fldIdx;	///< Accumulated Constant Offsets
     IdxOperandPairs idxOperandPairs;	///< a vector of actual offset in the form of <SVF Var, iterator type>
+    const SVFType* gepSourceElementType;   /// source element type in gep instruction,
+    /// e.g., %f1 = getelementptr inbounds %struct.MyStruct, %struct.MyStruct* %arrayidx, i32 0, i32 0
+    /// the source element type is %struct.MyStruct
 };
 
 } // End namespace SVF
