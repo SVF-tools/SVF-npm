@@ -416,7 +416,7 @@ public:
     /// offset of the base value variable
     inline APOffset getConstantFieldIdx() const
     {
-        return ap.getConstantFieldIdx();
+        return ap.getConstantStructFldIdx();
     }
 
     /// Return name of a LLVM value

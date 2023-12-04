@@ -303,7 +303,7 @@ public:
     /// Get location set of the gep edge
     inline APOffset getConstantFieldIdx() const
     {
-        return ap.getConstantFieldIdx();
+        return ap.getConstantStructFldIdx();
     }
 
 };
