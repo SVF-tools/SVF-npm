@@ -55,6 +55,7 @@ namespace SVF
 class IntervalExeState : public ExeState
 {
     friend class SVFIR2ItvExeState;
+    friend class RelationSolver;
 
 public:
     typedef Map<u32_t, IntervalValue> VarToValMap;
@@ -112,7 +113,7 @@ public:
     }
 
     /// Set all value bottom
-    IntervalExeState bottom()
+    IntervalExeState bottom() const
     {
         IntervalExeState inv = *this;
         for (auto &item: inv._varToItvVal)
@@ -123,7 +124,7 @@ public:
     }
 
     /// Set all value top
-    IntervalExeState top()
+    IntervalExeState top() const
     {
         IntervalExeState inv = *this;
         for (auto &item: inv._varToItvVal)
