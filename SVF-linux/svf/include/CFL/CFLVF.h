@@ -33,7 +33,7 @@
 
 #include "CFL/CFLBase.h"
 #include "CFL/CFLStat.h"
-#include "SABER/SaberSVFGBuilder.h"
+#include "CFL/CFLSVFGBuilder.h"
 #include "WPA/Andersen.h"
 
 namespace SVF
@@ -59,7 +59,7 @@ public:
     void buildCFLGraph();
 
 private:
-    SaberSVFGBuilder memSSA;
+    CFLSVFGBuilder memSSA;
     SVFG* svfg;
 };
 
