@@ -65,6 +65,7 @@ class SVFG : public VFG
 {
     friend class SVFGBuilder;
     friend class SaberSVFGBuilder;
+    friend class CFLSVFGBuilder;
     friend class TaintSVFGBuilder;
     friend class DDASVFGBuilder;
     friend class MTASVFGBuilder;

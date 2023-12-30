@@ -55,6 +55,7 @@ public:
     typedef Map<const SVFFunction*,  BasicBlockSet> FunToExitBBsMap;  ///< map a function to all its basic blocks calling program exit
     typedef Map<const SVFBasicBlock*, Condition> BBToCondMap;	///< map a basic block to its condition during control-flow guard computation
     typedef FIFOWorkList<const SVFBasicBlock*> CFWorkList;	///< worklist for control-flow guard computation
+    typedef Map<const SVFGNode*, Set<const SVFGNode*>> SVFGNodeToSVFGNodeSetMap;
 
     /// Constructor
     SaberCondAllocator();
@@ -236,6 +237,12 @@ public:
         setCondInst(condition, inst);
         negConds.set(condition.id());
     }
+
+    SVFGNodeToSVFGNodeSetMap & getRemovedSUVFEdges()
+    {
+        return removedSUVFEdges;
+    }
+
 private:
 
     /// Allocate path condition for every basic block
@@ -295,6 +302,7 @@ private:
     NodeBS negConds;                        ///bit vector for distinguish neg
     std::vector<Condition> conditionVec;          /// vector storing z3expression
     static u32_t totalCondNum; /// a counter for fresh condition
+    SVFGNodeToSVFGNodeSetMap removedSUVFEdges;
 
 protected:
     BBCondMap bbConds;						///< map basic block to its successors/predecessors branch conditions
