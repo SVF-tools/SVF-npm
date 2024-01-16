@@ -300,6 +300,7 @@ public:
         return getPointerToTy;
     }
 
+
     inline void setTypeInfo(StInfo* ti)
     {
         typeinfo = ti;
@@ -501,6 +502,7 @@ public:
     {
         numOfElement = elemNum;
     }
+
 
 };
 

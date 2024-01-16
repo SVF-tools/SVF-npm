@@ -73,6 +73,7 @@ protected:
     CHGKind kind;
 };
 
+
 typedef GenericEdge<CHNode> GenericCHEdgeTy;
 class CHEdge: public GenericCHEdgeTy
 {
@@ -313,6 +314,7 @@ public:
         return chg->getKind() == Standard;
     }
 
+
 private:
     SVFModule* svfMod;
     u32_t classNum;
@@ -348,8 +350,8 @@ struct GenericGraphTraits<SVF::CHNode*>
 /// for inverse traversal.
 template <>
 struct GenericGraphTraits<Inverse<SVF::CHNode*>>
-            : public GenericGraphTraits<
-              Inverse<SVF::GenericNode<SVF::CHNode, SVF::CHEdge>*>>
+    : public GenericGraphTraits<
+      Inverse<SVF::GenericNode<SVF::CHNode, SVF::CHEdge>*>>
 {
 };
 

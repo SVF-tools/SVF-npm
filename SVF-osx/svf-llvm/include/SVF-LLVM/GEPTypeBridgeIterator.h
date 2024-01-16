@@ -100,6 +100,7 @@ public:
         return const_cast<Value*>(&**OpIt);
     }
 
+
     generic_bridge_gep_type_iterator& operator++()
     {
         if ( CurTy.getInt() )
@@ -132,6 +133,7 @@ public:
         return *this;
     }
 
+
     generic_bridge_gep_type_iterator operator++(int)
     {
         generic_bridge_gep_type_iterator tmp = *this;
@@ -140,6 +142,7 @@ public:
     }
 
 };
+
 
 typedef generic_bridge_gep_type_iterator<> bridge_gep_iterator;
 

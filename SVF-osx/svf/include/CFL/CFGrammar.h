@@ -127,6 +127,7 @@ public:
         }
     };
 
+
     struct SymbolVectorHash
     {
         size_t operator()(const std::vector<Symbol> &v) const
@@ -154,6 +155,7 @@ public:
 
              typedef std::vector<Symbol> Production;
              typedef SymbolSet<Production> Productions;
+
 
              inline Map<std::string, Kind>& getNonterminals()
     {
@@ -362,6 +364,7 @@ public:
         return it->second;
     }
 
+
     const Symbol& getLHSSymbol(const Production& prod) const
     {
         return prod.at(0);
@@ -380,6 +383,7 @@ public:
     void dump() const;
 
     void dump(std::string fileName) const;
+
 
     const inline u32_t num_generator()
     {

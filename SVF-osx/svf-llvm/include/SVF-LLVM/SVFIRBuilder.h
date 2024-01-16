@@ -114,6 +114,7 @@ public:
     }
     //@}
 
+
     /// Our visit overrides.
     //@{
     // Instructions that cannot be folded away.

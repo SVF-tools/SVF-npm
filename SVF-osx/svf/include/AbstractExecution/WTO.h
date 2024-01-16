@@ -39,6 +39,7 @@
 #include "SVFIR/SVFValue.h"
 #include "Graphs/CFBasicBlockG.h"
 
+
 namespace SVF
 {
 
@@ -332,6 +333,7 @@ private:
 
 }; // end class CFBasicBlockGWTOComp
 
+
 /*!
  * WTO node for CFBasicBlockG
  */
@@ -376,6 +378,7 @@ public:
     ///@}
 
 }; // end class CFBasicBlockGWTONode
+
 
 /*!
  * WTO cycle for CFBasicBlockG
@@ -453,6 +456,7 @@ public:
     }
 
 }; // end class CFBasicBlockGWTOCycle
+
 
 /*!
  * Weak topological order for CFBasicBlockG
@@ -545,6 +549,7 @@ public:
         assert(it != _headToTails.end() && "node not found");
         return it->second;
     }
+
 
     /// Get the wto-cycle-depth of the given node
     const CFBasicBlockGWTOCycleDepth &getWTOCycleDepth(const CFBasicBlockNode *n) const

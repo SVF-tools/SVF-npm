@@ -134,6 +134,7 @@ public:
     virtual const std::string toString() const;
 };
 
+
 /*!
  * SVFG edge representing direct value-flows
  */
@@ -168,6 +169,7 @@ public:
     virtual const std::string toString() const;
 };
 
+
 /*!
  * Intra SVFG edge representing direct intra-procedural value-flows
  */
@@ -201,6 +203,7 @@ public:
 
     virtual const std::string toString() const;
 };
+
 
 /*!
  * SVFG call edge representing direct value-flows from a caller to its callee at a callsite

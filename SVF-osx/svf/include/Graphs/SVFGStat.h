@@ -32,6 +32,7 @@
  *
  */
 
+
 #ifndef SVFGSTAT_H_
 #define SVFGSTAT_H_
 
@@ -86,6 +87,7 @@ public:
 private:
     MemSSA* mssa;
 };
+
 
 class SVFGStat : public PTAStat
 {

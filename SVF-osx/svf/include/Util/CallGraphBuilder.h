@@ -20,6 +20,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+
 /*
  * CallGraphBuilder.h
  *
@@ -68,5 +69,6 @@ public:
 };
 
 } // End namespace SVF
+
 
 #endif /* INCLUDE_UTIL_CALLGRAPHBUILDER_H_ */

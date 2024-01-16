@@ -47,6 +47,7 @@ namespace SVF
  * Bug Detector Recoder
  */
 
+
 class SVFBugEvent
 {
 public:

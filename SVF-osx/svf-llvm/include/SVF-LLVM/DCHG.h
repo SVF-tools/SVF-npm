@@ -447,6 +447,7 @@ private:
         return nullptr;
     }
 
+
     /// Creates an edge between from t1 to t2.
     DCHEdge* addEdge(const DIType* t1, const DIType* t2, DCHEdge::GEdgeKind et);
     /// Returns the edge between t1 and t2 if it exists, returns nullptr otherwise.

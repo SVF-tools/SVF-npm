@@ -56,6 +56,7 @@ public:
 
     IntervalExeState beta(const Map<u32_t, double> &sigma, const IntervalExeState &exeState) const;
 
+
     /// Return Z3 expression lazily based on SVFVar ID
     virtual inline Z3Expr toZ3Expr(u32_t varId) const
     {

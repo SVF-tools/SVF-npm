@@ -57,6 +57,7 @@ public:
     /// Return size of this object based on LLVM value
     u32_t getNumOfElements(const Type* ety);
 
+
 protected:
 
     /// collect the syms
