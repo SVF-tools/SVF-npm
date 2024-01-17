@@ -27,7 +27,6 @@
  *
  */
 
-
 #ifndef Z3_EXAMPLE_EXESTATE_H
 #define Z3_EXAMPLE_EXESTATE_H
 
@@ -90,7 +89,6 @@ public:
         return *this;
     }
 
-
 protected:
     VarToAddrs _varToAddrs{{0, getVirtualMemAddress(0)}}; ///< Map a variable (symbol) to its memory addresses
     VarToAddrs _locToAddrs;                               ///< Map a memory address to its stored memory addresses
@@ -114,7 +112,6 @@ public:
     {
         return _locToAddrs.find(id) != _locToAddrs.end();
     }
-
 
     inline virtual const VarToAddrs &getVarToAddrs() const
     {
@@ -147,8 +144,6 @@ public:
     {
         return _kind;
     }
-
-
 
 public:
     inline virtual void storeAddrs(u32_t addr, const Addrs &vaddrs)
@@ -285,10 +280,7 @@ public:
         return AddressValue::getInternalID(idx);
     }
 
-
 }; // end class ExeState
-
-
 
 } // end namespace SVF
 

@@ -30,7 +30,6 @@
 #ifndef INCLUDE_CFL_CFLVF_H_
 #define INCLUDE_CFL_CFLVF_H_
 
-
 #include "CFL/CFLBase.h"
 #include "CFL/CFLStat.h"
 #include "CFL/CFLSVFGBuilder.h"

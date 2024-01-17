@@ -198,7 +198,6 @@ public:
     virtual const std::string toString() const;
 };
 
-
 /*!
  * MHP SVFG edge representing indirect value-flows between
  * two memory access may-happen-in-parallel in multithreaded program

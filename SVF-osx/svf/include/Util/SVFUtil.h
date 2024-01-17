@@ -671,7 +671,6 @@ template <typename... Ts>
 constexpr bool is_sequence_container_v = is_sequence_container<Ts...>::value;
 ///@}
 
-
 } // End namespace SVFUtil
 
 } // End namespace SVF

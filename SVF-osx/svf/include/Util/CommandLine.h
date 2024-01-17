@@ -311,7 +311,6 @@ protected:
         return options;
     }
 
-
 protected:
     std::string name;
     std::string description;

@@ -71,7 +71,6 @@ public:
     }
 };
 
-
 typedef GenericNode<CFLNode,CFLEdge> GenericCFLNodeTy;
 class CFLNode: public GenericCFLNodeTy
 {

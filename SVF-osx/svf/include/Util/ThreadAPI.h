@@ -253,7 +253,6 @@ public:
     }
     //@}
 
-
     /// Return true if this call exits/terminate a thread
     //@{
     inline bool isTDExit(const SVFInstruction *inst) const

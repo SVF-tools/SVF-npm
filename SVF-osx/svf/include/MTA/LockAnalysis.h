@@ -266,8 +266,6 @@ public:
     }
     //@}
 
-
-
     /// Check if one instruction's context stmt is in a lock span
     inline bool hasOneCxtInLockSpan(const SVFInstruction *I, LockSpan lspan) const
     {
@@ -298,7 +296,6 @@ public:
         }
         return true;
     }
-
 
     /// Check if two Instructions are protected by common locks
     /// echo inst may have multiple cxt stmt
@@ -469,7 +466,6 @@ private:
     /// Map a statement to all its context-sensitive statements
     InstToCxtStmtSet instToCxtStmtSet;
 
-
     /// Context-sensitive locks
     CxtLockSet cxtLockset;
 
@@ -503,7 +499,6 @@ private:
     InstToInstSetMap instCILocksMap;
     InstToInstSetMap instTocondCILocksMap;
     //@}
-
 
 public:
     double lockTime;

@@ -791,7 +791,6 @@ private:
     }
     ///@}
 
-
 private:
     UpdatedVarMap outUpdatedVarMap;
     UpdatedVarMap inUpdatedVarMap;

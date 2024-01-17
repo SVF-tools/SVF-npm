@@ -40,7 +40,6 @@ namespace SVF
 /// LLVM Aliases and constants
 typedef SVF::GraphPrinter GraphPrinter;
 
-
 class SVFInstruction;
 class SVFBasicBlock;
 class SVFArgument;
@@ -134,7 +133,6 @@ public:
     {
         return bb2PIdom;
     }
-
 
     inline Map<const SVFBasicBlock*,BBSet>& getDomTreeMap()
     {
@@ -1103,7 +1101,6 @@ public:
         return node->getKind() == SVFMetaAsValue;
     }
 };
-
 
 class CallSite
 {

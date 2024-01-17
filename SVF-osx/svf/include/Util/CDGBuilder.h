@@ -60,10 +60,7 @@ public:
     /// build map at icfg node level
     void buildICFGNodeControlMap();
 
-
-
 private:
-
 
     /// extract basic block edges to be processed
     static void
@@ -75,16 +72,13 @@ private:
     extractNodesBetweenPdomNodes(const SVFBasicBlock *succ, const SVFBasicBlock *LCA,
                                  std::vector<const SVFBasicBlock *> &tgtNodes);
 
-
     void dfsNodesBetweenPdomNodes(const SVFBasicBlock *cur,
                                   const SVFBasicBlock *tgt,
                                   std::vector<const SVFBasicBlock *> &path,
                                   std::vector<const SVFBasicBlock *> &tgtNodes,
                                   SVFLoopAndDomInfo *ld);
 
-
     s64_t getBBSuccessorBranchID(const SVFBasicBlock *BB, const SVFBasicBlock *Succ);
-
 
     /// update map
     inline void updateMap(const SVFBasicBlock *pred, const SVFBasicBlock *bb, s32_t pos)
@@ -92,7 +86,6 @@ private:
         _svfcontrolMap[pred][bb].insert(pos);
         _svfdependentOnMap[bb][pred].insert(pos);
     }
-
 
 private:
     CDG *_controlDG;
@@ -102,6 +95,5 @@ private:
     Map<const ICFGNode *, Map<const ICFGNode *, Set<s32_t>>> _nodeDependentOnMap; ///< map an ICFG node to its dependent on ICFG nodes (position, set of Nodes)
 };
 }
-
 
 #endif //SVF_CDGBUILDER_H

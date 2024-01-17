@@ -57,7 +57,6 @@ public:
 public:
     ConsExeState(): ExeState(ExeState::SingleValueK) {}
 
-
     /// Constructor
     ConsExeState(VarToValMap varToValMap, LocToValMap locToValMap) : ExeState(ExeState::SingleValueK), _varToVal(
             SVFUtil::move(varToValMap)), _locToVal(SVFUtil::move(locToValMap))  {}
@@ -361,8 +360,6 @@ public:
 
 public:
 
-
-
     s64_t getNumber(u32_t lhs);
 
     static inline SingleAbsValue getIntOneZ3Expr()
@@ -409,13 +406,10 @@ public:
     /// Whether two var to value map is equivalent
     static bool eqVarToValMap(const VarToValMap &pre, const VarToValMap &nxt);
 
-
     /// Whether lhs is less than rhs
     static bool lessThanVarToValMap(const VarToValMap &lhs, const VarToValMap &rhs);
 
-
 private:
-
 
     static bool assign(SingleAbsValue &lhs, const SingleAbsValue &rhs);
 
@@ -445,7 +439,5 @@ struct std::hash<SVF::ConsExeState>
         return exeState.hash();
     }
 };
-
-
 
 #endif // SVF_CONSEXESTATE_H

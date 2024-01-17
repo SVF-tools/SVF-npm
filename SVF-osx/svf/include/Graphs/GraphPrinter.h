@@ -20,7 +20,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-
 /*
  * GraphPrinter.h
  *
@@ -105,7 +104,5 @@ public:
 };
 
 } // End namespace llvm
-
-
 
 #endif /* INCLUDE_GRAPHS_GRAPHPRINTER_H_ */

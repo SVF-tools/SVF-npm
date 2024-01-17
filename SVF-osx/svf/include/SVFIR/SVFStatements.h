@@ -20,7 +20,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-
 /*
  * SVFStatements.h
  *
@@ -537,7 +536,6 @@ public:
     virtual const std::string toString() const;
 
 };
-
 
 /*!
  * Call

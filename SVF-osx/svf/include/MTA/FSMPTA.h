@@ -34,7 +34,6 @@
 #ifndef FSPTANALYSIS_H_
 #define FSPTANALYSIS_H_
 
-
 #include "WPA/FlowSensitive.h"
 #include "MSSA/SVFGBuilder.h"
 #include "MTA/LockAnalysis.h"
@@ -46,7 +45,6 @@ namespace SVF
 
 class MHP;
 class LockAnalysis;
-
 
 class SVFGNodeLockSpan
 {
@@ -173,7 +171,6 @@ private:
     Set<NodeIDPair> recordedges;
     Map<NodeIDPair, PointsTo> edge2pts;
 
-
     Map<const StmtSVFGNode*, SVFGNodeIDSet> prevset;
     Map<const StmtSVFGNode*, SVFGNodeIDSet> succset;
 
@@ -182,7 +179,6 @@ private:
 
     PairToBoolMap pairheadmap;
     PairToBoolMap pairtailmap;
-
 
     static const u32_t ADDEDGE_NOEDGE= 0;
     static const u32_t ADDEDGE_NONSPARSE= 1;
@@ -195,13 +191,11 @@ private:
 
 };
 
-
 /*!
  * Flow-sensitive pointer analysis for multithreaded programs
  */
 class FSMPTA : public FlowSensitive
 {
-
 
 public:
 

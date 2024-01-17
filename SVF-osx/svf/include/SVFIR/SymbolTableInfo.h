@@ -30,7 +30,6 @@
 #ifndef INCLUDE_SVFIR_SYMBOLTABLEINFO_H_
 #define INCLUDE_SVFIR_SYMBOLTABLEINFO_H_
 
-
 #include "Util/SVFUtil.h"
 #include "MemoryModel/AccessPath.h"
 #include "SVFIR/SVFModule.h"
@@ -242,7 +241,6 @@ public:
     }
     //@}
 
-
     /// Statistics
     //@{
     inline u32_t getTotalSymNum() const
@@ -373,7 +371,6 @@ protected:
     Set<const StInfo*> stInfos;
 };
 
-
 /*!
  * Memory object symbols or MemObj (address-taken variables in LLVM-based languages)
  */
@@ -443,7 +440,6 @@ public:
 
     /// Check if byte size is a const value
     bool isConstantByteSize() const;
-
 
     /// object attributes methods
     //@{
@@ -646,7 +642,6 @@ public:
     }
     //@}
 };
-
 
 } // End namespace SVF
 
