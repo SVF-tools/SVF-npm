@@ -30,6 +30,7 @@
 #ifndef INCLUDE_UTIL_VFG_H_
 #define INCLUDE_UTIL_VFG_H_
 
+
 #include "SVFIR/SVFIR.h"
 #include "Graphs/PTACallGraph.h"
 #include "Graphs/VFGNode.h"
@@ -81,6 +82,7 @@ public:
     typedef SVFIR::SVFStmtSet SVFStmtSet;
     typedef Set<const VFGNode*> GlobalVFGNodeSet;
     typedef Set<const PAGNode*> PAGNodeSet;
+
 
 protected:
     NodeID totalVFGNode;

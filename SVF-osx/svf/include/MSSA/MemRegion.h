@@ -335,6 +335,7 @@ protected:
     /// Get Mod-Ref of a callee function
     virtual bool handleCallsiteModRef(NodeBS& mod, NodeBS& ref, const CallICFGNode* cs, const SVFFunction* fun);
 
+
     /// Add cpts to store/load
     //@{
     inline void addCPtsToStore(NodeBS& cpts, const StoreStmt *st, const SVFFunction* fun)

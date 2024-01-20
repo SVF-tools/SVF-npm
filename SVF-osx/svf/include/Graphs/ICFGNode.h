@@ -94,6 +94,7 @@ public:
         return bb;
     }
 
+
     /// Overloading operator << for dumping ICFG node ID
     //@{
     friend OutStream &operator<<(OutStream &o, const ICFGNode &node)
@@ -252,6 +253,7 @@ public:
     }
     //@}
 };
+
 
 /*!
  * Function entry ICFGNode containing a set of FormalParmVFGNodes of a function
@@ -477,6 +479,7 @@ public:
 
     virtual const std::string toString() const;
 };
+
 
 /*!
  * Return ICFGNode containing (at most one) ActualRetVFGNode at a callsite

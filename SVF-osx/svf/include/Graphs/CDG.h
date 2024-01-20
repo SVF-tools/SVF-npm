@@ -79,6 +79,7 @@ public:
     }
     //@}
 
+
 private:
     Set<BranchCondition> brConditions;
 };
@@ -113,6 +114,7 @@ public:
         return _icfgNode;
     }
 
+
 private:
     const ICFGNode *_icfgNode;
 };
@@ -139,6 +141,7 @@ private:
     {
 
     }
+
 
 public:
     /// Singleton design here to make sure we only have one instance during any analysis

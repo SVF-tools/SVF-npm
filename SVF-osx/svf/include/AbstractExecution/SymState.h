@@ -83,6 +83,7 @@ public:
         return *this;
     }
 
+
     /// Move Constructor
     SymState(SymState &&rhs) noexcept: _exeState(SVFUtil::move(rhs._exeState)),
         _typeState(SVFUtil::move(rhs._typeState)),
@@ -109,6 +110,7 @@ public:
     {
         return _keyNodesSet;
     }
+
 
     void insertKeyNode(NodeID id)
     {
@@ -200,6 +202,8 @@ public:
 };
 
 } // end namespace SVF
+
+
 
 /// Specialise hash for SymState
 template<>

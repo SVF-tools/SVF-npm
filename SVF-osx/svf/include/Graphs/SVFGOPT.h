@@ -32,8 +32,10 @@
  *
  */
 
+
 #ifndef SVFGOPT_H_
 #define SVFGOPT_H_
+
 
 #include "Graphs/SVFG.h"
 #include "Util/WorkList.h"
@@ -342,6 +344,7 @@ private:
             removeSVFGEdge(*(node->OutEdgeBegin()));
     }
     //@}
+
 
     NodeIDToNodeIDMap actualInToDefMap;	///< map actual-in to its def-site node
     NodeIDToNodeIDMap formalOutToDefMap;	///< map formal-out to its def-site node

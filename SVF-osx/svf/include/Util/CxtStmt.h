@@ -116,6 +116,7 @@ protected:
     const SVFInstruction* inst;
 };
 
+
 /*!
  * Context-sensitive thread statement <t,c,s>
  */
@@ -179,6 +180,7 @@ public:
 private:
     NodeID tid;
 };
+
 
 /*!
  * Context-sensitive thread <c,t>
@@ -297,6 +299,7 @@ protected:
     bool incycle;
 };
 
+
 /*!
  * Context-sensitive procedure <c,m>
  * c represent current context
@@ -381,6 +384,7 @@ protected:
     CallStrCxt cxt;
     const SVFFunction* fun;
 };
+
 
 /*!
  * Context-sensitive procedure <t,c,m>

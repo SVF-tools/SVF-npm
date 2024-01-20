@@ -131,6 +131,7 @@ public:
     virtual const std::string toString() const;
 };
 
+
 /*
  * SVFG Node stands for return mu node (address-taken variables)
  */
@@ -172,6 +173,7 @@ public:
     virtual const std::string toString() const;
 };
 
+
 /*
  * SVFG Node stands for callsite mu node (address-taken variables)
  */
@@ -200,6 +202,7 @@ public:
         return ver;
     }
 
+
     /// Methods for support type inquiry through isa, cast, and dyn_cast:
     //@{
     static inline bool classof(const ActualINSVFGNode *)
@@ -218,6 +221,7 @@ public:
 
     virtual const std::string toString() const;
 };
+
 
 /*
  * SVFG Node stands for callsite chi node (address-taken variables)
@@ -264,6 +268,7 @@ public:
 
     virtual const std::string toString() const;
 };
+
 
 /*
  * SVFG Node stands for a memory ssa phi node or formalIn or ActualOut
@@ -392,6 +397,7 @@ public:
     virtual const std::string toString() const;
 };
 
+
 /*
  * Inter MSSA PHI (formalIN/ActualOUT)
  */
@@ -500,6 +506,7 @@ private:
     const NodeID object;
     const Version version;
 };
+
 
 } // End namespace SVF
 

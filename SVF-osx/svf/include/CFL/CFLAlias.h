@@ -54,6 +54,7 @@ public:
     /// Initialize Solver
     virtual void initializeSolver();
 
+
     /// Print grammar and graph
     virtual void finalize();
 

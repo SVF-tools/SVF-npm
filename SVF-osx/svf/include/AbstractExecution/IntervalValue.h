@@ -27,6 +27,7 @@
  *
  */
 
+
 #ifndef Z3_EXAMPLE_IntervalValue_H
 #define Z3_EXAMPLE_IntervalValue_H
 
@@ -319,6 +320,7 @@ public:
             return other._lb.geq(this->_lb) && this->_ub.geq(other._ub);
         }
     }
+
 
     /// Equality comparison
     bool equals(const IntervalValue &other) const
@@ -676,6 +678,7 @@ inline IntervalValue operator<(const IntervalValue &lhs, const IntervalValue &rh
         }
     }
 }
+
 
 // Compare two IntervalValues for greater than or equal to
 inline IntervalValue operator>=(const IntervalValue &lhs, const IntervalValue &rhs)
