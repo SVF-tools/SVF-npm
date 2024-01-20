@@ -33,7 +33,6 @@
 namespace SVF
 {
 
-
 /*!
  * Pointer Analysis Statistics
  */
@@ -69,6 +68,9 @@ public:
     /// only returned when Options::MarkedClocksOnly is not set.
     /// Default call for getClk is unmarked, while MarkedClocksOnly is false by default.
     static double getClk(bool mark = false);
+
+    /// SVF's general statistics are only printed once even if you run multiple anayses
+    static bool printGeneralStats;
 
     NUMStatMap generalNumMap;
     NUMStatMap PTNumStatMap;

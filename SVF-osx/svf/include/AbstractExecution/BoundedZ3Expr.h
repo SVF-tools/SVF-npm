@@ -63,7 +63,6 @@ public:
 
     BoundedZ3Expr(BoundedZ3Expr &&z3Expr) : Z3Expr(z3Expr) {}
 
-
     inline BoundedZ3Expr &operator=(BoundedZ3Expr &&rhs)
     {
         Z3Expr::operator=(rhs);
@@ -388,4 +387,3 @@ struct std::hash<SVF::BoundedZ3Expr>
     }
 };
 #endif //SVF_BOUNDEDZ3EXPR_H
-

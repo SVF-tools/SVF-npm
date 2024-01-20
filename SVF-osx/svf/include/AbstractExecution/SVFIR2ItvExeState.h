@@ -86,14 +86,12 @@ public:
     /// Return the offset expression of a GepStmt
     IntervalValue getItvOfFlattenedElemIndex(const GepStmt *gep);
 
-
     static z3::context &getContext()
     {
         return Z3Expr::getContext();
     }
 
     void applySummary(IntervalExeState &es);
-
 
     /// Init ObjVar
     void initObjVar(const ObjVar *objVar, u32_t varId);
@@ -109,7 +107,6 @@ public:
             return globalNulladdrs;
     }
 
-
     /// whether the variable is in varToVal table
     inline bool inVarToValTable(u32_t id) const
     {
@@ -121,7 +118,6 @@ public:
     {
         return _es.inVarToAddrsTable(id);
     }
-
 
     /// whether the memory address stores a interval value
     inline bool inLocToValTable(u32_t id) const

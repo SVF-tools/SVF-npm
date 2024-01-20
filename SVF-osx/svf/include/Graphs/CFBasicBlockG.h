@@ -376,7 +376,6 @@ public:
         return hasGNode(id);
     }
 
-
     bool hasCFBasicBlockEdge(CFBasicBlockNode *src, CFBasicBlockNode *dst, ICFGEdge *icfgEdge)
     {
         CFBasicBlockEdge edge(src, dst, icfgEdge);
@@ -436,7 +435,6 @@ public:
         _totalCFBasicBlockNode--;
     }
 
-
     /// Remove node from nodeID
     inline bool removeCFBBNode(NodeID id)
     {
@@ -467,7 +465,6 @@ public:
 };
 
 }
-
 
 namespace SVF
 {

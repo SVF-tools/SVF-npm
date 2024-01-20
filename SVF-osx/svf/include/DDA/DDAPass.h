@@ -28,7 +28,6 @@
  *
  */
 
-
 #ifndef DDAPASS_H_
 #define DDAPASS_H_
 

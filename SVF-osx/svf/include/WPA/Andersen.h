@@ -156,7 +156,6 @@ protected:
 class Andersen:  public AndersenBase
 {
 
-
 public:
     typedef SCCDetection<ConstraintGraph*> CGSCC;
     typedef OrderedMap<CallSite, NodeID> CallSite2DummyValPN;
@@ -231,7 +230,6 @@ public:
         ptd = sccRepNode(ptd);
         return getPTDataTy()->unionPts(id,ptd);
     }
-
 
     void dumpTopLevelPtsTo();
 
@@ -341,8 +339,6 @@ protected:
     /// SCC detection
     virtual NodeStack& SCCDetect();
 
-
-
     /// Sanitize pts for field insensitive objects
     void sanitizePts()
     {
@@ -375,8 +371,6 @@ protected:
     /// results set the global best mapping.
     virtual void cluster(void) const;
 };
-
-
 
 /**
  * Wave propagation with diff points-to set.

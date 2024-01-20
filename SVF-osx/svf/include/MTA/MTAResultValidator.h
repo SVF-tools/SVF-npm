@@ -148,8 +148,6 @@ private:
     //@}
 };
 
-
-
 /*!
  * \brief Validate the result of concurrent analysis.
  *

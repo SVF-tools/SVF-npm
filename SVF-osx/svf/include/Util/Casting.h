@@ -8,7 +8,6 @@
 #ifndef INCLUDE_UTIL_CASTING_H_
 #define INCLUDE_UTIL_CASTING_H_
 
-
 //===- llvm/Support/Casting.h - Allow flexible, checked, casts --*- C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure
@@ -382,7 +381,7 @@ inline typename cast_retty<X, Y *>::ret_type cast(Y *Val)
 
 template <class X, class Y>
 inline typename cast_retty<X, std::unique_ptr<Y>>::ret_type
-cast(std::unique_ptr<Y> &&Val)
+        cast(std::unique_ptr<Y> &&Val)
 {
     assert(SVFUtil::isa<X>(Val.get()) && "cast<Ty>() argument of incompatible type!");
     using ret_type = typename cast_retty<X, std::unique_ptr<Y>>::ret_type;

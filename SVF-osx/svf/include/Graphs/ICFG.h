@@ -76,7 +76,6 @@ private:
     GlobalICFGNode* globalBlockNode; ///< unique basic block for all globals
     ICFGNodeToSVFLoopVec icfgNodeToSVFLoopVec; ///< map ICFG node to the SVF loops where it resides
 
-
 public:
     /// Constructor
     ICFG();

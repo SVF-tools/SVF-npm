@@ -64,7 +64,6 @@ public:
     /// Report file/close bugs
     void reportBug(ProgSlice* slice) override;
 
-
     /// Validate test cases for regression test purpose
     void testsValidation(ProgSlice* slice);
     void validateSuccessTests(ProgSlice* slice, const SVFFunction* fun);

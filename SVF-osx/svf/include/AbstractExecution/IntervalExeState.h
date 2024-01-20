@@ -77,7 +77,6 @@ public:
 
     virtual ~IntervalESBase() = default;
 
-
     IntervalESBase &operator=(const IntervalESBase &rhs)
     {
         if (rhs != *this)
@@ -217,7 +216,6 @@ public:
     /// domain meet with other, important! other widen this.
     void meetWith(const IntervalESBase &other);
 
-
     /// Return int value from an expression if it is a numeral, otherwise return an approximate value
     inline s32_t Interval2NumValue(const IntervalValue &e) const
     {
@@ -337,7 +335,6 @@ public:
         return true;
     }
 
-
     static bool lessThanVarToValMap(const VarToValMap &lhs, const VarToValMap &rhs)
     {
         if (lhs.empty()) return !rhs.empty();
@@ -383,7 +380,6 @@ public:
         return !(*this >= rhs);
     }
 
-
     bool operator>=(const IntervalESBase &rhs) const
     {
         return geqVarToValMap(_varToItvVal, rhs.getVarToVal()) && geqVarToValMap(_locToItvVal, rhs.getLocToVal());
@@ -396,7 +392,6 @@ public:
         _locToAddrs.clear();
         _varToAddrs.clear();
     }
-
 
 protected:
     void printTable(const VarToValMap &table, std::ostream &oss) const;
@@ -425,7 +420,6 @@ public:
     }
 
     virtual ~IntervalExeState() = default;
-
 
     IntervalExeState &operator=(const IntervalExeState &rhs)
     {
@@ -627,7 +621,6 @@ public:
     {
         return !(*this >= rhs);
     }
-
 
     bool operator>=(const IntervalExeState &rhs) const
     {

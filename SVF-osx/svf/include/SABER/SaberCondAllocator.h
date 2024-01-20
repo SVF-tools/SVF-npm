@@ -36,7 +36,6 @@
 #include "Graphs/SVFG.h"
 #include "Util/Z3Expr.h"
 
-
 namespace SVF
 {
 
@@ -57,7 +56,6 @@ public:
     typedef Map<const SVFBasicBlock*, Condition> BBToCondMap;	///< map a basic block to its condition during control-flow guard computation
     typedef FIFOWorkList<const SVFBasicBlock*> CFWorkList;	///< worklist for control-flow guard computation
     typedef Map<const SVFGNode*, Set<const SVFGNode*>> SVFGNodeToSVFGNodeSetMap;
-
 
     /// Constructor
     SaberCondAllocator();
@@ -233,7 +231,6 @@ public:
     }
     //@}
 
-
     /// mark neg Z3 expression
     inline void setNegCondInst(const Condition &condition, const SVFInstruction* inst)
     {
@@ -297,7 +294,6 @@ private:
 
     /// extract subexpression from a Z3 expression
     void extractSubConds(const Condition &condition, NodeBS &support) const;
-
 
     FunToExitBBsMap funToExitBBsMap;		///< map a function to all its basic blocks calling program exit
     BBToCondMap bbToCondMap;				///< map a basic block to its path condition starting from root

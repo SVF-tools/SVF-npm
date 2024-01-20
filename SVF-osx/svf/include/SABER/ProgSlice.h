@@ -60,7 +60,6 @@ public:
 
     typedef SaberCondAllocator::SVFGNodeToSVFGNodeSetMap SVFGNodeToSVFGNodeSetMap;
 
-
     /// Constructor
     ProgSlice(const SVFGNode* src, SaberCondAllocator* pa, const SVFG* graph):
         root(src), partialReachable(false), fullReachable(false), reachGlob(false),

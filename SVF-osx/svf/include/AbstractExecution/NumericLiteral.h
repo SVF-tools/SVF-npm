@@ -174,7 +174,6 @@ public:
             return _n.geq(rhs._n).simplify().is_true();
     }
 
-
     /// Reload operator
     //{%
     friend NumericLiteral operator==(const NumericLiteral &lhs, const NumericLiteral &rhs)
@@ -433,7 +432,6 @@ public:
     }
 
     //%}
-
 
 }; // end class NumericLiteral
 } // end namespace SVF

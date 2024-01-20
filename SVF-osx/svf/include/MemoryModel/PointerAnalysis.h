@@ -48,7 +48,6 @@ namespace SVF
 
 class CommonCHGraph;
 
-class TypeSystem;
 class SVFModule;
 class ICFG;
 class PTAStat;
@@ -85,7 +84,6 @@ public:
         FlowS_DDA,		///< Flow sensitive DDA
         PathS_DDA,		///< Guarded value-flow DDA
         Cxt_DDA,		///< context sensitive DDA
-
 
         Default_PTA		///< default pta without any analysis
     };
@@ -156,8 +154,6 @@ protected:
     ICFG* icfg;
     /// CHGraph
     CommonCHGraph *chgraph;
-    /// TypeSystem
-    TypeSystem *typeSystem;
 
 public:
     /// Get ICFG
@@ -433,12 +429,6 @@ public:
     virtual void resolveCPPIndCalls(const CallICFGNode* cs,
                                     const PointsTo& target,
                                     CallEdgeMap& newEdges);
-
-    /// get TypeSystem
-    const TypeSystem *getTypeSystem() const
-    {
-        return typeSystem;
-    }
 };
 
 } // End namespace SVF

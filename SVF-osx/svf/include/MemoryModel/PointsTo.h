@@ -251,5 +251,4 @@ struct std::hash<SVF::PointsTo>
     }
 };
 
-
 #endif  // POINTSTO_H_
