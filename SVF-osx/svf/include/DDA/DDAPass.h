@@ -28,12 +28,13 @@
  *
  */
 
+
 #ifndef DDAPASS_H_
 #define DDAPASS_H_
 
-#include "MemoryModel/PointerAnalysisImpl.h"
 #include "DDA/DDAClient.h"
-#include "Util/SCC.h"
+#include "Graphs/SCC.h"
+#include "MemoryModel/PointerAnalysisImpl.h"
 
 namespace SVF
 {

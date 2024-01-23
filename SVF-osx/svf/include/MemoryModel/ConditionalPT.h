@@ -74,6 +74,7 @@ public:
     }
     ///@}
 
+
     inline CondVar& operator= (const CondVar& rhs)
     {
         if(*this!=rhs)
@@ -83,6 +84,7 @@ public:
         }
         return *this;
     }
+
 
     /**
      * Less than implementation.
@@ -294,6 +296,7 @@ private:
     ElementSet elements;
 };
 
+
 /*!
  * Conditional Points-to set
  */
@@ -396,6 +399,7 @@ public:
     {
         return numElement()==0;
     }
+
 
     /// Overloading operators
     //@{
@@ -599,6 +603,7 @@ public:
         return !(*this == rhs);
     }
     //@}
+
 
     /// Overloading operator |=
     /// Merge CondPointsToSet of RHS into this one.

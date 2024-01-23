@@ -272,12 +272,15 @@ private:
     InstToThreadStmtSetMap instToTSMap; ///< Map an instruction to its ThreadStmtSet
     FuncPairToBool nonCandidateFuncMHPRelMap;
 
+
 public:
     u32_t numOfTotalQueries;		///< Total number of queries
     u32_t numOfMHPQueries;			///< Number of queries are answered as may-happen-in-parallel
     double interleavingTime;
     double interleavingQueriesTime;
 };
+
+
 
 /*!
  *

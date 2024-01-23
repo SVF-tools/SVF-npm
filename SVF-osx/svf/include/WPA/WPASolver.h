@@ -20,6 +20,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+
 /*
  * WPASolver.h
  *
@@ -170,6 +171,7 @@ protected:
     bool reanalyze;
     /// print out statistics for i-th iteration
     u32_t iterationForPrintStat;
+
 
     /// Get node on the graph
     inline GNODE* Node(NodeID id)

@@ -172,6 +172,7 @@ public:
     static void addCustomGraphFeatures(const GraphType &, GraphWriter &) {}
 };
 
+
 /// DOTGraphTraits - Template class that can be specialized to customize how
 /// graphs are converted to 'dot' graphs.  When specializing, you may inherit
 /// from DefaultDOTGraphTraits if you don't need to override everything.

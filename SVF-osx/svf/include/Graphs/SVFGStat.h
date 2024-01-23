@@ -32,12 +32,13 @@
  *
  */
 
+
 #ifndef SVFGSTAT_H_
 #define SVFGSTAT_H_
 
 #include "Graphs/SVFG.h"
+#include "SCC.h"
 #include "Util/PTAStat.h"
-#include "Util/SCC.h"
 
 namespace SVF
 {
@@ -86,6 +87,7 @@ public:
 private:
     MemSSA* mssa;
 };
+
 
 class SVFGStat : public PTAStat
 {

@@ -123,6 +123,7 @@ public:
             else if (SVFUtil::isa<FunExitICFGNode>(node))
                 numOfExitNodes++;
 
+
             ICFGEdge::ICFGEdgeSetTy::iterator edgeIt =
                 it->second->OutEdgeBegin();
             ICFGEdge::ICFGEdgeSetTy::iterator edgeEit =
@@ -160,3 +161,4 @@ public:
 } // End namespace SVF
 
 #endif /* INCLUDE_UTIL_ICFGSTAT_H_ */
+

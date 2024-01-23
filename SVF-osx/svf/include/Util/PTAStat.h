@@ -69,6 +69,7 @@ public:
 
     void callgraphStat() override;
 
+
 protected:
     PointerAnalysis* pta;
     u32_t _vmrssUsageBefore;

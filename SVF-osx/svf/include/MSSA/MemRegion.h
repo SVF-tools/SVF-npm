@@ -34,11 +34,11 @@
 #ifndef MEMORYREGION_H_
 #define MEMORYREGION_H_
 
-#include "SVFIR/SVFIR.h"
-#include "Graphs/PTACallGraph.h"
-#include "Util/SCC.h"
-#include "Util/WorkList.h"
 #include "Graphs/ICFG.h"
+#include "Graphs/PTACallGraph.h"
+#include "Graphs/SCC.h"
+#include "SVFIR/SVFIR.h"
+#include "Util/WorkList.h"
 
 #include <set>
 
@@ -334,6 +334,7 @@ protected:
 
     /// Get Mod-Ref of a callee function
     virtual bool handleCallsiteModRef(NodeBS& mod, NodeBS& ref, const CallICFGNode* cs, const SVFFunction* fun);
+
 
     /// Add cpts to store/load
     //@{

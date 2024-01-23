@@ -32,6 +32,7 @@
  *
  */
 
+
 #ifndef WPAFSSOLVER_H_
 #define WPAFSSOLVER_H_
 
@@ -96,6 +97,8 @@ protected:
         return nodeStack;
     }
 };
+
+
 
 /*!
  * Solver based on SCC cycles.
@@ -167,6 +170,8 @@ protected:
 
     NodeID curSCCID;	///< index of current SCC.
 };
+
+
 
 /*!
  * Only solve nodes which need to be analyzed.

@@ -57,6 +57,7 @@ typedef PHIVFGNode PHISVFGNode;
 typedef IntraPHIVFGNode IntraPHISVFGNode;
 typedef InterPHIVFGNode InterPHISVFGNode;
 
+
 /*!
  * Sparse value flow graph
  * Each node stands for a definition, each edge stands for value flow relations
@@ -344,6 +345,7 @@ protected:
         }
     }
     //@}
+
 
     /// Given a PAGNode, set/get its def SVFG node (definition of top level pointers)
     //@{

@@ -29,15 +29,19 @@
  *
  */
 
+
 #ifndef AccessPath_H_
 #define AccessPath_H_
 
+
 #include "SVFIR/SVFValue.h"
+
 
 namespace SVF
 {
 
 class SVFVar;
+
 
 /*
 * Location set represents a set of locations in a memory block with following offsets:
@@ -140,6 +144,7 @@ public:
 
     /// Return element number of a type.
     u32_t getElementNum(const SVFType* type) const;
+
 
     bool addOffsetVarAndGepTypePair(const SVFVar* var, const SVFType* gepIterType);
 

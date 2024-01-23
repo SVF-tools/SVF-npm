@@ -133,6 +133,7 @@ protected:
     static constexpr u64_t EdgeKindMask = (~0ULL) >> (64 - EdgeKindMaskBits);
 };
 
+
 /*!
  * Generic node on the graph as base class
  */
