@@ -1,0 +1,2433 @@
+; ModuleID = '/home/runner/work/SVF/SVF/svf-llvm/lib/extapi.c'
+source_filename = "/home/runner/work/SVF/SVF/svf-llvm/lib/extapi.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.dirent64 = type opaque
+%struct.dirent = type opaque
+%struct.jpeg_error_mgr = type opaque
+%struct.mntent = type opaque
+%struct.tm = type opaque
+%struct.group = type opaque
+%struct.hostent = type opaque
+%struct.protoent = type opaque
+%struct.passwd = type opaque
+%struct.servent = type opaque
+%struct.spwd = type opaque
+%struct.lconv = type opaque
+
+@.str = private unnamed_addr constant [10 x i8] c"ALLOC_RET\00", section "llvm.metadata"
+@.str.1 = private unnamed_addr constant [48 x i8] c"/home/runner/work/SVF/SVF/svf-llvm/lib/extapi.c\00", section "llvm.metadata"
+@.str.2 = private unnamed_addr constant [15 x i8] c"AllocSize:Arg0\00", section "llvm.metadata"
+@.str.3 = private unnamed_addr constant [18 x i8] c"AllocSize:UNKNOWN\00", section "llvm.metadata"
+@.str.4 = private unnamed_addr constant [20 x i8] c"AllocSize:Arg0*Arg1\00", section "llvm.metadata"
+@.str.5 = private unnamed_addr constant [15 x i8] c"AllocSize:Arg1\00", section "llvm.metadata"
+@.str.6 = private unnamed_addr constant [12 x i8] c"REALLOC_RET\00", section "llvm.metadata"
+@.str.7 = private unnamed_addr constant [20 x i8] c"AllocSize:Arg1*Arg2\00", section "llvm.metadata"
+@.str.8 = private unnamed_addr constant [11 x i8] c"ALLOC_ARG0\00", section "llvm.metadata"
+@.str.9 = private unnamed_addr constant [15 x i8] c"AllocSize:Arg2\00", section "llvm.metadata"
+@.str.10 = private unnamed_addr constant [11 x i8] c"ALLOC_ARG1\00", section "llvm.metadata"
+@.str.11 = private unnamed_addr constant [11 x i8] c"ALLOC_ARG2\00", section "llvm.metadata"
+@.str.12 = private unnamed_addr constant [7 x i8] c"MEMCPY\00", section "llvm.metadata"
+@.str.13 = private unnamed_addr constant [7 x i8] c"MEMSET\00", section "llvm.metadata"
+@.str.14 = private unnamed_addr constant [7 x i8] c"STRCPY\00", section "llvm.metadata"
+@.str.15 = private unnamed_addr constant [7 x i8] c"STRCAT\00", section "llvm.metadata"
+@.str.16 = private unnamed_addr constant [10 x i8] c"OVERWRITE\00", section "llvm.metadata"
+@llvm.global.annotations = appending global [210 x { i8*, i8*, i8*, i32, i8* }] [{ i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @malloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 19, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @malloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 19, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @fopen to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 25, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @fopen to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 25, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @fopen64 to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 31, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @fopen64 to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 31, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @fdopen to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 37, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @fdopen to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 37, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (%struct.dirent64* (i8*)* @readdir64 to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 43, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (%struct.dirent64* (i8*)* @readdir64 to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 43, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @tmpvoid64 to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 49, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @tmpvoid64 to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 49, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @calloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 55, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @calloc to i8*), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.4, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 55, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @zmalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 61, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @zmalloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 61, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @gzdopen to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 67, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @gzdopen to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 67, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @iconv_open to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 73, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @iconv_open to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 73, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i32)* @lalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 79, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i32)* @lalloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 79, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i32)* @lalloc_clear to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 85, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i32)* @lalloc_clear to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 85, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i64* (i32, i8*, i32)* @nhalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 91, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i64* (i32, i8*, i32)* @nhalloc to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 91, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @oballoc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 97, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @oballoc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 97, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @popen to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 103, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @popen to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 103, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @pthread_getspecific to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 109, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @pthread_getspecific to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 109, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (%struct.dirent* (i8*)* @readdir to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 115, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (%struct.dirent* (i8*)* @readdir to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 115, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safe_calloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 121, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safe_calloc to i8*), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.4, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 121, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @safe_malloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 127, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @safe_malloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 127, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safecalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 133, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safecalloc to i8*), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.4, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 133, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safemalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 139, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32)* @safemalloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 139, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @setmntent to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 145, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @setmntent to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 145, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*, i32)* @shmat to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 151, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*, i32)* @shmat to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 151, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @__sysv_signal to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 157, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i8*)* @__sysv_signal to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 157, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i32)* (i32, void (i32)*)* @signal to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 163, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i32)* (i32, void (i32)*)* @signal to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 163, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @tempnam to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 169, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @tempnam to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 169, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @tmpvoid to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 175, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @tmpvoid to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 175, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @xcalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 181, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @xcalloc to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 181, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @xmalloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 187, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @xmalloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 187, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znam to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 193, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znam to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 193, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znaj to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 199, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znaj to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 199, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znwj to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 205, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znwj to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 205, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @__cxa_allocate_exception to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 211, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @__cxa_allocate_exception to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 211, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @aligned_alloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 217, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @aligned_alloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 217, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @memalign to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 223, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i64)* @memalign to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 223, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @valloc to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 229, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @valloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 229, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i32, i32, i32, i64)* @mmap64 to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 235, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i32, i32, i32, i64)* @mmap64 to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 235, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @XSetLocaleModifiers to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 241, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @XSetLocaleModifiers to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 241, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @__strdup to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 247, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @__strdup to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 247, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @crypt to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 253, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @crypt to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 253, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @ctime to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 259, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @ctime to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 259, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @dlerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 265, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @dlerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 265, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i32)* @dlopen to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 271, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i32)* @dlopen to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 271, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gai_strerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 277, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gai_strerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 277, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gcry_cipher_algo_name to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 283, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gcry_cipher_algo_name to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 283, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @svfgcry_md_algo_name_ to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 289, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @svfgcry_md_algo_name_ to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 289, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @getenv to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 295, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @getenv to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 295, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @getlogin to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 301, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @getlogin to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 301, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @getpass to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 307, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @getpass to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 307, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gnutls_strerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 313, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gnutls_strerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 313, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gpg_strerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 319, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @gpg_strerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 319, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i32*)* @gzerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 325, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i32*)* @gzerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 325, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @inet_ntoa to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 331, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @inet_ntoa to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 331, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @initscr to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 337, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @initscr to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 337, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @llvm_stacksave to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 343, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @llvm_stacksave to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 343, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i32, i32, i32, i64)* @mmap to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 349, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i32, i32, i32, i64)* @mmap to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 349, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32, i32, i32)* @newwin to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 355, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32, i32, i32, i32)* @newwin to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 355, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @nl_langinfo to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 361, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @nl_langinfo to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 361, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @opendir to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 367, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @opendir to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 367, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @sbrk to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 373, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @sbrk to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 373, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @strdup to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 379, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @strdup to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 379, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @strerror to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 385, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @strerror to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 385, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @strsignal to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 391, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @strsignal to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 391, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @textdomain to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 397, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @textdomain to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 397, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8**)* @tgetstr to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 403, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8**)* @tgetstr to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 403, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @tigetstr to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 409, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @tigetstr to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 409, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @tmpnam to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 415, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @tmpnam to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 415, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @ttyname to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 421, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32)* @ttyname to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 421, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @getcwd to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 427, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @getcwd to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 427, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @mem_realloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 433, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @mem_realloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 433, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @realloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 439, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @realloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 439, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @safe_realloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 445, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @safe_realloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 445, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i64)* @saferealloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 451, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64, i64)* @saferealloc to i8*), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.7, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 451, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @safexrealloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 457, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* ()* @safexrealloc to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 457, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @xrealloc to i8*), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 479, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i64)* @xrealloc to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.5, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 479, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znwm to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 485, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @_Znwm to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 485, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i8*)* @_ZnwmRKSt9nothrow_t to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 491, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i8*)* @_ZnwmRKSt9nothrow_t to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 491, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i8*)* @_ZnamRKSt9nothrow_t to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 497, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64, i8*)* @_ZnamRKSt9nothrow_t to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 497, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, ...)* @asprintf to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 503, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, ...)* @asprintf to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 503, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, i8*)* @vasprintf to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 509, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, i8*)* @vasprintf to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 509, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, i32)* @db_create to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 515, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i8*, i32)* @db_create to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 515, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_pkcs12_bag_init to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 521, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_pkcs12_bag_init to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 521, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_pkcs12_init to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 527, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_pkcs12_init to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 527, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_x509_crt_init to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 533, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_x509_crt_init to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 533, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_x509_privkey_init to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 539, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*)* @gnutls_x509_privkey_init to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 539, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i64, i64)* @posix_memalign to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.8, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 545, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8**, i64, i64)* @posix_memalign to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.9, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 545, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*, %struct.dirent***, i32 (%struct.dirent*)*, i32 (%struct.dirent**, %struct.dirent**)*)* @scandir to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.10, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 551, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*, %struct.dirent***, i32 (%struct.dirent*)*, i32 (%struct.dirent**, %struct.dirent**)*)* @scandir to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 551, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*, i8*, i8***, i32*)* @XmbTextPropertyToTextList to i8*), i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.11, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 557, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32 (i8*, i8*, i8***, i32*)* @XmbTextPropertyToTextList to i8*), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.3, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 557, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memcpy_p0i8_p0i8_i64 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 563, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memcpy_p0i8_p0i8_i32 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 566, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memcpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 569, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memmove to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 572, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memmove_p0i8_p0i8_i64 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 575, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @llvm_memmove_p0i8_p0i8_i32 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 578, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32, i32)* @__memcpy_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 581, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @memmove to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 584, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i64)* @bcopy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 590, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i32, i64)* @memccpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 593, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8*, i32)* @__memmove_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 599, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8, i32, i32)* @llvm_memset to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 602, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8, i32, i32)* @llvm_memset_p0i8_i32 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 605, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (void (i8*, i8, i32, i32)* @llvm_memset_p0i8_i64 to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 608, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i32, i64, i32)* @__memset_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 611, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32*, i32, i32, i32)* @wmemset to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 617, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @__strcpy_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.14, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 623, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @__strcat_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 629, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32* (i32*, i32*)* @__wcscat_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 635, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @stpcpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.14, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 641, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @strcat to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 647, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @wcscat to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 653, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*)* @strcpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.14, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 660, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @strncat to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 666, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32* (i32*, i32*, i32)* @wcsncat to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 672, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @__strncat_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 677, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i32* (i32*, i32*, i32)* @__wcsncat_chk to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.15, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 683, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*, i8*, i64)* @strncpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 688, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i32*, i32*)* @wcscpy to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.14, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 694, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i64 (i8*, i8**, i64*, i8**, i64*)* @iconv to i8*), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 699, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i8*)* @_ZNSt5arrayIPK1ALm2EE4backEv to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.16, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 705, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @SyGetmem to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 714, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @SyGetmem to i8*), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 714, i8* null }, { i8*, i8*, i8*, i32, i8* } { i8* bitcast (i8* (i64)* @SyGetmem to i8*), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.16, i32 0, i32 0), i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.1, i32 0, i32 0), i32 714, i8* null }], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @malloc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @fopen(i8* noundef %voidname, i8* noundef %mode) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %mode.addr = alloca i8*, align 8
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i8* %mode, i8** %mode.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @fopen64(i8* noundef %voidname, i8* noundef %mode) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %mode.addr = alloca i8*, align 8
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i8* %mode, i8** %mode.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @fdopen(i32 noundef %fd, i8* noundef %mode) #0 {
+entry:
+  %fd.addr = alloca i32, align 4
+  %mode.addr = alloca i8*, align 8
+  store i32 %fd, i32* %fd.addr, align 4
+  store i8* %mode, i8** %mode.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.dirent64* @readdir64(i8* noundef %dirp) #0 {
+entry:
+  %dirp.addr = alloca i8*, align 8
+  store i8* %dirp, i8** %dirp.addr, align 8
+  ret %struct.dirent64* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tmpvoid64() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @calloc(i64 noundef %nitems, i64 noundef %size) #0 {
+entry:
+  %nitems.addr = alloca i64, align 8
+  %size.addr = alloca i64, align 8
+  store i64 %nitems, i64* %nitems.addr, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @zmalloc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gzdopen(i32 noundef %fd, i8* noundef %mode) #0 {
+entry:
+  %fd.addr = alloca i32, align 4
+  %mode.addr = alloca i8*, align 8
+  store i32 %fd, i32* %fd.addr, align 4
+  store i8* %mode, i8** %mode.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @iconv_open(i8* noundef %tocode, i8* noundef %fromcode) #0 {
+entry:
+  %tocode.addr = alloca i8*, align 8
+  %fromcode.addr = alloca i8*, align 8
+  store i8* %tocode, i8** %tocode.addr, align 8
+  store i8* %fromcode, i8** %fromcode.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @lalloc(i64 noundef %size, i32 noundef %a) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  %a.addr = alloca i32, align 4
+  store i64 %size, i64* %size.addr, align 8
+  store i32 %a, i32* %a.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @lalloc_clear(i64 noundef %size, i32 noundef %a) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  %a.addr = alloca i32, align 4
+  store i64 %size, i64* %size.addr, align 8
+  store i32 %a, i32* %a.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64* @nhalloc(i32 noundef %a, i8* noundef %b, i32 noundef %c) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  %b.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i32 %a, i32* %a.addr, align 4
+  store i8* %b, i8** %b.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  ret i64* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @oballoc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @popen(i8* noundef %command, i8* noundef %type) #0 {
+entry:
+  %command.addr = alloca i8*, align 8
+  %type.addr = alloca i8*, align 8
+  store i8* %command, i8** %command.addr, align 8
+  store i8* %type, i8** %type.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @pthread_getspecific(i8* noundef %a, i8* noundef %b) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  %b.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  store i8* %b, i8** %b.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.dirent* @readdir(i8* noundef %dirp) #0 {
+entry:
+  %dirp.addr = alloca i8*, align 8
+  store i8* %dirp, i8** %dirp.addr, align 8
+  ret %struct.dirent* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safe_calloc(i32 noundef %nelem, i32 noundef %elsize) #0 {
+entry:
+  %nelem.addr = alloca i32, align 4
+  %elsize.addr = alloca i32, align 4
+  store i32 %nelem, i32* %nelem.addr, align 4
+  store i32 %elsize, i32* %elsize.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safe_malloc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safecalloc(i32 noundef %a, i32 noundef %b) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  %b.addr = alloca i32, align 4
+  store i32 %a, i32* %a.addr, align 4
+  store i32 %b, i32* %b.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safemalloc(i32 noundef %a, i32 noundef %b) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  %b.addr = alloca i32, align 4
+  store i32 %a, i32* %a.addr, align 4
+  store i32 %b, i32* %b.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @setmntent(i8* noundef %voidname, i8* noundef %type) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %type.addr = alloca i8*, align 8
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i8* %type, i8** %type.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @shmat(i32 noundef %shmid, i8* noundef %shmaddr, i32 noundef %shmflg) #0 {
+entry:
+  %shmid.addr = alloca i32, align 4
+  %shmaddr.addr = alloca i8*, align 8
+  %shmflg.addr = alloca i32, align 4
+  store i32 %shmid, i32* %shmid.addr, align 4
+  store i8* %shmaddr, i8** %shmaddr.addr, align 8
+  store i32 %shmflg, i32* %shmflg.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__sysv_signal(i32 noundef %a, i8* noundef %b) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  %b.addr = alloca i8*, align 8
+  store i32 %a, i32* %a.addr, align 4
+  store i8* %b, i8** %b.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void (i32)* @signal(i32 noundef %sig, void (i32)* noundef %func) #0 {
+entry:
+  %sig.addr = alloca i32, align 4
+  %func.addr = alloca void (i32)*, align 8
+  store i32 %sig, i32* %sig.addr, align 4
+  store void (i32)* %func, void (i32)** %func.addr, align 8
+  ret void (i32)* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tempnam(i8* noundef %dir, i8* noundef %pfx) #0 {
+entry:
+  %dir.addr = alloca i8*, align 8
+  %pfx.addr = alloca i8*, align 8
+  store i8* %dir, i8** %dir.addr, align 8
+  store i8* %pfx, i8** %pfx.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tmpvoid() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @xcalloc(i64 noundef %size1, i64 noundef %size2) #0 {
+entry:
+  %size1.addr = alloca i64, align 8
+  %size2.addr = alloca i64, align 8
+  store i64 %size1, i64* %size1.addr, align 8
+  store i64 %size2, i64* %size2.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @xmalloc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_Znam(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_Znaj(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_Znwj(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__cxa_allocate_exception(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @aligned_alloc(i64 noundef %size1, i64 noundef %size2) #0 {
+entry:
+  %size1.addr = alloca i64, align 8
+  %size2.addr = alloca i64, align 8
+  store i64 %size1, i64* %size1.addr, align 8
+  store i64 %size2, i64* %size2.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memalign(i64 noundef %size1, i64 noundef %size2) #0 {
+entry:
+  %size1.addr = alloca i64, align 8
+  %size2.addr = alloca i64, align 8
+  store i64 %size1, i64* %size1.addr, align 8
+  store i64 %size2, i64* %size2.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @valloc(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @mmap64(i8* noundef %addr, i64 noundef %len, i32 noundef %prot, i32 noundef %flags, i32 noundef %fildes, i64 noundef %off) #0 {
+entry:
+  %addr.addr = alloca i8*, align 8
+  %len.addr = alloca i64, align 8
+  %prot.addr = alloca i32, align 4
+  %flags.addr = alloca i32, align 4
+  %fildes.addr = alloca i32, align 4
+  %off.addr = alloca i64, align 8
+  store i8* %addr, i8** %addr.addr, align 8
+  store i64 %len, i64* %len.addr, align 8
+  store i32 %prot, i32* %prot.addr, align 4
+  store i32 %flags, i32* %flags.addr, align 4
+  store i32 %fildes, i32* %fildes.addr, align 4
+  store i64 %off, i64* %off.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @XSetLocaleModifiers(i8* noundef %a) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__strdup(i8* noundef %string) #0 {
+entry:
+  %string.addr = alloca i8*, align 8
+  store i8* %string, i8** %string.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @crypt(i8* noundef %key, i8* noundef %salt) #0 {
+entry:
+  %key.addr = alloca i8*, align 8
+  %salt.addr = alloca i8*, align 8
+  store i8* %key, i8** %key.addr, align 8
+  store i8* %salt, i8** %salt.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @ctime(i8* noundef %timer) #0 {
+entry:
+  %timer.addr = alloca i8*, align 8
+  store i8* %timer, i8** %timer.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @dlerror() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @dlopen(i8* noundef %voidname, i32 noundef %flags) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %flags.addr = alloca i32, align 4
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i32 %flags, i32* %flags.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gai_strerror(i32 noundef %errcode) #0 {
+entry:
+  %errcode.addr = alloca i32, align 4
+  store i32 %errcode, i32* %errcode.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gcry_cipher_algo_name(i32 noundef %errcode) #0 {
+entry:
+  %errcode.addr = alloca i32, align 4
+  store i32 %errcode, i32* %errcode.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @svfgcry_md_algo_name_(i32 noundef %errcode) #0 {
+entry:
+  %errcode.addr = alloca i32, align 4
+  store i32 %errcode, i32* %errcode.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @getenv(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @getlogin() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @getpass(i8* noundef %prompt) #0 {
+entry:
+  %prompt.addr = alloca i8*, align 8
+  store i8* %prompt, i8** %prompt.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gnutls_strerror(i32 noundef %error) #0 {
+entry:
+  %error.addr = alloca i32, align 4
+  store i32 %error, i32* %error.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gpg_strerror(i32 noundef %a) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  store i32 %a, i32* %a.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gzerror(i8* noundef %file, i32* noundef %errnum) #0 {
+entry:
+  %file.addr = alloca i8*, align 8
+  %errnum.addr = alloca i32*, align 8
+  store i8* %file, i8** %file.addr, align 8
+  store i32* %errnum, i32** %errnum.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @inet_ntoa(i32 noundef %in) #0 {
+entry:
+  %in.addr = alloca i32, align 4
+  store i32 %in, i32* %in.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @initscr() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @llvm_stacksave() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @mmap(i8* noundef %addr, i64 noundef %len, i32 noundef %prot, i32 noundef %flags, i32 noundef %fildes, i64 noundef %off) #0 {
+entry:
+  %addr.addr = alloca i8*, align 8
+  %len.addr = alloca i64, align 8
+  %prot.addr = alloca i32, align 4
+  %flags.addr = alloca i32, align 4
+  %fildes.addr = alloca i32, align 4
+  %off.addr = alloca i64, align 8
+  store i8* %addr, i8** %addr.addr, align 8
+  store i64 %len, i64* %len.addr, align 8
+  store i32 %prot, i32* %prot.addr, align 4
+  store i32 %flags, i32* %flags.addr, align 4
+  store i32 %fildes, i32* %fildes.addr, align 4
+  store i64 %off, i64* %off.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @newwin(i32 noundef %nlines, i32 noundef %ncols, i32 noundef %begin_y, i32 noundef %begin_x) #0 {
+entry:
+  %nlines.addr = alloca i32, align 4
+  %ncols.addr = alloca i32, align 4
+  %begin_y.addr = alloca i32, align 4
+  %begin_x.addr = alloca i32, align 4
+  store i32 %nlines, i32* %nlines.addr, align 4
+  store i32 %ncols, i32* %ncols.addr, align 4
+  store i32 %begin_y, i32* %begin_y.addr, align 4
+  store i32 %begin_x, i32* %begin_x.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @nl_langinfo(i32 noundef %item) #0 {
+entry:
+  %item.addr = alloca i32, align 4
+  store i32 %item, i32* %item.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @opendir(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @sbrk(i64 noundef %increment) #0 {
+entry:
+  %increment.addr = alloca i64, align 8
+  store i64 %increment, i64* %increment.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strdup(i8* noundef %s) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  store i8* %s, i8** %s.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strerror(i32 noundef %errnum) #0 {
+entry:
+  %errnum.addr = alloca i32, align 4
+  store i32 %errnum, i32* %errnum.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strsignal(i32 noundef %errnum) #0 {
+entry:
+  %errnum.addr = alloca i32, align 4
+  store i32 %errnum, i32* %errnum.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @textdomain(i8* noundef %domainname) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  store i8* %domainname, i8** %domainname.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tgetstr(i8* noundef %id, i8** noundef %area) #0 {
+entry:
+  %id.addr = alloca i8*, align 8
+  %area.addr = alloca i8**, align 8
+  store i8* %id, i8** %id.addr, align 8
+  store i8** %area, i8*** %area.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tigetstr(i8* noundef %capname) #0 {
+entry:
+  %capname.addr = alloca i8*, align 8
+  store i8* %capname, i8** %capname.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tmpnam(i8* noundef %s) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  store i8* %s, i8** %s.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @ttyname(i32 noundef %fd) #0 {
+entry:
+  %fd.addr = alloca i32, align 4
+  store i32 %fd, i32* %fd.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @getcwd(i8* noundef %buf, i64 noundef %size) #0 {
+entry:
+  %buf.addr = alloca i8*, align 8
+  %size.addr = alloca i64, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @mem_realloc(i8* noundef %ptr, i64 noundef %size) #0 {
+entry:
+  %ptr.addr = alloca i8*, align 8
+  %size.addr = alloca i64, align 8
+  store i8* %ptr, i8** %ptr.addr, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @realloc(i8* noundef %ptr, i64 noundef %size) #0 {
+entry:
+  %ptr.addr = alloca i8*, align 8
+  %size.addr = alloca i64, align 8
+  store i8* %ptr, i8** %ptr.addr, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safe_realloc(i8* noundef %p, i64 noundef %n) #0 {
+entry:
+  %p.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %p, i8** %p.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @saferealloc(i8* noundef %p, i64 noundef %n1, i64 noundef %n2) #0 {
+entry:
+  %p.addr = alloca i8*, align 8
+  %n1.addr = alloca i64, align 8
+  %n2.addr = alloca i64, align 8
+  store i8* %p, i8** %p.addr, align 8
+  store i64 %n1, i64* %n1.addr, align 8
+  store i64 %n2, i64* %n2.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @safexrealloc() #0 {
+entry:
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strtok(i8* noundef %str, i8* noundef %delim) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %delim.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i8* %delim, i8** %delim.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strtok_r(i8* noundef %str, i8* noundef %delim, i8** noundef %saveptr) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %delim.addr = alloca i8*, align 8
+  %saveptr.addr = alloca i8**, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i8* %delim, i8** %delim.addr, align 8
+  store i8** %saveptr, i8*** %saveptr.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strsep(i8** noundef %stringp, i8* noundef %delim) #0 {
+entry:
+  %stringp.addr = alloca i8**, align 8
+  %delim.addr = alloca i8*, align 8
+  store i8** %stringp, i8*** %stringp.addr, align 8
+  store i8* %delim, i8** %delim.addr, align 8
+  %0 = load i8**, i8*** %stringp.addr, align 8
+  %1 = load i8*, i8** %0, align 8
+  ret i8* %1
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @xrealloc(i8* noundef %ptr, i64 noundef %bytes) #0 {
+entry:
+  %ptr.addr = alloca i8*, align 8
+  %bytes.addr = alloca i64, align 8
+  store i8* %ptr, i8** %ptr.addr, align 8
+  store i64 %bytes, i64* %bytes.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_Znwm(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_ZnwmRKSt9nothrow_t(i64 noundef %size, i8* noundef %0) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i8*, align 8
+  store i64 %size, i64* %size.addr, align 8
+  store i8* %0, i8** %.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_ZnamRKSt9nothrow_t(i64 noundef %size, i8* noundef %0) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i8*, align 8
+  store i64 %size, i64* %size.addr, align 8
+  store i8* %0, i8** %.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @asprintf(i8** noalias noundef %strp, i8* noalias noundef %fmt, ...) #0 {
+entry:
+  %strp.addr = alloca i8**, align 8
+  %fmt.addr = alloca i8*, align 8
+  store i8** %strp, i8*** %strp.addr, align 8
+  store i8* %fmt, i8** %fmt.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @vasprintf(i8** noundef %strp, i8* noundef %fmt, i8* noundef %ap) #0 {
+entry:
+  %strp.addr = alloca i8**, align 8
+  %fmt.addr = alloca i8*, align 8
+  %ap.addr = alloca i8*, align 8
+  store i8** %strp, i8*** %strp.addr, align 8
+  store i8* %fmt, i8** %fmt.addr, align 8
+  store i8* %ap, i8** %ap.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @db_create(i8** noundef %dbp, i8* noundef %dbenv, i32 noundef %flags) #0 {
+entry:
+  %dbp.addr = alloca i8**, align 8
+  %dbenv.addr = alloca i8*, align 8
+  %flags.addr = alloca i32, align 4
+  store i8** %dbp, i8*** %dbp.addr, align 8
+  store i8* %dbenv, i8** %dbenv.addr, align 8
+  store i32 %flags, i32* %flags.addr, align 4
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @gnutls_pkcs12_bag_init(i8* noundef %a) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @gnutls_pkcs12_init(i8* noundef %a) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @gnutls_x509_crt_init(i8* noundef %a) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @gnutls_x509_privkey_init(i8* noundef %a) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @posix_memalign(i8** noundef %a, i64 noundef %b, i64 noundef %c) #0 {
+entry:
+  %a.addr = alloca i8**, align 8
+  %b.addr = alloca i64, align 8
+  %c.addr = alloca i64, align 8
+  store i8** %a, i8*** %a.addr, align 8
+  store i64 %b, i64* %b.addr, align 8
+  store i64 %c, i64* %c.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @scandir(i8* noalias noundef %dirp, %struct.dirent*** noalias noundef %namelist, i32 (%struct.dirent*)* noundef %filter, i32 (%struct.dirent**, %struct.dirent**)* noundef %compar) #0 {
+entry:
+  %dirp.addr = alloca i8*, align 8
+  %namelist.addr = alloca %struct.dirent***, align 8
+  %filter.addr = alloca i32 (%struct.dirent*)*, align 8
+  %compar.addr = alloca i32 (%struct.dirent**, %struct.dirent**)*, align 8
+  store i8* %dirp, i8** %dirp.addr, align 8
+  store %struct.dirent*** %namelist, %struct.dirent**** %namelist.addr, align 8
+  store i32 (%struct.dirent*)* %filter, i32 (%struct.dirent*)** %filter.addr, align 8
+  store i32 (%struct.dirent**, %struct.dirent**)* %compar, i32 (%struct.dirent**, %struct.dirent**)** %compar.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @XmbTextPropertyToTextList(i8* noundef %a, i8* noundef %b, i8*** noundef %c, i32* noundef %d) #0 {
+entry:
+  %a.addr = alloca i8*, align 8
+  %b.addr = alloca i8*, align 8
+  %c.addr = alloca i8***, align 8
+  %d.addr = alloca i32*, align 8
+  store i8* %a, i8** %a.addr, align 8
+  store i8* %b, i8** %b.addr, align 8
+  store i8*** %c, i8**** %c.addr, align 8
+  store i32* %d, i32** %d.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memcpy_p0i8_p0i8_i64(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memcpy_p0i8_p0i8_i32(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memcpy(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memmove(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memmove_p0i8_p0i8_i64(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memmove_p0i8_p0i8_i32(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @__memcpy_chk(i8* noundef %dst, i8* noundef %src, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memmove(i8* noundef %str1, i8* noundef %str2, i64 noundef %n) #0 {
+entry:
+  %str1.addr = alloca i8*, align 8
+  %str2.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %str1, i8** %str1.addr, align 8
+  store i8* %str2, i8** %str2.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @bcopy(i8* noundef %s1, i8* noundef %s2, i64 noundef %n) #0 {
+entry:
+  %s1.addr = alloca i8*, align 8
+  %s2.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %s1, i8** %s1.addr, align 8
+  store i8* %s2, i8** %s2.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memccpy(i8* noalias noundef %dest, i8* noalias noundef %src, i32 noundef %c, i64 noundef %count) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  %count.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  store i64 %count, i64* %count.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @__memmove_chk(i8* noundef %dst, i8* noundef %src, i32 noundef %sz) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %sz.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i32 %sz, i32* %sz.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memset(i8* noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %elem.addr = alloca i8, align 1
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8 %elem, i8* %elem.addr, align 1
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memset_p0i8_i32(i8* noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %elem.addr = alloca i8, align 1
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8 %elem, i8* %elem.addr, align 1
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @llvm_memset_p0i8_i64(i8* noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %elem.addr = alloca i8, align 1
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8 %elem, i8* %elem.addr, align 1
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__memset_chk(i8* noundef %dest, i32 noundef %c, i64 noundef %destlen, i32 noundef %flag) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  %destlen.addr = alloca i64, align 8
+  %flag.addr = alloca i32, align 4
+  store i8* %dest, i8** %dest.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  store i64 %destlen, i64* %destlen.addr, align 8
+  store i32 %flag, i32* %flag.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @wmemset(i32* noundef %dst, i32 noundef %elem, i32 noundef %sz, i32 noundef %flag) #0 {
+entry:
+  %dst.addr = alloca i32*, align 8
+  %elem.addr = alloca i32, align 4
+  %sz.addr = alloca i32, align 4
+  %flag.addr = alloca i32, align 4
+  store i32* %dst, i32** %dst.addr, align 8
+  store i32 %elem, i32* %elem.addr, align 4
+  store i32 %sz, i32* %sz.addr, align 4
+  store i32 %flag, i32* %flag.addr, align 4
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__strcpy_chk(i8* noundef %dest, i8* noundef %src, i64 noundef %destlen) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %destlen.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i64 %destlen, i64* %destlen.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__strcat_chk(i8* noundef %dest, i8* noundef %src, i64 noundef %destlen) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %destlen.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i64 %destlen, i64* %destlen.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32* @__wcscat_chk(i32* noundef %dest, i32* noundef %src) #0 {
+entry:
+  %dest.addr = alloca i32*, align 8
+  %src.addr = alloca i32*, align 8
+  store i32* %dest, i32** %dest.addr, align 8
+  store i32* %src, i32** %src.addr, align 8
+  ret i32* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @stpcpy(i8* noalias noundef %dst, i8* noalias noundef %src) #0 {
+entry:
+  %dst.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  store i8* %dst, i8** %dst.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strcat(i8* noundef %dest, i8* noundef %src) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @wcscat(i8* noundef %dest, i8* noundef %src) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strcpy(i8* noundef %dest, i8* noundef %src) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strncat(i8* noundef %dest, i8* noundef %src, i64 noundef %n) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32* @wcsncat(i32* noundef %dest, i32* noundef %src, i32 noundef %n) #0 {
+entry:
+  %dest.addr = alloca i32*, align 8
+  %src.addr = alloca i32*, align 8
+  %n.addr = alloca i32, align 4
+  store i32* %dest, i32** %dest.addr, align 8
+  store i32* %src, i32** %src.addr, align 8
+  store i32 %n, i32* %n.addr, align 4
+  ret i32* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__strncat_chk(i8* noundef %dest, i8* noundef %src, i64 noundef %n) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32* @__wcsncat_chk(i32* noundef %dest, i32* noundef %src, i32 noundef %n) #0 {
+entry:
+  %dest.addr = alloca i32*, align 8
+  %src.addr = alloca i32*, align 8
+  %n.addr = alloca i32, align 4
+  store i32* %dest, i32** %dest.addr, align 8
+  store i32* %src, i32** %src.addr, align 8
+  store i32 %n, i32* %n.addr, align 4
+  ret i32* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strncpy(i8* noundef %dest, i8* noundef %src, i64 noundef %n) #0 {
+entry:
+  %dest.addr = alloca i8*, align 8
+  %src.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %dest, i8** %dest.addr, align 8
+  store i8* %src, i8** %src.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @wcscpy(i32* noundef %dest, i32* noundef %src) #0 {
+entry:
+  %dest.addr = alloca i32*, align 8
+  %src.addr = alloca i32*, align 8
+  store i32* %dest, i32** %dest.addr, align 8
+  store i32* %src, i32** %src.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64 @iconv(i8* noundef %cd, i8** noalias noundef %inbuf, i64* noalias noundef %inbytesleft, i8** noalias noundef %outbuf, i64* noalias noundef %outbytesleft) #0 {
+entry:
+  %cd.addr = alloca i8*, align 8
+  %inbuf.addr = alloca i8**, align 8
+  %inbytesleft.addr = alloca i64*, align 8
+  %outbuf.addr = alloca i8**, align 8
+  %outbytesleft.addr = alloca i64*, align 8
+  store i8* %cd, i8** %cd.addr, align 8
+  store i8** %inbuf, i8*** %inbuf.addr, align 8
+  store i64* %inbytesleft, i64** %inbytesleft.addr, align 8
+  store i8** %outbuf, i8*** %outbuf.addr, align 8
+  store i64* %outbytesleft, i64** %outbytesleft.addr, align 8
+  ret i64 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @_ZNSt5arrayIPK1ALm2EE4backEv(i8* noundef %arg) #0 {
+entry:
+  %arg.addr = alloca i8*, align 8
+  %ptr1 = alloca i8*, align 8
+  %ptr2 = alloca i8*, align 8
+  store i8* %arg, i8** %arg.addr, align 8
+  %0 = load i8*, i8** %arg.addr, align 8
+  %add.ptr = getelementptr inbounds i8, i8* %0, i64 0
+  store i8* %add.ptr, i8** %ptr1, align 8
+  %1 = load i8*, i8** %ptr1, align 8
+  %add.ptr1 = getelementptr inbounds i8, i8* %1, i64 0
+  store i8* %add.ptr1, i8** %ptr2, align 8
+  %2 = load i8*, i8** %ptr2, align 8
+  ret i8* %2
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @SyGetmem(i64 noundef %size) #0 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, i64* %size.addr, align 8
+  ret i8* null
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__rawmemchr(i8* noundef %s, i32 noundef %c) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %s, i8** %s.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.jpeg_error_mgr* @jpeg_std_error(%struct.jpeg_error_mgr* noundef %a) #0 {
+entry:
+  %a.addr = alloca %struct.jpeg_error_mgr*, align 8
+  store %struct.jpeg_error_mgr* %a, %struct.jpeg_error_mgr** %a.addr, align 8
+  %0 = load %struct.jpeg_error_mgr*, %struct.jpeg_error_mgr** %a.addr, align 8
+  ret %struct.jpeg_error_mgr* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @fgets(i8* noundef %str, i32 noundef %n, i8* noundef %stream) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %n.addr = alloca i32, align 4
+  %stream.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %n, i32* %n.addr, align 4
+  store i8* %stream, i8** %stream.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @fgets_unlocked(i8* noundef %str, i32 noundef %n, i8* noundef %stream) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %n.addr = alloca i32, align 4
+  %stream.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %n, i32* %n.addr, align 4
+  store i8* %stream, i8** %stream.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gets(i8* noundef %str) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memchr(i8* noundef %str, i32 noundef %c, i64 noundef %n) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  %n.addr = alloca i64, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  store i64 %n, i64* %n.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memrchr(i8* noundef %str, i32 noundef %c, i64 noundef %n) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  %n.addr = alloca i64, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  store i64 %n, i64* %n.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @mremap(i8* noundef %old_address, i64 noundef %old_size, i64 noundef %new_size, i32 noundef %flags) #0 {
+entry:
+  %old_address.addr = alloca i8*, align 8
+  %old_size.addr = alloca i64, align 8
+  %new_size.addr = alloca i64, align 8
+  %flags.addr = alloca i32, align 4
+  store i8* %old_address, i8** %old_address.addr, align 8
+  store i64 %old_size, i64* %old_size.addr, align 8
+  store i64 %new_size, i64* %new_size.addr, align 8
+  store i32 %flags, i32* %flags.addr, align 4
+  %0 = load i8*, i8** %old_address.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strchr(i8* noundef %str, i32 noundef %c) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__strchrnull(i8* noundef %s, i32 noundef %c) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %s, i8** %s.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strcasestr(i8* noundef %haystack, i8* noundef %needle) #0 {
+entry:
+  %haystack.addr = alloca i8*, align 8
+  %needle.addr = alloca i8*, align 8
+  store i8* %haystack, i8** %haystack.addr, align 8
+  store i8* %needle, i8** %needle.addr, align 8
+  %0 = load i8*, i8** %haystack.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @index(i8* noundef %s, i32 noundef %c) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %s, i8** %s.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @rindex(i8* noundef %s, i32 noundef %c) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %s, i8** %s.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strerror_r(i32 noundef %errnum, i8* noundef %buf, i64 noundef %buflen) #0 {
+entry:
+  %errnum.addr = alloca i32, align 4
+  %buf.addr = alloca i8*, align 8
+  %buflen.addr = alloca i64, align 8
+  store i32 %errnum, i32* %errnum.addr, align 4
+  store i8* %buf, i8** %buf.addr, align 8
+  store i64 %buflen, i64* %buflen.addr, align 8
+  %0 = load i8*, i8** %buf.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strpbrk(i8* noundef %str1, i8* noundef %str2) #0 {
+entry:
+  %str1.addr = alloca i8*, align 8
+  %str2.addr = alloca i8*, align 8
+  store i8* %str1, i8** %str1.addr, align 8
+  store i8* %str2, i8** %str2.addr, align 8
+  %0 = load i8*, i8** %str1.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strptime(i8* noundef %s, i8* noundef %format, i8* noundef %tm) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  %format.addr = alloca i8*, align 8
+  %tm.addr = alloca i8*, align 8
+  store i8* %s, i8** %s.addr, align 8
+  store i8* %format, i8** %format.addr, align 8
+  store i8* %tm, i8** %tm.addr, align 8
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strrchr(i8* noundef %str, i32 noundef %c) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %c.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @strstr(i8* noundef %haystack, i8* noundef %needle) #0 {
+entry:
+  %haystack.addr = alloca i8*, align 8
+  %needle.addr = alloca i8*, align 8
+  store i8* %haystack, i8** %haystack.addr, align 8
+  store i8* %needle, i8** %needle.addr, align 8
+  %0 = load i8*, i8** %haystack.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tmpnam_r(i8* noundef %s) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  store i8* %s, i8** %s.addr, align 8
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isalnum(i32 noundef %character) #1 {
+entry:
+  %character.addr = alloca i32, align 4
+  store i32 %character, i32* %character.addr, align 4
+  %0 = load i32, i32* %character.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isalpha(i32 noundef %character) #1 {
+entry:
+  %character.addr = alloca i32, align 4
+  store i32 %character, i32* %character.addr, align 4
+  %0 = load i32, i32* %character.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isblank(i32 noundef %character) #1 {
+entry:
+  %character.addr = alloca i32, align 4
+  store i32 %character, i32* %character.addr, align 4
+  %0 = load i32, i32* %character.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @iscntrl(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isdigit(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isgraph(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @islower(i32 noundef %arg) #1 {
+entry:
+  %arg.addr = alloca i32, align 4
+  store i32 %arg, i32* %arg.addr, align 4
+  %0 = load i32, i32* %arg.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isprint(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @ispunct(i32 noundef %argument) #1 {
+entry:
+  %argument.addr = alloca i32, align 4
+  store i32 %argument, i32* %argument.addr, align 4
+  %0 = load i32, i32* %argument.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @isspace(i8 noundef signext %c) #0 {
+entry:
+  %c.addr = alloca i8, align 1
+  store i8 %c, i8* %c.addr, align 1
+  %0 = load i8, i8* %c.addr, align 1
+  %conv = sext i8 %0 to i32
+  ret i32 %conv
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isupper(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind readonly uwtable willreturn
+define dso_local i32 @isxdigit(i32 noundef %c) #1 {
+entry:
+  %c.addr = alloca i32, align 4
+  store i32 %c, i32* %c.addr, align 4
+  %0 = load i32, i32* %c.addr, align 4
+  ret i32 %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @asctime_r(i8* noundef %tm, i8* noundef %buf) #0 {
+entry:
+  %tm.addr = alloca i8*, align 8
+  %buf.addr = alloca i8*, align 8
+  store i8* %tm, i8** %tm.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  %0 = load i8*, i8** %buf.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @bsearch(i8* noundef %key, i8* noundef %base, i64 noundef %nitems, i64 noundef %size, i32 (i8*, i8*)* noundef %compar) #0 {
+entry:
+  %key.addr = alloca i8*, align 8
+  %base.addr = alloca i8*, align 8
+  %nitems.addr = alloca i64, align 8
+  %size.addr = alloca i64, align 8
+  %compar.addr = alloca i32 (i8*, i8*)*, align 8
+  store i8* %key, i8** %key.addr, align 8
+  store i8* %base, i8** %base.addr, align 8
+  store i64 %nitems, i64* %nitems.addr, align 8
+  store i64 %size, i64* %size.addr, align 8
+  store i32 (i8*, i8*)* %compar, i32 (i8*, i8*)** %compar.addr, align 8
+  %0 = load i8*, i8** %base.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.mntent* @getmntent_r(i8* noundef %fp, %struct.mntent* noundef %mntbuf, i8* noundef %buf, i32 noundef %buflen) #0 {
+entry:
+  %fp.addr = alloca i8*, align 8
+  %mntbuf.addr = alloca %struct.mntent*, align 8
+  %buf.addr = alloca i8*, align 8
+  %buflen.addr = alloca i32, align 4
+  store i8* %fp, i8** %fp.addr, align 8
+  store %struct.mntent* %mntbuf, %struct.mntent** %mntbuf.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  store i32 %buflen, i32* %buflen.addr, align 4
+  %0 = load %struct.mntent*, %struct.mntent** %mntbuf.addr, align 8
+  ret %struct.mntent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.tm* @gmtime_r(i8* noundef %timer, %struct.tm* noundef %buf) #0 {
+entry:
+  %timer.addr = alloca i8*, align 8
+  %buf.addr = alloca %struct.tm*, align 8
+  store i8* %timer, i8** %timer.addr, align 8
+  store %struct.tm* %buf, %struct.tm** %buf.addr, align 8
+  %0 = load %struct.tm*, %struct.tm** %buf.addr, align 8
+  ret %struct.tm* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gzgets(i8* noundef %file, i8* noundef %buf, i32 noundef %len) #0 {
+entry:
+  %file.addr = alloca i8*, align 8
+  %buf.addr = alloca i8*, align 8
+  %len.addr = alloca i32, align 4
+  store i8* %file, i8** %file.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  store i32 %len, i32* %len.addr, align 4
+  %0 = load i8*, i8** %buf.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.tm* @localtime_r(i8* noundef %timep, %struct.tm* noundef %result) #0 {
+entry:
+  %timep.addr = alloca i8*, align 8
+  %result.addr = alloca %struct.tm*, align 8
+  store i8* %timep, i8** %timep.addr, align 8
+  store %struct.tm* %result, %struct.tm** %result.addr, align 8
+  %0 = load %struct.tm*, %struct.tm** %result.addr, align 8
+  ret %struct.tm* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @realpath(i8* noalias noundef %path, i8* noalias noundef %resolved_path) #0 {
+entry:
+  %path.addr = alloca i8*, align 8
+  %resolved_path.addr = alloca i8*, align 8
+  store i8* %path, i8** %path.addr, align 8
+  store i8* %resolved_path, i8** %resolved_path.addr, align 8
+  %0 = load i8*, i8** %resolved_path.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @freopen64(i8* noundef %voidname, i8* noundef %mode, i8* noundef %fp) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %mode.addr = alloca i8*, align 8
+  %fp.addr = alloca i8*, align 8
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i8* %mode, i8** %mode.addr, align 8
+  store i8* %fp, i8** %fp.addr, align 8
+  %0 = load i8*, i8** %fp.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @freopen(i8* noundef %voidname, i8* noundef %mode, i8* noundef %fp) #0 {
+entry:
+  %voidname.addr = alloca i8*, align 8
+  %mode.addr = alloca i8*, align 8
+  %fp.addr = alloca i8*, align 8
+  store i8* %voidname, i8** %voidname.addr, align 8
+  store i8* %mode, i8** %mode.addr, align 8
+  store i8* %fp, i8** %fp.addr, align 8
+  %0 = load i8*, i8** %fp.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @inet_ntop(i32 noundef %af, i8* noalias noundef %src, i8* noalias noundef %dst, i32 noundef %size) #0 {
+entry:
+  %af.addr = alloca i32, align 4
+  %src.addr = alloca i8*, align 8
+  %dst.addr = alloca i8*, align 8
+  %size.addr = alloca i32, align 4
+  store i32 %af, i32* %af.addr, align 4
+  store i8* %src, i8** %src.addr, align 8
+  store i8* %dst, i8** %dst.addr, align 8
+  store i32 %size, i32* %size.addr, align 4
+  %0 = load i8*, i8** %dst.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local double @strtod(i8* noundef %str, i8** noundef %endptr) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret double 0.000000e+00
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local double @strtod_l(i8* noundef %str, i8** noundef %endptr, i8* noundef %loc) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %loc.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i8* %loc, i8** %loc.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret double 0.000000e+00
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local float @strtof(i8* noundef %nptr, i8** noundef %endptr) #0 {
+entry:
+  %nptr.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  store i8* %nptr, i8** %nptr.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  %0 = load i8*, i8** %nptr.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret float 0.000000e+00
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local float @strtof_l(i8* noundef %nptr, i8** noundef %endptr, i8* noundef %loc) #0 {
+entry:
+  %nptr.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %loc.addr = alloca i8*, align 8
+  store i8* %nptr, i8** %nptr.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i8* %loc, i8** %loc.addr, align 8
+  %0 = load i8*, i8** %nptr.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret float 0.000000e+00
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64 @strtol(i8* noundef %str, i8** noundef %endptr, i32 noundef %base) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %base.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i32 %base, i32* %base.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i64 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64 @strtoll(i8* noundef %str, i8** noundef %endptr, i32 noundef %base) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %base.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i32 %base, i32* %base.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i64 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local x86_fp80 @strtold(i8* noundef %str, i8** noundef %endptr) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret x86_fp80 0xK00000000000000000000
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64 @strtoul(i8* noundef %str, i8** noundef %endptr, i32 noundef %base) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %base.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i32 %base, i32* %base.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i64 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i64 @strtoull(i8* noundef %str, i8** noundef %endptr, i32 noundef %base) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  %endptr.addr = alloca i8**, align 8
+  %base.addr = alloca i32, align 4
+  store i8* %str, i8** %str.addr, align 8
+  store i8** %endptr, i8*** %endptr.addr, align 8
+  store i32 %base, i32* %base.addr, align 4
+  %0 = load i8*, i8** %str.addr, align 8
+  %1 = load i8**, i8*** %endptr.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i64 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gcvt(double noundef %x, i32 noundef %ndigit, i8* noundef %buf) #0 {
+entry:
+  %x.addr = alloca double, align 8
+  %ndigit.addr = alloca i32, align 4
+  %buf.addr = alloca i8*, align 8
+  store double %x, double* %x.addr, align 8
+  store i32 %ndigit, i32* %ndigit.addr, align 4
+  store i8* %buf, i8** %buf.addr, align 8
+  %0 = load i8*, i8** %buf.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @memmem(i8* noundef %haystack, i64 noundef %haystacklen, i8* noundef %needle, i64 noundef %needlelen) #0 {
+entry:
+  %haystack.addr = alloca i8*, align 8
+  %haystacklen.addr = alloca i64, align 8
+  %needle.addr = alloca i8*, align 8
+  %needlelen.addr = alloca i64, align 8
+  store i8* %haystack, i8** %haystack.addr, align 8
+  store i64 %haystacklen, i64* %haystacklen.addr, align 8
+  store i8* %needle, i8** %needle.addr, align 8
+  store i64 %needlelen, i64* %needlelen.addr, align 8
+  %0 = load i8*, i8** %haystack.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @ctime_r(i8* noundef %timer, i8* noundef %buf) #0 {
+entry:
+  %timer.addr = alloca i8*, align 8
+  %buf.addr = alloca i8*, align 8
+  store i8* %timer, i8** %timer.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  %0 = load i8*, i8** %buf.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @readdir_r(i8* noundef %__restrict__dir, i8* noundef %__restrict__entry, i8** noundef %__restrict__result) #0 {
+entry:
+  %__restrict__dir.addr = alloca i8*, align 8
+  %__restrict__entry.addr = alloca i8*, align 8
+  %__restrict__result.addr = alloca i8**, align 8
+  store i8* %__restrict__dir, i8** %__restrict__dir.addr, align 8
+  store i8* %__restrict__entry, i8** %__restrict__entry.addr, align 8
+  store i8** %__restrict__result, i8*** %__restrict__result.addr, align 8
+  %0 = load i8**, i8*** %__restrict__result.addr, align 8
+  %1 = load i8*, i8** %0, align 8
+  store i8* %1, i8** %__restrict__entry.addr, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @getpwnam_r(i8* noundef %name, i8* noundef %pwd, i8* noundef %buf, i64 noundef %buflen, i8** noundef %result) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  %pwd.addr = alloca i8*, align 8
+  %buf.addr = alloca i8*, align 8
+  %buflen.addr = alloca i64, align 8
+  %result.addr = alloca i8**, align 8
+  store i8* %name, i8** %name.addr, align 8
+  store i8* %pwd, i8** %pwd.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  store i64 %buflen, i64* %buflen.addr, align 8
+  store i8** %result, i8*** %result.addr, align 8
+  %0 = load i8*, i8** %pwd.addr, align 8
+  %1 = load i8**, i8*** %result.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32 @getpwuid_r(i32 noundef %uid, i8* noundef %pwd, i8* noundef %buf, i64 noundef %buflen, i8** noundef %result) #0 {
+entry:
+  %uid.addr = alloca i32, align 4
+  %pwd.addr = alloca i8*, align 8
+  %buf.addr = alloca i8*, align 8
+  %buflen.addr = alloca i64, align 8
+  %result.addr = alloca i8**, align 8
+  store i32 %uid, i32* %uid.addr, align 4
+  store i8* %pwd, i8** %pwd.addr, align 8
+  store i8* %buf, i8** %buf.addr, align 8
+  store i64 %buflen, i64* %buflen.addr, align 8
+  store i8** %result, i8*** %result.addr, align 8
+  %0 = load i8*, i8** %pwd.addr, align 8
+  %1 = load i8**, i8*** %result.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret i32 0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_ZNSt8__detail15_List_node_base7_M_hookEPS0_(i8* noundef %arg0, i8** noundef %arg1) #0 {
+entry:
+  %arg0.addr = alloca i8*, align 8
+  %arg1.addr = alloca i8**, align 8
+  store i8* %arg0, i8** %arg0.addr, align 8
+  store i8** %arg1, i8*** %arg1.addr, align 8
+  %0 = load i8*, i8** %arg0.addr, align 8
+  %1 = load i8**, i8*** %arg1.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__dynamic_cast(i8* noundef %source, i8* noundef %sourceTypeInfo, i8* noundef %targetTypeInfo, i64 noundef %castType) #0 {
+entry:
+  %source.addr = alloca i8*, align 8
+  %sourceTypeInfo.addr = alloca i8*, align 8
+  %targetTypeInfo.addr = alloca i8*, align 8
+  %castType.addr = alloca i64, align 8
+  store i8* %source, i8** %source.addr, align 8
+  store i8* %sourceTypeInfo, i8** %sourceTypeInfo.addr, align 8
+  store i8* %targetTypeInfo, i8** %targetTypeInfo.addr, align 8
+  store i64 %castType, i64* %castType.addr, align 8
+  %0 = load i8*, i8** %source.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_ZNSsC1EPKcRKSaIcE(i8** noundef %arg0, i8* noundef %arg1) #0 {
+entry:
+  %arg0.addr = alloca i8**, align 8
+  %arg1.addr = alloca i8*, align 8
+  store i8** %arg0, i8*** %arg0.addr, align 8
+  store i8* %arg1, i8** %arg1.addr, align 8
+  %0 = load i8*, i8** %arg1.addr, align 8
+  %1 = load i8**, i8*** %arg0.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_(i8** noundef %arg0, i8* noundef %arg1) #0 {
+entry:
+  %arg0.addr = alloca i8**, align 8
+  %arg1.addr = alloca i8*, align 8
+  store i8** %arg0, i8*** %arg0.addr, align 8
+  store i8* %arg1, i8** %arg1.addr, align 8
+  %0 = load i8*, i8** %arg1.addr, align 8
+  %1 = load i8**, i8*** %arg0.addr, align 8
+  store i8* %0, i8** %1, align 8
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i16** @__ctype_b_loc() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to i16**
+  ret i16** %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32** @__ctype_tolower_loc() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to i32**
+  ret i32** %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32** @__ctype_toupper_loc() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to i32**
+  ret i32** %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32* @__errno_location() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to i32*
+  ret i32* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i32* @__h_errno_location() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to i32*
+  ret i32* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @__res_state() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @asctime(i8* noundef %timeptr) #0 {
+entry:
+  %timeptr.addr = alloca i8*, align 8
+  store i8* %timeptr, i8** %timeptr.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @bindtextdomain(i8* noundef %domainname, i8* noundef %dirname) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  %dirname.addr = alloca i8*, align 8
+  store i8* %domainname, i8** %domainname.addr, align 8
+  store i8* %dirname, i8** %dirname.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @bind_textdomain_codeset(i8* noundef %domainname, i8* noundef %codeset) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  %codeset.addr = alloca i8*, align 8
+  store i8* %domainname, i8** %domainname.addr, align 8
+  store i8* %codeset, i8** %codeset.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @ctermid(i8* noundef %s) #0 {
+entry:
+  %s.addr = alloca i8*, align 8
+  store i8* %s, i8** %s.addr, align 8
+  %0 = load i8*, i8** %s.addr, align 8
+  ret i8* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @dcgettext(i8* noundef %domainname, i8* noundef %msgid, i32 noundef %category) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  %msgid.addr = alloca i8*, align 8
+  %category.addr = alloca i32, align 4
+  store i8* %domainname, i8** %domainname.addr, align 8
+  store i8* %msgid, i8** %msgid.addr, align 8
+  store i32 %category, i32* %category.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @dgettext(i8* noundef %domainname, i8* noundef %msgid) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  %msgid.addr = alloca i8*, align 8
+  store i8* %domainname, i8** %domainname.addr, align 8
+  store i8* %msgid, i8** %msgid.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @dngettext(i8* noundef %domainname, i8* noundef %msgid, i8* noundef %msgid_plural, i64 noundef %n) #0 {
+entry:
+  %domainname.addr = alloca i8*, align 8
+  %msgid.addr = alloca i8*, align 8
+  %msgid_plural.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %domainname, i8** %domainname.addr, align 8
+  store i8* %msgid, i8** %msgid.addr, align 8
+  store i8* %msgid_plural, i8** %msgid_plural.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.group* @getgrgid(i32 noundef %gid) #0 {
+entry:
+  %gid.addr = alloca i32, align 4
+  store i32 %gid, i32* %gid.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.group*
+  ret %struct.group* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.group* @getgrnam(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.group*
+  ret %struct.group* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.hostent* @gethostbyaddr(i8* noundef %addr, i32 noundef %len, i32 noundef %type) #0 {
+entry:
+  %addr.addr = alloca i8*, align 8
+  %len.addr = alloca i32, align 4
+  %type.addr = alloca i32, align 4
+  store i8* %addr, i8** %addr.addr, align 8
+  store i32 %len, i32* %len.addr, align 4
+  store i32 %type, i32* %type.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.hostent*
+  ret %struct.hostent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.hostent* @gethostbyname(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.hostent*
+  ret %struct.hostent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.hostent* @gethostbyname2(i8* noundef %name, i32 noundef %af) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  %af.addr = alloca i32, align 4
+  store i8* %name, i8** %name.addr, align 8
+  store i32 %af, i32* %af.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.hostent*
+  ret %struct.hostent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.mntent* @getmntent(i8* noundef %stream) #0 {
+entry:
+  %stream.addr = alloca i8*, align 8
+  store i8* %stream, i8** %stream.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.mntent*
+  ret %struct.mntent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.protoent* @getprotobyname(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.protoent*
+  ret %struct.protoent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.protoent* @getprotobynumber(i32 noundef %proto) #0 {
+entry:
+  %proto.addr = alloca i32, align 4
+  store i32 %proto, i32* %proto.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.protoent*
+  ret %struct.protoent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.passwd* @getpwent() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.passwd*
+  ret %struct.passwd* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.passwd* @getpwnam(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.passwd*
+  ret %struct.passwd* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.passwd* @getpwuid(i32 noundef %uid) #0 {
+entry:
+  %uid.addr = alloca i32, align 4
+  store i32 %uid, i32* %uid.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.passwd*
+  ret %struct.passwd* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.servent* @getservbyname(i8* noundef %name, i8* noundef %proto) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  %proto.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  store i8* %proto, i8** %proto.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.servent*
+  ret %struct.servent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.servent* @getservbyport(i32 noundef %port, i8* noundef %proto) #0 {
+entry:
+  %port.addr = alloca i32, align 4
+  %proto.addr = alloca i8*, align 8
+  store i32 %port, i32* %port.addr, align 4
+  store i8* %proto, i8** %proto.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.servent*
+  ret %struct.servent* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.spwd* @getspnam(i8* noundef %name) #0 {
+entry:
+  %name.addr = alloca i8*, align 8
+  store i8* %name, i8** %name.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.spwd*
+  ret %struct.spwd* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gettext(i8* noundef %msgid) #0 {
+entry:
+  %msgid.addr = alloca i8*, align 8
+  store i8* %msgid, i8** %msgid.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.tm* @gmtime(i8* noundef %timer) #0 {
+entry:
+  %timer.addr = alloca i8*, align 8
+  store i8* %timer, i8** %timer.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.tm*
+  ret %struct.tm* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gnu_get_libc_version() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @gnutls_check_version(i8* noundef %req_version) #0 {
+entry:
+  %req_version.addr = alloca i8*, align 8
+  store i8* %req_version, i8** %req_version.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.lconv* @localeconv() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.lconv*
+  ret %struct.lconv* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local %struct.tm* @localtime(i8* noundef %timer) #0 {
+entry:
+  %timer.addr = alloca i8*, align 8
+  store i8* %timer, i8** %timer.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  %0 = bitcast i8* %call to %struct.tm*
+  ret %struct.tm* %0
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @ngettext(i8* noundef %msgid, i8* noundef %msgid_plural, i64 noundef %n) #0 {
+entry:
+  %msgid.addr = alloca i8*, align 8
+  %msgid_plural.addr = alloca i8*, align 8
+  %n.addr = alloca i64, align 8
+  store i8* %msgid, i8** %msgid.addr, align 8
+  store i8* %msgid_plural, i8** %msgid_plural.addr, align 8
+  store i64 %n, i64* %n.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @pango_cairo_font_map_get_default() #0 {
+entry:
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @re_comp(i8* noundef %regex) #0 {
+entry:
+  %regex.addr = alloca i8*, align 8
+  store i8* %regex, i8** %regex.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @setlocale(i32 noundef %category, i8* noundef %locale) #0 {
+entry:
+  %category.addr = alloca i32, align 4
+  %locale.addr = alloca i8*, align 8
+  store i32 %category, i32* %category.addr, align 4
+  store i8* %locale, i8** %locale.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tgoto(i8* noundef %cap, i32 noundef %col, i32 noundef %row) #0 {
+entry:
+  %cap.addr = alloca i8*, align 8
+  %col.addr = alloca i32, align 4
+  %row.addr = alloca i32, align 4
+  store i8* %cap, i8** %cap.addr, align 8
+  store i32 %col, i32* %col.addr, align 4
+  store i32 %row, i32* %row.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @tparm(i8* noundef %str, ...) #0 {
+entry:
+  %str.addr = alloca i8*, align 8
+  store i8* %str, i8** %str.addr, align 8
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+; Function Attrs: noinline nounwind uwtable
+define dso_local i8* @zError(i32 noundef %a) #0 {
+entry:
+  %a.addr = alloca i32, align 4
+  store i32 %a, i32* %a.addr, align 4
+  %call = call i8* @malloc(i64 noundef 10)
+  ret i8* %call
+}
+
+attributes #0 = { noinline nounwind uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #1 = { noinline nounwind readonly uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+
+!llvm.module.flags = !{!0, !1, !2}
+!llvm.ident = !{!3}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{i32 7, !"uwtable", i32 1}
+!2 = !{i32 7, !"frame-pointer", i32 2}
+!3 = !{!"clang version 14.0.0"}
