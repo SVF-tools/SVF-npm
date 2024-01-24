@@ -6,16 +6,16 @@
 //
 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
+// it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
+// GNU Affero General Public License for more details.
 
-// You should have received a copy of the GNU General Public License
+// You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //===----------------------------------------------------------------------===//
@@ -51,11 +51,35 @@ struct DemangledName
     bool isThunkFunc;
 };
 
-struct DemangledName demangle(const std::string &name);
+struct DemangledName demangle(const std::string& name);
 
-std::string getBeforeBrackets(const std::string &name);
+std::string getBeforeBrackets(const std::string& name);
+std::string getClassNameFromVtblObj(const std::string& vtblName);
+
+/*
+ * Get the vtable struct of a class.
+ *
+ * Given the class:
+ *
+ *   class A {
+ *     virtual ~A();
+ *   };
+ *   A::~A() = default;
+ *
+ *  The corresponding vtable @_ZTV1A is of type:
+ *
+ *    { [4 x i8*] }
+ *
+ *  If the program has been compiled with AddressSanitizer,
+ *  the vtable will have redzones and appear as:
+ *
+ *    { { [4 x i8*] }, [32 x i8] }
+ *
+ *  See https://github.com/SVF-tools/SVF/issues/1114 for more.
+ */
+const ConstantStruct *getVtblStruct(const GlobalValue *vtbl);
+
 bool isValVtbl(const Value* val);
-bool isLoadVtblInst(const LoadInst *loadInst);
 bool isVirtualCallSite(const CallBase* cs);
 bool isConstructor(const Function* F);
 bool isDestructor(const Function* F);
@@ -87,8 +111,8 @@ const Argument* getConstructorThisPtr(const Function* fun);
 const Value* getVCallThisPtr(const CallBase* cs);
 const Value* getVCallVtblPtr(const CallBase* cs);
 s32_t getVCallIdx(const CallBase* cs);
-std::string getClassNameFromVtblObj(const std::string& vtblName);
-std::string getClassNameFromType(const Type* ty);
+bool classTyHasVTable(const StructType* ty);
+std::string getClassNameFromType(const StructType* ty);
 std::string getClassNameOfThisPtr(const CallBase* cs);
 std::string getFunNameOfVCallSite(const CallBase* cs);
 bool VCallInCtorOrDtor(const CallBase* cs);
@@ -102,7 +126,8 @@ bool VCallInCtorOrDtor(const CallBase* cs);
  *  }
  *  this and this1 are the same thisPtr in the constructor
  */
-bool isSameThisPtrInConstructor(const Argument* thisPtr1, const Value* thisPtr2);
+bool isSameThisPtrInConstructor(const Argument* thisPtr1,
+                                const Value* thisPtr2);
 
 /// Constants pertaining to CTir, for C and C++.
 /// TODO: move helper functions here too?
@@ -111,17 +136,17 @@ namespace ctir
 /// On loads, stores, GEPs representing dereferences, and calls
 /// representing virtual calls.
 /// (The static type.)
-const std::string derefMDName  = "ctir";
+const std::string derefMDName = "ctir";
 /// On the (global) virtual table itself.
 /// (The class it corresponds to.)
-const std::string vtMDName     = "ctir.vt";
+const std::string vtMDName = "ctir.vt";
 /// On the bitcast of `this` to i8*.
 /// (The class the constructor it corresponds to.)
 const std::string vtInitMDName = "ctir.vt.init";
 
 /// Value we expect a ctir-annotated module to have.
 const uint32_t moduleFlagValue = 1;
-}
+} // namespace ctir
 
 } // End namespace cppUtil
 
