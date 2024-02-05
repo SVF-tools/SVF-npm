@@ -352,7 +352,7 @@ struct pointee_iter
 template <typename RangeT, typename WrappedIteratorT =
           decltype(std::begin(std::declval<RangeT>()))>
 iter_range<pointee_iter<WrappedIteratorT>>
-                                        make_pointee_range(RangeT &&Range)
+make_pointee_range(RangeT &&Range)
 {
     using PointeeIteratorT = pointee_iter<WrappedIteratorT>;
     return make_range(PointeeIteratorT(std::begin(std::forward<RangeT>(Range))),
@@ -388,7 +388,7 @@ public:
 template <typename RangeT, typename WrappedIteratorT =
           decltype(std::begin(std::declval<RangeT>()))>
 iter_range<pointer_iterator<WrappedIteratorT>>
-        make_pointer_range(RangeT &&Range)
+make_pointer_range(RangeT &&Range)
 {
     using PointerIteratorT = pointer_iterator<WrappedIteratorT>;
     return make_range(PointerIteratorT(std::begin(std::forward<RangeT>(Range))),
