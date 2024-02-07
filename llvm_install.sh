@@ -42,7 +42,8 @@ then
               echo "LLVM binary installation failed."
               exit 1
        fi
-       export LLVM_DIR="$(brew --prefix llvm@${MajorLLVMVer})"
+       mkdir -p $install_path/$LLVMHome
+       ln -s $(brew --prefix llvm@${MajorLLVMVer})/* $install_path/$LLVMHome
 elif [[ $sysOS == "Linux" ]]
 then
        if [ ! -d "$install_path/$LLVMHome" ]
@@ -53,11 +54,11 @@ then
 		echo 'Unzipping LLVM binary for Ubuntu'
 		tar -xf "llvm-ubuntu.tar.xz" -C $install_path/$LLVMHome --strip-components 1
 		rm llvm-ubuntu.tar.xz
-  		export LLVM_DIR="$install_path/$LLVMHome"
        fi
 else
 	echo 'not support llvm builds in OS other than Ubuntu and Mac'
 fi
+export LLVM_DIR="$install_path/$LLVMHome"
 echo "LLVM_DIR=$LLVM_DIR"
 ########
 # Download z3 binary
