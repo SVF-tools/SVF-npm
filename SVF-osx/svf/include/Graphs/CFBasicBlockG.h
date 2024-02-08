@@ -130,6 +130,12 @@ public:
     {
     }
 
+    virtual ~CFBasicBlockNode()
+    {
+        for (auto edge : OutEdges)
+            delete edge;
+    }
+
     friend std::ostream &operator<<(std::ostream &o, const CFBasicBlockNode &node)
     {
         o << node.toString();
