@@ -3,7 +3,7 @@
 ####### Any changes to this file will be overwritten by the next CMake run ####
 ####### The input file was .config.cmake.in                            ########
 
-get_filename_component(PACKAGE_PREFIX_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
+get_filename_component(PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1 "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 macro(set_and_check _var _file)
   set(${_var} "${_file}")
@@ -24,23 +24,23 @@ endmacro()
 
 ####################################################################################
 
-set_and_check(SVF_INSTALL_ROOT "${PACKAGE_PREFIX_DIR}")
-set_and_check(SVF_INSTALL_BIN_DIR "${PACKAGE_PREFIX_DIR}/bin")
-set_and_check(SVF_INSTALL_LIB_DIR "${PACKAGE_PREFIX_DIR}/lib")
+set_and_check(SVF_INSTALL_ROOT "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}")
+set_and_check(SVF_INSTALL_BIN_DIR "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/bin")
+set_and_check(SVF_INSTALL_LIB_DIR "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/lib")
 
-set(SVF_INCLUDE_PATH "${PACKAGE_PREFIX_DIR}/../svf/include")
-set(SVF_LLVM_INCLUDE_PATH "${PACKAGE_PREFIX_DIR}/../svf-llvm/include")
+set(SVF_INCLUDE_PATH "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/../svf/include")
+set(SVF_LLVM_INCLUDE_PATH "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/../svf-llvm/include")
 
 if(EXISTS ${SVF_INCLUDE_PATH} AND EXISTS ${SVF_LLVM_INCLUDE_PATH})
-    set(SVF_INSTALL_INCLUDE_DIR "${SVF_INCLUDE_PATH};${SVF_LLVM_INCLUDE_PATH};${PACKAGE_PREFIX_DIR}/include")
+    set(SVF_INSTALL_INCLUDE_DIR "${SVF_INCLUDE_PATH};${SVF_LLVM_INCLUDE_PATH};${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/include")
 else()
-    set_and_check(SVF_INSTALL_INCLUDE_DIR "${PACKAGE_PREFIX_DIR}/include")
+    set_and_check(SVF_INSTALL_INCLUDE_DIR "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/include")
 endif()
 
 message(STATUS "SVF_INSTALL_INCLUDE_DIR is set to: ${SVF_INSTALL_INCLUDE_DIR}")
 
-set_and_check(SVF_INSTALL_EXTAPI_DIR "${PACKAGE_PREFIX_DIR}/lib")
-set_and_check(SVF_INSTALL_EXTAPI_FILE "${PACKAGE_PREFIX_DIR}/lib/extapi.bc")
+set_and_check(SVF_INSTALL_EXTAPI_DIR "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/lib")
+set_and_check(SVF_INSTALL_EXTAPI_FILE "${PACKAGE_${CMAKE_FIND_PACKAGE_NAME}_COUNTER_1}/lib/extapi.bc")
 
 set(SVF_SANITIZE "")
 
