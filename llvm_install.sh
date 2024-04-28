@@ -73,6 +73,7 @@ then
 			urlZ3="$MacArmZ3"
 	    	else
 	        	urlZ3="$MacZ3"
+	  	fi
        		echo 'Downloading z3 binary for MacOS '
       		curl -L $urlZ3 > z3.zip
       	 	mkdir $install_path/$Z3Home 
