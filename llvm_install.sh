@@ -4,8 +4,6 @@ sysOS=`uname -s`
 MajorLLVMVer=16
 LLVMVer=${MajorLLVMVer}.0.0
 UbuntuLLVM="https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVMVer}/clang+llvm-${LLVMVer}-x86_64-linux-gnu-ubuntu-18.04.tar.xz"
-MacZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-osx-10.14.6.zip"
-MacArmZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.9.1/z3-4.9.1-arm64-osx-11.0.zip"
 UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-ubuntu-16.04.zip"
 Z3Home="z3.obj"
 LLVMHome="llvm-${LLVMVer}.obj"
@@ -69,17 +67,16 @@ if [[ $sysOS == "Darwin" ]]
 then
        if [ ! -d "$install_path/$Z3Home" ]
        then
-       		if [[ "$arch" == "arm64" ]]; then
-			urlZ3="$MacArmZ3"
-	    	else
-	        	urlZ3="$MacZ3"
-	  	fi
        		echo 'Downloading z3 binary for MacOS '
-      		curl -L $urlZ3 > z3.zip
-      	 	mkdir $install_path/$Z3Home 
-		echo 'Unzipping z3 binary for MacOS '
-        	unzip -q "z3.zip" && mv ./z3-*/* $install_path/$Z3Home/
-		rm z3.zip
+	 	brew install z3
+   		if [ $? -eq 0 ]; then
+		      echo "z3 binary installation completed."
+	        else
+		      echo "z3 binary installation failed."
+		      exit 1
+	        fi
+      	 	mkdir -p $install_path/$Z3Home
+       		ln -s $(brew --prefix z3)/* $install_path/$Z3Home
        fi
 elif [[ $sysOS == "Linux" ]]
 then
