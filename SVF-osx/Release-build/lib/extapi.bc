@@ -1,7 +1,7 @@
 ; ModuleID = '/Users/runner/work/SVF/SVF/svf-llvm/lib/extapi.c'
 source_filename = "/Users/runner/work/SVF/SVF/svf-llvm/lib/extapi.c"
-target datalayout = "e-m:o-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
-target triple = "x86_64-apple-macosx12.0.0"
+target datalayout = "e-m:o-i64:64-i128:128-n32:64-S128"
+target triple = "arm64-apple-macosx14.0.0"
 
 @.str = private unnamed_addr constant [10 x i8] c"ALLOC_RET\00", section "llvm.metadata"
 @.str.1 = private unnamed_addr constant [49 x i8] c"/Users/runner/work/SVF/SVF/svf-llvm/lib/extapi.c\00", section "llvm.metadata"
@@ -22,7 +22,7 @@ target triple = "x86_64-apple-macosx12.0.0"
 @.str.16 = private unnamed_addr constant [10 x i8] c"OVERWRITE\00", section "llvm.metadata"
 @llvm.global.annotations = appending global [216 x { ptr, ptr, ptr, i32, ptr }] [{ ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str, ptr @.str.1, i32 19, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str.2, ptr @.str.1, i32 19, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str, ptr @.str.1, i32 25, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str.3, ptr @.str.1, i32 25, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str, ptr @.str.1, i32 31, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str.3, ptr @.str.1, i32 31, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str, ptr @.str.1, i32 37, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str.3, ptr @.str.1, i32 37, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str, ptr @.str.1, i32 43, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str.3, ptr @.str.1, i32 43, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str, ptr @.str.1, i32 49, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str.3, ptr @.str.1, i32 49, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str, ptr @.str.1, i32 55, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str.4, ptr @.str.1, i32 55, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str, ptr @.str.1, i32 61, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str.2, ptr @.str.1, i32 61, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str, ptr @.str.1, i32 67, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str.3, ptr @.str.1, i32 67, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str, ptr @.str.1, i32 73, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str.3, ptr @.str.1, i32 73, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str, ptr @.str.1, i32 79, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str.2, ptr @.str.1, i32 79, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str, ptr @.str.1, i32 85, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str.2, ptr @.str.1, i32 85, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str, ptr @.str.1, i32 91, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str.3, ptr @.str.1, i32 91, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str, ptr @.str.1, i32 97, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str.2, ptr @.str.1, i32 97, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str, ptr @.str.1, i32 103, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str.3, ptr @.str.1, i32 103, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str, ptr @.str.1, i32 109, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str.3, ptr @.str.1, i32 109, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str, ptr @.str.1, i32 115, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str.3, ptr @.str.1, i32 115, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str, ptr @.str.1, i32 121, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str.4, ptr @.str.1, i32 121, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str, ptr @.str.1, i32 127, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str.2, ptr @.str.1, i32 127, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str, ptr @.str.1, i32 133, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str.4, ptr @.str.1, i32 133, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str, ptr @.str.1, i32 139, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str.2, ptr @.str.1, i32 139, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str, ptr @.str.1, i32 145, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str.3, ptr @.str.1, i32 145, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str, ptr @.str.1, i32 151, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str.3, ptr @.str.1, i32 151, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str, ptr @.str.1, i32 157, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str.3, ptr @.str.1, i32 157, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str, ptr @.str.1, i32 163, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str.3, ptr @.str.1, i32 163, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str, ptr @.str.1, i32 169, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str.3, ptr @.str.1, i32 169, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str, ptr @.str.1, i32 175, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str.3, ptr @.str.1, i32 175, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str, ptr @.str.1, i32 181, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str.3, ptr @.str.1, i32 181, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str, ptr @.str.1, i32 187, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str.2, ptr @.str.1, i32 187, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str, ptr @.str.1, i32 193, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str.2, ptr @.str.1, i32 193, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str, ptr @.str.1, i32 199, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str.2, ptr @.str.1, i32 199, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str, ptr @.str.1, i32 205, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str.2, ptr @.str.1, i32 205, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str, ptr @.str.1, i32 211, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str.2, ptr @.str.1, i32 211, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str, ptr @.str.1, i32 217, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str.5, ptr @.str.1, i32 217, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str, ptr @.str.1, i32 223, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str.5, ptr @.str.1, i32 223, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str, ptr @.str.1, i32 229, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str.2, ptr @.str.1, i32 229, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str, ptr @.str.1, i32 235, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str.5, ptr @.str.1, i32 235, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str, ptr @.str.1, i32 241, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str.3, ptr @.str.1, i32 241, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str, ptr @.str.1, i32 247, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str.3, ptr @.str.1, i32 247, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str, ptr @.str.1, i32 253, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str.3, ptr @.str.1, i32 253, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ctime, ptr @.str, ptr @.str.1, i32 259, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ctime, ptr @.str.3, ptr @.str.1, i32 259, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str, ptr @.str.1, i32 265, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str.3, ptr @.str.1, i32 265, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str, ptr @.str.1, i32 271, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str.3, ptr @.str.1, i32 271, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str, ptr @.str.1, i32 277, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str.3, ptr @.str.1, i32 277, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str, ptr @.str.1, i32 283, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str.3, ptr @.str.1, i32 283, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str, ptr @.str.1, i32 289, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str.3, ptr @.str.1, i32 289, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getenv, ptr @.str, ptr @.str.1, i32 295, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getenv, ptr @.str.3, ptr @.str.1, i32 295, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str, ptr @.str.1, i32 301, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str.3, ptr @.str.1, i32 301, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str, ptr @.str.1, i32 307, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str.3, ptr @.str.1, i32 307, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str, ptr @.str.1, i32 313, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str.3, ptr @.str.1, i32 313, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str, ptr @.str.1, i32 319, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str.3, ptr @.str.1, i32 319, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str, ptr @.str.1, i32 325, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str.3, ptr @.str.1, i32 325, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str, ptr @.str.1, i32 331, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str.3, ptr @.str.1, i32 331, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str, ptr @.str.1, i32 337, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str.3, ptr @.str.1, i32 337, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str, ptr @.str.1, i32 343, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str.3, ptr @.str.1, i32 343, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str, ptr @.str.1, i32 349, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str.5, ptr @.str.1, i32 349, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str, ptr @.str.1, i32 355, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str.3, ptr @.str.1, i32 355, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str, ptr @.str.1, i32 361, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str.3, ptr @.str.1, i32 361, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str, ptr @.str.1, i32 367, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str.3, ptr @.str.1, i32 367, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str, ptr @.str.1, i32 373, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str.3, ptr @.str.1, i32 373, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str, ptr @.str.1, i32 379, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str.3, ptr @.str.1, i32 379, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str, ptr @.str.1, i32 385, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str.3, ptr @.str.1, i32 385, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str, ptr @.str.1, i32 391, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str.3, ptr @.str.1, i32 391, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str, ptr @.str.1, i32 397, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str.3, ptr @.str.1, i32 397, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str, ptr @.str.1, i32 403, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str.3, ptr @.str.1, i32 403, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str, ptr @.str.1, i32 409, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str.3, ptr @.str.1, i32 409, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str, ptr @.str.1, i32 415, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str.3, ptr @.str.1, i32 415, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str, ptr @.str.1, i32 421, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str.3, ptr @.str.1, i32 421, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.6, ptr @.str.1, i32 427, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.3, ptr @.str.1, i32 427, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.6, ptr @.str.1, i32 433, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.5, ptr @.str.1, i32 433, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.6, ptr @.str.1, i32 439, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.5, ptr @.str.1, i32 439, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.6, ptr @.str.1, i32 445, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.5, ptr @.str.1, i32 445, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.6, ptr @.str.1, i32 451, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.7, ptr @.str.1, i32 451, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.6, ptr @.str.1, i32 457, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.3, ptr @.str.1, i32 457, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.6, ptr @.str.1, i32 479, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.5, ptr @.str.1, i32 479, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str.2, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 491, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 491, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 497, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 497, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.8, ptr @.str.1, i32 503, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.3, ptr @.str.1, i32 503, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.8, ptr @.str.1, i32 509, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.3, ptr @.str.1, i32 509, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.8, ptr @.str.1, i32 515, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.3, ptr @.str.1, i32 515, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.8, ptr @.str.1, i32 521, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.3, ptr @.str.1, i32 521, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.8, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.3, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.8, ptr @.str.1, i32 533, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.3, ptr @.str.1, i32 533, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.8, ptr @.str.1, i32 539, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.3, ptr @.str.1, i32 539, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.8, ptr @.str.1, i32 545, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.9, ptr @.str.1, i32 545, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.10, ptr @.str.1, i32 551, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.3, ptr @.str.1, i32 551, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.11, ptr @.str.1, i32 557, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.3, ptr @.str.1, i32 557, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 563, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 566, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 569, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 572, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy, ptr @.str.12, ptr @.str.1, i32 575, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove, ptr @.str.12, ptr @.str.1, i32 578, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 581, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 584, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 587, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 590, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memcpy_chk, ptr @.str.12, ptr @.str.1, i32 593, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memmove, ptr @.str.12, ptr @.str.1, i32 596, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @bcopy, ptr @.str.12, ptr @.str.1, i32 602, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memccpy, ptr @.str.12, ptr @.str.1, i32 605, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memmove_chk, ptr @.str.12, ptr @.str.1, i32 611, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset, ptr @.str.13, ptr @.str.1, i32 614, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i32, ptr @.str.13, ptr @.str.1, i32 617, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i32, ptr @.str.13, ptr @.str.1, i32 620, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i64, ptr @.str.13, ptr @.str.1, i32 623, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i64, ptr @.str.13, ptr @.str.1, i32 626, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memset_chk, ptr @.str.13, ptr @.str.1, i32 629, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wmemset, ptr @.str.13, ptr @.str.1, i32 635, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcpy_chk, ptr @.str.14, ptr @.str.1, i32 641, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcat_chk, ptr @.str.15, ptr @.str.1, i32 647, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcscat_chk, ptr @.str.15, ptr @.str.1, i32 653, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @stpcpy, ptr @.str.14, ptr @.str.1, i32 659, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcat, ptr @.str.15, ptr @.str.1, i32 665, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscat, ptr @.str.15, ptr @.str.1, i32 671, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcpy, ptr @.str.14, ptr @.str.1, i32 678, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncat, ptr @.str.15, ptr @.str.1, i32 684, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcsncat, ptr @.str.15, ptr @.str.1, i32 690, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strncat_chk, ptr @.str.15, ptr @.str.1, i32 695, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcsncat_chk, ptr @.str.15, ptr @.str.1, i32 701, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncpy, ptr @.str.12, ptr @.str.1, i32 706, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscpy, ptr @.str.14, ptr @.str.1, i32 712, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv, ptr @.str.12, ptr @.str.1, i32 717, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZNSt5arrayIPK1ALm2EE4backEv, ptr @.str.16, ptr @.str.1, i32 723, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str, ptr @.str.1, i32 732, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str.2, ptr @.str.1, i32 732, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str.16, ptr @.str.1, i32 732, ptr null }], section "llvm.metadata"
 
-; Function Attrs: noinline nounwind ssp allocsize(0) uwtable
+; Function Attrs: noinline nounwind ssp allocsize(0) uwtable(sync)
 define ptr @malloc(i64 noundef %size) #0 {
 entry:
   %size.addr = alloca i64, align 8
@@ -30,7 +30,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @fopen(ptr noundef %voidname, ptr noundef %mode) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -40,7 +40,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @fopen64(ptr noundef %voidname, ptr noundef %mode) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -50,7 +50,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @fdopen(i32 noundef %fd, ptr noundef %mode) #1 {
 entry:
   %fd.addr = alloca i32, align 4
@@ -60,7 +60,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @readdir64(ptr noundef %dirp) #1 {
 entry:
   %dirp.addr = alloca ptr, align 8
@@ -68,13 +68,13 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tmpvoid64() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp allocsize(0,1) uwtable
+; Function Attrs: noinline nounwind ssp allocsize(0,1) uwtable(sync)
 define ptr @calloc(i64 noundef %nitems, i64 noundef %size) #2 {
 entry:
   %nitems.addr = alloca i64, align 8
@@ -84,7 +84,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @zmalloc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -92,7 +92,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gzdopen(i32 noundef %fd, ptr noundef %mode) #1 {
 entry:
   %fd.addr = alloca i32, align 4
@@ -102,7 +102,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @iconv_open(ptr noundef %tocode, ptr noundef %fromcode) #1 {
 entry:
   %tocode.addr = alloca ptr, align 8
@@ -112,7 +112,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @lalloc(i64 noundef %size, i32 noundef %a) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -122,7 +122,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @lalloc_clear(i64 noundef %size, i32 noundef %a) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -132,7 +132,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @nhalloc(i32 noundef %a, ptr noundef %b, i32 noundef %c) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -144,7 +144,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @oballoc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -152,7 +152,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @popen(ptr noundef %command, ptr noundef %type) #1 {
 entry:
   %command.addr = alloca ptr, align 8
@@ -162,7 +162,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @pthread_getspecific(ptr noundef %a, ptr noundef %b) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -172,7 +172,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @readdir(ptr noundef %dirp) #1 {
 entry:
   %dirp.addr = alloca ptr, align 8
@@ -180,7 +180,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safe_calloc(i32 noundef %nelem, i32 noundef %elsize) #1 {
 entry:
   %nelem.addr = alloca i32, align 4
@@ -190,7 +190,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safe_malloc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -198,7 +198,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safecalloc(i32 noundef %a, i32 noundef %b) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -208,7 +208,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safemalloc(i32 noundef %a, i32 noundef %b) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -218,7 +218,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @setmntent(ptr noundef %voidname, ptr noundef %type) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -228,7 +228,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @shmat(i32 noundef %shmid, ptr noundef %shmaddr, i32 noundef %shmflg) #1 {
 entry:
   %shmid.addr = alloca i32, align 4
@@ -240,7 +240,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__sysv_signal(i32 noundef %a, ptr noundef %b) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -250,7 +250,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @signal(i32 noundef %sig, ptr noundef %func) #1 {
 entry:
   %sig.addr = alloca i32, align 4
@@ -260,7 +260,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tempnam(ptr noundef %dir, ptr noundef %pfx) #1 {
 entry:
   %dir.addr = alloca ptr, align 8
@@ -270,13 +270,13 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tmpvoid() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @xcalloc(i64 noundef %size1, i64 noundef %size2) #1 {
 entry:
   %size1.addr = alloca i64, align 8
@@ -286,7 +286,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @xmalloc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -294,7 +294,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_Znam(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -302,7 +302,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_Znaj(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -310,7 +310,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_Znwj(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -318,7 +318,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__cxa_allocate_exception(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -326,7 +326,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp allocsize(1) uwtable
+; Function Attrs: noinline nounwind ssp allocsize(1) uwtable(sync)
 define ptr @aligned_alloc(i64 noundef %size1, i64 noundef %size2) #3 {
 entry:
   %size1.addr = alloca i64, align 8
@@ -336,7 +336,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp allocsize(1) uwtable
+; Function Attrs: noinline nounwind ssp allocsize(1) uwtable(sync)
 define ptr @memalign(i64 noundef %size1, i64 noundef %size2) #3 {
 entry:
   %size1.addr = alloca i64, align 8
@@ -346,7 +346,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @valloc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -354,7 +354,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @mmap64(ptr noundef %addr, i64 noundef %len, i32 noundef %prot, i32 noundef %flags, i32 noundef %fildes, i64 noundef %off) #1 {
 entry:
   %addr.addr = alloca ptr, align 8
@@ -372,7 +372,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @XSetLocaleModifiers(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -380,7 +380,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__strdup(ptr noundef %string) #1 {
 entry:
   %string.addr = alloca ptr, align 8
@@ -388,7 +388,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @crypt(ptr noundef %key, ptr noundef %salt) #1 {
 entry:
   %key.addr = alloca ptr, align 8
@@ -398,7 +398,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @ctime(ptr noundef %timer) #1 {
 entry:
   %timer.addr = alloca ptr, align 8
@@ -406,13 +406,13 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @dlerror() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @dlopen(ptr noundef %voidname, i32 noundef %flags) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -422,7 +422,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gai_strerror(i32 noundef %errcode) #1 {
 entry:
   %errcode.addr = alloca i32, align 4
@@ -430,7 +430,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gcry_cipher_algo_name(i32 noundef %errcode) #1 {
 entry:
   %errcode.addr = alloca i32, align 4
@@ -438,7 +438,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @svfgcry_md_algo_name_(i32 noundef %errcode) #1 {
 entry:
   %errcode.addr = alloca i32, align 4
@@ -446,7 +446,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getenv(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -454,13 +454,13 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getlogin() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getpass(ptr noundef %prompt) #1 {
 entry:
   %prompt.addr = alloca ptr, align 8
@@ -468,7 +468,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gnutls_strerror(i32 noundef %error) #1 {
 entry:
   %error.addr = alloca i32, align 4
@@ -476,7 +476,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gpg_strerror(i32 noundef %a) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -484,7 +484,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gzerror(ptr noundef %file, ptr noundef %errnum) #1 {
 entry:
   %file.addr = alloca ptr, align 8
@@ -494,7 +494,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @inet_ntoa(i32 noundef %in) #1 {
 entry:
   %in.addr = alloca i32, align 4
@@ -502,19 +502,19 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @initscr() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @llvm_stacksave() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @mmap(ptr noundef %addr, i64 noundef %len, i32 noundef %prot, i32 noundef %flags, i32 noundef %fildes, i64 noundef %off) #1 {
 entry:
   %addr.addr = alloca ptr, align 8
@@ -532,7 +532,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @newwin(i32 noundef %nlines, i32 noundef %ncols, i32 noundef %begin_y, i32 noundef %begin_x) #1 {
 entry:
   %nlines.addr = alloca i32, align 4
@@ -546,7 +546,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @nl_langinfo(i32 noundef %item) #1 {
 entry:
   %item.addr = alloca i32, align 4
@@ -554,7 +554,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @opendir(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -562,7 +562,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @sbrk(i64 noundef %increment) #1 {
 entry:
   %increment.addr = alloca i64, align 8
@@ -570,7 +570,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strdup(ptr noundef %s) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -578,7 +578,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strerror(i32 noundef %errnum) #1 {
 entry:
   %errnum.addr = alloca i32, align 4
@@ -586,7 +586,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strsignal(i32 noundef %errnum) #1 {
 entry:
   %errnum.addr = alloca i32, align 4
@@ -594,7 +594,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @textdomain(ptr noundef %domainname) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -602,7 +602,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tgetstr(ptr noundef %id, ptr noundef %area) #1 {
 entry:
   %id.addr = alloca ptr, align 8
@@ -612,7 +612,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tigetstr(ptr noundef %capname) #1 {
 entry:
   %capname.addr = alloca ptr, align 8
@@ -620,7 +620,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tmpnam(ptr noundef %s) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -628,7 +628,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @ttyname(i32 noundef %fd) #1 {
 entry:
   %fd.addr = alloca i32, align 4
@@ -636,7 +636,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getcwd(ptr noundef %buf, i64 noundef %size) #1 {
 entry:
   %buf.addr = alloca ptr, align 8
@@ -646,7 +646,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @mem_realloc(ptr noundef %ptr, i64 noundef %size) #1 {
 entry:
   %ptr.addr = alloca ptr, align 8
@@ -656,7 +656,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @realloc(ptr noundef %ptr, i64 noundef %size) #1 {
 entry:
   %ptr.addr = alloca ptr, align 8
@@ -666,7 +666,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safe_realloc(ptr noundef %p, i64 noundef %n) #1 {
 entry:
   %p.addr = alloca ptr, align 8
@@ -676,7 +676,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @saferealloc(ptr noundef %p, i64 noundef %n1, i64 noundef %n2) #1 {
 entry:
   %p.addr = alloca ptr, align 8
@@ -688,13 +688,13 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safexrealloc() #1 {
 entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strtok(ptr noundef %str, ptr noundef %delim) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -705,7 +705,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strtok_r(ptr noundef %str, ptr noundef %delim, ptr noundef %saveptr) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -718,7 +718,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strsep(ptr noundef %stringp, ptr noundef %delim) #1 {
 entry:
   %stringp.addr = alloca ptr, align 8
@@ -730,7 +730,7 @@ entry:
   ret ptr %1
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @xrealloc(ptr noundef %ptr, i64 noundef %bytes) #1 {
 entry:
   %ptr.addr = alloca ptr, align 8
@@ -740,7 +740,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_Znwm(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -748,7 +748,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_ZnwmRKSt9nothrow_t(i64 noundef %size, ptr noundef %0) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -758,7 +758,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_ZnamRKSt9nothrow_t(i64 noundef %size, ptr noundef %0) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -768,7 +768,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @asprintf(ptr noalias noundef %strp, ptr noalias noundef %fmt, ...) #1 {
 entry:
   %strp.addr = alloca ptr, align 8
@@ -778,7 +778,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @vasprintf(ptr noundef %strp, ptr noundef %fmt, ptr noundef %ap) #1 {
 entry:
   %strp.addr = alloca ptr, align 8
@@ -790,7 +790,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @db_create(ptr noundef %dbp, ptr noundef %dbenv, i32 noundef %flags) #1 {
 entry:
   %dbp.addr = alloca ptr, align 8
@@ -802,7 +802,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @gnutls_pkcs12_bag_init(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -810,7 +810,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @gnutls_pkcs12_init(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -818,7 +818,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @gnutls_x509_crt_init(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -826,7 +826,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @gnutls_x509_privkey_init(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -834,7 +834,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @posix_memalign(ptr noundef %a, i64 noundef %b, i64 noundef %c) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -846,7 +846,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @scandir(ptr noalias noundef %dirp, ptr noalias noundef %namelist, ptr noundef %filter, ptr noundef %compar) #1 {
 entry:
   %dirp.addr = alloca ptr, align 8
@@ -860,7 +860,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @XmbTextPropertyToTextList(ptr noundef %a, ptr noundef %b, ptr noundef %c, ptr noundef %d) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -874,7 +874,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memcpy_p0i8_p0i8_i64(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -888,7 +888,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memcpy_p0_p0_i64(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -902,7 +902,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memcpy_p0i8_p0i8_i32(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -916,7 +916,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memcpy_p0_p0_i32(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -930,7 +930,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memcpy(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -944,7 +944,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memmove(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -958,7 +958,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memmove_p0i8_p0i8_i64(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -972,7 +972,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memmove_p0_p0_i64(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -986,7 +986,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memmove_p0i8_p0i8_i32(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1000,7 +1000,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memmove_p0_p0_i32(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1014,7 +1014,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @__memcpy_chk(ptr noundef %dst, ptr noundef %src, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1028,7 +1028,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @memmove(ptr noundef %str1, ptr noundef %str2, i64 noundef %n) #1 {
 entry:
   %str1.addr = alloca ptr, align 8
@@ -1040,7 +1040,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @bcopy(ptr noundef %s1, ptr noundef %s2, i64 noundef %n) #1 {
 entry:
   %s1.addr = alloca ptr, align 8
@@ -1052,7 +1052,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @memccpy(ptr noalias noundef %dest, ptr noalias noundef %src, i32 noundef %c, i64 noundef %count) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1066,7 +1066,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @__memmove_chk(ptr noundef %dst, ptr noundef %src, i32 noundef %sz) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1078,7 +1078,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memset(ptr noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1092,7 +1092,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memset_p0i8_i32(ptr noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1106,7 +1106,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memset_p0_i32(ptr noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1120,7 +1120,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memset_p0i8_i64(ptr noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1134,7 +1134,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @llvm_memset_p0_i64(ptr noundef %dst, i8 noundef signext %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1148,7 +1148,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__memset_chk(ptr noundef %dest, i32 noundef %c, i64 noundef %destlen, i32 noundef %flag) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1162,7 +1162,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @wmemset(ptr noundef %dst, i32 noundef %elem, i32 noundef %sz, i32 noundef %flag) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1176,7 +1176,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__strcpy_chk(ptr noundef %dest, ptr noundef %src, i64 noundef %destlen) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1188,7 +1188,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__strcat_chk(ptr noundef %dest, ptr noundef %src, i64 noundef %destlen) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1200,7 +1200,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__wcscat_chk(ptr noundef %dest, ptr noundef %src) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1210,7 +1210,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @stpcpy(ptr noalias noundef %dst, ptr noalias noundef %src) #1 {
 entry:
   %dst.addr = alloca ptr, align 8
@@ -1220,7 +1220,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strcat(ptr noundef %dest, ptr noundef %src) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1230,7 +1230,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @wcscat(ptr noundef %dest, ptr noundef %src) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1240,7 +1240,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strcpy(ptr noundef %dest, ptr noundef %src) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1250,7 +1250,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strncat(ptr noundef %dest, ptr noundef %src, i64 noundef %n) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1262,7 +1262,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @wcsncat(ptr noundef %dest, ptr noundef %src, i32 noundef %n) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1274,7 +1274,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__strncat_chk(ptr noundef %dest, ptr noundef %src, i64 noundef %n) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1286,7 +1286,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__wcsncat_chk(ptr noundef %dest, ptr noundef %src, i32 noundef %n) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1298,7 +1298,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strncpy(ptr noundef %dest, ptr noundef %src, i64 noundef %n) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1310,7 +1310,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @wcscpy(ptr noundef %dest, ptr noundef %src) #1 {
 entry:
   %dest.addr = alloca ptr, align 8
@@ -1320,7 +1320,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i64 @iconv(ptr noundef %cd, ptr noalias noundef %inbuf, ptr noalias noundef %inbytesleft, ptr noalias noundef %outbuf, ptr noalias noundef %outbytesleft) #1 {
 entry:
   %cd.addr = alloca ptr, align 8
@@ -1336,7 +1336,7 @@ entry:
   ret i64 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_ZNSt5arrayIPK1ALm2EE4backEv(ptr noundef %arg) #1 {
 entry:
   %arg.addr = alloca ptr, align 8
@@ -1353,7 +1353,7 @@ entry:
   ret ptr %2
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @SyGetmem(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -1361,7 +1361,7 @@ entry:
   ret ptr null
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__rawmemchr(ptr noundef %s, i32 noundef %c) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1372,7 +1372,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @jpeg_std_error(ptr noundef %a) #1 {
 entry:
   %a.addr = alloca ptr, align 8
@@ -1381,7 +1381,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @fgets(ptr noundef %str, i32 noundef %n, ptr noundef %stream) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1394,7 +1394,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @fgets_unlocked(ptr noundef %str, i32 noundef %n, ptr noundef %stream) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1407,7 +1407,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gets(ptr noundef %str) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1416,7 +1416,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @memchr(ptr noundef %str, i32 noundef %c, i64 noundef %n) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1429,7 +1429,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @memrchr(ptr noundef %str, i32 noundef %c, i64 noundef %n) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1442,7 +1442,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @mremap(ptr noundef %old_address, i64 noundef %old_size, i64 noundef %new_size, i32 noundef %flags) #1 {
 entry:
   %old_address.addr = alloca ptr, align 8
@@ -1457,7 +1457,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strchr(ptr noundef %str, i32 noundef %c) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1468,7 +1468,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__strchrnull(ptr noundef %s, i32 noundef %c) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1479,7 +1479,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strcasestr(ptr noundef %haystack, ptr noundef %needle) #1 {
 entry:
   %haystack.addr = alloca ptr, align 8
@@ -1490,7 +1490,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @index(ptr noundef %s, i32 noundef %c) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1501,7 +1501,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @rindex(ptr noundef %s, i32 noundef %c) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1512,7 +1512,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strerror_r(i32 noundef %errnum, ptr noundef %buf, i64 noundef %buflen) #1 {
 entry:
   %errnum.addr = alloca i32, align 4
@@ -1525,7 +1525,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strpbrk(ptr noundef %str1, ptr noundef %str2) #1 {
 entry:
   %str1.addr = alloca ptr, align 8
@@ -1536,7 +1536,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strptime(ptr noundef %s, ptr noundef %format, ptr noundef %tm) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1549,7 +1549,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strrchr(ptr noundef %str, i32 noundef %c) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1560,7 +1560,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strstr(ptr noundef %haystack, ptr noundef %needle) #1 {
 entry:
   %haystack.addr = alloca ptr, align 8
@@ -1571,7 +1571,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tmpnam_r(ptr noundef %s) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -1580,7 +1580,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isalnum(i32 noundef %character) #4 {
 entry:
   %character.addr = alloca i32, align 4
@@ -1589,7 +1589,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isalpha(i32 noundef %character) #4 {
 entry:
   %character.addr = alloca i32, align 4
@@ -1598,7 +1598,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isblank(i32 noundef %character) #4 {
 entry:
   %character.addr = alloca i32, align 4
@@ -1607,7 +1607,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @iscntrl(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1616,7 +1616,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isdigit(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1625,7 +1625,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isgraph(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1634,7 +1634,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @islower(i32 noundef %arg) #4 {
 entry:
   %arg.addr = alloca i32, align 4
@@ -1643,7 +1643,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isprint(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1652,7 +1652,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @ispunct(i32 noundef %argument) #4 {
 entry:
   %argument.addr = alloca i32, align 4
@@ -1661,7 +1661,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @isspace(i8 noundef signext %c) #1 {
 entry:
   %c.addr = alloca i8, align 1
@@ -1671,7 +1671,7 @@ entry:
   ret i32 %conv
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isupper(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1680,7 +1680,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable
+; Function Attrs: noinline nounwind ssp willreturn memory(read) uwtable(sync)
 define i32 @isxdigit(i32 noundef %c) #4 {
 entry:
   %c.addr = alloca i32, align 4
@@ -1689,7 +1689,7 @@ entry:
   ret i32 %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @asctime_r(ptr noundef %tm, ptr noundef %buf) #1 {
 entry:
   %tm.addr = alloca ptr, align 8
@@ -1700,7 +1700,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @bsearch(ptr noundef %key, ptr noundef %base, i64 noundef %nitems, i64 noundef %size, ptr noundef %compar) #1 {
 entry:
   %key.addr = alloca ptr, align 8
@@ -1717,7 +1717,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getmntent_r(ptr noundef %fp, ptr noundef %mntbuf, ptr noundef %buf, i32 noundef %buflen) #1 {
 entry:
   %fp.addr = alloca ptr, align 8
@@ -1732,7 +1732,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gmtime_r(ptr noundef %timer, ptr noundef %buf) #1 {
 entry:
   %timer.addr = alloca ptr, align 8
@@ -1743,7 +1743,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gzgets(ptr noundef %file, ptr noundef %buf, i32 noundef %len) #1 {
 entry:
   %file.addr = alloca ptr, align 8
@@ -1756,7 +1756,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @localtime_r(ptr noundef %timep, ptr noundef %result) #1 {
 entry:
   %timep.addr = alloca ptr, align 8
@@ -1767,7 +1767,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @realpath(ptr noalias noundef %path, ptr noalias noundef %resolved_path) #1 {
 entry:
   %path.addr = alloca ptr, align 8
@@ -1778,7 +1778,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @freopen64(ptr noundef %voidname, ptr noundef %mode, ptr noundef %fp) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -1791,7 +1791,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @freopen(ptr noundef %voidname, ptr noundef %mode, ptr noundef %fp) #1 {
 entry:
   %voidname.addr = alloca ptr, align 8
@@ -1804,7 +1804,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @inet_ntop(i32 noundef %af, ptr noalias noundef %src, ptr noalias noundef %dst, i32 noundef %size) #1 {
 entry:
   %af.addr = alloca i32, align 4
@@ -1819,7 +1819,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define double @strtod(ptr noundef %str, ptr noundef %endptr) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1832,7 +1832,7 @@ entry:
   ret double 0.000000e+00
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define double @strtod_l(ptr noundef %str, ptr noundef %endptr, ptr noundef %loc) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1847,7 +1847,7 @@ entry:
   ret double 0.000000e+00
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define float @strtof(ptr noundef %nptr, ptr noundef %endptr) #1 {
 entry:
   %nptr.addr = alloca ptr, align 8
@@ -1860,7 +1860,7 @@ entry:
   ret float 0.000000e+00
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define float @strtof_l(ptr noundef %nptr, ptr noundef %endptr, ptr noundef %loc) #1 {
 entry:
   %nptr.addr = alloca ptr, align 8
@@ -1875,7 +1875,7 @@ entry:
   ret float 0.000000e+00
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i64 @strtol(ptr noundef %str, ptr noundef %endptr, i32 noundef %base) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1890,7 +1890,7 @@ entry:
   ret i64 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i64 @strtoll(ptr noundef %str, ptr noundef %endptr, i32 noundef %base) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1905,8 +1905,8 @@ entry:
   ret i64 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
-define x86_fp80 @strtold(ptr noundef %str, ptr noundef %endptr) #1 {
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define double @strtold(ptr noundef %str, ptr noundef %endptr) #1 {
 entry:
   %str.addr = alloca ptr, align 8
   %endptr.addr = alloca ptr, align 8
@@ -1915,10 +1915,10 @@ entry:
   %0 = load ptr, ptr %str.addr, align 8
   %1 = load ptr, ptr %endptr.addr, align 8
   store ptr %0, ptr %1, align 8
-  ret x86_fp80 0xK00000000000000000000
+  ret double 0.000000e+00
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i64 @strtoul(ptr noundef %str, ptr noundef %endptr, i32 noundef %base) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1933,7 +1933,7 @@ entry:
   ret i64 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i64 @strtoull(ptr noundef %str, ptr noundef %endptr, i32 noundef %base) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -1948,7 +1948,7 @@ entry:
   ret i64 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gcvt(double noundef %x, i32 noundef %ndigit, ptr noundef %buf) #1 {
 entry:
   %x.addr = alloca double, align 8
@@ -1961,7 +1961,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @memmem(ptr noundef %haystack, i64 noundef %haystacklen, ptr noundef %needle, i64 noundef %needlelen) #1 {
 entry:
   %haystack.addr = alloca ptr, align 8
@@ -1976,7 +1976,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @ctime_r(ptr noundef %timer, ptr noundef %buf) #1 {
 entry:
   %timer.addr = alloca ptr, align 8
@@ -1987,7 +1987,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @readdir_r(ptr noundef %__restrict__dir, ptr noundef %__restrict__entry, ptr noundef %__restrict__result) #1 {
 entry:
   %__restrict__dir.addr = alloca ptr, align 8
@@ -2002,7 +2002,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @getpwnam_r(ptr noundef %name, ptr noundef %pwd, ptr noundef %buf, i64 noundef %buflen, ptr noundef %result) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2021,7 +2021,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define i32 @getpwuid_r(i32 noundef %uid, ptr noundef %pwd, ptr noundef %buf, i64 noundef %buflen, ptr noundef %result) #1 {
 entry:
   %uid.addr = alloca i32, align 4
@@ -2040,7 +2040,7 @@ entry:
   ret i32 0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @_ZNSt8__detail15_List_node_base7_M_hookEPS0_(ptr noundef %arg0, ptr noundef %arg1) #1 {
 entry:
   %arg0.addr = alloca ptr, align 8
@@ -2053,7 +2053,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__dynamic_cast(ptr noundef %source, ptr noundef %sourceTypeInfo, ptr noundef %targetTypeInfo, i64 noundef %castType) #1 {
 entry:
   %source.addr = alloca ptr, align 8
@@ -2068,7 +2068,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @_ZNSsC1EPKcRKSaIcE(ptr noundef %arg0, ptr noundef %arg1) #1 {
 entry:
   %arg0.addr = alloca ptr, align 8
@@ -2081,7 +2081,7 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_(ptr noundef %arg0, ptr noundef %arg1) #1 {
 entry:
   %arg0.addr = alloca ptr, align 8
@@ -2094,49 +2094,49 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__ctype_b_loc() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__ctype_tolower_loc() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__ctype_toupper_loc() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__errno_location() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__h_errno_location() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__res_state() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @asctime(ptr noundef %timeptr) #1 {
 entry:
   %timeptr.addr = alloca ptr, align 8
@@ -2145,7 +2145,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @bindtextdomain(ptr noundef %domainname, ptr noundef %dirname) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -2156,7 +2156,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @bind_textdomain_codeset(ptr noundef %domainname, ptr noundef %codeset) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -2167,7 +2167,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @ctermid(ptr noundef %s) #1 {
 entry:
   %s.addr = alloca ptr, align 8
@@ -2176,7 +2176,7 @@ entry:
   ret ptr %0
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @dcgettext(ptr noundef %domainname, ptr noundef %msgid, i32 noundef %category) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -2189,7 +2189,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @dgettext(ptr noundef %domainname, ptr noundef %msgid) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -2200,7 +2200,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @dngettext(ptr noundef %domainname, ptr noundef %msgid, ptr noundef %msgid_plural, i64 noundef %n) #1 {
 entry:
   %domainname.addr = alloca ptr, align 8
@@ -2215,7 +2215,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getgrgid(i32 noundef %gid) #1 {
 entry:
   %gid.addr = alloca i32, align 4
@@ -2224,7 +2224,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getgrnam(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2233,7 +2233,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gethostbyaddr(ptr noundef %addr, i32 noundef %len, i32 noundef %type) #1 {
 entry:
   %addr.addr = alloca ptr, align 8
@@ -2246,7 +2246,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gethostbyname(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2255,7 +2255,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gethostbyname2(ptr noundef %name, i32 noundef %af) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2266,7 +2266,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getmntent(ptr noundef %stream) #1 {
 entry:
   %stream.addr = alloca ptr, align 8
@@ -2275,7 +2275,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getprotobyname(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2284,7 +2284,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getprotobynumber(i32 noundef %proto) #1 {
 entry:
   %proto.addr = alloca i32, align 4
@@ -2293,14 +2293,14 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getpwent() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getpwnam(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2309,7 +2309,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getpwuid(i32 noundef %uid) #1 {
 entry:
   %uid.addr = alloca i32, align 4
@@ -2318,7 +2318,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getservbyname(ptr noundef %name, ptr noundef %proto) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2329,7 +2329,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getservbyport(i32 noundef %port, ptr noundef %proto) #1 {
 entry:
   %port.addr = alloca i32, align 4
@@ -2340,7 +2340,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @getspnam(ptr noundef %name) #1 {
 entry:
   %name.addr = alloca ptr, align 8
@@ -2349,7 +2349,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gettext(ptr noundef %msgid) #1 {
 entry:
   %msgid.addr = alloca ptr, align 8
@@ -2358,7 +2358,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gmtime(ptr noundef %timer) #1 {
 entry:
   %timer.addr = alloca ptr, align 8
@@ -2367,14 +2367,14 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gnu_get_libc_version() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @gnutls_check_version(ptr noundef %req_version) #1 {
 entry:
   %req_version.addr = alloca ptr, align 8
@@ -2383,14 +2383,14 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @localeconv() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @localtime(ptr noundef %timer) #1 {
 entry:
   %timer.addr = alloca ptr, align 8
@@ -2399,7 +2399,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @ngettext(ptr noundef %msgid, ptr noundef %msgid_plural, i64 noundef %n) #1 {
 entry:
   %msgid.addr = alloca ptr, align 8
@@ -2412,14 +2412,14 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @pango_cairo_font_map_get_default() #1 {
 entry:
   %call = call ptr @malloc(i64 noundef 10) #5
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @re_comp(ptr noundef %regex) #1 {
 entry:
   %regex.addr = alloca ptr, align 8
@@ -2428,7 +2428,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @setlocale(i32 noundef %category, ptr noundef %locale) #1 {
 entry:
   %category.addr = alloca i32, align 4
@@ -2439,7 +2439,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tgoto(ptr noundef %cap, i32 noundef %col, i32 noundef %row) #1 {
 entry:
   %cap.addr = alloca ptr, align 8
@@ -2452,7 +2452,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @tparm(ptr noundef %str, ...) #1 {
 entry:
   %str.addr = alloca ptr, align 8
@@ -2461,7 +2461,7 @@ entry:
   ret ptr %call
 }
 
-; Function Attrs: noinline nounwind ssp uwtable
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @zError(i32 noundef %a) #1 {
 entry:
   %a.addr = alloca i32, align 4
@@ -2470,11 +2470,11 @@ entry:
   ret ptr %call
 }
 
-attributes #0 = { noinline nounwind ssp allocsize(0) uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "tune-cpu"="generic" }
-attributes #1 = { noinline nounwind ssp uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "tune-cpu"="generic" }
-attributes #2 = { noinline nounwind ssp allocsize(0,1) uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "tune-cpu"="generic" }
-attributes #3 = { noinline nounwind ssp allocsize(1) uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "tune-cpu"="generic" }
-attributes #4 = { noinline nounwind ssp willreturn memory(read) uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+cx8,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "tune-cpu"="generic" }
+attributes #0 = { noinline nounwind ssp allocsize(0) uwtable(sync) "frame-pointer"="non-leaf" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="apple-m1" "target-features"="+aes,+crc,+crypto,+dotprod,+fp-armv8,+fp16fml,+fullfp16,+lse,+neon,+ras,+rcpc,+rdm,+sha2,+sha3,+sm4,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8a,+zcm,+zcz" }
+attributes #1 = { noinline nounwind ssp uwtable(sync) "frame-pointer"="non-leaf" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="apple-m1" "target-features"="+aes,+crc,+crypto,+dotprod,+fp-armv8,+fp16fml,+fullfp16,+lse,+neon,+ras,+rcpc,+rdm,+sha2,+sha3,+sm4,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8a,+zcm,+zcz" }
+attributes #2 = { noinline nounwind ssp allocsize(0,1) uwtable(sync) "frame-pointer"="non-leaf" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="apple-m1" "target-features"="+aes,+crc,+crypto,+dotprod,+fp-armv8,+fp16fml,+fullfp16,+lse,+neon,+ras,+rcpc,+rdm,+sha2,+sha3,+sm4,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8a,+zcm,+zcz" }
+attributes #3 = { noinline nounwind ssp allocsize(1) uwtable(sync) "frame-pointer"="non-leaf" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="apple-m1" "target-features"="+aes,+crc,+crypto,+dotprod,+fp-armv8,+fp16fml,+fullfp16,+lse,+neon,+ras,+rcpc,+rdm,+sha2,+sha3,+sm4,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8a,+zcm,+zcz" }
+attributes #4 = { noinline nounwind ssp willreturn memory(read) uwtable(sync) "frame-pointer"="non-leaf" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="apple-m1" "target-features"="+aes,+crc,+crypto,+dotprod,+fp-armv8,+fp16fml,+fullfp16,+lse,+neon,+ras,+rcpc,+rdm,+sha2,+sha3,+sm4,+v8.1a,+v8.2a,+v8.3a,+v8.4a,+v8.5a,+v8a,+zcm,+zcz" }
 attributes #5 = { allocsize(0) }
 
 !llvm.module.flags = !{!0, !1, !2, !3}
@@ -2482,6 +2482,6 @@ attributes #5 = { allocsize(0) }
 
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 8, !"PIC Level", i32 2}
-!2 = !{i32 7, !"uwtable", i32 2}
-!3 = !{i32 7, !"frame-pointer", i32 2}
+!2 = !{i32 7, !"uwtable", i32 1}
+!3 = !{i32 7, !"frame-pointer", i32 1}
 !4 = !{!"Homebrew clang version 16.0.6"}
