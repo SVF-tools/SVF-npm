@@ -125,6 +125,21 @@ public:
         }
         return *this;
     }
+
+    AbstractValue& operator=(const IntervalValue& other)
+    {
+        type = IntervalType;
+        interval = other;
+        return *this;
+    }
+
+    AbstractValue& operator=(const AddressValue& other)
+    {
+        type = AddressType;
+        addr = other;
+        return *this;
+    }
+
     AbstractValue operator==(const AbstractValue& other) const
     {
         assert(isInterval() && other.isInterval());
