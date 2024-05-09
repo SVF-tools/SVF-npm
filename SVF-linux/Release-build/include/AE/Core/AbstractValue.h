@@ -26,8 +26,11 @@
 namespace SVF
 {
 
-struct AbstractValue
+class AbstractValue
 {
+
+public:
+
     enum DataType
     {
         IntervalType,
