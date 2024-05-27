@@ -414,6 +414,12 @@ public:
         return _head;
     }
 
+    /// Get all wto components in WTO cycle
+    const WTOComponentRefList& getWTOComponents() const
+    {
+        return _components;
+    }
+
     /// Begin iterator over the components
     Iterator begin() const
     {
@@ -579,7 +585,12 @@ public:
         }
     }
 
-    /// Begin iterator over the components
+    /// Get all wto components in WTO
+    const WTOComponentRefList& getWTOComponents() const
+    {
+        return _components;
+    }
+
     /// Begin iterator over the components
     Iterator begin() const
     {
