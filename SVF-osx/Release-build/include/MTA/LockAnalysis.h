@@ -183,7 +183,7 @@ public:
             const CxtLock& lock = *it;
             for(CxtLockSet::const_iterator lit = lockset2.begin(), elit = lockset2.end(); lit!=elit; ++lit)
             {
-                if(isAliasedLocks(lock,*lit))
+                if(isAliasedLocks(lock, *lit))
                     return true;
             }
         }
@@ -362,7 +362,7 @@ private:
         {
             for(CxtLockSet::const_iterator it = srclockset.begin(), eit = srclockset.end(); it!=eit; ++it)
             {
-                addCxtStmtToSpan(tgr,*it);
+                addCxtStmtToSpan(tgr, *it);
             }
             pushToCTSWorkList(tgr);
         }

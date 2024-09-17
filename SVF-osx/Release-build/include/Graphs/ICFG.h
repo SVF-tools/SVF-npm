@@ -43,7 +43,7 @@ class CallGraph;
 /*!
  * Interprocedural Control-Flow Graph (ICFG)
  */
-typedef GenericGraph<ICFGNode,ICFGEdge> GenericICFGTy;
+typedef GenericGraph<ICFGNode, ICFGEdge> GenericICFGTy;
 class ICFG : public GenericICFGTy
 {
     friend class ICFGBuilder;
@@ -364,17 +364,17 @@ namespace SVF
  * GenericGraphTraits specializations for generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::ICFGNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::ICFGNode,SVF::ICFGEdge>*  >
+template<> struct GenericGraphTraits<SVF::ICFGNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::ICFGNode, SVF::ICFGEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for call graph node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::ICFGNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::ICFGNode,SVF::ICFGEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::ICFGNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::ICFGNode, SVF::ICFGEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::ICFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::ICFGNode,SVF::ICFGEdge>* >
+template<> struct GenericGraphTraits<SVF::ICFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::ICFGNode, SVF::ICFGEdge>* >
 {
     typedef SVF::ICFGNode *NodeRef;
 };

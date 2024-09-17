@@ -49,13 +49,13 @@ public:
     typedef Set<const SVFFunction*> FunSet;
     typedef FIFOWorkList<CxtThreadStmt> CxtThreadStmtWorkList;
     typedef Set<CxtThreadStmt> CxtThreadStmtSet;
-    typedef Map<CxtThreadStmt,NodeBS> ThreadStmtToThreadInterleav;
-    typedef Map<const ICFGNode*,CxtThreadStmtSet> InstToThreadStmtSetMap;
+    typedef Map<CxtThreadStmt, NodeBS> ThreadStmtToThreadInterleav;
+    typedef Map<const ICFGNode*, CxtThreadStmtSet> InstToThreadStmtSetMap;
     typedef SVFLoopAndDomInfo::LoopBBs LoopBBs;
 
     typedef Set<CxtStmt> LockSpan;
 
-    typedef std::pair<const SVFFunction*,const SVFFunction*> FuncPair;
+    typedef std::pair<const SVFFunction*, const SVFFunction*> FuncPair;
     typedef Map<FuncPair, bool> FuncPairToBool;
 
     /// Constructor
@@ -284,8 +284,8 @@ public:
 
     typedef SVFLoopAndDomInfo::LoopBBs LoopBBs;
     typedef TCT::InstVec InstVec;
-    typedef Map<CxtStmt,ValDomain> CxtStmtToAliveFlagMap;
-    typedef Map<CxtStmt,NodeBS> CxtStmtToTIDMap;
+    typedef Map<CxtStmt, ValDomain> CxtStmtToAliveFlagMap;
+    typedef Map<CxtStmt, NodeBS> CxtStmtToTIDMap;
     typedef Set<NodePair> ThreadPairSet;
     typedef Map<CxtStmt, LoopBBs> CxtStmtToLoopMap;
     typedef FIFOWorkList<CxtStmt> CxtStmtWorkList;

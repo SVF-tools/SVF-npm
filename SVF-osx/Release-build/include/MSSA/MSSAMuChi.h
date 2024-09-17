@@ -630,7 +630,7 @@ class MSSAPHI : public MSSADEF
 {
 
 public:
-    typedef Map<u32_t,const MRVer*> OPVers;
+    typedef Map<u32_t, const MRVer*> OPVers;
 private:
     const SVFBasicBlock* bb;
     OPVers opVers;

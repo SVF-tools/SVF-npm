@@ -137,7 +137,7 @@ protected:
 /*!
  * Generic node on the graph as base class
  */
-template<class NodeTy,class EdgeTy>
+template<class NodeTy, class EdgeTy>
 class GenericNode
 {
     friend class SVFIRWriter;
@@ -506,7 +506,7 @@ inline mapped_iter<ItTy, FuncTy> map_iter(ItTy I, FuncTy F)
 /*!
  * GenericGraphTraits for nodes
  */
-template<class NodeTy,class EdgeTy> struct GenericGraphTraits<SVF::GenericNode<NodeTy,EdgeTy>*  >
+template<class NodeTy, class EdgeTy> struct GenericGraphTraits<SVF::GenericNode<NodeTy, EdgeTy>*  >
 {
     typedef NodeTy NodeType;
     typedef EdgeTy EdgeType;
@@ -517,7 +517,7 @@ template<class NodeTy,class EdgeTy> struct GenericGraphTraits<SVF::GenericNode<N
     }
 
     // nodes_iterator/begin/end - Allow iteration over all nodes in the graph
-    typedef mapped_iter<typename SVF::GenericNode<NodeTy,EdgeTy>::iterator, decltype(&edge_dest)> ChildIteratorType;
+    typedef mapped_iter<typename SVF::GenericNode<NodeTy, EdgeTy>::iterator, decltype(&edge_dest)> ChildIteratorType;
 
     static NodeType* getEntryNode(NodeType* pagN)
     {
@@ -545,8 +545,8 @@ template<class NodeTy,class EdgeTy> struct GenericGraphTraits<SVF::GenericNode<N
 /*!
  * Inverse GenericGraphTraits for node which is used for inverse traversal.
  */
-template<class NodeTy,class EdgeTy>
-struct GenericGraphTraits<Inverse<SVF::GenericNode<NodeTy,EdgeTy>* > >
+template<class NodeTy, class EdgeTy>
+struct GenericGraphTraits<Inverse<SVF::GenericNode<NodeTy, EdgeTy>* > >
 {
     typedef NodeTy NodeType;
     typedef EdgeTy EdgeType;
@@ -557,7 +557,7 @@ struct GenericGraphTraits<Inverse<SVF::GenericNode<NodeTy,EdgeTy>* > >
     }
 
     // nodes_iterator/begin/end - Allow iteration over all nodes in the graph
-    typedef mapped_iter<typename SVF::GenericNode<NodeTy,EdgeTy>::iterator, decltype(&edge_dest)> ChildIteratorType;
+    typedef mapped_iter<typename SVF::GenericNode<NodeTy, EdgeTy>::iterator, decltype(&edge_dest)> ChildIteratorType;
 
     static inline NodeType* getEntryNode(Inverse<NodeType* > G)
     {
@@ -582,9 +582,9 @@ struct GenericGraphTraits<Inverse<SVF::GenericNode<NodeTy,EdgeTy>* > >
 /*!
  * GraphTraints
  */
-template<class NodeTy,class EdgeTy> struct GenericGraphTraits<SVF::GenericGraph<NodeTy,EdgeTy>* > : public GenericGraphTraits<SVF::GenericNode<NodeTy,EdgeTy>*  >
+template<class NodeTy, class EdgeTy> struct GenericGraphTraits<SVF::GenericGraph<NodeTy, EdgeTy>* > : public GenericGraphTraits<SVF::GenericNode<NodeTy, EdgeTy>*  >
 {
-    typedef SVF::GenericGraph<NodeTy,EdgeTy> GenericGraphTy;
+    typedef SVF::GenericGraph<NodeTy, EdgeTy> GenericGraphTy;
     typedef NodeTy NodeType;
     typedef EdgeTy EdgeType;
 

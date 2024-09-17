@@ -457,17 +457,17 @@ namespace SVF
  * GenericGraphTraits specializations for generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::DCHNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::DCHNode,SVF::DCHEdge>*  >
+template<> struct GenericGraphTraits<SVF::DCHNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::DCHNode, SVF::DCHEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for call graph node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::DCHNode*> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::DCHNode,SVF::DCHEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::DCHNode*> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::DCHNode, SVF::DCHEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::DCHGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::DCHNode,SVF::DCHEdge>* >
+template<> struct GenericGraphTraits<SVF::DCHGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::DCHNode, SVF::DCHEdge>* >
 {
     typedef SVF::DCHNode *NodeRef;
 };

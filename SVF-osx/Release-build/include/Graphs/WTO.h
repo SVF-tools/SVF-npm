@@ -714,7 +714,7 @@ protected:
         void visit(const WTONodeT& node) override
         {
             _nodeToWTOCycleDepth.insert(
-                                    std::make_pair(node.getICFGNode(), _wtoCycleDepth));
+                std::make_pair(node.getICFGNode(), _wtoCycleDepth));
         }
 
     }; // end class WTOCycleDepthBuilder

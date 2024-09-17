@@ -104,7 +104,7 @@ protected:
             child_iterator EE = GTraits::child_end(v);
             for (; EI != EE; ++EI)
             {
-                FWProcessOutgoingEdge(item,*(EI.getCurrent()) );
+                FWProcessOutgoingEdge(item, *(EI.getCurrent()) );
             }
         }
     }
@@ -123,7 +123,7 @@ protected:
             inv_child_iterator EE = InvGTraits::child_end(v);
             for (; EI != EE; ++EI)
             {
-                BWProcessIncomingEdge(item,*(EI.getCurrent()) );
+                BWProcessIncomingEdge(item, *(EI.getCurrent()) );
             }
         }
     }

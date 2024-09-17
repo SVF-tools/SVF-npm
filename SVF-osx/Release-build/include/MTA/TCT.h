@@ -143,9 +143,9 @@ public:
     typedef std::vector<const ICFGNode*> InstVec;
     typedef Set<const ICFGNode*> InstSet;
     typedef Set<const CallGraphNode*> PTACGNodeSet;
-    typedef Map<CxtThread,TCTNode*> CxtThreadToNodeMap;
-    typedef Map<CxtThread,CallStrCxt> CxtThreadToForkCxt;
-    typedef Map<CxtThread,const SVFFunction*> CxtThreadToFun;
+    typedef Map<CxtThread, TCTNode*> CxtThreadToNodeMap;
+    typedef Map<CxtThread, CallStrCxt> CxtThreadToForkCxt;
+    typedef Map<CxtThread, const SVFFunction*> CxtThreadToFun;
     typedef Map<const ICFGNode*, LoopBBs> InstToLoopMap;
     typedef FIFOWorkList<CxtThreadProc> CxtThreadProcVec;
     typedef Set<CxtThreadProc> CxtThreadProcSet;
@@ -588,17 +588,17 @@ namespace SVF
  * graphs by the generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::TCTNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::TCTNode,SVF::TCTEdge>*  >
+template<> struct GenericGraphTraits<SVF::TCTNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::TCTNode, SVF::TCTEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for Value flow node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::TCTNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::TCTNode,SVF::TCTEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::TCTNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::TCTNode, SVF::TCTEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::TCT*> : public GenericGraphTraits<SVF::GenericGraph<SVF::TCTNode,SVF::TCTEdge>* >
+template<> struct GenericGraphTraits<SVF::TCT*> : public GenericGraphTraits<SVF::GenericGraph<SVF::TCTNode, SVF::TCTEdge>* >
 {
     typedef SVF::TCTNode *NodeRef;
 };

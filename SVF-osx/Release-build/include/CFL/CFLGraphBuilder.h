@@ -60,7 +60,7 @@ protected:
     Map<Kind, std::string> kindToLabelMap;
 
     /// Map to maintain attributes associated with each kind
-    Map<CFGrammar::Kind,  Set<CFGrammar::Attribute>> kindToAttrsMap;
+    Map<CFGrammar::Kind, Set<CFGrammar::Attribute>> kindToAttrsMap;
 
     Kind current;
     CFLGraph *cflGraph;
@@ -87,7 +87,7 @@ public:
     /// Method to build a CFL graph by copying nodes and edges from any graph
     /// inherited from GenericGraph
     template<class N, class E>
-    CFLGraph* build(GenericGraph<N,E>* graph, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
+    CFLGraph* build(GenericGraph<N, E>* graph, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
 
     /// Method to build a CFL graph from external file
     CFLGraph* build(std::string fileName, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
@@ -108,7 +108,7 @@ public:
     }
 
     /// Returns a reference to the map that associates Kinds with their corresponding attributes
-    Map<CFGrammar::Kind,  Set<CFGrammar::Attribute>>& getKindToAttrsMap()
+    Map<CFGrammar::Kind, Set<CFGrammar::Attribute>>& getKindToAttrsMap()
     {
         return this->kindToAttrsMap;
     }

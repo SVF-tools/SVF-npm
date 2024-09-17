@@ -228,7 +228,7 @@ struct isa_impl_wrap<To, FromTy, FromTy>
     // When From == SimpleType, we are as simple as we are going to get.
     static bool doit(const FromTy &Val)
     {
-        return isa_impl_cl<To,FromTy>::doit(Val);
+        return isa_impl_cl<To, FromTy>::doit(Val);
     }
 };
 
@@ -306,7 +306,7 @@ template<class To, class FromTy>
 struct cast_retty_wrap<To, FromTy, FromTy>
 {
     // When the simplified type is equal to the from type, use it directly.
-    using ret_type = typename cast_retty_impl<To,FromTy>::ret_type;
+    using ret_type = typename cast_retty_impl<To, FromTy>::ret_type;
 };
 
 template<class To, class From>
@@ -330,7 +330,7 @@ template<class To, class From, class SimpleFrom> struct cast_convert_val
     }
 };
 
-template<class To, class FromTy> struct cast_convert_val<To,FromTy,FromTy>
+template<class To, class FromTy> struct cast_convert_val<To, FromTy, FromTy>
 {
     // This _is_ a simple type, just cast it.
     static typename cast_retty<To, FromTy>::ret_type doit(const FromTy &Val)

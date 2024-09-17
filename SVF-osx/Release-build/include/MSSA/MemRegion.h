@@ -310,7 +310,7 @@ protected:
     {
         for(MRSet::const_iterator it = funToMRsMap[fun].begin(), eit = funToMRsMap[fun].end(); it!=eit; ++it)
         {
-            if(isAliasedMR(cpts,*it))
+            if(isAliasedMR(cpts, *it))
                 aliasMRs.insert(*it);
         }
     }
