@@ -202,7 +202,7 @@ public:
     inline bool hasThreadForkEdge(const CallICFGNode* cs) const
     {
         return callinstToThreadForkEdgesMap.find(cs) !=
-               callinstToThreadForkEdgesMap.end();
+                   callinstToThreadForkEdgesMap.end();
     }
     inline ForkEdgeSet::const_iterator getForkEdgeBegin(const CallICFGNode* cs) const
     {

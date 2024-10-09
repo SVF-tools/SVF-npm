@@ -86,11 +86,11 @@ public:
     //@{
     inline Condition condAnd(const Condition& lhs, const Condition& rhs)
     {
-        return Condition::AND(lhs,rhs);
+        return Condition::AND(lhs, rhs);
     }
     inline Condition condOr(const Condition& lhs, const Condition& rhs)
     {
-        return Condition::OR(lhs,rhs);
+        return Condition::OR(lhs, rhs);
     }
     inline Condition condNeg(const Condition& cond)
     {
@@ -151,7 +151,7 @@ public:
         bool funcEq = (keyFunc == valueFunc);
         (void)funcEq; // Suppress warning of unused variable under release build
         assert(funcEq && "two basicblocks should be in the same function!");
-        return keyFunc->postDominate(bbKey,bbValue);
+        return keyFunc->postDominate(bbKey, bbValue);
     }
 
     inline bool dominate(const SVFBasicBlock* bbKey, const SVFBasicBlock* bbValue) const
@@ -161,7 +161,7 @@ public:
         bool funcEq = (keyFunc == valueFunc);
         (void)funcEq; // Suppress warning of unused variable under release build
         assert(funcEq && "two basicblocks should be in the same function!");
-        return keyFunc->dominate(bbKey,bbValue);
+        return keyFunc->dominate(bbKey, bbValue);
     }
 
     /// Guard Computation for a value-flow (between two basic blocks)

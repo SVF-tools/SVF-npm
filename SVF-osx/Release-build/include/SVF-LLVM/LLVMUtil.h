@@ -233,10 +233,10 @@ inline const ConstantExpr* isTruncConstantExpr(const Value* val)
     if (const ConstantExpr* constExpr = SVFUtil::dyn_cast<ConstantExpr>(val))
     {
         if (constExpr->getOpcode() == Instruction::Trunc ||
-                constExpr->getOpcode() == Instruction::FPTrunc ||
-                constExpr->getOpcode() == Instruction::ZExt ||
-                constExpr->getOpcode() == Instruction::SExt ||
-                constExpr->getOpcode() == Instruction::FPExt)
+        constExpr->getOpcode() == Instruction::FPTrunc ||
+        constExpr->getOpcode() == Instruction::ZExt ||
+        constExpr->getOpcode() == Instruction::SExt ||
+        constExpr->getOpcode() == Instruction::FPExt)
             return constExpr;
     }
     return nullptr;
@@ -247,7 +247,7 @@ inline const ConstantExpr* isCmpConstantExpr(const Value* val)
     if (const ConstantExpr* constExpr = SVFUtil::dyn_cast<ConstantExpr>(val))
     {
         if (constExpr->getOpcode() == Instruction::ICmp ||
-                constExpr->getOpcode() == Instruction::FCmp)
+        constExpr->getOpcode() == Instruction::FCmp)
             return constExpr;
     }
     return nullptr;
@@ -297,7 +297,7 @@ void getNextInsts(const Instruction* curInst,
 inline bool isNoPrecessorBasicBlock(const BasicBlock* bb)
 {
     return bb != &bb->getParent()->getEntryBlock() &&
-           pred_empty(bb);
+                 pred_empty(bb);
 }
 
 /// Check whether a file is an LLVM IR file

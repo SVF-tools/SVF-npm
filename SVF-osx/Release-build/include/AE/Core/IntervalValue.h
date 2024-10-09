@@ -1002,7 +1002,7 @@ inline IntervalValue operator|(const IntervalValue &lhs, const IntervalValue &rh
     else if (lhs.is_numeral() && rhs.is_numeral())
         return IntervalValue(lhs.lb() | rhs.lb());
     else if (lhs.lb().getNumeral() >= 0 && !lhs.ub().is_infinity() &&
-             rhs.lb().getNumeral() >= 0 && !rhs.ub().is_infinity())
+                                      rhs.lb().getNumeral() >= 0 && !rhs.ub().is_infinity())
     {
         s64_t m = std::max(lhs.ub().getNumeral(), rhs.ub().getNumeral());
         s64_t ub = next_power_of_2(s64_t(m)) - 1;
@@ -1031,7 +1031,7 @@ inline IntervalValue operator^(const IntervalValue &lhs, const IntervalValue &rh
     else if (lhs.is_numeral() && rhs.is_numeral())
         return IntervalValue(lhs.lb() ^ rhs.lb());
     else if (lhs.lb().getNumeral() >= 0 && !lhs.ub().is_infinity() &&
-             rhs.lb().getNumeral() >= 0 && !rhs.ub().is_infinity())
+                                      rhs.lb().getNumeral() >= 0 && !rhs.ub().is_infinity())
     {
         s64_t m = std::max(lhs.ub().getNumeral(), rhs.ub().getNumeral());
         s64_t ub = next_power_of_2(s64_t(m)) - 1;

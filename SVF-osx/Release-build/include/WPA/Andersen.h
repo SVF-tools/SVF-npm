@@ -109,12 +109,12 @@ public:
     static inline bool classof(const PointerAnalysis *pta)
     {
         return ( pta->getAnalysisTy() == Andersen_BASE
-                 || pta->getAnalysisTy() == Andersen_WPA
-                 || pta->getAnalysisTy() == AndersenWaveDiff_WPA
-                 || pta->getAnalysisTy() == AndersenSCD_WPA
-                 || pta->getAnalysisTy() == AndersenSFR_WPA
-                 || pta->getAnalysisTy() == TypeCPP_WPA
-                 || pta->getAnalysisTy() == Steensgaard_WPA);
+        || pta->getAnalysisTy() == Andersen_WPA
+        || pta->getAnalysisTy() == AndersenWaveDiff_WPA
+        || pta->getAnalysisTy() == AndersenSCD_WPA
+        || pta->getAnalysisTy() == AndersenSFR_WPA
+        || pta->getAnalysisTy() == TypeCPP_WPA
+        || pta->getAnalysisTy() == Steensgaard_WPA);
     }
     //@}
 
@@ -229,9 +229,9 @@ public:
     static inline bool classof(const PointerAnalysis *pta)
     {
         return (pta->getAnalysisTy() == Andersen_WPA
-                || pta->getAnalysisTy() == AndersenWaveDiff_WPA
-                || pta->getAnalysisTy() == AndersenSCD_WPA
-                || pta->getAnalysisTy() == AndersenSFR_WPA);
+        || pta->getAnalysisTy() == AndersenWaveDiff_WPA
+        || pta->getAnalysisTy() == AndersenSCD_WPA
+        || pta->getAnalysisTy() == AndersenSFR_WPA);
     }
     //@}
 

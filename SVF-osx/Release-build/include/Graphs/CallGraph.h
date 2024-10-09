@@ -147,8 +147,8 @@ public:
     static inline bool classof(const GenericCallGraphEdgeTy *edge)
     {
         return edge->getEdgeKind() == CallGraphEdge::CallRetEdge ||
-               edge->getEdgeKind() == CallGraphEdge::TDForkEdge ||
-               edge->getEdgeKind() == CallGraphEdge::TDJoinEdge;
+        edge->getEdgeKind() == CallGraphEdge::TDForkEdge ||
+        edge->getEdgeKind() == CallGraphEdge::TDJoinEdge;
     }
     //@}
 
@@ -420,14 +420,14 @@ public:
     {
         CallInstToCallGraphEdgesMap::const_iterator it = callinstToCallGraphEdgesMap.find(inst);
         assert(it!=callinstToCallGraphEdgesMap.end()
-               && "call instruction does not have a valid callee");
+                   && "call instruction does not have a valid callee");
         return it->second.begin();
     }
     inline CallGraphEdgeSet::const_iterator getCallEdgeEnd(const CallICFGNode* inst) const
     {
         CallInstToCallGraphEdgesMap::const_iterator it = callinstToCallGraphEdgesMap.find(inst);
         assert(it!=callinstToCallGraphEdgesMap.end()
-               && "call instruction does not have a valid callee");
+                   && "call instruction does not have a valid callee");
         return it->second.end();
     }
     //@}

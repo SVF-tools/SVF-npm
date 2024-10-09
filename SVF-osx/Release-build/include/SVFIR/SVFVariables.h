@@ -83,8 +83,8 @@ public:
     inline const SVFValue* getValue() const
     {
         assert(this->getNodeKind() != DummyValNode &&
-               this->getNodeKind() != DummyObjNode &&
-               "dummy node do not have value!");
+                                      this->getNodeKind() != DummyObjNode &&
+                                          "dummy node do not have value!");
         assert(!SymbolTableInfo::isBlkObjOrConstantObj(this->getId()) &&
                "blackhole and constant obj do not have value");
         assert(value &&

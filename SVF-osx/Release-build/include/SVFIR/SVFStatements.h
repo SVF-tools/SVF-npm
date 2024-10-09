@@ -107,20 +107,20 @@ public:
     static inline bool classof(const GenericPAGEdgeTy* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Addr ||
-               edge->getEdgeKind() == SVFStmt::Copy ||
-               edge->getEdgeKind() == SVFStmt::Store ||
-               edge->getEdgeKind() == SVFStmt::Load ||
-               edge->getEdgeKind() == SVFStmt::Call ||
-               edge->getEdgeKind() == SVFStmt::Ret ||
-               edge->getEdgeKind() == SVFStmt::Gep ||
-               edge->getEdgeKind() == SVFStmt::Phi ||
-               edge->getEdgeKind() == SVFStmt::Select ||
-               edge->getEdgeKind() == SVFStmt::Cmp ||
-               edge->getEdgeKind() == SVFStmt::BinaryOp ||
-               edge->getEdgeKind() == SVFStmt::UnaryOp ||
-               edge->getEdgeKind() == SVFStmt::Branch ||
-               edge->getEdgeKind() == SVFStmt::ThreadFork ||
-               edge->getEdgeKind() == SVFStmt::ThreadJoin;
+        edge->getEdgeKind() == SVFStmt::Copy ||
+        edge->getEdgeKind() == SVFStmt::Store ||
+        edge->getEdgeKind() == SVFStmt::Load ||
+        edge->getEdgeKind() == SVFStmt::Call ||
+        edge->getEdgeKind() == SVFStmt::Ret ||
+        edge->getEdgeKind() == SVFStmt::Gep ||
+        edge->getEdgeKind() == SVFStmt::Phi ||
+        edge->getEdgeKind() == SVFStmt::Select ||
+        edge->getEdgeKind() == SVFStmt::Cmp ||
+        edge->getEdgeKind() == SVFStmt::BinaryOp ||
+        edge->getEdgeKind() == SVFStmt::UnaryOp ||
+        edge->getEdgeKind() == SVFStmt::Branch ||
+        edge->getEdgeKind() == SVFStmt::ThreadFork ||
+        edge->getEdgeKind() == SVFStmt::ThreadJoin;
     }
     ///@}
 
@@ -264,26 +264,26 @@ public:
     static inline bool classof(const SVFStmt* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Addr ||
-               edge->getEdgeKind() == SVFStmt::Copy ||
-               edge->getEdgeKind() == SVFStmt::Store ||
-               edge->getEdgeKind() == SVFStmt::Load ||
-               edge->getEdgeKind() == SVFStmt::Call ||
-               edge->getEdgeKind() == SVFStmt::Ret ||
-               edge->getEdgeKind() == SVFStmt::Gep ||
-               edge->getEdgeKind() == SVFStmt::ThreadFork ||
-               edge->getEdgeKind() == SVFStmt::ThreadJoin;
+        edge->getEdgeKind() == SVFStmt::Copy ||
+        edge->getEdgeKind() == SVFStmt::Store ||
+        edge->getEdgeKind() == SVFStmt::Load ||
+        edge->getEdgeKind() == SVFStmt::Call ||
+        edge->getEdgeKind() == SVFStmt::Ret ||
+        edge->getEdgeKind() == SVFStmt::Gep ||
+        edge->getEdgeKind() == SVFStmt::ThreadFork ||
+        edge->getEdgeKind() == SVFStmt::ThreadJoin;
     }
     static inline bool classof(const GenericPAGEdgeTy* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Addr ||
-               edge->getEdgeKind() == SVFStmt::Copy ||
-               edge->getEdgeKind() == SVFStmt::Store ||
-               edge->getEdgeKind() == SVFStmt::Load ||
-               edge->getEdgeKind() == SVFStmt::Call ||
-               edge->getEdgeKind() == SVFStmt::Ret ||
-               edge->getEdgeKind() == SVFStmt::Gep ||
-               edge->getEdgeKind() == SVFStmt::ThreadFork ||
-               edge->getEdgeKind() == SVFStmt::ThreadJoin;
+        edge->getEdgeKind() == SVFStmt::Copy ||
+        edge->getEdgeKind() == SVFStmt::Store ||
+        edge->getEdgeKind() == SVFStmt::Load ||
+        edge->getEdgeKind() == SVFStmt::Call ||
+        edge->getEdgeKind() == SVFStmt::Ret ||
+        edge->getEdgeKind() == SVFStmt::Gep ||
+        edge->getEdgeKind() == SVFStmt::ThreadFork ||
+        edge->getEdgeKind() == SVFStmt::ThreadJoin;
     }
     //@}
 
@@ -633,12 +633,12 @@ public:
     static inline bool classof(const SVFStmt* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Call ||
-               edge->getEdgeKind() == SVFStmt::ThreadFork;
+        edge->getEdgeKind() == SVFStmt::ThreadFork;
     }
     static inline bool classof(const GenericPAGEdgeTy* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Call ||
-               edge->getEdgeKind() == SVFStmt::ThreadFork;
+        edge->getEdgeKind() == SVFStmt::ThreadFork;
     }
     //@}
 
@@ -694,12 +694,12 @@ public:
     static inline bool classof(const SVFStmt* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Ret ||
-               edge->getEdgeKind() == SVFStmt::ThreadJoin;
+        edge->getEdgeKind() == SVFStmt::ThreadJoin;
     }
     static inline bool classof(const GenericPAGEdgeTy* edge)
     {
         return edge->getEdgeKind() == SVFStmt::Ret ||
-               edge->getEdgeKind() == SVFStmt::ThreadJoin;
+        edge->getEdgeKind() == SVFStmt::ThreadJoin;
     }
     //@}
 
@@ -763,12 +763,12 @@ public:
     static inline bool classof(const SVFStmt* node)
     {
         return node->getEdgeKind() == Phi || node->getEdgeKind() == Select ||
-               node->getEdgeKind() == BinaryOp || node->getEdgeKind() == Cmp;
+        node->getEdgeKind() == BinaryOp || node->getEdgeKind() == Cmp;
     }
     static inline bool classof(const GenericPAGEdgeTy* node)
     {
         return node->getEdgeKind() == Phi || node->getEdgeKind() == Select ||
-               node->getEdgeKind() == BinaryOp || node->getEdgeKind() == Cmp;
+        node->getEdgeKind() == BinaryOp || node->getEdgeKind() == Cmp;
     }
     //@}
     /// Operands and result at a BinaryNode e.g., p = q + r, `p` is resVar and
@@ -853,14 +853,14 @@ public:
         : MultiOpndStmt(s, opnds, SVFStmt::Phi), opICFGNodes(icfgNodes)
     {
         assert(opnds.size() == icfgNodes.size() &&
-               "Numbers of operands and their ICFGNodes are not consistent?");
+                               "Numbers of operands and their ICFGNodes are not consistent?");
     }
     void addOpVar(SVFVar* op, const ICFGNode* inode)
     {
         opVars.push_back(op);
         opICFGNodes.push_back(inode);
         assert(opVars.size() == opICFGNodes.size() &&
-               "Numbers of operands and their ICFGNodes are not consistent?");
+                                "Numbers of operands and their ICFGNodes are not consistent?");
     }
 
     /// Return the corresponding ICFGNode of this operand
@@ -1247,7 +1247,8 @@ public:
 /*!
  * Thread Fork
  */
-class TDForkPE: public CallPE
+class TDForkPE:
+    public CallPE
 {
     friend class SVFIRWriter;
     friend class SVFIRReader;
@@ -1288,7 +1289,8 @@ public:
 /*!
  * Thread Join
  */
-class TDJoinPE: public RetPE
+class TDJoinPE:
+    public RetPE
 {
     friend class SVFIRWriter;
     friend class SVFIRReader;

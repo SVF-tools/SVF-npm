@@ -131,7 +131,7 @@ public:
     {
         ConstraintEdge edge(src,dst,kind);
         if(kind == ConstraintEdge::Copy ||
-                kind == ConstraintEdge::NormalGep || kind == ConstraintEdge::VariantGep)
+        kind == ConstraintEdge::NormalGep || kind == ConstraintEdge::VariantGep)
             return directEdgeSet.find(&edge) != directEdgeSet.end();
         else if(kind == ConstraintEdge::Addr)
             return AddrCGEdgeSet.find(&edge) != AddrCGEdgeSet.end();

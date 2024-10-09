@@ -908,9 +908,9 @@ public:
     static double safeAdd(double lhs, double rhs)
     {
         if ((lhs == std::numeric_limits<double>::infinity() &&
-                rhs == -std::numeric_limits<double>::infinity()) ||
-                (lhs == -std::numeric_limits<double>::infinity() &&
-                 rhs == std::numeric_limits<double>::infinity()))
+        rhs == -std::numeric_limits<double>::infinity()) ||
+        (lhs == -std::numeric_limits<double>::infinity() &&
+        rhs == std::numeric_limits<double>::infinity()))
         {
             assert(false && "invalid add");
         }

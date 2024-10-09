@@ -247,11 +247,11 @@ protected:
     //@{
     inline const PointsTo& getDFInPtsSet(const SVFGNode* stmt, const NodeID node)
     {
-        return getDFPTDataTy()->getDFInPtsSet(stmt->getId(),node);
+        return getDFPTDataTy()->getDFInPtsSet(stmt->getId(), node);
     }
     inline const PointsTo& getDFOutPtsSet(const SVFGNode* stmt, const NodeID node)
     {
-        return getDFPTDataTy()->getDFOutPtsSet(stmt->getId(),node);
+        return getDFPTDataTy()->getDFOutPtsSet(stmt->getId(), node);
     }
     //@}
 

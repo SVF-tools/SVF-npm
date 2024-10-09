@@ -202,7 +202,7 @@ public:
     inline bool hasPTASVFStmtList(const ICFGNode* inst) const
     {
         return icfgNode2PTASVFStmtsMap.find(inst) !=
-               icfgNode2PTASVFStmtsMap.end();
+                   icfgNode2PTASVFStmtsMap.end();
     }
     /// Given an instruction, get all its PAGEdges
     inline SVFStmtList& getSVFStmtList(const ICFGNode* inst)
@@ -601,16 +601,16 @@ private:
     inline NodeID addValNode(const SVFValue*, SVFVar *node, NodeID i)
     {
         assert(hasGNode(i) == false &&
-               "This NodeID clashes here. Please check NodeIDAllocator. Switch "
-               "Strategy::DBUG to SEQ or DENSE");
+                              "This NodeID clashes here. Please check NodeIDAllocator. Switch "
+                              "Strategy::DBUG to SEQ or DENSE");
         return addNode(node, i);
     }
     /// Add a memory obj node
     inline NodeID addObjNode(const SVFValue*, SVFVar *node, NodeID i)
     {
         assert(hasGNode(i) == false &&
-               "This NodeID clashes here. Please check NodeIDAllocator. Switch "
-               "Strategy::DBUG to SEQ or DENSE");
+                              "This NodeID clashes here. Please check NodeIDAllocator. Switch "
+                              "Strategy::DBUG to SEQ or DENSE");
         return addNode(node, i);
     }
     /// Add a unique return node for a procedure

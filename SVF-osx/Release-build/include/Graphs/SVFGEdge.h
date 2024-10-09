@@ -72,16 +72,16 @@ public:
     static inline bool classof(const VFGEdge *edge)
     {
         return edge->getEdgeKind() == IntraIndirectVF  ||
-               edge->getEdgeKind() == CallIndVF ||
-               edge->getEdgeKind() == RetIndVF ||
-               edge->getEdgeKind() == TheadMHPIndirectVF;
+        edge->getEdgeKind() == CallIndVF ||
+        edge->getEdgeKind() == RetIndVF ||
+        edge->getEdgeKind() == TheadMHPIndirectVF;
     }
     static inline bool classof(const GenericVFGEdgeTy *edge)
     {
         return edge->getEdgeKind() == IntraIndirectVF  ||
-               edge->getEdgeKind() == CallIndVF ||
-               edge->getEdgeKind() == RetIndVF ||
-               edge->getEdgeKind() == TheadMHPIndirectVF;
+        edge->getEdgeKind() == CallIndVF ||
+        edge->getEdgeKind() == RetIndVF ||
+        edge->getEdgeKind() == TheadMHPIndirectVF;
     }
     //@}
 
