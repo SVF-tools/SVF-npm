@@ -50,10 +50,10 @@ public:
 
     typedef Z3Expr Condition;   /// z3 condition
     typedef Map<u32_t, const ICFGNode*> IndexToTermInstMap; /// id to instruction map for z3
-    typedef Map<u32_t, Condition> CondPosMap;		///< map a branch to its Condition
+    typedef Map<u32_t,Condition> CondPosMap;		///< map a branch to its Condition
     typedef Map<const SVFBasicBlock*, CondPosMap > BBCondMap;	/// map bb to a Condition
     typedef Set<const SVFBasicBlock*> BasicBlockSet;
-    typedef Map<const SVFFunction*, BasicBlockSet> FunToExitBBsMap;  ///< map a function to all its basic blocks calling program exit
+    typedef Map<const SVFFunction*,  BasicBlockSet> FunToExitBBsMap;  ///< map a function to all its basic blocks calling program exit
     typedef Map<const SVFBasicBlock*, Condition> BBToCondMap;	///< map a basic block to its condition during control-flow guard computation
     typedef FIFOWorkList<const SVFBasicBlock*> CFWorkList;	///< worklist for control-flow guard computation
     typedef Map<const SVFGNode*, Set<const SVFGNode*>> SVFGNodeToSVFGNodeSetMap;
@@ -86,11 +86,11 @@ public:
     //@{
     inline Condition condAnd(const Condition& lhs, const Condition& rhs)
     {
-        return Condition::AND(lhs, rhs);
+        return Condition::AND(lhs,rhs);
     }
     inline Condition condOr(const Condition& lhs, const Condition& rhs)
     {
-        return Condition::OR(lhs, rhs);
+        return Condition::OR(lhs,rhs);
     }
     inline Condition condNeg(const Condition& cond)
     {
@@ -151,7 +151,7 @@ public:
         bool funcEq = (keyFunc == valueFunc);
         (void)funcEq; // Suppress warning of unused variable under release build
         assert(funcEq && "two basicblocks should be in the same function!");
-        return keyFunc->postDominate(bbKey, bbValue);
+        return keyFunc->postDominate(bbKey,bbValue);
     }
 
     inline bool dominate(const SVFBasicBlock* bbKey, const SVFBasicBlock* bbValue) const
@@ -161,7 +161,7 @@ public:
         bool funcEq = (keyFunc == valueFunc);
         (void)funcEq; // Suppress warning of unused variable under release build
         assert(funcEq && "two basicblocks should be in the same function!");
-        return keyFunc->dominate(bbKey, bbValue);
+        return keyFunc->dominate(bbKey,bbValue);
     }
 
     /// Guard Computation for a value-flow (between two basic blocks)

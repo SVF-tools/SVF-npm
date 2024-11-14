@@ -434,8 +434,8 @@ protected:
     }
 
     /// Add memory SSA PHI SVFG node
-    inline void addIntraMSSAPHISVFGNode(ICFGNode* BlockICFGNode, const Map<u32_t, const MRVer*>::const_iterator opVerBegin,
-                                        const  Map<u32_t, const MRVer*>::const_iterator opVerEnd, const MRVer* resVer, const NodeID nodeId)
+    inline void addIntraMSSAPHISVFGNode(ICFGNode* BlockICFGNode, const Map<u32_t,const MRVer*>::const_iterator opVerBegin,
+                                        const  Map<u32_t,const MRVer*>::const_iterator opVerEnd, const MRVer* resVer, const NodeID nodeId)
     {
         IntraMSSAPHISVFGNode* sNode = new IntraMSSAPHISVFGNode(nodeId, resVer);
         addSVFGNode(sNode, BlockICFGNode);
@@ -481,7 +481,7 @@ namespace SVF
 //struct GenericGraphTraits<Inverse<SVF::SVFGNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::SVFGNode,SVF::SVFGEdge>* > > {
 //};
 
-template<> struct GenericGraphTraits<SVF::SVFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::SVFGNode, SVF::SVFGEdge>* >
+template<> struct GenericGraphTraits<SVF::SVFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::SVFGNode,SVF::SVFGEdge>* >
 {
     typedef SVF::SVFGNode *NodeRef;
 };

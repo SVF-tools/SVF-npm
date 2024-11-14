@@ -41,7 +41,7 @@ namespace SVF
  * ConstraintNodes are same as PAGNodes
  * ConstraintEdges are self-defined edges (initialized with ConstraintEdges)
  */
-class ConstraintGraph :  public GenericGraph<ConstraintNode, ConstraintEdge>
+class ConstraintGraph :  public GenericGraph<ConstraintNode,ConstraintEdge>
 {
 
 public:
@@ -387,17 +387,17 @@ public:
  * GenericGraphTraits specializations for the generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::ConstraintNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::ConstraintNode, SVF::ConstraintEdge>*  >
+template<> struct GenericGraphTraits<SVF::ConstraintNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::ConstraintNode,SVF::ConstraintEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for Value flow node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::ConstraintNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::ConstraintNode, SVF::ConstraintEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::ConstraintNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::ConstraintNode,SVF::ConstraintEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::ConstraintGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::ConstraintNode, SVF::ConstraintEdge>* >
+template<> struct GenericGraphTraits<SVF::ConstraintGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::ConstraintNode,SVF::ConstraintEdge>* >
 {
     typedef SVF::ConstraintNode *NodeRef;
 };

@@ -249,9 +249,9 @@ public:
     typedef CondStdSet<CVar>  CPtSet;
     typedef PTData<CVar, Set<CVar>, CVar, CPtSet> PTDataTy;
     typedef MutablePTData<CVar, Set<CVar>, CVar, CPtSet> MutPTDataTy;
-    typedef Map<NodeID, PointsTo> PtrToBVPtsMap; /// map a pointer to its BitVector points-to representation
+    typedef Map<NodeID,PointsTo> PtrToBVPtsMap; /// map a pointer to its BitVector points-to representation
     typedef Map<NodeID, NodeSet> PtrToNSMap;
-    typedef Map<NodeID, CPtSet> PtrToCPtsMap;	 /// map a pointer to its conditional points-to set
+    typedef Map<NodeID,CPtSet> PtrToCPtsMap;	 /// map a pointer to its conditional points-to set
 
     /// Constructor
     CondPTAImpl(SVFIR* pag, PointerAnalysis::PTATY type) : PointerAnalysis(pag, type), normalized(false)
@@ -332,7 +332,7 @@ public:
         {
             for (typename CPtSet::const_iterator it2 = cpts2.begin(); it2 != cpts2.end(); ++it2)
             {
-                if(isSameVar(*it1, *it2))
+                if(isSameVar(*it1,*it2))
                     return true;
             }
         }
@@ -350,7 +350,7 @@ public:
                 NodeBS& fields = pag->getAllFieldsObjVars(cit->get_id());
                 for(NodeBS::iterator it = fields.begin(), eit = fields.end(); it!=eit; ++it)
                 {
-                    CVar cvar(cit->get_cond(), *it);
+                    CVar cvar(cit->get_cond(),*it);
                     expandedCpts.set(cvar);
                 }
             }
@@ -411,7 +411,7 @@ protected:
             bool hasObj = false;
             for (typename CPtSet::const_iterator it1 = cpts1.begin(); it1 != cpts1.end(); ++it1)
             {
-                if(isSameVar(*it1, *it2))
+                if(isSameVar(*it1,*it2))
                 {
                     hasObj = true;
                     break;

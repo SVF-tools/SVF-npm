@@ -53,7 +53,7 @@ class IRGraph : public GenericGraph<SVFVar, SVFStmt>
 
 public:
     typedef Set<const SVFStmt*> SVFStmtSet;
-    typedef Map<const SVFValue*, SVFStmtSet> ValueToEdgeMap;
+    typedef Map<const SVFValue*,SVFStmtSet> ValueToEdgeMap;
 
 protected:
     SVFStmt::KindToSVFStmtMapTy KindToSVFStmtSetMap; ///< SVFIR edge map containing all PAGEdges
@@ -234,16 +234,16 @@ namespace SVF
  * GenericGraphTraits specializations of SVFIR to be used for the generic graph algorithms.
  * Provide graph traits for traversing from a SVFIR node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::SVFVar*> : public GenericGraphTraits<SVF::GenericNode<SVF::SVFVar, SVF::SVFStmt>*  >
+template<> struct GenericGraphTraits<SVF::SVFVar*> : public GenericGraphTraits<SVF::GenericNode<SVF::SVFVar,SVF::SVFStmt>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for SVFIR node, it is used for inverse traversal.
-template<> struct GenericGraphTraits<Inverse<SVF::SVFVar *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::SVFVar, SVF::SVFStmt>* > >
+template<> struct GenericGraphTraits<Inverse<SVF::SVFVar *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::SVFVar,SVF::SVFStmt>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::IRGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::SVFVar, SVF::SVFStmt>* >
+template<> struct GenericGraphTraits<SVF::IRGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::SVFVar,SVF::SVFStmt>* >
 {
     typedef SVF::SVFVar* NodeRef;
 };

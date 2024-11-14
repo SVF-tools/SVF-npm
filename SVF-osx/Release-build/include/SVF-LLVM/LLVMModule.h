@@ -168,22 +168,22 @@ public:
     inline void addFunctionMap(const Function* func, SVFFunction* svfFunc)
     {
         LLVMFunc2SVFFunc[func] = svfFunc;
-        setValueAttr(func, svfFunc);
+        setValueAttr(func,svfFunc);
     }
     inline void addBasicBlockMap(const BasicBlock* bb, SVFBasicBlock* svfBB)
     {
         LLVMBB2SVFBB[bb] = svfBB;
-        setValueAttr(bb, svfBB);
+        setValueAttr(bb,svfBB);
     }
     inline void addInstructionMap(const Instruction* inst, SVFInstruction* svfInst)
     {
         LLVMInst2SVFInst[inst] = svfInst;
-        setValueAttr(inst, svfInst);
+        setValueAttr(inst,svfInst);
     }
     inline void addArgumentMap(const Argument* arg, SVFArgument* svfArg)
     {
         LLVMArgument2SVFArgument[arg] = svfArg;
-        setValueAttr(arg, svfArg);
+        setValueAttr(arg,svfArg);
     }
     inline void addGlobalValueMap(const GlobalValue* glob, SVFGlobalValue* svfglob)
     {

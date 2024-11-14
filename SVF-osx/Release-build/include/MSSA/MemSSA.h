@@ -189,27 +189,27 @@ private:
     inline void AddLoadMU(const SVFBasicBlock* bb, const LoadStmt* load, const MRSet& mrSet)
     {
         for (MRSet::iterator iter = mrSet.begin(), eiter = mrSet.end(); iter != eiter; ++iter)
-            AddLoadMU(bb,load, *iter);
+            AddLoadMU(bb,load,*iter);
     }
     inline void AddStoreCHI(const SVFBasicBlock* bb, const StoreStmt* store, const MRSet& mrSet)
     {
         for (MRSet::iterator iter = mrSet.begin(), eiter = mrSet.end(); iter != eiter; ++iter)
-            AddStoreCHI(bb,store, *iter);
+            AddStoreCHI(bb,store,*iter);
     }
     inline void AddCallSiteMU(const CallICFGNode* cs,  const MRSet& mrSet)
     {
         for (MRSet::iterator iter = mrSet.begin(), eiter = mrSet.end(); iter != eiter; ++iter)
-            AddCallSiteMU(cs, *iter);
+            AddCallSiteMU(cs,*iter);
     }
     inline void AddCallSiteCHI(const CallICFGNode* cs,  const MRSet& mrSet)
     {
         for (MRSet::iterator iter = mrSet.begin(), eiter = mrSet.end(); iter != eiter; ++iter)
-            AddCallSiteCHI(cs, *iter);
+            AddCallSiteCHI(cs,*iter);
     }
     inline void AddMSSAPHI(const SVFBasicBlock* bb, const MRSet& mrSet)
     {
         for (MRSet::iterator iter = mrSet.begin(), eiter = mrSet.end(); iter != eiter; ++iter)
-            AddMSSAPHI(bb, *iter);
+            AddMSSAPHI(bb,*iter);
     }
     inline void AddLoadMU(const SVFBasicBlock* bb, const LoadStmt* load, const MemRegion* mr)
     {

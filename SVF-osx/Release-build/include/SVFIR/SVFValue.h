@@ -58,9 +58,9 @@ public:
 
 private:
     BBList reachableBBs;    ///< reachable BasicBlocks from the function entry.
-    Map<const SVFBasicBlock*, BBSet> dtBBsMap;   ///< map a BasicBlock to BasicBlocks it Dominates
-    Map<const SVFBasicBlock*, BBSet> pdtBBsMap;   ///< map a BasicBlock to BasicBlocks it PostDominates
-    Map<const SVFBasicBlock*, BBSet> dfBBsMap;    ///< map a BasicBlock to its Dominate Frontier BasicBlocks
+    Map<const SVFBasicBlock*,BBSet> dtBBsMap;   ///< map a BasicBlock to BasicBlocks it Dominates
+    Map<const SVFBasicBlock*,BBSet> pdtBBsMap;   ///< map a BasicBlock to BasicBlocks it PostDominates
+    Map<const SVFBasicBlock*,BBSet> dfBBsMap;    ///< map a BasicBlock to its Dominate Frontier BasicBlocks
     Map<const SVFBasicBlock*, LoopBBs> bb2LoopMap;  ///< map a BasicBlock (if it is in a loop) to all the BasicBlocks in this loop
     Map<const SVFBasicBlock*, u32_t> bb2PdomLevel;  ///< map a BasicBlock to its level in pdom tree, used in findNearestCommonPDominator
     Map<const SVFBasicBlock*, const SVFBasicBlock*> bb2PIdom;  ///< map a BasicBlock to its immediate dominator in pdom tree, used in findNearestCommonPDominator
@@ -72,12 +72,12 @@ public:
 
     virtual ~SVFLoopAndDomInfo() {}
 
-    inline const Map<const SVFBasicBlock*, BBSet>& getDomFrontierMap() const
+    inline const Map<const SVFBasicBlock*,BBSet>& getDomFrontierMap() const
     {
         return dfBBsMap;
     }
 
-    inline Map<const SVFBasicBlock*, BBSet>& getDomFrontierMap()
+    inline Map<const SVFBasicBlock*,BBSet>& getDomFrontierMap()
     {
         return dfBBsMap;
     }
@@ -105,43 +105,43 @@ public:
         bb2LoopMap[bb].push_back(loopBB);
     }
 
-    inline const Map<const SVFBasicBlock*, BBSet>& getPostDomTreeMap() const
+    inline const Map<const SVFBasicBlock*,BBSet>& getPostDomTreeMap() const
     {
         return pdtBBsMap;
     }
 
-    inline Map<const SVFBasicBlock*, BBSet>& getPostDomTreeMap()
+    inline Map<const SVFBasicBlock*,BBSet>& getPostDomTreeMap()
     {
         return pdtBBsMap;
     }
 
-    inline const Map<const SVFBasicBlock*, u32_t>& getBBPDomLevel() const
+    inline const Map<const SVFBasicBlock*,u32_t>& getBBPDomLevel() const
     {
         return bb2PdomLevel;
     }
 
-    inline Map<const SVFBasicBlock*, u32_t>& getBBPDomLevel()
+    inline Map<const SVFBasicBlock*,u32_t>& getBBPDomLevel()
     {
         return bb2PdomLevel;
     }
 
-    inline const Map<const SVFBasicBlock*, const SVFBasicBlock*>& getBB2PIdom() const
+    inline const Map<const SVFBasicBlock*,const SVFBasicBlock*>& getBB2PIdom() const
     {
         return bb2PIdom;
     }
 
-    inline Map<const SVFBasicBlock*, const SVFBasicBlock*>& getBB2PIdom()
+    inline Map<const SVFBasicBlock*,const SVFBasicBlock*>& getBB2PIdom()
     {
         return bb2PIdom;
     }
 
 
-    inline Map<const SVFBasicBlock*, BBSet>& getDomTreeMap()
+    inline Map<const SVFBasicBlock*,BBSet>& getDomTreeMap()
     {
         return dtBBsMap;
     }
 
-    inline const Map<const SVFBasicBlock*, BBSet>& getDomTreeMap() const
+    inline const Map<const SVFBasicBlock*,BBSet>& getDomTreeMap() const
     {
         return dtBBsMap;
     }
@@ -487,12 +487,12 @@ public:
         return loopAndDom->loopContainsBB(lp,bb);
     }
 
-    inline const Map<const SVFBasicBlock*, BBSet>& getDomTreeMap() const
+    inline const Map<const SVFBasicBlock*,BBSet>& getDomTreeMap() const
     {
         return loopAndDom->getDomTreeMap();
     }
 
-    inline const Map<const SVFBasicBlock*, BBSet>& getDomFrontierMap() const
+    inline const Map<const SVFBasicBlock*,BBSet>& getDomFrontierMap() const
     {
         return loopAndDom->getDomFrontierMap();
     }

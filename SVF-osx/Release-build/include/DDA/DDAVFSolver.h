@@ -54,8 +54,8 @@ public:
     typedef SVFIR::CallSiteSet CallSiteSet;
     typedef OrderedSet<DPIm> DPTItemSet;
     typedef OrderedMap<DPIm, CPtSet> DPImToCPtSetMap;
-    typedef OrderedMap<DPIm, CVar> DPMToCVarMap;
-    typedef OrderedMap<DPIm, DPIm> DPMToDPMMap;
+    typedef OrderedMap<DPIm,CVar> DPMToCVarMap;
+    typedef OrderedMap<DPIm,DPIm> DPMToDPMMap;
     typedef OrderedMap<NodeID, DPTItemSet> LocToDPMVecMap;
     typedef OrderedSet<const SVFGEdge* > ConstSVFGEdgeSet;
     typedef SVFGEdge::SVFGEdgeSetTy SVFGEdgeSet;
@@ -198,7 +198,7 @@ protected:
             startNewPTCompFromLoadSrc(loadpts,dpm);
             for(typename CPtSet::iterator it = loadpts.begin(), eit = loadpts.end(); it!=eit; ++it)
             {
-                backtraceAlongIndirectVF(pts,getDPImWithOldCond(dpm, *it,load));
+                backtraceAlongIndirectVF(pts,getDPImWithOldCond(dpm,*it,load));
             }
         }
         else if(const StoreSVFGNode* store = SVFUtil::dyn_cast<StoreSVFGNode>(node))
@@ -223,7 +223,7 @@ protected:
                 {
                     if(propagateViaObj(*it,getLoadCVar(dpm)))
                     {
-                        backtraceToStoreSrc(pts,getDPImWithOldCond(dpm, *it,store));
+                        backtraceToStoreSrc(pts,getDPImWithOldCond(dpm,*it,store));
 
                         if(isStrongUpdate(storepts,store))
                         {
@@ -233,7 +233,7 @@ protected:
                         else
                         {
                             DOSTAT(rmSUStat(dpm,store);)
-                            backtraceAlongIndirectVF(pts,getDPImWithOldCond(dpm, *it,store));
+                            backtraceAlongIndirectVF(pts,getDPImWithOldCond(dpm,*it,store));
                         }
                     }
                     else

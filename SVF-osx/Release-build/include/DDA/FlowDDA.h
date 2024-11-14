@@ -50,7 +50,7 @@ typedef StmtDPItem<SVFGNode> LocDPItem;
 /*!
  * Flow sensitive demand-driven analysis on value-flow graph
  */
-class FlowDDA : public BVDataPTAImpl, public DDAVFSolver<NodeID, PointsTo, LocDPItem>
+class FlowDDA : public BVDataPTAImpl, public DDAVFSolver<NodeID,PointsTo,LocDPItem>
 {
 
 public:
@@ -59,7 +59,7 @@ public:
     typedef BVDataPTAImpl::FunctionSet	FunctionSet;
     /// Constructor
     FlowDDA(SVFIR* _pag, DDAClient* client): BVDataPTAImpl(_pag, PointerAnalysis::FlowS_DDA),
-        DDAVFSolver<NodeID, PointsTo, LocDPItem>(),
+        DDAVFSolver<NodeID,PointsTo,LocDPItem>(),
         _client(client)
     {
     }

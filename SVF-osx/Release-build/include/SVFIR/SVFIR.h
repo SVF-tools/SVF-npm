@@ -53,27 +53,27 @@ class SVFIR : public IRGraph
 
 public:
     typedef Set<const CallICFGNode*> CallSiteSet;
-    typedef OrderedMap<const CallICFGNode*, NodeID> CallSiteToFunPtrMap;
-    typedef Map<NodeID, CallSiteSet> FunPtrToCallSitesMap;
-    typedef Map<NodeID, NodeBS> MemObjToFieldsMap;
+    typedef OrderedMap<const CallICFGNode*,NodeID> CallSiteToFunPtrMap;
+    typedef Map<NodeID,CallSiteSet> FunPtrToCallSitesMap;
+    typedef Map<NodeID,NodeBS> MemObjToFieldsMap;
     typedef std::vector<const SVFStmt*> SVFStmtList;
     typedef std::vector<const SVFVar*> SVFVarList;
-    typedef Map<const SVFVar*, PhiStmt*> PHINodeMap;
-    typedef Map<const SVFFunction*, SVFVarList> FunToArgsListMap;
-    typedef Map<const CallICFGNode*, SVFVarList> CSToArgsListMap;
-    typedef Map<const RetICFGNode*, const SVFVar*> CSToRetMap;
-    typedef Map<const SVFFunction*, const SVFVar*> FunToRetMap;
-    typedef Map<const SVFFunction*, SVFStmtSet> FunToPAGEdgeSetMap;
-    typedef Map<const ICFGNode*, SVFStmtList> ICFGNode2SVFStmtsMap;
+    typedef Map<const SVFVar*,PhiStmt*> PHINodeMap;
+    typedef Map<const SVFFunction*,SVFVarList> FunToArgsListMap;
+    typedef Map<const CallICFGNode*,SVFVarList> CSToArgsListMap;
+    typedef Map<const RetICFGNode*,const SVFVar*> CSToRetMap;
+    typedef Map<const SVFFunction*,const SVFVar*> FunToRetMap;
+    typedef Map<const SVFFunction*,SVFStmtSet> FunToPAGEdgeSetMap;
+    typedef Map<const ICFGNode*,SVFStmtList> ICFGNode2SVFStmtsMap;
     typedef Map<NodeID, NodeID> NodeToNodeMap;
     typedef std::pair<NodeID, APOffset> NodeOffset;
     typedef std::pair<NodeID, AccessPath> NodeAccessPath;
-    typedef Map<NodeOffset, NodeID> NodeOffsetMap;
-    typedef Map<NodeAccessPath, NodeID> NodeAccessPathMap;
+    typedef Map<NodeOffset,NodeID> NodeOffsetMap;
+    typedef Map<NodeAccessPath,NodeID> NodeAccessPathMap;
     typedef Map<const SVFValue*, NodeAccessPathMap> GepValueVarMap;
     typedef std::pair<const SVFType*, std::vector<AccessPath>> SVFTypeLocSetsPair;
     typedef Map<NodeID, SVFTypeLocSetsPair> TypeLocSetsMap;
-    typedef Map<NodePair, NodeID> NodePairSetMap;
+    typedef Map<NodePair,NodeID> NodePairSetMap;
 
 private:
     /// ValueNodes - This map indicates the Node that a particular SVFValue* is

@@ -72,7 +72,7 @@ public:
 };
 
 
-typedef GenericNode<CFLNode, CFLEdge> GenericCFLNodeTy;
+typedef GenericNode<CFLNode,CFLEdge> GenericCFLNodeTy;
 class CFLNode: public GenericCFLNodeTy
 {
 public:
@@ -169,13 +169,13 @@ public:
 };
 
 /// Edge-labeled graph for CFL Reachability analysis
-typedef GenericGraph<CFLNode, CFLEdge> GenericCFLGraphTy;
+typedef GenericGraph<CFLNode,CFLEdge> GenericCFLGraphTy;
 class CFLGraph: public GenericCFLGraphTy
 {
 public:
     typedef CFGrammar::Symbol Symbol;
     typedef CFGrammar::Kind Kind;
-    typedef GenericNode<CFLNode, CFLEdge>::GEdgeSetTy CFLEdgeSet;
+    typedef GenericNode<CFLNode,CFLEdge>::GEdgeSetTy CFLEdgeSet;
     Kind startKind;
 
     CFLGraph(Kind kind)
@@ -213,17 +213,17 @@ namespace SVF
  * GenericGraphTraits specializations for generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::CFLNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::CFLNode, SVF::CFLEdge>*  >
+template<> struct GenericGraphTraits<SVF::CFLNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::CFLNode,SVF::CFLEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for call graph node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::CFLNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::CFLNode, SVF::CFLEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::CFLNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::CFLNode,SVF::CFLEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::CFLGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::CFLNode, SVF::CFLEdge>* >
+template<> struct GenericGraphTraits<SVF::CFLGraph*> : public GenericGraphTraits<SVF::GenericGraph<SVF::CFLNode,SVF::CFLEdge>* >
 {
     typedef SVF::CFLNode *NodeRef;
 };

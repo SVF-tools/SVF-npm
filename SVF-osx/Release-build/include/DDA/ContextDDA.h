@@ -51,7 +51,7 @@ typedef CxtStmtDPItem<SVFGNode> CxtLocDPItem;
 /*!
  * Context-, Flow- Sensitive Demand-driven Analysis
  */
-class ContextDDA : public CondPTAImpl<ContextCond>, public DDAVFSolver<CxtVar, CxtPtSet, CxtLocDPItem>
+class ContextDDA : public CondPTAImpl<ContextCond>, public DDAVFSolver<CxtVar,CxtPtSet,CxtLocDPItem>
 {
 
 public:
@@ -90,7 +90,7 @@ public:
         ContextCond cxt;
         for (PointsTo::iterator piter = pts.begin(); piter != pts.end(); ++piter)
         {
-            CxtVar var(cxt, *piter);
+            CxtVar var(cxt,*piter);
             tmpCPts.set(var);
         }
         return tmpCPts;

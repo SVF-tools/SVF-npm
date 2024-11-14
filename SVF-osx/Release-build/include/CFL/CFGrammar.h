@@ -192,7 +192,7 @@ public:
         return this->rawProductions;
     }
 
-    inline const Map<Kind, Set<Attribute>>& getKindToAttrsMap() const
+    inline const Map<Kind,  Set<Attribute>>& getKindToAttrsMap() const
     {
         return this->kindToAttrsMap;
     }
@@ -223,7 +223,7 @@ public:
 
     void setRawProductions(SymbolMap<Symbol, Productions>& rawProductions);
 
-    void setKindToAttrsMap(const Map<Kind, Set<Attribute>>& kindToAttrsMap);
+    void setKindToAttrsMap(const Map<Kind,  Set<Attribute>>& kindToAttrsMap);
 
     void setAttributeKinds(const Set<Kind>& attributeKind);
 
@@ -282,7 +282,7 @@ private:
     Map<std::string, Kind> terminals;
     Map<std::string, Kind> EBNFSigns; /// Map contains Signs' String and associated Symbols
     Set<Kind> attributeKinds;
-    Map<Kind, Set<Attribute>> kindToAttrsMap;
+    Map<Kind,  Set<Attribute>> kindToAttrsMap;
     SymbolMap<Symbol, Productions> rawProductions;
     u32_t totalKind;
 };

@@ -42,7 +42,7 @@ namespace SVF
  * Interprocedural control-flow graph node, representing different kinds of program statements
  * including top-level pointers (ValVar) and address-taken objects (ObjVar)
  */
-typedef GenericNode<VFGNode, VFGEdge> GenericVFGNodeTy;
+typedef GenericNode<VFGNode,VFGEdge> GenericVFGNodeTy;
 class VFGNode : public GenericVFGNodeTy
 {
 
@@ -337,7 +337,7 @@ public:
 class CmpVFGNode: public VFGNode
 {
 public:
-    typedef Map<u32_t, const PAGNode*> OPVers;
+    typedef Map<u32_t,const PAGNode*> OPVers;
 protected:
     const PAGNode* res;
     OPVers opVers;
@@ -412,7 +412,7 @@ public:
 class BinaryOPVFGNode: public VFGNode
 {
 public:
-    typedef Map<u32_t, const PAGNode*> OPVers;
+    typedef Map<u32_t,const PAGNode*> OPVers;
 protected:
     const PAGNode* res;
     OPVers opVers;
@@ -486,7 +486,7 @@ public:
 class UnaryOPVFGNode: public VFGNode
 {
 public:
-    typedef Map<u32_t, const PAGNode*> OPVers;
+    typedef Map<u32_t,const PAGNode*> OPVers;
 protected:
     const PAGNode* res;
     OPVers opVers;
@@ -669,7 +669,7 @@ class PHIVFGNode : public VFGNode
 {
 
 public:
-    typedef Map<u32_t, const PAGNode*> OPVers;
+    typedef Map<u32_t,const PAGNode*> OPVers;
 protected:
     const PAGNode* res;
     OPVers opVers;
@@ -748,7 +748,7 @@ class IntraPHIVFGNode : public PHIVFGNode
 {
 
 public:
-    typedef Map<u32_t, const ICFGNode*> OPIncomingBBs;
+    typedef Map<u32_t,const ICFGNode*> OPIncomingBBs;
 
 private:
     OPIncomingBBs opIncomingBBs;

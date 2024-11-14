@@ -36,7 +36,7 @@ namespace SVF
 /*!
  * Constraint node
  */
-typedef GenericNode<ConstraintNode, ConstraintEdge> GenericConsNodeTy;
+typedef GenericNode<ConstraintNode,ConstraintEdge> GenericConsNodeTy;
 class ConstraintNode : public GenericConsNodeTy
 {
 

@@ -46,7 +46,7 @@
 namespace SVF
 {
 
-typedef GraphReachSolver<SVFG*, CxtDPItem> CFLSrcSnkSolver;
+typedef GraphReachSolver<SVFG*,CxtDPItem> CFLSrcSnkSolver;
 
 /*!
  * General source-sink analysis, which serves as a base analysis to be extended for various clients
@@ -56,7 +56,7 @@ class SrcSnkDDA : public CFLSrcSnkSolver
 
 public:
     typedef ProgSlice::SVFGNodeSet SVFGNodeSet;
-    typedef Map<const SVFGNode*, ProgSlice*> SVFGNodeToSliceMap;
+    typedef Map<const SVFGNode*,ProgSlice*> SVFGNodeToSliceMap;
     typedef SVFGNodeSet::const_iterator SVFGNodeSetIter;
     typedef CxtDPItem DPIm;
     typedef Set<DPIm> DPImSet;							///< dpitem set

@@ -46,7 +46,7 @@ class CallICFGNode;
 /*!
  *  Value Flow Graph (VFG)
  */
-typedef GenericGraph<VFGNode, VFGEdge> GenericVFGTy;
+typedef GenericGraph<VFGNode,VFGEdge> GenericVFGTy;
 class VFG : public GenericVFGTy
 {
 
@@ -60,7 +60,7 @@ public:
     typedef OrderedMap<NodeID, VFGNode *> VFGNodeIDToNodeMapTy;
     typedef Set<VFGNode*> VFGNodeSet;
     typedef Map<const PAGNode*, NodeID> PAGNodeToDefMapTy;
-    typedef Map<std::pair<NodeID, const CallICFGNode*>, ActualParmVFGNode *> PAGNodeToActualParmMapTy;
+    typedef Map<std::pair<NodeID,const CallICFGNode*>, ActualParmVFGNode *> PAGNodeToActualParmMapTy;
     typedef Map<const PAGNode*, ActualRetVFGNode *> PAGNodeToActualRetMapTy;
     typedef Map<const PAGNode*, FormalParmVFGNode *> PAGNodeToFormalParmMapTy;
     typedef Map<const PAGNode*, FormalRetVFGNode *> PAGNodeToFormalRetMapTy;
@@ -644,17 +644,17 @@ namespace SVF
  * GenericGraphTraits specializations for generic graph algorithms.
  * Provide graph traits for traversing from a constraint node using standard graph traversals.
  */
-template<> struct GenericGraphTraits<SVF::VFGNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::VFGNode, SVF::VFGEdge>*  >
+template<> struct GenericGraphTraits<SVF::VFGNode*> : public GenericGraphTraits<SVF::GenericNode<SVF::VFGNode,SVF::VFGEdge>*  >
 {
 };
 
 /// Inverse GenericGraphTraits specializations for call graph node, it is used for inverse traversal.
 template<>
-struct GenericGraphTraits<Inverse<SVF::VFGNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::VFGNode, SVF::VFGEdge>* > >
+struct GenericGraphTraits<Inverse<SVF::VFGNode *> > : public GenericGraphTraits<Inverse<SVF::GenericNode<SVF::VFGNode,SVF::VFGEdge>* > >
 {
 };
 
-template<> struct GenericGraphTraits<SVF::VFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::VFGNode, SVF::VFGEdge>* >
+template<> struct GenericGraphTraits<SVF::VFG*> : public GenericGraphTraits<SVF::GenericGraph<SVF::VFGNode,SVF::VFGEdge>* >
 {
     typedef SVF::VFGNode *NodeRef;
 };

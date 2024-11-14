@@ -60,7 +60,7 @@ protected:
     Map<Kind, std::string> kindToLabelMap;
 
     /// Map to maintain attributes associated with each kind
-    Map<CFGrammar::Kind, Set<CFGrammar::Attribute>> kindToAttrsMap;
+    Map<CFGrammar::Kind,  Set<CFGrammar::Attribute>> kindToAttrsMap;
 
     Kind current;
     CFLGraph *cflGraph;
@@ -87,7 +87,7 @@ public:
     /// Method to build a CFL graph by copying nodes and edges from any graph
     /// inherited from GenericGraph
     template<class N, class E>
-    CFLGraph* build(GenericGraph<N, E>* graph, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
+    CFLGraph* build(GenericGraph<N,E>* graph, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
 
     /// Method to build a CFL graph from external file
     CFLGraph* build(std::string fileName, GrammarBase *grammar, BuildDirection direction = BuildDirection::plain);
@@ -108,7 +108,7 @@ public:
     }
 
     /// Returns a reference to the map that associates Kinds with their corresponding attributes
-    Map<CFGrammar::Kind, Set<CFGrammar::Attribute>>& getKindToAttrsMap()
+    Map<CFGrammar::Kind,  Set<CFGrammar::Attribute>>& getKindToAttrsMap()
     {
         return this->kindToAttrsMap;
     }
@@ -130,13 +130,13 @@ public:
 
 private:
     /// Connects VGep (Variable GEP)
-    void connectVGep(CFLGraph *cflGraph, ConstraintGraph *graph, ConstraintNode *src, ConstraintNode *dst, u32_t level, SVFIR* pag);
+    void connectVGep(CFLGraph *cflGraph,  ConstraintGraph *graph, ConstraintNode *src, ConstraintNode *dst, u32_t level, SVFIR* pag);
 
     /// Handles edges, with the exception of the GEP
-    void addBiCFLEdge(CFLGraph *cflGraph, ConstraintNode* src, ConstraintNode* dst, CFGrammar::Kind label);
+    void addBiCFLEdge(CFLGraph *cflGraph,  ConstraintNode* src, ConstraintNode* dst, CFGrammar::Kind label);
 
     /// Adds bidirectional GEP edges with attributes
-    void addBiGepCFLEdge(CFLGraph *cflGraph, ConstraintNode* src, ConstraintNode* dst, CFGrammar::Attribute attri);
+    void addBiGepCFLEdge(CFLGraph *cflGraph,  ConstraintNode* src, ConstraintNode* dst, CFGrammar::Attribute attri);
 };
 
 /// VFCFLGraphBuilder: a CFLGraphBuilder specialized for handling value-flow
@@ -153,13 +153,13 @@ public:
 
 private:
     /// Connects VGep (Variable GEP)
-    void connectVGep(CFLGraph *cflGraph, ConstraintGraph *graph, ConstraintNode *src, ConstraintNode *dst, u32_t level, SVFIR* pag);
+    void connectVGep(CFLGraph *cflGraph,  ConstraintGraph *graph, ConstraintNode *src, ConstraintNode *dst, u32_t level, SVFIR* pag);
 
     /// Handles edges, with the exception of the GEP
-    void addBiCFLEdge(CFLGraph *cflGraph, ConstraintNode* src, ConstraintNode* dst, CFGrammar::Kind label);
+    void addBiCFLEdge(CFLGraph *cflGraph,  ConstraintNode* src, ConstraintNode* dst, CFGrammar::Kind label);
 
     /// Adds bidirectional GEP edges with attributes
-    void addBiGepCFLEdge(CFLGraph *cflGraph, ConstraintNode* src, ConstraintNode* dst, CFGrammar::Attribute attri);
+    void addBiGepCFLEdge(CFLGraph *cflGraph,  ConstraintNode* src, ConstraintNode* dst, CFGrammar::Attribute attri);
 };
 
 

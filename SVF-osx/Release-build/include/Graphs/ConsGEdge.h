@@ -82,7 +82,7 @@ public:
         edge->getEdgeKind() == VariantGep;
     }
     /// Constraint edge type
-    typedef GenericNode<ConstraintNode, ConstraintEdge>::GEdgeSetTy ConstraintEdgeSetTy;
+    typedef GenericNode<ConstraintNode,ConstraintEdge>::GEdgeSetTy ConstraintEdgeSetTy;
 
 };
 

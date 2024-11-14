@@ -264,7 +264,7 @@ public:
 class MSSAPHISVFGNode : public MRSVFGNode
 {
 public:
-    typedef Map<u32_t, const MRVer*> OPVers;
+    typedef Map<u32_t,const MRVer*> OPVers;
 
 protected:
     const MRVer* ver;

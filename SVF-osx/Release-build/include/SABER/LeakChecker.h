@@ -43,7 +43,7 @@ class LeakChecker : public SrcSnkDDA
 {
 
 public:
-    typedef Map<const SVFGNode*, const CallICFGNode*> SVFGNodeToCSIDMap;
+    typedef Map<const SVFGNode*,const CallICFGNode*> SVFGNodeToCSIDMap;
     typedef FIFOWorkList<const CallICFGNode*> CSWorkList;
     typedef ProgSlice::VFWorkList WorkList;
     typedef NodeBS SVFGNodeBS;
