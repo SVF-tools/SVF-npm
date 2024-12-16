@@ -180,8 +180,8 @@ public:
     static inline bool classof(const PTData<Key, KeySet, Data, DataSet>* ptd)
     {
         return ptd->getPTDTY() == PTDataTy::Diff
-        || ptd->getPTDTY() == PTDataTy::MutDiff
-        || ptd->getPTDTY() == PTDataTy::PersDiff;
+               || ptd->getPTDTY() == PTDataTy::MutDiff
+               || ptd->getPTDTY() == PTDataTy::PersDiff;
     }
     ///@}
 };
@@ -254,10 +254,10 @@ public:
     static inline bool classof(const PTData<Key, KeySet, Data, DataSet>* ptd)
     {
         return ptd->getPTDTY() == BasePTData::DataFlow
-        || ptd->getPTDTY() == BasePTData::MutDataFlow
-        || ptd->getPTDTY() == BasePTData::MutIncDataFlow
-        || ptd->getPTDTY() == BasePTData::PersDataFlow
-        || ptd->getPTDTY() == BasePTData::PersIncDataFlow;
+               || ptd->getPTDTY() == BasePTData::MutDataFlow
+               || ptd->getPTDTY() == BasePTData::MutIncDataFlow
+               || ptd->getPTDTY() == BasePTData::PersDataFlow
+               || ptd->getPTDTY() == BasePTData::PersIncDataFlow;
     }
     ///@}
 };
@@ -299,8 +299,8 @@ public:
     static inline bool classof(const PTData<Key, KeySet, Data, DataSet>* ptd)
     {
         return ptd->getPTDTY() == PTDataTy::Versioned
-        || ptd->getPTDTY() == PTDataTy::MutVersioned
-        || ptd->getPTDTY() == PTDataTy::PersVersioned;
+               || ptd->getPTDTY() == PTDataTy::MutVersioned
+               || ptd->getPTDTY() == PTDataTy::PersVersioned;
     }
 private:
     using BasePTData::getPts;

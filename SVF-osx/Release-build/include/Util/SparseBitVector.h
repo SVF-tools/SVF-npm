@@ -388,7 +388,7 @@ public:
         unsigned BitPos = Curr % BITWORD_SIZE;
         BitWord Copy = Bits[WordPos];
         assert(WordPos <= BITWORDS_PER_ELEMENT
-                          && "Word Position outside of element");
+               && "Word Position outside of element");
 
         // Mask off previous bits.
         Copy &= ~0UL << BitPos;
@@ -552,13 +552,13 @@ class SparseBitVector
         else if (CurrElementIter->index() > ElementIndex)
         {
             while (ElementIter != Begin
-                                  && ElementIter->index() > ElementIndex)
+                    && ElementIter->index() > ElementIndex)
                 --ElementIter;
         }
         else
         {
             while (ElementIter != End &&
-                                  ElementIter->index() < ElementIndex)
+                    ElementIter->index() < ElementIndex)
                 ++ElementIter;
         }
         CurrElementIter = ElementIter;
@@ -758,7 +758,7 @@ public:
         // If we can't find an element that is supposed to contain this bit, there
         // is nothing more to do.
         if (ElementIter == Elements.end() ||
-                           ElementIter->index() != ElementIndex)
+                ElementIter->index() != ElementIndex)
             return false;
         return ElementIter->test(Idx % ElementSize);
     }
@@ -774,7 +774,7 @@ public:
         // If we can't find an element that is supposed to contain this bit, there
         // is nothing more to do.
         if (ElementIter == Elements.end() ||
-                           ElementIter->index() != ElementIndex)
+                ElementIter->index() != ElementIndex)
             return;
         ElementIter->reset(Idx % ElementSize);
 
@@ -799,13 +799,13 @@ public:
             ElementIter = FindLowerBound(ElementIndex);
 
             if (ElementIter == Elements.end() ||
-                               ElementIter->index() != ElementIndex)
+                    ElementIter->index() != ElementIndex)
             {
                 // We may have hit the beginning of our SparseBitVector, in which case,
                 // we may need to insert right after this element, which requires moving
                 // the current iterator forward one, because insert does insert before.
                 if (ElementIter != Elements.end() &&
-                                   ElementIter->index() < ElementIndex)
+                        ElementIter->index() < ElementIndex)
                     ++ElementIter;
                 ElementIter = Elements.emplace(ElementIter, ElementIndex);
             }

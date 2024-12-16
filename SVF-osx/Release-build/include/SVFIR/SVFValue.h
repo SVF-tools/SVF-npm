@@ -149,7 +149,7 @@ public:
     inline bool isUnreachable(const SVFBasicBlock* bb) const
     {
         return std::find(reachableBBs.begin(), reachableBBs.end(), bb) ==
-                   reachableBBs.end();
+               reachableBBs.end();
     }
 
     inline const BBList& getReachableBBs() const
@@ -215,7 +215,7 @@ protected:
     /// Constructor without name
     SVFValue(const SVFType* ty, SVFValKind k)
         : kind(k), ptrInUncalledFun(false),
-        constDataOrAggData(SVFConstData == k), type(ty), sourceLoc("NoLoc")
+          constDataOrAggData(SVFConstData == k), type(ty), sourceLoc("NoLoc")
     {
     }
 
@@ -551,7 +551,7 @@ protected:
     inline void addICFGNode(const ICFGNode* icfgNode)
     {
         assert(std::find(getICFGNodeList().begin(), getICFGNodeList().end(),
-        icfgNode) == getICFGNodeList().end() && "duplicated icfgnode");
+                         icfgNode) == getICFGNodeList().end() && "duplicated icfgnode");
         allICFGNodes.push_back(icfgNode);
     }
 
@@ -652,8 +652,8 @@ public:
     static inline bool classof(const SVFValue *node)
     {
         return node->getKind() == SVFInst ||
-        node->getKind() == SVFCall ||
-        node->getKind() == SVFVCall;
+               node->getKind() == SVFCall ||
+               node->getKind() == SVFVCall;
     }
 
     inline const SVFBasicBlock* getParent() const
@@ -759,12 +759,12 @@ public:
     static inline bool classof(const SVFValue *node)
     {
         return node->getKind() == SVFConst ||
-        node->getKind() == SVFGlob ||
-        node->getKind() == SVFConstData ||
-        node->getKind() == SVFConstInt ||
-        node->getKind() == SVFConstFP ||
-        node->getKind() == SVFNullPtr ||
-        node->getKind() == SVFBlackHole;
+               node->getKind() == SVFGlob ||
+               node->getKind() == SVFConstData ||
+               node->getKind() == SVFConstInt ||
+               node->getKind() == SVFConstFP ||
+               node->getKind() == SVFNullPtr ||
+               node->getKind() == SVFBlackHole;
     }
 
 };
@@ -864,18 +864,18 @@ public:
     static inline bool classof(const SVFValue *node)
     {
         return node->getKind() == SVFConstData ||
-        node->getKind() == SVFConstInt ||
-        node->getKind() == SVFConstFP ||
-        node->getKind() == SVFNullPtr ||
-        node->getKind() == SVFBlackHole;
+               node->getKind() == SVFConstInt ||
+               node->getKind() == SVFConstFP ||
+               node->getKind() == SVFNullPtr ||
+               node->getKind() == SVFBlackHole;
     }
     static inline bool classof(const SVFConstantData *node)
     {
         return node->getKind() == SVFConstData ||
-        node->getKind() == SVFConstInt ||
-        node->getKind() == SVFConstFP ||
-        node->getKind() == SVFNullPtr ||
-        node->getKind() == SVFBlackHole;
+               node->getKind() == SVFConstInt ||
+               node->getKind() == SVFConstFP ||
+               node->getKind() == SVFNullPtr ||
+               node->getKind() == SVFBlackHole;
     }
 };
 

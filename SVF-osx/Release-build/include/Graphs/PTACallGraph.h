@@ -148,8 +148,8 @@ public:
     static inline bool classof(const GenericPTACallGraphEdgeTy *edge)
     {
         return edge->getEdgeKind() == PTACallGraphEdge::CallRetEdge ||
-        edge->getEdgeKind() == PTACallGraphEdge::TDForkEdge ||
-        edge->getEdgeKind() == PTACallGraphEdge::TDJoinEdge;
+               edge->getEdgeKind() == PTACallGraphEdge::TDForkEdge ||
+               edge->getEdgeKind() == PTACallGraphEdge::TDJoinEdge;
     }
     //@}
 
@@ -431,14 +431,14 @@ public:
     {
         CallInstToCallGraphEdgesMap::const_iterator it = callinstToCallGraphEdgesMap.find(inst);
         assert(it!=callinstToCallGraphEdgesMap.end()
-                   && "call instruction does not have a valid callee");
+               && "call instruction does not have a valid callee");
         return it->second.begin();
     }
     inline CallGraphEdgeSet::const_iterator getCallEdgeEnd(const CallICFGNode* inst) const
     {
         CallInstToCallGraphEdgesMap::const_iterator it = callinstToCallGraphEdgesMap.find(inst);
         assert(it!=callinstToCallGraphEdgesMap.end()
-                   && "call instruction does not have a valid callee");
+               && "call instruction does not have a valid callee");
         return it->second.end();
     }
     //@}

@@ -541,7 +541,7 @@ public:
     static inline bool classof(const PTData<Key, KeySet, Data, DataSet> *ptd)
     {
         return ptd->getPTDTY() == PTDataTy::PersDataFlow
-        || ptd->getPTDTY() == PTDataTy::PersIncDataFlow;
+               || ptd->getPTDTY() == PTDataTy::PersIncDataFlow;
     }
     ///@}
 

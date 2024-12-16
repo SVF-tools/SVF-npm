@@ -75,11 +75,11 @@ public:
     static inline bool classof(const GenericConsEdgeTy *edge)
     {
         return edge->getEdgeKind() == Addr ||
-        edge->getEdgeKind() == Copy ||
-        edge->getEdgeKind() == Store ||
-        edge->getEdgeKind() == Load ||
-        edge->getEdgeKind() == NormalGep ||
-        edge->getEdgeKind() == VariantGep;
+               edge->getEdgeKind() == Copy ||
+               edge->getEdgeKind() == Store ||
+               edge->getEdgeKind() == Load ||
+               edge->getEdgeKind() == NormalGep ||
+               edge->getEdgeKind() == VariantGep;
     }
     /// Constraint edge type
     typedef GenericNode<ConstraintNode,ConstraintEdge>::GEdgeSetTy ConstraintEdgeSetTy;
@@ -248,12 +248,12 @@ public:
     static inline bool classof(const ConstraintEdge *edge)
     {
         return edge->getEdgeKind() == NormalGep ||
-        edge->getEdgeKind() == VariantGep;
+               edge->getEdgeKind() == VariantGep;
     }
     static inline bool classof(const GenericConsEdgeTy *edge)
     {
         return edge->getEdgeKind() == NormalGep ||
-        edge->getEdgeKind() == VariantGep;
+               edge->getEdgeKind() == VariantGep;
     }
     //@}
 

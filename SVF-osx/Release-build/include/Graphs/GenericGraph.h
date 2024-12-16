@@ -123,8 +123,8 @@ public:
     virtual inline bool operator==(const GenericEdge<NodeType>* rhs) const
     {
         return (rhs->edgeFlag == this->edgeFlag &&
-        rhs->getSrcID() == this->getSrcID() &&
-        rhs->getDstID() == this->getDstID());
+                rhs->getSrcID() == this->getSrcID() &&
+                rhs->getDstID() == this->getDstID());
     }
     //@}
 
@@ -680,8 +680,8 @@ public:
     inline void removeGNode(NodeType* node)
     {
         assert(node->hasIncomingEdge() == false
-        && node->hasOutgoingEdge() == false
-                                          && "node which have edges can't be deleted");
+               && node->hasOutgoingEdge() == false
+               && "node which have edges can't be deleted");
         iterator it = IDToNodeMap.find(node->getId());
         assert(it != IDToNodeMap.end() && "can not find the node");
         IDToNodeMap.erase(it);

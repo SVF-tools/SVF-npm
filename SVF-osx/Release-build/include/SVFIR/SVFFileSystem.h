@@ -618,7 +618,7 @@ private:
 
     template <typename T,
               typename = std::enable_if_t<SVFUtil::is_iterable_v<T>>>
-    cJSON* toJson(const T& container)
+                                          cJSON* toJson(const T& container)
     {
         cJSON* array = jsonCreateArray();
         for (const auto& item : container)
@@ -790,7 +790,7 @@ public:
     template <typename FillFunc> void fillObjs(FillFunc fillFunc)
     {
         assert(jsonArray.size() == ptrPool.size() &&
-                                   "jsonArray and ptrPool should have same size");
+               "jsonArray and ptrPool should have same size");
         for (size_t i = 0; i < jsonArray.size(); ++i)
         {
             const cJSON*& objFieldJson = jsonArray[i];

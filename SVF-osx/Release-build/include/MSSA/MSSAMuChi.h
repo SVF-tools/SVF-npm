@@ -439,8 +439,8 @@ public:
     static inline bool classof(const MSSADEF *chi)
     {
         return chi->getType() == MSSADEF::EntryMSSACHI ||
-        chi->getType() == MSSADEF::StoreMSSACHI ||
-        chi->getType() == MSSADEF::SSACHI ;
+               chi->getType() == MSSADEF::StoreMSSACHI ||
+               chi->getType() == MSSADEF::SSACHI ;
     }
     //@}
 

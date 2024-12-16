@@ -173,7 +173,7 @@ public:
             IsRandomAccess,
             "Relational operators are only defined for random access iterators.");
         return !(static_cast<const DerivedT &>(*this) < RHS) &&
-        !(static_cast<const DerivedT &>(*this) == RHS);
+               !(static_cast<const DerivedT &>(*this) == RHS);
     }
     bool operator<=(const DerivedT &RHS) const
     {

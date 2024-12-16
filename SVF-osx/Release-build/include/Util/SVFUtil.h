@@ -338,8 +338,8 @@ const SVFFunction* getProgEntryFunction();
 inline bool isProgExitFunction (const SVFFunction * fun)
 {
     return fun && (fun->getName() == "exit" ||
-    fun->getName() == "__assert_rtn" ||
-    fun->getName() == "__assert_fail" );
+                   fun->getName() == "__assert_rtn" ||
+                   fun->getName() == "__assert_fail" );
 }
 
 /// Return true if this argument belongs to an uncalled function
@@ -464,7 +464,7 @@ template <typename... Ts> using void_t = typename make_void<Ts...>::type;
 template <typename T, typename = void> struct is_iterable : std::false_type {};
 template <typename T>
 struct is_iterable<T, void_t<decltype(std::begin(std::declval<T&>()) !=
-        std::end(std::declval<T&>()))>>
+                                      std::end(std::declval<T&>()))>>
     : std::true_type {};
 template <typename T> constexpr bool is_iterable_v = is_iterable<T>::value;
 ///@}

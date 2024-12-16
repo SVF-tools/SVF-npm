@@ -72,7 +72,7 @@ public:
     inline bool isCFGEdge() const
     {
         return getEdgeKind() == IntraCF || getEdgeKind() == CallCF ||
-        getEdgeKind() == RetCF;
+               getEdgeKind() == RetCF;
     }
     inline bool isCallCFGEdge() const
     {

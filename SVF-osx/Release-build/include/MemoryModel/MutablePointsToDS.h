@@ -589,7 +589,7 @@ public:
     static inline bool classof(const PTData<Key, KeySet, Data, DataSet>* ptd)
     {
         return ptd->getPTDTY() == BaseDFPTData::MutDataFlow
-        || ptd->getPTDTY() == BaseDFPTData::MutIncDataFlow;
+               || ptd->getPTDTY() == BaseDFPTData::MutIncDataFlow;
     }
     ///@}
 
