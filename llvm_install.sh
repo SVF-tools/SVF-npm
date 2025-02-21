@@ -5,6 +5,7 @@ MajorLLVMVer=16
 LLVMVer=${MajorLLVMVer}.0.0
 UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.0/llvm-${LLVMVer}-ubuntu24-rtti-amd64.tar.gz"
 UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-ubuntu-16.04.zip"
+UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.0/llvm-${MajorLLVMVer}.0.0-ubuntu24-rtti-amd64.tar.gz"
 Z3Home="z3.obj"
 LLVMHome="llvm-${LLVMVer}.obj"
 cd $SVFHOME
