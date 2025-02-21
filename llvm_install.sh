@@ -8,6 +8,10 @@ UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64
 UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.0/llvm-${MajorLLVMVer}.0.0-ubuntu24-rtti-amd64.tar.gz"
 Z3Home="z3.obj"
 LLVMHome="llvm-${LLVMVer}.obj"
+
+# resume softlink libSvfLLVM.so since npm pack would ignore softlink
+ln -sf libSvfLLVM.so.16 "$SVFHOME/SVF-linux/Release-build/lib/libSvfLLVM.so"
+
 cd $SVFHOME
 cd ..
 install_path=$(pwd)
