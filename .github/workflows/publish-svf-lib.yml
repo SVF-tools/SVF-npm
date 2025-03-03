@@ -19,22 +19,17 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          
   trigger-svf-python:
     if: github.event_name == 'push'  # Only run on push events
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Trigger SVF-Python workflow
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.WORKFLOW_PAT }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'SVF-tools',
-              repo: 'SVF-Python',
-              workflow_id: 'release.yml',
-              ref: 'main',
-              inputs: {
-                triggered_by: 'SVF-npm'
-              }
-            })
+        run: |
+          git clone https://github.com/SVF-tools/SVF-Python.git
+          cd SVF-Python
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "trigger: new version of SVF-npm published"
+          git push
