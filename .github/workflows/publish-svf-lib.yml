@@ -19,7 +19,7 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          
+
   trigger-svf-python:
     if: github.event_name == 'push'  # Only run on push events
     needs: build
@@ -27,9 +27,11 @@ jobs:
     steps:
       - name: Trigger SVF-Python workflow
         run: |
-          git clone https://github.com/SVF-tools/SVF-Python.git
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/SVF-tools/SVF-Python.git
           cd SVF-Python
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit --allow-empty -m "trigger: new version of SVF-npm published"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
