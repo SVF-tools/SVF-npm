@@ -117,8 +117,7 @@ public:
 };
 
 /// AliasCFLGraphBuilder: a CFLGraphBuilder specialized for handling aliasing
-class AliasCFLGraphBuilder :
-    public CFLGraphBuilder
+class AliasCFLGraphBuilder : public CFLGraphBuilder
 {
 public:
     /// Builds a bidirectional CFL graph by copying nodes and edges from a const graph that inherits from GenericGraph
@@ -140,8 +139,7 @@ private:
 };
 
 /// VFCFLGraphBuilder: a CFLGraphBuilder specialized for handling value-flow
-class VFCFLGraphBuilder :
-    public CFLGraphBuilder
+class VFCFLGraphBuilder : public CFLGraphBuilder
 {
 public:
     /// Builds a bidirectional CFL graph by copying nodes and edges from a const graph that inherits from SVFG
