@@ -20,18 +20,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
-  trigger-svf-python:
-    if: github.event_name == 'push'  # Only run on push events
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger SVF-Python workflow
-        run: |
-          git clone https://github.com/SVF-tools/SVF-Python.git
-          cd SVF-Python
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "trigger: new version of SVF-npm published"
-          git push https://yuleisui:${{secrets.yulei_git_key}}@github.com/SVF-tools/SVF-Python.git HEAD:main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  - name: Trigger SVF-Python workflow
+    run: |
+      # check whether there is a change at SVF-linux-x86_64/Release-build
+      cd ..
+      CHANGED=$(git diff --name-only HEAD^ HEAD | grep '^SVF-linux-x86_64/Release-build/')
+      
+      if [ -z "$CHANGED" ]; then
+        echo "No changes in SVF-linux-x86_64/Release-build, skipping trigger."
+        exit 0
+      else
+        echo "Changes detected in SVF-linux-x86_64/Release-build. Proceeding to trigger downstream."
+      
+        git clone https://github.com/SVF-tools/SVF-Python.git
+        cd SVF-Python
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git commit --allow-empty -m "trigger: changes in SVF-linux-x86_64/Release-build"
+        git push https://yuleisui:${{secrets.yulei_git_key}}@github.com/SVF-tools/SVF-Python.git HEAD:main
+      fi
