@@ -33,7 +33,7 @@ jobs:
       - name: Check for changes in SVF-linux-x86_64/Release-build
         id: changes
         run: |
-          git fetch origin main --depth=2
+          git fetch origin master --depth=2
           CHANGED=$(git diff --name-only HEAD^ HEAD | grep '^SVF-linux-x86_64/Release-build/' || true)
           echo "Changed files: $CHANGED"
           if [ -z "$CHANGED" ]; then
