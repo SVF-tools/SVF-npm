@@ -8,34 +8,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+
       - name: publish-svf-lib
         run: |
-          if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update       ; fi
+          if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update ; fi
           cat package.json
           npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
-  - name: Trigger SVF-Python workflow
-    run: |
-      # check whether there is a change at SVF-linux-x86_64/Release-build
-      cd ..
-      CHANGED=$(git diff --name-only HEAD^ HEAD | grep '^SVF-linux-x86_64/Release-build/')
-      
-      if [ -z "$CHANGED" ]; then
-        echo "No changes in SVF-linux-x86_64/Release-build, skipping trigger."
-        exit 0
-      else
-        echo "Changes detected in SVF-linux-x86_64/Release-build. Proceeding to trigger downstream."
-      
-        git clone https://github.com/SVF-tools/SVF-Python.git
-        cd SVF-Python
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git commit --allow-empty -m "trigger: changes in SVF-linux-x86_64/Release-build"
-        git push https://yuleisui:${{secrets.yulei_git_key}}@github.com/SVF-tools/SVF-Python.git HEAD:main
-      fi
+  trigger-svf-python:
+    if: github.event_name == 'push'  # Only run on push events
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v2
+
+      - name: Check for changes in SVF-linux-x86_64/Release-build
+        id: changes
+        run: |
+          git fetch origin main --depth=2
+          CHANGED=$(git diff --name-only HEAD^ HEAD | grep '^SVF-linux-x86_64/Release-build/' || true)
+          echo "Changed files: $CHANGED"
+          if [ -z "$CHANGED" ]; then
+            echo "should_trigger=false" >> $GITHUB_OUTPUT
+          else
+            echo "should_trigger=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Trigger SVF-Python workflow if needed
+        if: steps.changes.outputs.should_trigger == 'true'
+        run: |
+          git clone https://github.com/SVF-tools/SVF-Python.git
+          cd SVF-Python
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "trigger: changes in SVF-linux-x86_64/Release-build"
+          git push https://yuleisui:${{secrets.yulei_git_key}}@github.com/SVF-tools/SVF-Python.git HEAD:main
