@@ -1244,7 +1244,8 @@ public:
 /*!
  * Thread Fork
  */
-class TDForkPE: public CallPE
+class TDForkPE:
+    public CallPE
 {
     friend class SVFIRWriter;
     friend class SVFIRReader;
@@ -1285,7 +1286,8 @@ public:
 /*!
  * Thread Join
  */
-class TDJoinPE: public RetPE
+class TDJoinPE:
+    public RetPE
 {
     friend class SVFIRWriter;
     friend class SVFIRReader;

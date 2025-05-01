@@ -217,8 +217,8 @@ struct isa_impl_wrap
     static bool doit(const From &Val)
     {
         return isa_impl_wrap<To, SimpleFrom,
-               typename simplify_type<SimpleFrom>::SimpleType>::doit(
-                   simplify_type<const From>::getSimplifiedValue(Val));
+        typename simplify_type<SimpleFrom>::SimpleType>::doit(
+            simplify_type<const From>::getSimplifiedValue(Val));
     }
 };
 
@@ -325,8 +325,8 @@ template<class To, class From, class SimpleFrom> struct cast_convert_val
     static typename cast_retty<To, From>::ret_type doit(From &Val)
     {
         return cast_convert_val<To, SimpleFrom,
-               typename simplify_type<SimpleFrom>::SimpleType>::doit(
-                   simplify_type<From>::getSimplifiedValue(Val));
+        typename simplify_type<SimpleFrom>::SimpleType>::doit(
+            simplify_type<From>::getSimplifiedValue(Val));
     }
 };
 

@@ -203,7 +203,8 @@ private:
 };
 
 /// Dwarf based CHG.
-class DCHGraph : public CommonCHGraph, public GenericGraph<DCHNode, DCHEdge>
+class DCHGraph :
+    public CommonCHGraph, public GenericGraph<DCHNode, DCHEdge>
 {
 public:
     /// Returns the DIType beneath the qualifiers. Does not strip away "DW_TAG_members".
