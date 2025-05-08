@@ -27,7 +27,7 @@ target triple = "arm64-apple-macosx14.0.0"
 @error_global = global [10 x i32] zeroinitializer, align 4
 @h_error_global = global [10 x i32] zeroinitializer, align 4
 @res_state_global = global [10 x i32] zeroinitializer, align 4
-@time_global = global [10 x ptr] zeroinitializer, align 8
+@time_global = global [10 x i8] zeroinitializer, align 1
 @bindtextdomain_global = global [10 x i8] zeroinitializer, align 1
 @bind_textdomain_codeset_global = global [10 x i8] zeroinitializer, align 1
 @ctermid_global = global [10 x i8] zeroinitializer, align 1
@@ -49,7 +49,7 @@ target triple = "arm64-apple-macosx14.0.0"
 @tgoto_global = global [10 x i8] zeroinitializer, align 1
 @tparm_global = global [10 x i8] zeroinitializer, align 1
 @zError_global = global [10 x i8] zeroinitializer, align 1
-@llvm.global.annotations = appending global [211 x { ptr, ptr, ptr, i32, ptr }] [{ ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str, ptr @.str.1, i32 19, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str.2, ptr @.str.1, i32 19, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str, ptr @.str.1, i32 25, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str.3, ptr @.str.1, i32 25, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str, ptr @.str.1, i32 31, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str.3, ptr @.str.1, i32 31, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str, ptr @.str.1, i32 37, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str.3, ptr @.str.1, i32 37, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str, ptr @.str.1, i32 43, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str.3, ptr @.str.1, i32 43, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str, ptr @.str.1, i32 49, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str.3, ptr @.str.1, i32 49, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str, ptr @.str.1, i32 55, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str.4, ptr @.str.1, i32 55, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str, ptr @.str.1, i32 61, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str.2, ptr @.str.1, i32 61, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str, ptr @.str.1, i32 67, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str.3, ptr @.str.1, i32 67, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str, ptr @.str.1, i32 73, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str.3, ptr @.str.1, i32 73, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str, ptr @.str.1, i32 79, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str.2, ptr @.str.1, i32 79, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str, ptr @.str.1, i32 85, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str.2, ptr @.str.1, i32 85, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str, ptr @.str.1, i32 91, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str.3, ptr @.str.1, i32 91, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str, ptr @.str.1, i32 97, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str.2, ptr @.str.1, i32 97, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str, ptr @.str.1, i32 103, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str.3, ptr @.str.1, i32 103, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str, ptr @.str.1, i32 109, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str.3, ptr @.str.1, i32 109, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str, ptr @.str.1, i32 115, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str.3, ptr @.str.1, i32 115, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str, ptr @.str.1, i32 121, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str.4, ptr @.str.1, i32 121, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str, ptr @.str.1, i32 127, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str.2, ptr @.str.1, i32 127, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str, ptr @.str.1, i32 133, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str.4, ptr @.str.1, i32 133, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str, ptr @.str.1, i32 139, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str.2, ptr @.str.1, i32 139, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str, ptr @.str.1, i32 145, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str.3, ptr @.str.1, i32 145, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str, ptr @.str.1, i32 151, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str.3, ptr @.str.1, i32 151, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str, ptr @.str.1, i32 157, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str.3, ptr @.str.1, i32 157, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str, ptr @.str.1, i32 163, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str.3, ptr @.str.1, i32 163, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str, ptr @.str.1, i32 169, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str.3, ptr @.str.1, i32 169, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str, ptr @.str.1, i32 175, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str.3, ptr @.str.1, i32 175, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str, ptr @.str.1, i32 181, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str.3, ptr @.str.1, i32 181, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str, ptr @.str.1, i32 187, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str.2, ptr @.str.1, i32 187, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str, ptr @.str.1, i32 193, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str.2, ptr @.str.1, i32 193, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str, ptr @.str.1, i32 199, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str.2, ptr @.str.1, i32 199, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str, ptr @.str.1, i32 205, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str.2, ptr @.str.1, i32 205, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str, ptr @.str.1, i32 211, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str.2, ptr @.str.1, i32 211, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str, ptr @.str.1, i32 217, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str.5, ptr @.str.1, i32 217, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str, ptr @.str.1, i32 223, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str.5, ptr @.str.1, i32 223, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str, ptr @.str.1, i32 229, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str.2, ptr @.str.1, i32 229, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str, ptr @.str.1, i32 235, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str.5, ptr @.str.1, i32 235, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str, ptr @.str.1, i32 241, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str.3, ptr @.str.1, i32 241, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str, ptr @.str.1, i32 247, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str.3, ptr @.str.1, i32 247, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str, ptr @.str.1, i32 253, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str.3, ptr @.str.1, i32 253, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str, ptr @.str.1, i32 259, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str.3, ptr @.str.1, i32 259, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str, ptr @.str.1, i32 265, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str.3, ptr @.str.1, i32 265, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str, ptr @.str.1, i32 271, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str.3, ptr @.str.1, i32 271, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str, ptr @.str.1, i32 277, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str.3, ptr @.str.1, i32 277, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str, ptr @.str.1, i32 283, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str.3, ptr @.str.1, i32 283, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str, ptr @.str.1, i32 289, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str.3, ptr @.str.1, i32 289, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str, ptr @.str.1, i32 295, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str.3, ptr @.str.1, i32 295, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str, ptr @.str.1, i32 301, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str.3, ptr @.str.1, i32 301, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str, ptr @.str.1, i32 307, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str.3, ptr @.str.1, i32 307, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str, ptr @.str.1, i32 313, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str.3, ptr @.str.1, i32 313, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str, ptr @.str.1, i32 319, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str.3, ptr @.str.1, i32 319, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str, ptr @.str.1, i32 325, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str.3, ptr @.str.1, i32 325, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str, ptr @.str.1, i32 331, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str.3, ptr @.str.1, i32 331, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str, ptr @.str.1, i32 337, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str.5, ptr @.str.1, i32 337, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str, ptr @.str.1, i32 343, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str.3, ptr @.str.1, i32 343, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str, ptr @.str.1, i32 349, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str.3, ptr @.str.1, i32 349, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str, ptr @.str.1, i32 355, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str.3, ptr @.str.1, i32 355, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str, ptr @.str.1, i32 361, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str.3, ptr @.str.1, i32 361, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str, ptr @.str.1, i32 367, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str.3, ptr @.str.1, i32 367, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str, ptr @.str.1, i32 373, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str.3, ptr @.str.1, i32 373, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str, ptr @.str.1, i32 379, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str.3, ptr @.str.1, i32 379, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str, ptr @.str.1, i32 385, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str.3, ptr @.str.1, i32 385, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str, ptr @.str.1, i32 391, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str.3, ptr @.str.1, i32 391, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str, ptr @.str.1, i32 397, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str.3, ptr @.str.1, i32 397, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str, ptr @.str.1, i32 403, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str.3, ptr @.str.1, i32 403, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str, ptr @.str.1, i32 409, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str.3, ptr @.str.1, i32 409, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.6, ptr @.str.1, i32 415, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.3, ptr @.str.1, i32 415, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.6, ptr @.str.1, i32 421, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.5, ptr @.str.1, i32 421, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.6, ptr @.str.1, i32 427, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.5, ptr @.str.1, i32 427, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.6, ptr @.str.1, i32 433, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.5, ptr @.str.1, i32 433, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.6, ptr @.str.1, i32 439, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.7, ptr @.str.1, i32 439, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.6, ptr @.str.1, i32 445, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.3, ptr @.str.1, i32 445, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.6, ptr @.str.1, i32 467, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.5, ptr @.str.1, i32 467, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str, ptr @.str.1, i32 473, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str.2, ptr @.str.1, i32 473, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 479, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 479, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.8, ptr @.str.1, i32 491, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.3, ptr @.str.1, i32 491, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.8, ptr @.str.1, i32 497, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.3, ptr @.str.1, i32 497, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.8, ptr @.str.1, i32 503, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.3, ptr @.str.1, i32 503, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.8, ptr @.str.1, i32 509, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.3, ptr @.str.1, i32 509, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.8, ptr @.str.1, i32 515, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.3, ptr @.str.1, i32 515, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.8, ptr @.str.1, i32 521, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.3, ptr @.str.1, i32 521, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.8, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.3, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.8, ptr @.str.1, i32 533, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.9, ptr @.str.1, i32 533, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.10, ptr @.str.1, i32 539, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.3, ptr @.str.1, i32 539, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.11, ptr @.str.1, i32 545, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.3, ptr @.str.1, i32 545, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 551, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 554, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 557, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 560, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy, ptr @.str.12, ptr @.str.1, i32 563, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove, ptr @.str.12, ptr @.str.1, i32 566, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 569, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 572, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 575, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 578, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memcpy_chk, ptr @.str.12, ptr @.str.1, i32 581, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memmove, ptr @.str.12, ptr @.str.1, i32 584, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @bcopy, ptr @.str.12, ptr @.str.1, i32 590, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memccpy, ptr @.str.12, ptr @.str.1, i32 593, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memmove_chk, ptr @.str.12, ptr @.str.1, i32 599, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset, ptr @.str.13, ptr @.str.1, i32 602, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i32, ptr @.str.13, ptr @.str.1, i32 605, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i32, ptr @.str.13, ptr @.str.1, i32 608, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i64, ptr @.str.13, ptr @.str.1, i32 611, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i64, ptr @.str.13, ptr @.str.1, i32 614, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memset_chk, ptr @.str.13, ptr @.str.1, i32 617, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wmemset, ptr @.str.13, ptr @.str.1, i32 623, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcpy_chk, ptr @.str.14, ptr @.str.1, i32 629, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcat_chk, ptr @.str.15, ptr @.str.1, i32 635, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcscat_chk, ptr @.str.15, ptr @.str.1, i32 641, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @stpcpy, ptr @.str.14, ptr @.str.1, i32 647, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcat, ptr @.str.15, ptr @.str.1, i32 653, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscat, ptr @.str.15, ptr @.str.1, i32 659, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcpy, ptr @.str.14, ptr @.str.1, i32 666, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncat, ptr @.str.15, ptr @.str.1, i32 672, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcsncat, ptr @.str.15, ptr @.str.1, i32 678, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strncat_chk, ptr @.str.15, ptr @.str.1, i32 683, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcsncat_chk, ptr @.str.15, ptr @.str.1, i32 689, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncpy, ptr @.str.12, ptr @.str.1, i32 694, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscpy, ptr @.str.14, ptr @.str.1, i32 700, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv, ptr @.str.12, ptr @.str.1, i32 705, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZNSt5arrayIPK1ALm2EE4backEv, ptr @.str.16, ptr @.str.1, i32 711, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str, ptr @.str.1, i32 719, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str.2, ptr @.str.1, i32 719, ptr null }], section "llvm.metadata"
+@llvm.global.annotations = appending global [237 x { ptr, ptr, ptr, i32, ptr }] [{ ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str, ptr @.str.1, i32 23, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @malloc, ptr @.str.2, ptr @.str.1, i32 23, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str, ptr @.str.1, i32 29, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen, ptr @.str.3, ptr @.str.1, i32 29, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str, ptr @.str.1, i32 35, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fopen64, ptr @.str.3, ptr @.str.1, i32 35, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str, ptr @.str.1, i32 41, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @fdopen, ptr @.str.3, ptr @.str.1, i32 41, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str, ptr @.str.1, i32 47, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir64, ptr @.str.3, ptr @.str.1, i32 47, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str, ptr @.str.1, i32 53, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid64, ptr @.str.3, ptr @.str.1, i32 53, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str, ptr @.str.1, i32 59, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @calloc, ptr @.str.4, ptr @.str.1, i32 59, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str, ptr @.str.1, i32 65, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @zmalloc, ptr @.str.2, ptr @.str.1, i32 65, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str, ptr @.str.1, i32 71, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzdopen, ptr @.str.3, ptr @.str.1, i32 71, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str, ptr @.str.1, i32 77, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv_open, ptr @.str.3, ptr @.str.1, i32 77, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str, ptr @.str.1, i32 83, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc, ptr @.str.2, ptr @.str.1, i32 83, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str, ptr @.str.1, i32 89, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @lalloc_clear, ptr @.str.2, ptr @.str.1, i32 89, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str, ptr @.str.1, i32 95, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nhalloc, ptr @.str.3, ptr @.str.1, i32 95, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str, ptr @.str.1, i32 101, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @oballoc, ptr @.str.2, ptr @.str.1, i32 101, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str, ptr @.str.1, i32 107, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @popen, ptr @.str.3, ptr @.str.1, i32 107, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str, ptr @.str.1, i32 113, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pthread_getspecific, ptr @.str.3, ptr @.str.1, i32 113, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str, ptr @.str.1, i32 119, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @readdir, ptr @.str.3, ptr @.str.1, i32 119, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str, ptr @.str.1, i32 125, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_calloc, ptr @.str.4, ptr @.str.1, i32 125, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str, ptr @.str.1, i32 131, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_malloc, ptr @.str.2, ptr @.str.1, i32 131, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str, ptr @.str.1, i32 137, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safecalloc, ptr @.str.4, ptr @.str.1, i32 137, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str, ptr @.str.1, i32 143, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safemalloc, ptr @.str.2, ptr @.str.1, i32 143, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str, ptr @.str.1, i32 149, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @setmntent, ptr @.str.3, ptr @.str.1, i32 149, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str, ptr @.str.1, i32 155, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @shmat, ptr @.str.3, ptr @.str.1, i32 155, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str, ptr @.str.1, i32 161, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__sysv_signal, ptr @.str.3, ptr @.str.1, i32 161, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str, ptr @.str.1, i32 167, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @signal, ptr @.str.3, ptr @.str.1, i32 167, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str, ptr @.str.1, i32 173, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tempnam, ptr @.str.3, ptr @.str.1, i32 173, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str, ptr @.str.1, i32 179, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpvoid, ptr @.str.3, ptr @.str.1, i32 179, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str, ptr @.str.1, i32 185, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xcalloc, ptr @.str.3, ptr @.str.1, i32 185, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str, ptr @.str.1, i32 191, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xmalloc, ptr @.str.2, ptr @.str.1, i32 191, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str, ptr @.str.1, i32 197, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__cxa_allocate_exception, ptr @.str.2, ptr @.str.1, i32 197, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str, ptr @.str.1, i32 203, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @aligned_alloc, ptr @.str.5, ptr @.str.1, i32 203, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str, ptr @.str.1, i32 209, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memalign, ptr @.str.5, ptr @.str.1, i32 209, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str, ptr @.str.1, i32 215, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @valloc, ptr @.str.2, ptr @.str.1, i32 215, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pvalloc, ptr @.str, ptr @.str.1, i32 221, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @pvalloc, ptr @.str.2, ptr @.str.1, i32 221, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str, ptr @.str.1, i32 227, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap64, ptr @.str.5, ptr @.str.1, i32 227, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str, ptr @.str.1, i32 233, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XSetLocaleModifiers, ptr @.str.3, ptr @.str.1, i32 233, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str, ptr @.str.1, i32 239, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strdup, ptr @.str.3, ptr @.str.1, i32 239, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str, ptr @.str.1, i32 245, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @crypt, ptr @.str.3, ptr @.str.1, i32 245, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str, ptr @.str.1, i32 251, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlerror, ptr @.str.3, ptr @.str.1, i32 251, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str, ptr @.str.1, i32 257, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @dlopen, ptr @.str.3, ptr @.str.1, i32 257, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str, ptr @.str.1, i32 263, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gai_strerror, ptr @.str.3, ptr @.str.1, i32 263, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str, ptr @.str.1, i32 269, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gcry_cipher_algo_name, ptr @.str.3, ptr @.str.1, i32 269, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str, ptr @.str.1, i32 275, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @svfgcry_md_algo_name_, ptr @.str.3, ptr @.str.1, i32 275, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str, ptr @.str.1, i32 281, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getlogin, ptr @.str.3, ptr @.str.1, i32 281, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str, ptr @.str.1, i32 287, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getpass, ptr @.str.3, ptr @.str.1, i32 287, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str, ptr @.str.1, i32 293, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_strerror, ptr @.str.3, ptr @.str.1, i32 293, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str, ptr @.str.1, i32 299, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gpg_strerror, ptr @.str.3, ptr @.str.1, i32 299, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str, ptr @.str.1, i32 305, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gzerror, ptr @.str.3, ptr @.str.1, i32 305, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str, ptr @.str.1, i32 311, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @inet_ntoa, ptr @.str.3, ptr @.str.1, i32 311, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str, ptr @.str.1, i32 317, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @initscr, ptr @.str.3, ptr @.str.1, i32 317, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str, ptr @.str.1, i32 323, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_stacksave, ptr @.str.3, ptr @.str.1, i32 323, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str, ptr @.str.1, i32 329, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mmap, ptr @.str.5, ptr @.str.1, i32 329, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str, ptr @.str.1, i32 335, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @newwin, ptr @.str.3, ptr @.str.1, i32 335, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str, ptr @.str.1, i32 341, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @nl_langinfo, ptr @.str.3, ptr @.str.1, i32 341, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str, ptr @.str.1, i32 347, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @opendir, ptr @.str.3, ptr @.str.1, i32 347, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str, ptr @.str.1, i32 353, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @sbrk, ptr @.str.3, ptr @.str.1, i32 353, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str, ptr @.str.1, i32 359, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strdup, ptr @.str.3, ptr @.str.1, i32 359, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strndup, ptr @.str, ptr @.str.1, i32 365, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strndup, ptr @.str.3, ptr @.str.1, i32 365, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str, ptr @.str.1, i32 371, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strerror, ptr @.str.3, ptr @.str.1, i32 371, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str, ptr @.str.1, i32 377, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strsignal, ptr @.str.3, ptr @.str.1, i32 377, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str, ptr @.str.1, i32 383, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @textdomain, ptr @.str.3, ptr @.str.1, i32 383, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str, ptr @.str.1, i32 389, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tgetstr, ptr @.str.3, ptr @.str.1, i32 389, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str, ptr @.str.1, i32 395, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tigetstr, ptr @.str.3, ptr @.str.1, i32 395, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str, ptr @.str.1, i32 401, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @tmpnam, ptr @.str.3, ptr @.str.1, i32 401, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str, ptr @.str.1, i32 407, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @ttyname, ptr @.str.3, ptr @.str.1, i32 407, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.6, ptr @.str.1, i32 413, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @getcwd, ptr @.str.3, ptr @.str.1, i32 413, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.6, ptr @.str.1, i32 419, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @mem_realloc, ptr @.str.5, ptr @.str.1, i32 419, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.6, ptr @.str.1, i32 425, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @realloc, ptr @.str.5, ptr @.str.1, i32 425, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @reallocarray, ptr @.str.6, ptr @.str.1, i32 431, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @reallocarray, ptr @.str.7, ptr @.str.1, i32 431, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.6, ptr @.str.1, i32 437, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safe_realloc, ptr @.str.5, ptr @.str.1, i32 437, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.6, ptr @.str.1, i32 443, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @saferealloc, ptr @.str.7, ptr @.str.1, i32 443, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.6, ptr @.str.1, i32 449, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @safexrealloc, ptr @.str.3, ptr @.str.1, i32 449, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.6, ptr @.str.1, i32 471, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @xrealloc, ptr @.str.5, ptr @.str.1, i32 471, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str, ptr @.str.1, i32 478, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwj, ptr @.str.2, ptr @.str.1, i32 478, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 485, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjSt11align_val_t, ptr @.str, ptr @.str.1, i32 492, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjSt11align_val_t, ptr @.str.2, ptr @.str.1, i32 492, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjSt11align_val_tRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 499, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwjSt11align_val_tRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 499, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str, ptr @.str.1, i32 506, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znaj, ptr @.str.2, ptr @.str.1, i32 506, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 513, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 513, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajSt11align_val_t, ptr @.str, ptr @.str.1, i32 520, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajSt11align_val_t, ptr @.str.2, ptr @.str.1, i32 520, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajSt11align_val_tRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnajSt11align_val_tRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 527, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str, ptr @.str.1, i32 534, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znwm, ptr @.str.2, ptr @.str.1, i32 534, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 541, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 541, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmSt11align_val_t, ptr @.str, ptr @.str.1, i32 548, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmSt11align_val_t, ptr @.str.2, ptr @.str.1, i32 548, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmSt11align_val_tRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 555, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnwmSt11align_val_tRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 555, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str, ptr @.str.1, i32 562, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_Znam, ptr @.str.2, ptr @.str.1, i32 562, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 569, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 569, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamSt11align_val_t, ptr @.str, ptr @.str.1, i32 576, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamSt11align_val_t, ptr @.str.2, ptr @.str.1, i32 576, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamSt11align_val_tRKSt9nothrow_t, ptr @.str, ptr @.str.1, i32 583, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZnamSt11align_val_tRKSt9nothrow_t, ptr @.str.2, ptr @.str.1, i32 583, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.8, ptr @.str.1, i32 589, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @asprintf, ptr @.str.3, ptr @.str.1, i32 589, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.8, ptr @.str.1, i32 595, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @vasprintf, ptr @.str.3, ptr @.str.1, i32 595, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.8, ptr @.str.1, i32 601, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @db_create, ptr @.str.3, ptr @.str.1, i32 601, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.8, ptr @.str.1, i32 607, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_bag_init, ptr @.str.3, ptr @.str.1, i32 607, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.8, ptr @.str.1, i32 613, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_pkcs12_init, ptr @.str.3, ptr @.str.1, i32 613, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.8, ptr @.str.1, i32 619, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_crt_init, ptr @.str.3, ptr @.str.1, i32 619, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.8, ptr @.str.1, i32 625, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @gnutls_x509_privkey_init, ptr @.str.3, ptr @.str.1, i32 625, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.8, ptr @.str.1, i32 631, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @posix_memalign, ptr @.str.9, ptr @.str.1, i32 631, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.10, ptr @.str.1, i32 637, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @scandir, ptr @.str.3, ptr @.str.1, i32 637, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.11, ptr @.str.1, i32 643, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @XmbTextPropertyToTextList, ptr @.str.3, ptr @.str.1, i32 643, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 649, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 652, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 655, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 658, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memcpy, ptr @.str.12, ptr @.str.1, i32 661, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove, ptr @.str.12, ptr @.str.1, i32 664, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i64, ptr @.str.12, ptr @.str.1, i32 667, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i64, ptr @.str.12, ptr @.str.1, i32 670, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0i8_p0i8_i32, ptr @.str.12, ptr @.str.1, i32 673, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memmove_p0_p0_i32, ptr @.str.12, ptr @.str.1, i32 676, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memcpy_chk, ptr @.str.12, ptr @.str.1, i32 679, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memmove, ptr @.str.12, ptr @.str.1, i32 682, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @bcopy, ptr @.str.12, ptr @.str.1, i32 688, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @memccpy, ptr @.str.12, ptr @.str.1, i32 691, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memmove_chk, ptr @.str.12, ptr @.str.1, i32 697, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset, ptr @.str.13, ptr @.str.1, i32 700, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i32, ptr @.str.13, ptr @.str.1, i32 703, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i32, ptr @.str.13, ptr @.str.1, i32 706, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0i8_i64, ptr @.str.13, ptr @.str.1, i32 709, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @llvm_memset_p0_i64, ptr @.str.13, ptr @.str.1, i32 712, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__memset_chk, ptr @.str.13, ptr @.str.1, i32 715, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wmemset, ptr @.str.13, ptr @.str.1, i32 721, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcpy_chk, ptr @.str.14, ptr @.str.1, i32 727, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strcat_chk, ptr @.str.15, ptr @.str.1, i32 733, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcscat_chk, ptr @.str.15, ptr @.str.1, i32 739, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @stpcpy, ptr @.str.14, ptr @.str.1, i32 745, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcat, ptr @.str.15, ptr @.str.1, i32 751, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscat, ptr @.str.15, ptr @.str.1, i32 757, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strcpy, ptr @.str.14, ptr @.str.1, i32 764, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncat, ptr @.str.15, ptr @.str.1, i32 770, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcsncat, ptr @.str.15, ptr @.str.1, i32 776, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__strncat_chk, ptr @.str.15, ptr @.str.1, i32 781, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @__wcsncat_chk, ptr @.str.15, ptr @.str.1, i32 787, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @strncpy, ptr @.str.12, ptr @.str.1, i32 792, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @wcscpy, ptr @.str.14, ptr @.str.1, i32 798, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @iconv, ptr @.str.12, ptr @.str.1, i32 803, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @_ZNSt5arrayIPK1ALm2EE4backEv, ptr @.str.16, ptr @.str.1, i32 809, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str, ptr @.str.1, i32 817, ptr null }, { ptr, ptr, ptr, i32, ptr } { ptr @SyGetmem, ptr @.str.2, ptr @.str.1, i32 817, ptr null }], section "llvm.metadata"
 
 ; Function Attrs: noinline nounwind ssp allocsize(0) uwtable(sync)
 define ptr @malloc(i64 noundef %size) #0 {
@@ -324,30 +324,6 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
-define ptr @_Znam(i64 noundef %size) #1 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, ptr %size.addr, align 8
-  ret ptr null
-}
-
-; Function Attrs: noinline nounwind ssp uwtable(sync)
-define ptr @_Znaj(i64 noundef %size) #1 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, ptr %size.addr, align 8
-  ret ptr null
-}
-
-; Function Attrs: noinline nounwind ssp uwtable(sync)
-define ptr @_Znwj(i64 noundef %size) #1 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, ptr %size.addr, align 8
-  ret ptr null
-}
-
-; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @__cxa_allocate_exception(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -377,6 +353,14 @@ entry:
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @valloc(i64 noundef %size) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, ptr %size.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @pvalloc(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
   store i64 %size, ptr %size.addr, align 8
@@ -592,6 +576,16 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @strndup(ptr noundef %s, i64 noundef %n) #1 {
+entry:
+  %s.addr = alloca ptr, align 8
+  %n.addr = alloca i64, align 8
+  store ptr %s, ptr %s.addr, align 8
+  store i64 %n, ptr %n.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @strerror(i32 noundef %errnum) #1 {
 entry:
   %errnum.addr = alloca i32, align 4
@@ -680,6 +674,18 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @reallocarray(ptr noundef %ptr, i64 noundef %elems, i64 noundef %size) #1 {
+entry:
+  %ptr.addr = alloca ptr, align 8
+  %elems.addr = alloca i64, align 8
+  %size.addr = alloca i64, align 8
+  store ptr %ptr, ptr %ptr.addr, align 8
+  store i64 %elems, ptr %elems.addr, align 8
+  store i64 %size, ptr %size.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @safe_realloc(ptr noundef %p, i64 noundef %n) #1 {
 entry:
   %p.addr = alloca ptr, align 8
@@ -754,6 +760,86 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_Znwj(i32 noundef %size) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  store i32 %size, ptr %size.addr, align 4
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnwjRKSt9nothrow_t(i32 noundef %size, ptr noundef %0) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca ptr, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store ptr %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnwjSt11align_val_t(i32 noundef %size, i64 noundef %0) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca i64, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store i64 %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnwjSt11align_val_tRKSt9nothrow_t(i32 noundef %size, i64 noundef %0, ptr noundef %1) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca i64, align 8
+  %.addr1 = alloca ptr, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store i64 %0, ptr %.addr, align 8
+  store ptr %1, ptr %.addr1, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_Znaj(i32 noundef %size) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  store i32 %size, ptr %size.addr, align 4
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnajRKSt9nothrow_t(i32 noundef %size, ptr noundef %0) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca ptr, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store ptr %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnajSt11align_val_t(i32 noundef %size, i64 noundef %0) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca i64, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store i64 %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnajSt11align_val_tRKSt9nothrow_t(i32 noundef %size, i64 noundef %0, ptr noundef %1) #1 {
+entry:
+  %size.addr = alloca i32, align 4
+  %.addr = alloca i64, align 8
+  %.addr1 = alloca ptr, align 8
+  store i32 %size, ptr %size.addr, align 4
+  store i64 %0, ptr %.addr, align 8
+  store ptr %1, ptr %.addr1, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_Znwm(i64 noundef %size) #1 {
 entry:
   %size.addr = alloca i64, align 8
@@ -772,12 +858,64 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnwmSt11align_val_t(i64 noundef %size, i64 noundef %0) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i64, align 8
+  store i64 %size, ptr %size.addr, align 8
+  store i64 %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnwmSt11align_val_tRKSt9nothrow_t(i64 noundef %size, i64 noundef %0, ptr noundef %1) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i64, align 8
+  %.addr1 = alloca ptr, align 8
+  store i64 %size, ptr %size.addr, align 8
+  store i64 %0, ptr %.addr, align 8
+  store ptr %1, ptr %.addr1, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_Znam(i64 noundef %size) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  store i64 %size, ptr %size.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
 define ptr @_ZnamRKSt9nothrow_t(i64 noundef %size, ptr noundef %0) #1 {
 entry:
   %size.addr = alloca i64, align 8
   %.addr = alloca ptr, align 8
   store i64 %size, ptr %size.addr, align 8
   store ptr %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnamSt11align_val_t(i64 noundef %size, i64 noundef %0) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i64, align 8
+  store i64 %size, ptr %size.addr, align 8
+  store i64 %0, ptr %.addr, align 8
+  ret ptr null
+}
+
+; Function Attrs: noinline nounwind ssp uwtable(sync)
+define ptr @_ZnamSt11align_val_tRKSt9nothrow_t(i64 noundef %size, i64 noundef %0, ptr noundef %1) #1 {
+entry:
+  %size.addr = alloca i64, align 8
+  %.addr = alloca i64, align 8
+  %.addr1 = alloca ptr, align 8
+  store i64 %size, ptr %size.addr, align 8
+  store i64 %0, ptr %.addr, align 8
+  store ptr %1, ptr %.addr1, align 8
   ret ptr null
 }
 
@@ -2001,17 +2139,17 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind ssp uwtable(sync)
-define i32 @readdir_r(ptr noundef %__restrict__dir, ptr noundef %__restrict__entry, ptr noundef %__restrict__result) #1 {
+define i32 @readdir_r(ptr noalias noundef %dir, ptr noalias noundef %entry1, ptr noalias noundef %result) #1 {
 entry:
-  %__restrict__dir.addr = alloca ptr, align 8
-  %__restrict__entry.addr = alloca ptr, align 8
-  %__restrict__result.addr = alloca ptr, align 8
-  store ptr %__restrict__dir, ptr %__restrict__dir.addr, align 8
-  store ptr %__restrict__entry, ptr %__restrict__entry.addr, align 8
-  store ptr %__restrict__result, ptr %__restrict__result.addr, align 8
-  %0 = load ptr, ptr %__restrict__result.addr, align 8
+  %dir.addr = alloca ptr, align 8
+  %entry.addr = alloca ptr, align 8
+  %result.addr = alloca ptr, align 8
+  store ptr %dir, ptr %dir.addr, align 8
+  store ptr %entry1, ptr %entry.addr, align 8
+  store ptr %result, ptr %result.addr, align 8
+  %0 = load ptr, ptr %result.addr, align 8
   %1 = load ptr, ptr %0, align 8
-  store ptr %1, ptr %__restrict__entry.addr, align 8
+  store ptr %1, ptr %entry.addr, align 8
   ret i32 0
 }
 
