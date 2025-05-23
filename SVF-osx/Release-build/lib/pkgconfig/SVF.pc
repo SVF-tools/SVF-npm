@@ -1,0 +1,12 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+bindir=${exec_prefix}/bin
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include/SVF
+
+Name: SVF
+Description: SVF Points to Analysis Framework
+Version: 3.1
+Requires: z3
+Libs: -L${libdir} -lSvfCore -lSvfLLVM
+Cflags: -I${includedir}
