@@ -13,7 +13,11 @@ Z3Home="z3.obj"
 LLVMHome="llvm-${LLVMVer}.obj"
 
 # resume softlink libSvfLLVM.so since npm pack would ignore softlink
-ln -sf libSvfLLVM.so.16 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so"
+ln -sf libSvfLLVM.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so.3"
+ln -sf libSvfLLVM.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so"
+ln -sf libSvfCore.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so.3"
+ln -sf libSvfCore.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so"
+
 
 cd $SVFHOME
 cd ..
