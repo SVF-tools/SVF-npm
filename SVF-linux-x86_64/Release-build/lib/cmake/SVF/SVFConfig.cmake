@@ -60,8 +60,8 @@ set_and_check(SVF_INSTALL_ROOT "${PACKAGE_PREFIX_DIR}")
 set_and_check(SVF_INSTALL_PREFIX "${PACKAGE_PREFIX_DIR}")
 set_and_check(SVF_INSTALL_BINDIR "${PACKAGE_PREFIX_DIR}/bin")
 set_and_check(SVF_INSTALL_LIBDIR "${PACKAGE_PREFIX_DIR}/lib")
-set_and_check(SVF_INSTALL_EXTAPIDIR "${PACKAGE_PREFIX_DIR}/include/SVF")
-set_and_check(SVF_INSTALL_INCLUDEDIR "${PACKAGE_PREFIX_DIR}/include/SVF")
+set_and_check(SVF_INSTALL_EXTAPIDIR "${PACKAGE_PREFIX_DIR}/lib")
+set_and_check(SVF_INSTALL_INCLUDEDIR "${PACKAGE_PREFIX_DIR}/include")
 set_and_check(SVF_INSTALL_PKGCONFDIR "${PACKAGE_PREFIX_DIR}/lib/pkgconfig")
 set_and_check(SVF_INSTALL_CMAKECONFIGDIR "${PACKAGE_PREFIX_DIR}/lib/cmake/SVF")
 
@@ -74,7 +74,7 @@ set(SVF_INSTALL_PKGCONF_DIR "${SVF_INSTALL_PKGCONFDIR}")
 set(SVF_INSTALL_CMAKECONFIG_DIR "${SVF_INSTALL_CMAKECONFIGDIR}")
 
 # Expose the installed location of the extapi.bc file (plus some legacy aliases)
-set_and_check(SVF_INSTALL_EXTAPI_BC "${PACKAGE_PREFIX_DIR}/include/SVF/extapi.bc")
+set_and_check(SVF_INSTALL_EXTAPI_BC "${PACKAGE_PREFIX_DIR}/lib/extapi.bc")
 set(SVF_INSTALL_EXTAPI_FILE "${SVF_INSTALL_EXTAPI_BC}")
 
 # Shouldn't be used, but also expose source tree location
