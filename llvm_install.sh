@@ -12,12 +12,20 @@ UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64
 Z3Home="z3.obj"
 LLVMHome="llvm-${LLVMVer}.obj"
 
-# resume softlink libSvfLLVM.so since npm pack would ignore softlink
-ln -sf libSvfLLVM.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so.3"
-ln -sf libSvfLLVM.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so"
-ln -sf libSvfCore.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so.3"
-ln -sf libSvfCore.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so"
-
+if [[ $sysOS == "Darwin" ]]
+then
+  ln -sf libSvfLLVM.3.1.dylib "$SVFHOME/SVF-osx/Release-build/lib/libSvfLLVM.3.dylib"
+  ln -sf libSvfLLVM.3.dylib "$SVFHOME/SVF-osx/Release-build/lib/libSvfLLVM.dylib"
+  ln -sf libSvfCore.3.1.dylib "$SVFHOME/SVF-osx/Release-build/lib/libSvfCore.3.dylib"
+  ln -sf libSvfCore.3.dylib "$SVFHOME/SVF-osx/Release-build/lib/libSvfCore.dylib"
+elif [[ $sysOS == "Linux" ]]
+then
+  # resume softlink libSvfLLVM.so since npm pack would ignore softlink
+  ln -sf libSvfLLVM.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so.3"
+  ln -sf libSvfLLVM.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfLLVM.so"
+  ln -sf libSvfCore.so.3.1 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so.3"
+  ln -sf libSvfCore.so.3 "$SVFHOME/SVF-linux-${arch}/Release-build/lib/libSvfCore.so"
+fi
 
 cd $SVFHOME
 cd ..
