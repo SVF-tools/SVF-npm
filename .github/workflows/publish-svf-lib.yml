@@ -30,11 +30,11 @@ jobs:
       - name: Checkout source repo
         uses: actions/checkout@v2
 
-      - name: Check for changes in SVF-linux-x86_64/Release-build
+      - name: Check for changes in SVF-linux-x86_64
         id: changes
         run: |
           git fetch origin master --depth=3
-          CHANGED=$(git diff --name-only HEAD~2 HEAD~1 | grep '^SVF-linux-x86_64/Release-build/' || true)
+          CHANGED=$(git diff --name-only HEAD~2 HEAD~1 | grep '^SVF-linux-x86_64' || true)
           echo "Changed files: $CHANGED"
           if [ -z "$CHANGED" ]; then
             echo "should_trigger=false" >> $GITHUB_OUTPUT
@@ -49,5 +49,5 @@ jobs:
           cd SVF-Python
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "trigger: changes in SVF-linux-x86_64/Release-build"
+          git commit --allow-empty -m "trigger: changes in SVF-linux-x86_64"
           git push https://yuleisui:${{secrets.yulei_git_key}}@github.com/SVF-tools/SVF-Python.git HEAD:main
