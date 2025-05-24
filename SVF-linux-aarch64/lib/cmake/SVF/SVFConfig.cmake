@@ -51,7 +51,7 @@ set(SVF_DEBUG_INFO OFF)
 set(SVF_WARN_AS_ERROR ON)
 set(SVF_EXPORT_DYNAMIC OFF)
 set(SVF_ENABLE_ASSERTIONS true)
-set(SVF_ENABLE_EXCEPTIONS OFF)
+set(SVF_ENABLE_EXCEPTIONS ON)
 set(SVF_ENABLE_RTTI ON)
 
 # Set the basic SVF paths based on the installed location (relocatable)
