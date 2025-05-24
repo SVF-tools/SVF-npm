@@ -64,6 +64,15 @@ set_and_check(SVF_INSTALL_INCLUDEDIR "${PACKAGE_PREFIX_DIR}/include")
 set_and_check(SVF_INSTALL_PKGCONFDIR "${PACKAGE_PREFIX_DIR}/lib/pkgconfig")
 set_and_check(SVF_INSTALL_CMAKECONFIGDIR "${PACKAGE_PREFIX_DIR}/lib/cmake/SVF")
 
+# If SVF is used directly from a build-from-scratch directory (not installed),
+# append the source include paths (SVF_INCLUDE_PATH and SVF_LLVM_INCLUDE_PATH)
+# to SVF_INSTALL_INCLUDEDIR. This allows users to debug with in-tree headers.
+set(SVF_INCLUDE_PATH "${PACKAGE_PREFIX_DIR}/include/../../svf/include")
+set(SVF_LLVM_INCLUDE_PATH "${PACKAGE_PREFIX_DIR}/include/../../svf-llvm/include")
+if(EXISTS ${SVF_INCLUDE_PATH} AND EXISTS ${SVF_LLVM_INCLUDE_PATH})
+    set(SVF_INSTALL_INCLUDEDIR "${SVF_INCLUDE_PATH};${SVF_LLVM_INCLUDE_PATH};${PACKAGE_PREFIX_DIR}/include")
+endif()
+
 # For legacy support, also allow the "*_DIR" suffix for the above paths
 set(SVF_INSTALL_BIN_DIR "${SVF_INSTALL_BINDIR}")
 set(SVF_INSTALL_LIB_DIR "${SVF_INSTALL_LIBDIR}")
