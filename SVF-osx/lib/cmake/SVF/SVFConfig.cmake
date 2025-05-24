@@ -53,7 +53,6 @@ set(SVF_EXPORT_DYNAMIC OFF)
 set(SVF_ENABLE_ASSERTIONS true)
 set(SVF_ENABLE_EXCEPTIONS ON)
 set(SVF_ENABLE_RTTI ON)
-set(SVF_ENABLE_EH ON)
 
 # Set the basic SVF paths based on the installed location (relocatable)
 set_and_check(SVF_INSTALL_ROOT "${PACKAGE_PREFIX_DIR}")
