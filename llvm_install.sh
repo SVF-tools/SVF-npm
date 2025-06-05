@@ -14,17 +14,53 @@ LLVMHome="llvm-${LLVMVer}.obj"
 
 if [[ $sysOS == "Darwin" ]]
 then
-  ln -sf libSvfLLVM.3.2.dylib "$SVFHOME/SVF-osx/lib/libSvfLLVM.3.dylib"
-  ln -sf libSvfLLVM.3.dylib "$SVFHOME/SVF-osx/lib/libSvfLLVM.dylib"
-  ln -sf libSvfCore.3.2.dylib "$SVFHOME/SVF-osx/lib/libSvfCore.3.dylib"
-  ln -sf libSvfCore.3.dylib "$SVFHOME/SVF-osx/lib/libSvfCore.dylib"
+  # Create soft links for SvfLLVM
+  for lib in "$SVFHOME/SVF-osx/lib"/libSvfLLVM.*.*.dylib; do
+    if [ -f "$lib" ]; then
+      # Extract version numbers
+      filename=$(basename "$lib")
+      major_version=$(echo "$filename" | sed -E 's/libSvfLLVM\.([0-9]+)\.[0-9]+\.dylib/\1/')
+      # Create soft links
+      ln -sf "$filename" "$SVFHOME/SVF-osx/lib/libSvfLLVM.$major_version.dylib"
+      ln -sf "libSvfLLVM.$major_version.dylib" "$SVFHOME/SVF-osx/lib/libSvfLLVM.dylib"
+    fi
+  done
+
+  # Create soft links for SvfCore
+  for lib in "$SVFHOME/SVF-osx/lib"/libSvfCore.*.*.dylib; do
+    if [ -f "$lib" ]; then
+      # Extract version numbers
+      filename=$(basename "$lib")
+      major_version=$(echo "$filename" | sed -E 's/libSvfCore\.([0-9]+)\.[0-9]+\.dylib/\1/')
+      # Create soft links
+      ln -sf "$filename" "$SVFHOME/SVF-osx/lib/libSvfCore.$major_version.dylib"
+      ln -sf "libSvfCore.$major_version.dylib" "$SVFHOME/SVF-osx/lib/libSvfCore.dylib"
+    fi
+  done
 elif [[ $sysOS == "Linux" ]]
 then
   # resume softlink libSvfLLVM.so since npm pack would ignore softlink
-  ln -sf libSvfLLVM.so.3.2 "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so.3"
-  ln -sf libSvfLLVM.so.3 "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so"
-  ln -sf libSvfCore.so.3.2 "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so.3"
-  ln -sf libSvfCore.so.3 "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so"
+  for lib in "$SVFHOME/SVF-linux-${arch}/lib"/libSvfLLVM.so.*.*; do
+    if [ -f "$lib" ]; then
+      # Extract version numbers
+      filename=$(basename "$lib")
+      major_version=$(echo "$filename" | sed -E 's/libSvfLLVM\.so\.([0-9]+)\.[0-9]+/\1/')
+      # Create soft links
+      ln -sf "$filename" "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so.$major_version"
+      ln -sf "libSvfLLVM.so.$major_version" "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so"
+    fi
+  done
+
+  for lib in "$SVFHOME/SVF-linux-${arch}/lib"/libSvfCore.so.*.*; do
+    if [ -f "$lib" ]; then
+      # Extract version numbers
+      filename=$(basename "$lib")
+      major_version=$(echo "$filename" | sed -E 's/libSvfCore\.so\.([0-9]+)\.[0-9]+/\1/')
+      # Create soft links
+      ln -sf "$filename" "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so.$major_version"
+      ln -sf "libSvfCore.so.$major_version" "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so"
+    fi
+  done
 fi
 
 cd $SVFHOME
