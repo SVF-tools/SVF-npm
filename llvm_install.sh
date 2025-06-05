@@ -14,16 +14,16 @@ LLVMHome="llvm-${LLVMVer}.obj"
 
 if [[ $sysOS == "Darwin" ]]
 then
-  ln -sf libSvfLLVM.3.1.dylib "$SVFHOME/SVF-osx/lib/libSvfLLVM.3.dylib"
+  ln -sf libSvfLLVM.3.2.dylib "$SVFHOME/SVF-osx/lib/libSvfLLVM.3.dylib"
   ln -sf libSvfLLVM.3.dylib "$SVFHOME/SVF-osx/lib/libSvfLLVM.dylib"
-  ln -sf libSvfCore.3.1.dylib "$SVFHOME/SVF-osx/lib/libSvfCore.3.dylib"
+  ln -sf libSvfCore.3.2.dylib "$SVFHOME/SVF-osx/lib/libSvfCore.3.dylib"
   ln -sf libSvfCore.3.dylib "$SVFHOME/SVF-osx/lib/libSvfCore.dylib"
 elif [[ $sysOS == "Linux" ]]
 then
   # resume softlink libSvfLLVM.so since npm pack would ignore softlink
-  ln -sf libSvfLLVM.so.3.1 "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so.3"
+  ln -sf libSvfLLVM.so.3.2 "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so.3"
   ln -sf libSvfLLVM.so.3 "$SVFHOME/SVF-linux-${arch}/lib/libSvfLLVM.so"
-  ln -sf libSvfCore.so.3.1 "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so.3"
+  ln -sf libSvfCore.so.3.2 "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so.3"
   ln -sf libSvfCore.so.3 "$SVFHOME/SVF-linux-${arch}/lib/libSvfCore.so"
 fi
 
