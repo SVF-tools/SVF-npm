@@ -8,22 +8,22 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 # Import target "SVF::SvfCore" for configuration "Release"
 set_property(TARGET SVF::SvfCore APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SVF::SvfCore PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libSvfCore.so.3.1"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libSvfCore.so.3.2"
   IMPORTED_SONAME_RELEASE "libSvfCore.so.3"
   )
 
 list(APPEND _cmake_import_check_targets SVF::SvfCore )
-list(APPEND _cmake_import_check_files_for_SVF::SvfCore "${_IMPORT_PREFIX}/lib/libSvfCore.so.3.1" )
+list(APPEND _cmake_import_check_files_for_SVF::SvfCore "${_IMPORT_PREFIX}/lib/libSvfCore.so.3.2" )
 
 # Import target "SVF::SvfLLVM" for configuration "Release"
 set_property(TARGET SVF::SvfLLVM APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SVF::SvfLLVM PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libSvfLLVM.so.3.1"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libSvfLLVM.so.3.2"
   IMPORTED_SONAME_RELEASE "libSvfLLVM.so.3"
   )
 
 list(APPEND _cmake_import_check_targets SVF::SvfLLVM )
-list(APPEND _cmake_import_check_files_for_SVF::SvfLLVM "${_IMPORT_PREFIX}/lib/libSvfLLVM.so.3.1" )
+list(APPEND _cmake_import_check_files_for_SVF::SvfLLVM "${_IMPORT_PREFIX}/lib/libSvfLLVM.so.3.2" )
 
 # Import target "SVF::ae" for configuration "Release"
 set_property(TARGET SVF::ae APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
