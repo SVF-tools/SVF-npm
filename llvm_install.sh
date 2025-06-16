@@ -4,8 +4,8 @@ sysOS=`uname -s`
 arch=`uname -m`
 MajorLLVMVer=16
 LLVMVer=${MajorLLVMVer}.0.0
-UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.0/llvm-${LLVMVer}-ubuntu24-rtti-x86-64.tar.gz"
-UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.0/llvm-${LLVMVer}-ubuntu24-rtti-aarch64.tar.gz"
+UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.1/llvm-${LLVMVer}-ubuntu20-rtti-x86-64.tar.gz"
+UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.1/llvm-${LLVMVer}-ubuntu22-rtti-aarch64.tar.gz"
 
 UbuntuZ3Arm="https://github.com/SVF-tools/SVF-npm/raw/prebuilt-libs/z3-4.8.7-aarch64-ubuntu.zip"
 UbuntuZ3="https://github.com/Z3Prover/z3/releases/download/z3-4.8.8/z3-4.8.8-x64-ubuntu-16.04.zip"
