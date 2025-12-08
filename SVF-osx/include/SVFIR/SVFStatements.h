@@ -1184,8 +1184,7 @@ public:
 /*!
  * Thread Fork
  */
-class TDForkPE:
-    public CallPE
+class TDForkPE: public CallPE
 {
 
 private:
@@ -1222,8 +1221,7 @@ public:
 /*!
  * Thread Join
  */
-class TDJoinPE:
-    public RetPE
+class TDJoinPE: public RetPE
 {
 
 private:
