@@ -37,6 +37,9 @@ jobs:
           fi
         
       - name: publish-svf-lib
+        env:
+          NODE_AUTH_TOKEN: ""
+          NPM_CONFIG_USERCONFIG: ""
         run: |
           if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update ; fi
           cat package.json
