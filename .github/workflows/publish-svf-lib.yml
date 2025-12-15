@@ -19,6 +19,23 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
+      - name: Clear npm token to force OIDC
+        run: |
+          rm -f ~/.npmrc
+          rm -f .npmrc
+          npm config delete //registry.npmjs.org/:_authToken || true
+          npm config delete _authToken || true
+          npm config delete token || true
+
+          echo "After cleanup, token check:"
+          TOK="$(npm config get //registry.npmjs.org/:_authToken || true)"
+          if [ -z "$TOK" ] || [ "$TOK" = "undefined" ] || [ "$TOK" = "null" ]; then
+            echo "Token cleared."
+          else
+            echo "Token still present (unexpected). length=${#TOK}"
+            exit 1
+          fi
+        
       - name: publish-svf-lib
         run: |
           if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update ; fi
