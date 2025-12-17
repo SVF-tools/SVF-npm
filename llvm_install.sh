@@ -2,8 +2,8 @@
 SVFHOME=$(pwd)
 sysOS=`uname -s`
 arch=`uname -m`
-MajorLLVMVer=16
-LLVMVer=${MajorLLVMVer}.0.0
+MajorLLVMVer=18
+LLVMVer=${MajorLLVMVer}.1.0
 UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.1/llvm-${LLVMVer}-ubuntu20-rtti-x86-64.tar.gz"
 UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.1/llvm-${LLVMVer}-ubuntu22-rtti-aarch64.tar.gz"
 
