@@ -9,7 +9,7 @@
 #define SVF_CONFIG_H_IN
 
 // Expose base properties of this SVF instance
-#define SVF_VERSION "3.2"
+#define SVF_VERSION "3.3"
 #define SVF_BUILD_TYPE "Release"
 #define SVF_C_STANDARD "11"
 #define SVF_CXX_STANDARD "17"
