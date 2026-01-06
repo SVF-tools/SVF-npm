@@ -32,7 +32,7 @@ list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_LIST
 include("${CMAKE_CURRENT_LIST_DIR}/SVFTargets.cmake")
 
 # Set basic variables from this SVF build
-set(SVF_VERSION 3.2)
+set(SVF_VERSION 3.3)
 set(SVF_BUILD_TYPE Release)
 set(SVF_SHARED_LIBS ON)
 set(SVF_C_STANDARD 11)
