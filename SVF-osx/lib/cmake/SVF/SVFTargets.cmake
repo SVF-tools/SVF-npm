@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "3.0.0")
    message(FATAL_ERROR "CMake >= 3.0.0 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 3.0.0...4.0)
+cmake_policy(VERSION 3.0.0...4.1)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -65,7 +65,7 @@ set_target_properties(SVF::SvfFlags PROPERTIES
   INTERFACE_LINK_DIRECTORIES "${_IMPORT_PREFIX}/lib"
   INTERFACE_LINK_LIBRARIES "z3::libz3"
   INTERFACE_LINK_OPTIONS "\$<\$<NOT:\$<BOOL:ON>>:-fno-rtti>"
-  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "include;include"
+  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include"
 )
 
 # Create imported target SVF::SvfCore
