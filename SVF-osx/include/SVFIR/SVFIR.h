@@ -259,9 +259,9 @@ public:
     inline const std::string& getModuleIdentifier() const
     {
         if (pagReadFromTxt.empty())
-        {
-            assert(!moduleIdentifier.empty() &&
-                   "No module found! Reading from a file other than LLVM-IR?");
+    {
+        assert(!moduleIdentifier.empty() &&
+               "No module found! Reading from a file other than LLVM-IR?");
             return moduleIdentifier;
         }
         else

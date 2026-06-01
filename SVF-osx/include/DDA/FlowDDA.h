@@ -162,9 +162,9 @@ public:
     {
         if (isTopLevelPtrStmt(dpm.getLoc())) return unionPts(dpm.getCurNodeID(), targetPts);
         else return dpmToADCPtSetMap[dpm] |= targetPts;
-    }
+        }
 
-    virtual const std::string PTAName() const override
+virtual const std::string PTAName() const override
     {
         return "FlowSensitive DDA";
     }

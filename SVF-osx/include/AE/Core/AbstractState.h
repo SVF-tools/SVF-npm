@@ -327,7 +327,7 @@ public:
     bool operator==(const AbstractState&rhs) const
     {
         return  eqVarToValMap(_varToAbsVal, rhs.getVarToVal()) &&
-                eqVarToValMap(_addrToAbsVal, rhs.getLocToVal());
+        eqVarToValMap(_addrToAbsVal, rhs.getLocToVal());
     }
 
     bool operator!=(const AbstractState&rhs) const

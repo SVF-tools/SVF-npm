@@ -273,9 +273,9 @@ public:
 
     inline const SVFType* getSVFType(u32_t id) const
     {
-        for(const SVFType* type : svfTypes)
-        {
-            if(type->getId() == id)
+for(const SVFType* type : svfTypes)
+    {
+        if(type->getId() == id)
                 return type;
         }
         return nullptr;

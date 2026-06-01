@@ -162,8 +162,8 @@ public:
     {
         // If only one of the two BoundedInts is infinite.
         if (is_infinity() ^ rhs.is_infinity())
-        {
-            if (is_infinity())
+    {
+        if (is_infinity())
             {
                 return is_minus_infinity();
             }
@@ -174,8 +174,8 @@ public:
         }
         // If both BoundedInts are infinite.
         if (is_infinity() && rhs.is_infinity())
-        {
-            if (is_minus_infinity())
+    {
+        if (is_minus_infinity())
                 return true;
             else
                 return rhs.is_plus_infinity();
@@ -183,15 +183,15 @@ public:
         // If neither BoundedInt is infinite.
         else
             return _iVal <= rhs._iVal;
-    }
+        }
 
     // Checks if the BoundedInt is greater than or equal to another BoundedInt.
     bool geq(const BoundedInt& rhs) const
     {
         // If only one of the two BoundedInts is infinite.
         if (is_infinity() ^ rhs.is_infinity())
-        {
-            if (is_infinity())
+    {
+        if (is_infinity())
             {
                 return is_plus_infinity();
             }
@@ -202,8 +202,8 @@ public:
         }
         // If both BoundedInts are infinite.
         if (is_infinity() && rhs.is_infinity())
-        {
-            if (is_plus_infinity())
+    {
+        if (is_plus_infinity())
                 return true;
             else
                 return rhs.is_minus_infinity();
@@ -211,7 +211,7 @@ public:
         // If neither BoundedInt is infinite.
         else
             return _iVal >= rhs._iVal;
-    }
+        }
 
     /// Reload operator
     //{%
@@ -666,14 +666,14 @@ public:
         // If the object represents negative infinity, return the minimum
         // representable 64-bit integer.
         if (is_minus_infinity())
-        {
-            return std::numeric_limits<s64_t>::min();
+    {
+        return std::numeric_limits<s64_t>::min();
         }
         // If the object represents positive infinity, return the maximum
         // representable 64-bit integer.
         else if (is_plus_infinity())
-        {
-            return std::numeric_limits<s64_t>::max();
+    {
+        return std::numeric_limits<s64_t>::max();
         }
         // Otherwise, return the actual 64-bit integer value of the object.
         else
@@ -685,20 +685,20 @@ public:
     inline virtual const std::string to_string() const
     {
         if (is_minus_infinity())
-        {
-            return "-oo";
-        }
-        if (is_plus_infinity())
-        {
-            return "+oo";
-        }
-        else
-            return std::to_string(_iVal);
+    {
+        return "-oo";
+    }
+    if (is_plus_infinity())
+    {
+        return "+oo";
+    }
+    else
+        return std::to_string(_iVal);
     }
 
-    //%}
+//%}
 
-    bool is_real() const
+bool is_real() const
     {
         return false;
     }
@@ -816,8 +816,8 @@ public:
     bool leq(const BoundedDouble& rhs) const
     {
         if (is_infinity() ^ rhs.is_infinity())
-        {
-            if (is_infinity())
+    {
+        if (is_infinity())
             {
                 return is_minus_infinity();
             }
@@ -827,21 +827,21 @@ public:
             }
         }
         if (is_infinity() && rhs.is_infinity())
-        {
-            if (is_minus_infinity())
+    {
+        if (is_minus_infinity())
                 return true;
             else
                 return rhs.is_plus_infinity();
         }
         else
             return _fVal <= rhs._fVal;
-    }
+        }
 
     bool geq(const BoundedDouble& rhs) const
     {
         if (is_infinity() ^ rhs.is_infinity())
-        {
-            if (is_infinity())
+    {
+        if (is_infinity())
             {
                 return is_plus_infinity();
             }
@@ -851,15 +851,15 @@ public:
             }
         }
         if (is_infinity() && rhs.is_infinity())
-        {
-            if (is_plus_infinity())
+    {
+        if (is_plus_infinity())
                 return true;
             else
                 return rhs.is_minus_infinity();
         }
         else
             return _fVal >= rhs._fVal;
-    }
+        }
 
     /// Reload operator
     //{%
@@ -1259,16 +1259,16 @@ public:
     inline s64_t getNumeral() const
     {
         if (is_minus_infinity())
-        {
-            return INT64_MIN;
-        }
-        else if (is_plus_infinity())
-        {
-            return INT64_MAX;
-        }
-        else
-        {
-            return std::round(_fVal);
+    {
+        return INT64_MIN;
+    }
+    else if (is_plus_infinity())
+    {
+        return INT64_MAX;
+    }
+    else
+    {
+        return std::round(_fVal);
         }
     }
 

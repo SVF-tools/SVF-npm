@@ -63,34 +63,34 @@ public:
     Type* operator*() const
     {
         if ( CurTy.getInt() )
-            return CurTy.getPointer()->getPointerTo(AddrSpace);
+        return CurTy.getPointer()->getPointerTo(AddrSpace);
         return CurTy.getPointer();
     }
 
-    Type* getIndexedType() const
+Type* getIndexedType() const
     {
         assert(false && "needs to be refactored");
         if ( CurTy.getInt() )
-            return CurTy.getPointer();
+        return CurTy.getPointer();
 #if LLVM_VERSION_MAJOR >= 11
         Type*  CT = CurTy.getPointer();
         if (auto ST = dyn_cast<StructType>(CT))
             return ST->getTypeAtIndex(getOperand());
-        else if (auto Array = dyn_cast<ArrayType>(CT))
-            return Array->getElementType();
-        else if (auto Vector = dyn_cast<VectorType>(CT))
-            return Vector->getElementType();
-        else
-            return CT;
+            else if (auto Array = dyn_cast<ArrayType>(CT))
+                return Array->getElementType();
+                else if (auto Vector = dyn_cast<VectorType>(CT))
+                    return Vector->getElementType();
+                    else
+                        return CT;
 #else
         CompositeType *CT = llvm::cast<CompositeType>( CurTy.getPointer() );
         return CT->getTypeAtIndex(getOperand());
 #endif
-    }
+                    }
 
-    // non-standard operators, these may not need be bridged but seems it's
-    // prudent to do so...
-    Type* operator->() const
+// non-standard operators, these may not need be bridged but seems it's
+// prudent to do so...
+Type* operator->() const
     {
         return operator*();
     }

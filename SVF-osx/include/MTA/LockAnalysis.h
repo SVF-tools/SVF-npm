@@ -270,30 +270,30 @@ public:
     inline bool hasOneCxtInLockSpan(const ICFGNode *I, LockSpan lspan) const
     {
         if(!hasCxtStmtFromInst(I))
-            return false;
+        return false;
         const LockSpan ctsset = getCxtStmtsFromInst(I);
         for (LockSpan::const_iterator cts = ctsset.begin(), ects = ctsset.end(); cts != ects; cts++)
         {
             if(lspan.find(*cts) != lspan.end())
-            {
-                return true;
+                {
+                    return true;
+                }
             }
-        }
         return false;
     }
 
     inline bool hasAllCxtInLockSpan(const ICFGNode *I, LockSpan lspan) const
     {
         if(!hasCxtStmtFromInst(I))
-            return false;
+        return false;
         const LockSpan ctsset = getCxtStmtsFromInst(I);
         for (LockSpan::const_iterator cts = ctsset.begin(), ects = ctsset.end(); cts != ects; cts++)
         {
             if (lspan.find(*cts) == lspan.end())
-            {
-                return false;
+                {
+                    return false;
+                }
             }
-        }
         return true;
     }
 

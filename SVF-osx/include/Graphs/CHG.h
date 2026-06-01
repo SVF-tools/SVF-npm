@@ -278,9 +278,9 @@ public:
             virtualFunctionToIDMap.find(vfn);
         if (it != virtualFunctionToIDMap.end())
             return it->second;
-        else
-            return -1;
-    }
+            else
+                return -1;
+            }
     inline const FunObjVar* getVirtualFunctionBasedonID(u32_t id) const
     {
         Map<const FunObjVar*, u32_t>::const_iterator it, eit;

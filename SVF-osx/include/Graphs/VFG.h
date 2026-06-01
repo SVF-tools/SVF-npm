@@ -327,8 +327,8 @@ public:
     inline bool hasBlackHoleConstObjAddrAsDef(const ValVar* valVar) const
     {
         if (hasDef(valVar))
-        {
-            const VFGNode* defNode = getVFGNode(getDef(valVar));
+    {
+        const VFGNode* defNode = getVFGNode(getDef(valVar));
             if (const AddrVFGNode* addr = SVFUtil::dyn_cast<AddrVFGNode>(defNode))
             {
                 if (SVFIR::getPAG()->isBlkObjOrConstantObj(addr->getSVFStmt()->getSrcID()))
@@ -506,13 +506,13 @@ protected:
     virtual inline bool isInterestedSVFVar(const SVFVar* node) const
     {
         if (isPtrOnlySVFG())
-            return node->isPointer();
+        return node->isPointer();
         else
             return true;
-    }
+        }
 
-    /// Create edges between VFG nodes within a function
-    void connectDirectVFGEdges();
+/// Create edges between VFG nodes within a function
+void connectDirectVFGEdges();
 
     /// Create edges between VFG nodes across functions
     void addVFGInterEdges(const CallICFGNode* cs, const FunObjVar* callee);

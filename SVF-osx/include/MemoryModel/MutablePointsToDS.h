@@ -129,10 +129,10 @@ public:
 
     virtual void remapAllPts(void) override
     {
-        for (typename PtsMap::value_type &ppt : ptsMap) ppt.second.checkAndRemap();
+for (typename PtsMap::value_type &ppt : ptsMap) ppt.second.checkAndRemap();
     }
 
-    virtual inline Map<DataSet, unsigned> getAllPts(bool liveOnly) const override
+virtual inline Map<DataSet, unsigned> getAllPts(bool liveOnly) const override
     {
         Map<DataSet, unsigned> allPts;
         for (typename PtsMap::value_type ppt : ptsMap)
@@ -287,11 +287,11 @@ public:
     virtual void remapAllPts(void) override
     {
         mutPTData.remapAllPts();
-        for (typename PtsMap::value_type &ppt : diffPtsMap) ppt.second.checkAndRemap();
-        for (typename PtsMap::value_type &ppt : propaPtsMap) ppt.second.checkAndRemap();
-    }
+for (typename PtsMap::value_type &ppt : diffPtsMap) ppt.second.checkAndRemap();
+for (typename PtsMap::value_type &ppt : propaPtsMap) ppt.second.checkAndRemap();
+        }
 
-    virtual inline void dumpPTData() override
+virtual inline void dumpPTData() override
     {
         mutPTData.dumpPTData();
     }
@@ -546,14 +546,14 @@ public:
     virtual void remapAllPts(void) override
     {
         mutPTData.remapAllPts();
-        for (typename DFPtsMap::value_type &lopt : dfInPtsMap)
-        {
-            for (typename PtsMap::value_type &opt : lopt.second) opt.second.checkAndRemap();
+for (typename DFPtsMap::value_type &lopt : dfInPtsMap)
+    {
+        for (typename PtsMap::value_type &opt : lopt.second) opt.second.checkAndRemap();
         }
 
-        for (typename DFPtsMap::value_type &lopt : dfOutPtsMap)
-        {
-            for (typename PtsMap::value_type &opt : lopt.second) opt.second.checkAndRemap();
+for (typename DFPtsMap::value_type &lopt : dfOutPtsMap)
+    {
+        for (typename PtsMap::value_type &opt : lopt.second) opt.second.checkAndRemap();
         }
     }
     ///@}
@@ -617,9 +617,9 @@ public:
         std::error_code ErrInfo;
         std::fstream f("svfg_pts.data", std::ios_base::out);
         if (f.good())
-        {
-            NodeBS locs;
-            for(DFPtsMapconstIter it = dfInPtsMap.begin(), eit = dfInPtsMap.end(); it!=eit; ++it)
+    {
+        NodeBS locs;
+        for(DFPtsMapconstIter it = dfInPtsMap.begin(), eit = dfInPtsMap.end(); it!=eit; ++it)
                 locs.set(it->first);
 
             for(DFPtsMapconstIter it = dfOutPtsMap.begin(), eit = dfOutPtsMap.end(); it!=eit; ++it)
@@ -707,9 +707,9 @@ public:
     virtual inline bool updateDFInFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if(varHasNewDFInPts(srcLoc, srcVar) &&
-                this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFInPtsSet(srcLoc,srcVar)))
-        {
-            setVarDFInSetUpdated(dstLoc,dstVar);
+        this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFInPtsSet(srcLoc,srcVar)))
+    {
+        setVarDFInSetUpdated(dstLoc,dstVar);
             return true;
         }
         return false;
@@ -718,9 +718,9 @@ public:
     virtual inline bool updateDFInFromOut(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if(varHasNewDFOutPts(srcLoc, srcVar) &&
-                this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFOutPtsSet(srcLoc,srcVar)))
-        {
-            setVarDFInSetUpdated(dstLoc,dstVar);
+        this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFOutPtsSet(srcLoc,srcVar)))
+    {
+        setVarDFInSetUpdated(dstLoc,dstVar);
             return true;
         }
         return false;
@@ -729,8 +729,8 @@ public:
     virtual inline bool updateDFOutFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if(varHasNewDFInPts(srcLoc,srcVar))
-        {
-            removeVarFromDFInUpdatedSet(srcLoc,srcVar);
+    {
+        removeVarFromDFInUpdatedSet(srcLoc,srcVar);
             if (this->unionPts(this->getDFOutPtsSet(dstLoc,dstVar), this->getDFInPtsSet(srcLoc,srcVar)))
             {
                 setVarDFOutSetUpdated(dstLoc,dstVar);
@@ -743,8 +743,8 @@ public:
     virtual inline bool updateAllDFInFromOut(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if(this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFOutPtsSet(srcLoc,srcVar)))
-        {
-            setVarDFInSetUpdated(dstLoc,dstVar);
+    {
+        setVarDFInSetUpdated(dstLoc,dstVar);
             return true;
         }
         return false;
@@ -753,8 +753,8 @@ public:
     virtual inline bool updateAllDFInFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if(this->unionPts(this->getDFInPtsSet(dstLoc,dstVar), this->getDFInPtsSet(srcLoc,srcVar)))
-        {
-            setVarDFInSetUpdated(dstLoc,dstVar);
+    {
+        setVarDFInSetUpdated(dstLoc,dstVar);
             return true;
         }
         return false;
@@ -783,8 +783,8 @@ public:
     virtual inline bool updateTLVPts(LocID srcLoc, const Key& srcVar, const Key& dstVar) override
     {
         if(varHasNewDFInPts(srcLoc,srcVar))
-        {
-            removeVarFromDFInUpdatedSet(srcLoc,srcVar);
+    {
+        removeVarFromDFInUpdatedSet(srcLoc,srcVar);
             return this->mutPTData.unionPts(dstVar, this->getDFInPtsSet(srcLoc,srcVar));
         }
         return false;
@@ -793,8 +793,8 @@ public:
     virtual inline bool updateATVPts(const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (this->unionPts(this->getDFOutPtsSet(dstLoc, dstVar), this->mutPTData.getPts(srcVar)))
-        {
-            setVarDFOutSetUpdated(dstLoc, dstVar);
+    {
+        setVarDFOutSetUpdated(dstLoc, dstVar);
             return true;
         }
         return false;
@@ -803,8 +803,8 @@ public:
     virtual inline void clearAllDFOutUpdatedVar(LocID loc) override
     {
         if (this->hasDFOutSet(loc))
-        {
-            DataSet pts = getDFOutUpdatedVar(loc);
+    {
+        DataSet pts = getDFOutUpdatedVar(loc);
             for (DataIter ptsIt = pts.begin(), ptsEit = pts.end(); ptsIt != ptsEit; ++ptsIt)
             {
                 const Key var = *ptsIt;

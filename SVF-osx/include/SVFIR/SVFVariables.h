@@ -498,7 +498,7 @@ public:
     inline const std::string getValueName() const
     {
         return getName() + "_" +
-               std::to_string(getConstantFieldIdx());
+        std::to_string(getConstantFieldIdx());
     }
 
     virtual bool isPointer() const

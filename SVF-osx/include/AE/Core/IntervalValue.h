@@ -150,12 +150,12 @@ public:
     IntervalValue operator==(const IntervalValue &other) const
     {
         if (this->isBottom() || other.isBottom())
-        {
-            return bottom();
+    {
+        return bottom();
         }
         else if (this->isTop() || other.isTop())
-        {
-            return top();
+    {
+        return top();
         }
         else
         {
@@ -184,12 +184,12 @@ public:
     IntervalValue operator!=(const IntervalValue &other) const
     {
         if (this->isBottom() || other.isBottom())
-        {
-            return bottom();
+    {
+        return bottom();
         }
         else if (this->isTop() || other.isTop())
-        {
-            return top();
+    {
+        return top();
         }
         else
         {
@@ -300,16 +300,16 @@ public:
     bool containedWithin(const IntervalValue &other) const
     {
         if (this->isBottom())
-        {
-            return true;
-        }
-        else if (other.isBottom())
-        {
-            return false;
-        }
-        else
-        {
-            return other._lb.leq(this->_lb) && this->_ub.leq(other._ub);
+    {
+        return true;
+    }
+    else if (other.isBottom())
+    {
+        return false;
+    }
+    else
+    {
+        return other._lb.leq(this->_lb) && this->_ub.leq(other._ub);
         }
 
     }
@@ -321,16 +321,16 @@ public:
     bool contain(const IntervalValue &other) const
     {
         if (this->isBottom())
-        {
-            return true;
-        }
-        else if (other.isBottom())
-        {
-            return false;
-        }
-        else
-        {
-            return other._lb.geq(this->_lb) && this->_ub.geq(other._ub);
+    {
+        return true;
+    }
+    else if (other.isBottom())
+    {
+        return false;
+    }
+    else
+    {
+        return other._lb.geq(this->_lb) && this->_ub.geq(other._ub);
         }
     }
 
@@ -339,16 +339,16 @@ public:
     bool leq(const IntervalValue &other) const
     {
         if (this->isBottom())
-        {
-            return true;
-        }
-        else if (other.isBottom())
-        {
-            return false;
-        }
-        else
-        {
-            return this->_ub.leq(other._lb);
+    {
+        return true;
+    }
+    else if (other.isBottom())
+    {
+        return false;
+    }
+    else
+    {
+        return this->_ub.leq(other._lb);
         }
     }
 
@@ -357,16 +357,16 @@ public:
     bool geq(const IntervalValue &other) const
     {
         if (this->isBottom())
-        {
-            return true;
-        }
-        else if (other.isBottom())
-        {
-            return false;
-        }
-        else
-        {
-            return this->_lb.geq(other._ub);
+    {
+        return true;
+    }
+    else if (other.isBottom())
+    {
+        return false;
+    }
+    else
+    {
+        return this->_lb.geq(other._ub);
         }
     }
 
@@ -375,16 +375,16 @@ public:
     bool equals(const IntervalValue &other) const
     {
         if (this->isBottom())
-        {
-            return other.isBottom();
+    {
+        return other.isBottom();
         }
         else if (other.isBottom())
-        {
-            return false;
-        }
-        else
-        {
-            if (this->is_real() && other.is_real())
+    {
+        return false;
+    }
+    else
+    {
+        if (this->is_real() && other.is_real())
             {
                 return this->_lb.equal(other._lb) && this->_ub.equal(other._ub);
             }
@@ -500,16 +500,16 @@ public:
     void dump(std::ostream &o) const
     {
         if (this->isBottom())
-        {
-            o << "⊥";
-        }
-        else
-        {
-            o << "[" << this->_lb << ", " << this->_ub << "]";
-        }
+    {
+        o << "⊥";
     }
+    else
+    {
+        o << "[" << this->_lb << ", " << this->_ub << "]";
+    }
+}
 
-    const std::string toString() const
+const std::string toString() const
     {
         std::string str;
         std::stringstream rawStr(str);

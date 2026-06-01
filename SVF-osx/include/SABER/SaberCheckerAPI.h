@@ -77,8 +77,8 @@ private:
     inline CHECKER_TYPE getType(const FunObjVar* F) const
     {
         if(F)
-        {
-            TDAPIMap::const_iterator it= tdAPIMap.find(F->getName());
+    {
+        TDAPIMap::const_iterator it= tdAPIMap.find(F->getName());
             if(it != tdAPIMap.end())
                 return it->second;
         }

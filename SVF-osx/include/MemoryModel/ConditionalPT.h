@@ -261,13 +261,13 @@ public:
     bool intersects(const CondStdSet<Element>& rhs) const
     {
         if (empty() && rhs.empty())
-            return false;
+        return false;
 
         for (const_iterator i = rhs.begin(); i != rhs.end(); ++i)
         {
             if (elements.find(*i) != elements.end())
-                return true;
-        }
+                    return true;
+            }
         return false;
     }
 
@@ -382,17 +382,17 @@ public:
     inline unsigned numElement() const
     {
         if (_condPts.empty())
-            return 0;
+        return 0;
         else
         {
             unsigned num = 0;
             for (CondPtsConstIter it = cptsBegin(); it != cptsEnd(); it++)
-            {
-                PointsTo pts = it->second;
-                num += pts.count();
+                {
+                    PointsTo pts = it->second;
+                    num += pts.count();
+                }
+                return num;
             }
-            return num;
-        }
     }
     /// Return true if no element in the set
     inline bool empty() const
@@ -434,49 +434,49 @@ public:
     inline bool aliased(const CondPointsToSet<Cond>& rhs) const
     {
         if (pointsTo().empty() || rhs.pointsTo().empty())
-            return false;
+        return false;
         else
         {
             CondPtsConstIter lit = cptsBegin(), elit = cptsEnd();
-            for (; lit != elit; ++lit)
-            {
-                const Cond& lc = lit->first;
-                const PointsTo& pts = lit->second;
-                CondPtsConstIter rit = rhs.pointsTo().find(lc);
-                if(rit !=rhs.pointsTo().end())
+                for (; lit != elit; ++lit)
                 {
-                    const PointsTo& rpts = rit->second;
-                    if (pts.intersects(rpts))
-                        return true;
+                    const Cond& lc = lit->first;
+                    const PointsTo& pts = lit->second;
+                    CondPtsConstIter rit = rhs.pointsTo().find(lc);
+                    if(rit !=rhs.pointsTo().end())
+                    {
+                        const PointsTo& rpts = rit->second;
+                        if (pts.intersects(rpts))
+                            return true;
+                    }
                 }
+                return false;
             }
-            return false;
-        }
     }
 
     /// Check whether this CondPointsToSet is a subset of RHS
     inline bool isSubset(const CondPointsToSet<Cond>& rhs) const
     {
         if (pointsTo().size() > rhs.pointsTo().size())
-            return false;
+        return false;
         else
         {
             CondPtsConstIter lit = cptsBegin(), elit = cptsEnd();
-            for (; lit != elit; ++lit)
-            {
-                const Cond& lc = lit->first;
-                CondPtsConstIter rit = rhs.pointsTo().find(lc);
-                if (rit == rhs.pointsTo().end())
-                    return false;
-                else
+                for (; lit != elit; ++lit)
                 {
-                    const PointsTo& pts = lit->second;
-                    const PointsTo& rpts = rit->second;
-                    if (!rpts.contains(pts))
+                    const Cond& lc = lit->first;
+                    CondPtsConstIter rit = rhs.pointsTo().find(lc);
+                    if (rit == rhs.pointsTo().end())
                         return false;
+                    else
+                    {
+                        const PointsTo& pts = lit->second;
+                        const PointsTo& rpts = rit->second;
+                        if (!rpts.contains(pts))
+                            return false;
+                    }
                 }
             }
-        }
         return true;
     }
 
@@ -485,20 +485,20 @@ public:
     {
         /// if either cpts is empty, just return.
         if (pointsTo().empty() && rhs->pointsTo().empty())
-            return false;
+        return false;
 
         CondPtsConstIter it = rhs->cptsBegin(), eit = rhs->cptsEnd();
         for (; it != eit; ++it)
         {
             const Cond& cond = it->first;
             if (hasPointsTo(cond))
-            {
-                const PointsTo& rhs_pts= it->second;
-                const PointsTo& pts= pointsTo(cond);
-                if (pts.intersects(rhs_pts))
-                    return true;
+                {
+                    const PointsTo& rhs_pts= it->second;
+                    const PointsTo& pts= pointsTo(cond);
+                    if (pts.intersects(rhs_pts))
+                        return true;
+                }
             }
-        }
 
         return false;
     }
@@ -634,44 +634,44 @@ public:
     inline bool operator< (const CondPointsToSet<Cond>& rhs) const
     {
         if (pointsTo().size() < rhs.pointsTo().size())
-            return true;
+        return true;
         else if (pointsTo().size() == rhs.pointsTo().size())
         {
             CondPtsConstIter lit = cptsBegin(), elit = cptsEnd();
-            CondPtsConstIter rit = rhs.cptsBegin(), erit = rhs.cptsEnd();
-            for (; lit != elit && rit != erit; ++lit, ++rit)
-            {
-                const Cond& lc = lit->first;
-                const Cond& rc = rit->first;
-                if (lc < rc)
-                    return true;
-                else if (lc == rc)
+                CondPtsConstIter rit = rhs.cptsBegin(), erit = rhs.cptsEnd();
+                for (; lit != elit && rit != erit; ++lit, ++rit)
                 {
-                    const PointsTo& lpts = lit->second;
-                    const PointsTo& rpts = rit->second;
-                    if (lpts.count() < rpts.count())
+                    const Cond& lc = lit->first;
+                    const Cond& rc = rit->first;
+                    if (lc < rc)
                         return true;
-                    else if (lpts.count() == rpts.count())
+                    else if (lc == rc)
                     {
-                        PointsTo::iterator bit = lpts.begin();
-                        PointsTo::iterator eit = lpts.end();
-                        PointsTo::iterator rbit = rpts.begin();
-                        PointsTo::iterator reit = rpts.end();
-                        for (; bit != eit && rbit != reit; bit++, rbit++)
+                        const PointsTo& lpts = lit->second;
+                        const PointsTo& rpts = rit->second;
+                        if (lpts.count() < rpts.count())
+                            return true;
+                        else if (lpts.count() == rpts.count())
                         {
-                            if (*bit < *rbit)
-                                return true;
-                            else if (*bit > *rbit)
-                                return false;
+                            PointsTo::iterator bit = lpts.begin();
+                            PointsTo::iterator eit = lpts.end();
+                            PointsTo::iterator rbit = rpts.begin();
+                            PointsTo::iterator reit = rpts.end();
+                            for (; bit != eit && rbit != reit; bit++, rbit++)
+                            {
+                                if (*bit < *rbit)
+                                    return true;
+                                else if (*bit > *rbit)
+                                    return false;
+                            }
                         }
+                        else
+                            return false;
                     }
                     else
                         return false;
                 }
-                else
-                    return false;
             }
-        }
         return false;
     }
 
@@ -685,8 +685,8 @@ public:
     inline bool test(const SingleCondVar& var) const
     {
         if (hasPointsTo(var.get_cond()))
-        {
-            const PointsTo& pts = pointsTo(var.get_cond());
+    {
+        const PointsTo& pts = pointsTo(var.get_cond());
             return pts.test(var.get_id());
         }
         return false;
@@ -763,11 +763,11 @@ private:
         {
             // If they are both at the end, ignore the rest of the fields.
             if (atEnd && RHS.atEnd)
-                return true;
+            return true;
             // Otherwise they are the same if they have the same condVar
             return atEnd == RHS.atEnd && RHS._curIter == _curIter && RHS._ptIter == _ptIter;
         }
-        bool operator!=(const CondPtsSetIterator &RHS) const
+    bool operator!=(const CondPtsSetIterator &RHS) const
         {
             return !(*this == RHS);
         }

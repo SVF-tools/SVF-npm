@@ -217,12 +217,12 @@ public:
     IntervalValue getGepObjOffsetFromBase(const GepObjVar* obj) const
     {
         if (hasGepObjOffsetFromBase(obj))
-            return gepObjOffsetFromBase.at(obj);
+        return gepObjOffsetFromBase.at(obj);
         else
         {
             assert(false && "GepObjVar not found in gepObjOffsetFromBase");
-            abort();
-        }
+                abort();
+            }
     }
 
     /**
@@ -274,8 +274,8 @@ public:
     void reportBug() override
     {
         if (!nodeToBugInfo.empty())
-        {
-            std::cerr << "######################Buffer Overflow (" + std::to_string(nodeToBugInfo.size())
+    {
+        std::cerr << "######################Buffer Overflow (" + std::to_string(nodeToBugInfo.size())
                       + " found)######################\n";
             std::cerr << "---------------------------------------------\n";
             for (const auto& it : nodeToBugInfo)
@@ -405,8 +405,8 @@ public:
     void reportBug() override
     {
         if (!nodeToBugInfo.empty())
-        {
-            std::cerr << "###################### Nullptr Dereference (" + std::to_string(nodeToBugInfo.size())
+    {
+        std::cerr << "###################### Nullptr Dereference (" + std::to_string(nodeToBugInfo.size())
                       + " found)######################\n";
             std::cerr << "---------------------------------------------\n";
             for (const auto& it : nodeToBugInfo)
