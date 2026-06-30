@@ -103,7 +103,7 @@ if(NOT CMAKE_VERSION VERSION_LESS "3.23.0")
       FILE_SET "HEADERS"
       TYPE "HEADERS"
       BASE_DIRS "${_IMPORT_PREFIX}/include"
-      FILES "${_IMPORT_PREFIX}/include/SVF-LLVM/BasicTypes.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/BreakConstantExpr.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/CHGBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/CppUtil.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/DCHG.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/GEPTypeBridgeIterator.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/ICFGBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMLoopAnalysis.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMModule.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMUtil.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/ObjTypeInference.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/SVFIRBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/SymbolTableBuilder.h"
+      FILES "${_IMPORT_PREFIX}/include/SVF-LLVM/BasicTypes.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/BreakConstantExpr.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/CHGBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/CppUtil.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/GEPTypeBridgeIterator.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/ICFGBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMLoopAnalysis.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMModule.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/LLVMUtil.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/ObjTypeInference.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/SVFIRBuilder.h" "${_IMPORT_PREFIX}/include/SVF-LLVM/SymbolTableBuilder.h"
   )
 else()
   set_property(TARGET SVF::SvfLLVM
