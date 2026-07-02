@@ -1,7 +1,7 @@
 ; ModuleID = '/Users/runner/work/SVF/SVF/svf-llvm/lib/extapi.c'
 source_filename = "/Users/runner/work/SVF/SVF/svf-llvm/lib/extapi.c"
 target datalayout = "e-m:o-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-n32:64-S128-Fn32"
-target triple = "arm64-apple-macosx14.0.0"
+target triple = "arm64-apple-macosx15.0.0"
 
 @getenv_global = global [10 x i8] zeroinitializer, align 1
 @ctype_b_loc_global = global [10 x i16] zeroinitializer, align 2
@@ -2429,7 +2429,7 @@ attributes #4 = { noinline nounwind optnone ssp willreturn memory(read) uwtable(
 !llvm.module.flags = !{!0, !1, !2, !3, !4}
 !llvm.ident = !{!5}
 
-!0 = !{i32 2, !"SDK Version", [2 x i32] [i32 14, i32 5]}
+!0 = !{i32 2, !"SDK Version", [2 x i32] [i32 15, i32 5]}
 !1 = !{i32 1, !"wchar_size", i32 4}
 !2 = !{i32 8, !"PIC Level", i32 2}
 !3 = !{i32 7, !"uwtable", i32 1}

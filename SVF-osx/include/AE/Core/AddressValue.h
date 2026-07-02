@@ -177,12 +177,14 @@ public:
     bool hasIntersect(const AddressValue &other) const
     {
 for (const auto& addr : _addrs)
+    {
         if (other._addrs.count(addr))
-            return true;
-            return false;
+                return true;
         }
+        return false;
+    }
 
-inline bool isBottom() const
+    inline bool isBottom() const
     {
         return empty();
     }

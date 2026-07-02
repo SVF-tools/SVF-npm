@@ -536,27 +536,29 @@ class SparseBitVector
 
     // Make sure our current iterator is valid.
     if (CurrElementIter == End)
+    {
         --CurrElementIter;
+    }
 
-        // Search from our current iterator, either backwards or forwards,
-        // depending on what element we are looking for.
-        ElementListIter ElementIter = CurrElementIter;
-        if (CurrElementIter->index() == ElementIndex)
-        {
-            return ElementIter;
+    // Search from our current iterator, either backwards or forwards,
+    // depending on what element we are looking for.
+    ElementListIter ElementIter = CurrElementIter;
+    if (CurrElementIter->index() == ElementIndex)
+    {
+        return ElementIter;
+    }
+    else if (CurrElementIter->index() > ElementIndex)
+    {
+        while (ElementIter != Begin
+                    && ElementIter->index() > ElementIndex)
+                --ElementIter;
         }
-        else if (CurrElementIter->index() > ElementIndex)
+        else
         {
-            while (ElementIter != Begin
-                        && ElementIter->index() > ElementIndex)
-                    --ElementIter;
-            }
-            else
-            {
-                while (ElementIter != End &&
-                        ElementIter->index() < ElementIndex)
-                    ++ElementIter;
-            }
+            while (ElementIter != End &&
+                    ElementIter->index() < ElementIndex)
+                ++ElementIter;
+        }
         CurrElementIter = ElementIter;
         return ElementIter;
     }
@@ -755,9 +757,11 @@ public:
         // is nothing more to do.
         if (ElementIter == Elements.end() ||
                     ElementIter->index() != ElementIndex)
+        {
             return false;
-            return ElementIter->test(Idx % ElementSize);
         }
+    return ElementIter->test(Idx % ElementSize);
+}
 
 void reset(unsigned Idx)
     {
