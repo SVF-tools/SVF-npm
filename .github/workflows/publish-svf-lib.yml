@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org/
         
       - name: publish-svf-lib
@@ -24,7 +24,6 @@ jobs:
           NODE_AUTH_TOKEN: ""
           NPM_CONFIG_USERCONFIG: ""
         run: |
-          npm i -g npm@latest
           if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update ; fi
           cat package.json
           npm publish --access public
