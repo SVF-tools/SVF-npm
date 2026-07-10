@@ -36,21 +36,38 @@ jobs:
 
       - name: Verify published package
         run: |
+          PKG=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
-          echo "Checking svf-lib@$VERSION on npm..."
 
-          for i in {1..10}; do
-            if npm view svf-lib@$VERSION version; then
+          echo "Checking $PKG@$VERSION on npm..."
+
+          for i in {1..20}; do
+            if npm view "$PKG@$VERSION" version >/dev/null 2>&1; then
+              echo "$PKG@$VERSION is visible on npm."
               break
             fi
-            echo "Package not visible yet, retrying in 10s..."
+            echo "Package version not visible yet, retrying in 10s..."
             sleep 10
           done
 
-          npm pack svf-lib@$VERSION
+          echo "Downloading published tarball..."
+
+          for i in {1..20}; do
+            if TARBALL=$(npm pack "$PKG@$VERSION" --silent 2>/dev/null); then
+              echo "Downloaded tarball: $TARBALL"
+              break
+            fi
+            echo "Tarball not ready yet, retrying in 10s..."
+            sleep 10
+          done
+
+          if [ ! -f "$TARBALL" ]; then
+            echo "Failed to download published tarball for $PKG@$VERSION"
+            exit 1
+          fi
 
           echo "Listing published tarball contents..."
-          tar -tzf svf-lib-$VERSION.tgz | tee published-files.txt
+          tar -tzf "$TARBALL" | tee published-files.txt
 
           echo "Checking Linux x64 binary..."
           grep -E 'SVF-linux-x86_64|linux.*x64|linux.*x86_64' published-files.txt
@@ -59,7 +76,7 @@ jobs:
           grep -E 'SVF-linux-arm64|SVF-linux-aarch64|linux.*arm64|linux.*aarch64' published-files.txt
 
           echo "Checking macOS binary..."
-          grep -E 'SVF-darwin|SVF-macos|SVF-osx|darwin|macos' published-files.txt
+          grep -E 'SVF-darwin|SVF-macos|darwin|macos' published-files.txt
           
   trigger-svf-python:
     if: github.event_name == 'push'  # Only run on push events
