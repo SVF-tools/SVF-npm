@@ -70,13 +70,13 @@ jobs:
           tar -tzf "$TARBALL" | tee published-files.txt
 
           echo "Checking Linux x64 binary..."
-          grep -E 'SVF-linux-x86_64|linux.*x64|linux.*x86_64' published-files.txt
+          grep '^package/SVF-linux-x86_64/' published-files.txt
 
-          echo "Checking Linux ARM binary..."
-          grep -E 'SVF-linux-arm64|SVF-linux-aarch64|linux.*arm64|linux.*aarch64' published-files.txt
+          echo "Checking Linux ARM/aarch64 binary..."
+          grep '^package/SVF-linux-aarch64/' published-files.txt
 
           echo "Checking macOS binary..."
-          grep -E 'SVF-darwin|SVF-macos|darwin|macos' published-files.txt
+          grep '^package/SVF-osx/' published-files.txt
           
   trigger-svf-python:
     if: github.event_name == 'push'  # Only run on push events
