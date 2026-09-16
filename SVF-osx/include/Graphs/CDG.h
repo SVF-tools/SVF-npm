@@ -193,12 +193,12 @@ public:
     inline CDGNode *getCDGNode(NodeID id) const
     {
         if (!hasCDGNode(id))
-        return nullptr;
+            return nullptr;
         return getGNode(id);
     }
 
 /// Whether has the CDGNode
-inline bool hasCDGNode(NodeID id) const
+    inline bool hasCDGNode(NodeID id) const
     {
         return hasGNode(id);
     }

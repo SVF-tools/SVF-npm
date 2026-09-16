@@ -430,10 +430,10 @@ public:
 
     virtual bool parseAndSetValue(const std::string s) override
     {
-for (const OptionPossibility<T> &op : possibilities)
-    {
-        // Check if the given string is a valid one.
-        if (s == std::get<1>(op))
+        for (const OptionPossibility<T> &op : possibilities)
+        {
+            // Check if the given string is a valid one.
+            if (s == std::get<1>(op))
             {
                 // What that string maps to.
                 value = std::get<0>(op);
@@ -487,9 +487,9 @@ public:
     virtual bool parseAndSetValue(const std::string s) override
     {
         // Like in OptionMap basically, except we can have many values.
-for (const OptionPossibility<T> &op : possibilities)
-    {
-        if (s == std::get<1>(op))
+        for (const OptionPossibility<T> &op : possibilities)
+        {
+            if (s == std::get<1>(op))
             {
                 optionValues[std::get<0>(op)] = true;
                 return true;
@@ -507,9 +507,9 @@ for (const OptionPossibility<T> &op : possibilities)
     /// If the bitset is empty.
     bool nothingSet(void) const
     {
-for (const std::pair<T, bool> tb : optionValues)
-    {
-        if (tb.second) return false;
+        for (const std::pair<T, bool> tb : optionValues)
+        {
+            if (tb.second) return false;
         }
 
         return true;

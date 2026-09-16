@@ -598,9 +598,9 @@ public:
     inline bool updateDFInFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (varHasNewDFInPts(srcLoc, srcVar)
-        && this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFInPtIdRef(srcLoc, srcVar)))
-    {
-        setVarDFInSetUpdated(dstLoc, dstVar);
+                && this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFInPtIdRef(srcLoc, srcVar)))
+        {
+            setVarDFInSetUpdated(dstLoc, dstVar);
             return true;
         }
 
@@ -610,9 +610,9 @@ public:
     inline bool updateDFInFromOut(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (varHasNewDFOutPts(srcLoc, srcVar)
-        && this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFOutPtIdRef(srcLoc, srcVar)))
-    {
-        setVarDFInSetUpdated(dstLoc, dstVar);
+                && this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFOutPtIdRef(srcLoc, srcVar)))
+        {
+            setVarDFInSetUpdated(dstLoc, dstVar);
             return true;
         }
 
@@ -622,8 +622,8 @@ public:
     inline bool updateDFOutFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (varHasNewDFInPts(srcLoc, srcVar))
-    {
-        removeVarFromDFInUpdatedSet(srcLoc, srcVar);
+        {
+            removeVarFromDFInUpdatedSet(srcLoc, srcVar);
             if (this->unionPtsThroughIds(this->getDFOutPtIdRef(dstLoc, dstVar), this->getDFInPtIdRef(srcLoc, srcVar)))
             {
                 setVarDFOutSetUpdated(dstLoc, dstVar);
@@ -637,8 +637,8 @@ public:
     inline bool updateAllDFInFromOut(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFOutPtIdRef(srcLoc, srcVar)))
-    {
-        setVarDFInSetUpdated(dstLoc, dstVar);
+        {
+            setVarDFInSetUpdated(dstLoc, dstVar);
             return true;
         }
 
@@ -648,8 +648,8 @@ public:
     inline bool updateAllDFInFromIn(LocID srcLoc, const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (this->unionPtsThroughIds(this->getDFInPtIdRef(dstLoc, dstVar), this->getDFInPtIdRef(srcLoc, srcVar)))
-    {
-        setVarDFInSetUpdated(dstLoc, dstVar);
+        {
+            setVarDFInSetUpdated(dstLoc, dstVar);
             return true;
         }
 
@@ -677,8 +677,8 @@ public:
     inline bool updateTLVPts(LocID srcLoc, const Key& srcVar, const Key& dstVar) override
     {
         if (varHasNewDFInPts(srcLoc, srcVar))
-    {
-        removeVarFromDFInUpdatedSet(srcLoc, srcVar);
+        {
+            removeVarFromDFInUpdatedSet(srcLoc, srcVar);
             return this->unionPtsThroughIds(this->persPTData.ptsMap[dstVar], this->getDFInPtIdRef(srcLoc, srcVar));
         }
 
@@ -688,8 +688,8 @@ public:
     inline bool updateATVPts(const Key& srcVar, LocID dstLoc, const Key& dstVar) override
     {
         if (this->unionPtsThroughIds(this->getDFOutPtIdRef(dstLoc, dstVar), this->persPTData.ptsMap[srcVar]))
-    {
-        setVarDFOutSetUpdated(dstLoc, dstVar);
+        {
+            setVarDFOutSetUpdated(dstLoc, dstVar);
             return true;
         }
 
@@ -699,8 +699,8 @@ public:
     inline void clearAllDFOutUpdatedVar(LocID loc) override
     {
         if (this->hasDFOutSet(loc))
-    {
-        const KeySet vars = getDFOutUpdatedVar(loc);
+        {
+            const KeySet vars = getDFOutUpdatedVar(loc);
             for (const Key &var : vars)
             {
                 removeVarFromDFOutUpdatedSet(loc, var);

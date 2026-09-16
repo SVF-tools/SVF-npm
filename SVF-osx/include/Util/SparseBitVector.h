@@ -531,27 +531,27 @@ class SparseBitVector
             const_cast<SparseBitVector<ElementSize> *>(this)->Elements.end();
 
         if (Elements.empty())
-    {
-        CurrElementIter = Begin;
-        return CurrElementIter;
-    }
+        {
+            CurrElementIter = Begin;
+            return CurrElementIter;
+        }
 
-    // Make sure our current iterator is valid.
-    if (CurrElementIter == End)
-    {
-        --CurrElementIter;
-    }
+        // Make sure our current iterator is valid.
+        if (CurrElementIter == End)
+        {
+            --CurrElementIter;
+        }
 
-    // Search from our current iterator, either backwards or forwards,
-    // depending on what element we are looking for.
-    ElementListIter ElementIter = CurrElementIter;
-    if (CurrElementIter->index() == ElementIndex)
-    {
-        return ElementIter;
-    }
-    else if (CurrElementIter->index() > ElementIndex)
-    {
-        while (ElementIter != Begin
+        // Search from our current iterator, either backwards or forwards,
+        // depending on what element we are looking for.
+        ElementListIter ElementIter = CurrElementIter;
+        if (CurrElementIter->index() == ElementIndex)
+        {
+            return ElementIter;
+        }
+        else if (CurrElementIter->index() > ElementIndex)
+        {
+            while (ElementIter != Begin
                     && ElementIter->index() > ElementIndex)
                 --ElementIter;
         }
@@ -701,13 +701,13 @@ class SparseBitVector
         {
             // If they are both at the end, ignore the rest of the fields.
             if (AtEnd && RHS.AtEnd)
-            return true;
+                return true;
             // Otherwise they are the same if they have the same bit number and
             // bitmap.
             return AtEnd == RHS.AtEnd && RHS.BitNumber == BitNumber;
         }
 
-    bool operator!=(const SparseBitVectorIterator &RHS) const
+        bool operator!=(const SparseBitVectorIterator &RHS) const
         {
             return !(*this == RHS);
         }
@@ -750,7 +750,7 @@ public:
     bool test(unsigned Idx) const
     {
         if (Elements.empty())
-        return false;
+            return false;
 
         unsigned ElementIndex = Idx / ElementSize;
         ElementListConstIter ElementIter = FindLowerBoundConst(ElementIndex);
@@ -758,14 +758,14 @@ public:
         // If we can't find an element that is supposed to contain this bit, there
         // is nothing more to do.
         if (ElementIter == Elements.end() ||
-                    ElementIter->index() != ElementIndex)
+                ElementIter->index() != ElementIndex)
         {
             return false;
         }
-    return ElementIter->test(Idx % ElementSize);
-}
+        return ElementIter->test(Idx % ElementSize);
+    }
 
-void reset(unsigned Idx)
+    void reset(unsigned Idx)
     {
         if (Elements.empty())
             return;
@@ -1125,22 +1125,22 @@ void reset(unsigned Idx)
     int find_first() const
     {
         if (Elements.empty())
-        return -1;
+            return -1;
         const SparseBitVectorElement<ElementSize> &First = *(Elements.begin());
         return (First.index() * ElementSize) + First.find_first();
     }
 
 // Return the last set bit in the bitmap.  Return -1 if no bits are set.
-int find_last() const
+    int find_last() const
     {
         if (Elements.empty())
-        return -1;
+            return -1;
         const SparseBitVectorElement<ElementSize> &Last = *(Elements.rbegin());
         return (Last.index() * ElementSize) + Last.find_last();
     }
 
 // Return true if the SparseBitVector is empty
-bool empty() const
+    bool empty() const
     {
         return Elements.empty();
     }
