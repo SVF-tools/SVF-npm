@@ -36,7 +36,7 @@
 // use-cases; should not be used directly by end users!
 #define SVF_BUILD_EXTAPI_BC "/Users/runner/work/SVF/SVF/Release-build/lib/extapi.bc"
 #define SVF_SOURCE_DIR "/Users/runner/work/SVF/SVF"
-#define SVF_BUILD_DIR ""
+#define SVF_BUILD_DIR "/Users/runner/work/SVF/SVF/Release-build"
 
 // Define fallback for installed extapi.bc location to build tree's extapi.bc
 #ifndef SVF_INSTALL_EXTAPI_BC
