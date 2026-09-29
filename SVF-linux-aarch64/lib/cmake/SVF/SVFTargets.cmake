@@ -94,7 +94,7 @@ endif()
 add_library(SVF::SvfLLVM SHARED IMPORTED)
 
 set_target_properties(SVF::SvfLLVM PROPERTIES
-  INTERFACE_LINK_LIBRARIES "SVF::SvfFlags;SVF::SvfCore;LLVM"
+  INTERFACE_LINK_LIBRARIES "SVF::SvfFlags;SVF::SvfCore;LLVMAnalysis;LLVMBitWriter;LLVMCore;LLVMInstCombine;LLVMInstrumentation;LLVMipo;LLVMIRReader;LLVMLinker;LLVMScalarOpts;LLVMSupport;LLVMTarget;LLVMTransformUtils;LLVMDemangle;LLVMPasses"
 )
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.23.0")
