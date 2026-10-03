@@ -42,7 +42,7 @@ jobs:
           echo "Checking $PKG@$VERSION on npm..."
 
           for i in {1..20}; do
-            if npm view "$PKG@$VERSION" version >/dev/null 2>&1; then
+            if NPM_CONFIG_USERCONFIG=/dev/null npm view "$PKG@$VERSION" version; then
               echo "$PKG@$VERSION is visible on npm."
               break
             fi
@@ -54,7 +54,7 @@ jobs:
 
           TARBALL=""
           for i in {1..20}; do
-            if TARBALL=$(npm pack "$PKG@$VERSION" --silent); then
+            if TARBALL=$(NPM_CONFIG_USERCONFIG=/dev/null npm pack "$PKG@$VERSION" --silent); then
               echo "Downloaded tarball: $TARBALL"
               break
             fi
