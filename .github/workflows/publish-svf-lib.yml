@@ -52,8 +52,9 @@ jobs:
 
           echo "Downloading published tarball..."
 
+          TARBALL=""
           for i in {1..20}; do
-            if TARBALL=$(npm pack "$PKG@$VERSION" --silent 2>/dev/null); then
+            if TARBALL=$(npm pack "$PKG@$VERSION" --silent); then
               echo "Downloaded tarball: $TARBALL"
               break
             fi
