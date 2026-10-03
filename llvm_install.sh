@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Skip execution during npm pack/publish operations
-# This prevents the postinstall hook from running in CI during package publishing
-if [ "$npm_lifecycle_event" = "postinstall" ]; then
-  # Check if we're in an npm pack context (no node_modules or in a temporary directory)
-  if [ ! -d "node_modules" ] && [ -z "$npm_config_production" ]; then
-    echo "Skipping llvm_install.sh during npm pack/publish"
-    exit 0
-  fi
-fi
-
 SVFHOME=$(pwd)
 sysOS=`uname -s`
 arch=`uname -m`
