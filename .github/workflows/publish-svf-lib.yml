@@ -39,27 +39,16 @@ jobs:
           PKG=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
 
-          echo "Checking $PKG@$VERSION on npm..."
-
-          for i in {1..20}; do
-            if NPM_CONFIG_USERCONFIG=/dev/null npm view "$PKG@$VERSION" version; then
-              echo "$PKG@$VERSION is visible on npm."
-              break
-            fi
-            echo "Package version not visible yet, retrying in 10s..."
-            sleep 10
-          done
-
-          echo "Downloading published tarball..."
+          echo "Waiting for $PKG@$VERSION to become available on npm..."
 
           TARBALL=""
-          for i in {1..20}; do
+          for i in {1..40}; do
             if TARBALL=$(NPM_CONFIG_USERCONFIG=/dev/null npm pack "$PKG@$VERSION" --silent); then
               echo "Downloaded tarball: $TARBALL"
               break
             fi
-            echo "Tarball not ready yet, retrying in 10s..."
-            sleep 10
+            echo "Tarball not ready yet, retrying in 30s..."
+            sleep 30
           done
 
           if [ ! -f "$TARBALL" ]; then
