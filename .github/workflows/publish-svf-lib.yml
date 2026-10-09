@@ -32,7 +32,15 @@ jobs:
           node --version
           npm --version
           cat package.json
-          npm publish --access public
+          if publish_output=$(npm publish --access public 2>&1); then
+            printf '%s\n' "$publish_output"
+          elif grep -Fq 'Cannot publish over previously staged version' <<< "$publish_output"; then
+            printf '%s\n' "$publish_output"
+            echo "Package version is already staged on npm; continuing with verification."
+          else
+            printf '%s\n' "$publish_output"
+            exit 1
+          fi
 
       - name: Verify published package
         run: |
