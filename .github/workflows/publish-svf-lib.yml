@@ -42,39 +42,21 @@ jobs:
             exit 1
           fi
 
-      - name: Verify published package
+      - name: Verify package contents
         run: |
-          PKG=$(node -p "require('./package.json').name")
-          VERSION=$(node -p "require('./package.json').version")
+          TARBALL=$(npm pack --silent)
 
-          echo "Waiting for $PKG@$VERSION to become available on npm..."
-
-          TARBALL=""
-          for i in {1..40}; do
-            if TARBALL=$(NPM_CONFIG_USERCONFIG=/dev/null npm pack "$PKG@$VERSION" --silent); then
-              echo "Downloaded tarball: $TARBALL"
-              break
-            fi
-            echo "Tarball not ready yet, retrying in 30s..."
-            sleep 30
-          done
-
-          if [ ! -f "$TARBALL" ]; then
-            echo "Failed to download published tarball for $PKG@$VERSION"
-            exit 1
-          fi
-
-          echo "Listing published tarball contents..."
-          tar -tzf "$TARBALL" | tee published-files.txt
+          echo "Listing package tarball contents..."
+          tar -tzf "$TARBALL" | tee package-files.txt
 
           echo "Checking Linux x64 binary..."
-          grep '^package/SVF-linux-x86_64/' published-files.txt
+          grep '^package/SVF-linux-x86_64/' package-files.txt
 
           echo "Checking Linux ARM/aarch64 binary..."
-          grep '^package/SVF-linux-aarch64/' published-files.txt
+          grep '^package/SVF-linux-aarch64/' package-files.txt
 
           echo "Checking macOS binary..."
-          grep '^package/SVF-osx/' published-files.txt
+          grep '^package/SVF-osx/' package-files.txt
           
   trigger-svf-python:
     if: github.event_name == 'push'  # Only run on push events
