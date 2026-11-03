@@ -82,7 +82,7 @@ public:
         SVFUtil::outs().flush();
     }
 
-    private:
+private:
     const char* name;
     const bool enabled;
     std::chrono::steady_clock::time_point start;
