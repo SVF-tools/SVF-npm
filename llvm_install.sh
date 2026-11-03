@@ -6,8 +6,8 @@ arch=`uname -m`
 MajorLLVMVer=21
 LLVMVer=${MajorLLVMVer}.1.0
 Z3Ver=4.15.4
-UbuntuLLVM_RTTI="https://github.com/bjjwwang/SVF-LLVM/releases/download/${LLVMVer}/llvm-${LLVMVer}-ubuntu22-rtti-x86-64.tar.gz"
-UbuntuArmLLVM_RTTI="https://github.com/bjjwwang/SVF-LLVM/releases/download/${LLVMVer}/llvm-${LLVMVer}-ubuntu22-rtti-aarch64.tar.gz"
+UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu26-rtti-x86-64.tar.gz"
+UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu26-rtti-aarch64.tar.gz"
 
 Z3PrebuiltBase="https://github.com/SVF-tools/SVF-npm/raw/prebuilt-libs"
 UbuntuZ3Arm="${Z3PrebuiltBase}/z3-${Z3Ver}-arm64-ubuntu-22.04.zip"
