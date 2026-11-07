@@ -105,7 +105,8 @@ namespace SVF
 
 template<>
 struct GenericGraphTraits<SparseObjNode*>
-    : public GenericGraphTraits<GenericNode<SparseObjNode, SparseObjEdge>*>
+    :
+    public GenericGraphTraits<GenericNode<SparseObjNode, SparseObjEdge>*>
 {
 };
 
