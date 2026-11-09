@@ -3,18 +3,12 @@
 SVFHOME=$(pwd)
 sysOS=`uname -s`
 arch=`uname -m`
-MajorLLVMVer=21
+MajorLLVMVer=22
 LLVMVer=${MajorLLVMVer}.1.0
 Z3Ver=4.15.4
-UbuntuRelease=22
-if [[ "$sysOS" == "Linux" && -r /etc/os-release ]]; then
-    UbuntuVersion=$(sed -n 's/^VERSION_ID="\?\([0-9]*\).*/\1/p' /etc/os-release)
-    if [[ "$UbuntuVersion" =~ ^[0-9]+$ ]] && (( UbuntuVersion >= 26 )); then
-        UbuntuRelease=26
-    fi
-fi
-UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu${UbuntuRelease}-rtti-x86-64.tar.gz"
-UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu${UbuntuRelease}-rtti-aarch64.tar.gz"
+# Keep consistent with SVF's build.sh: RTTI LLVM prebuilts are built on Ubuntu 26.04.
+UbuntuLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu26-rtti-x86-64.tar.gz"
+UbuntuArmLLVM_RTTI="https://github.com/SVF-tools/SVF/releases/download/SVF-3.3/llvm-${LLVMVer}-ubuntu26-rtti-aarch64.tar.gz"
 
 Z3PrebuiltBase="https://github.com/SVF-tools/SVF-npm/raw/prebuilt-libs"
 UbuntuZ3Arm="${Z3PrebuiltBase}/z3-${Z3Ver}-arm64-ubuntu-22.04.zip"
